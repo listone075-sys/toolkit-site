@@ -50,6 +50,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
+        <meta name="google-site-verification" content="b9LnPakW02bBFDppFZysgx3q6V89qDkmD2SkSohVj8Y" />
+        <meta name="google-site-verification" content="mx7ab6UFuWD0OuKTdl7ai0kqoMJ1Dad7kIL7FivkrX8" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5142105226310650" crossOrigin="anonymous" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHKDP008P" />
         <script
