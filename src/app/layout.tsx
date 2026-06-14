@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { Analytics } from "@/components/layout/analytics";
+import { SiteSchema } from "@/components/seo/site-schema";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5142105226310650" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full flex flex-col">
+        <SiteSchema />
         <Analytics />
         <Header />
         <main className="flex-1">{children}</main>

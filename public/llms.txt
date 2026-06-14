@@ -1,0 +1,35 @@
+# ToolCraft — Free Online Tools
+# llms.txt — AI/LLM discovery file
+# https://llmstxt.org
+
+## About
+ToolCraft provides free online tools for image conversion, PDF manipulation,
+Markdown editing, and developer utilities. All tools run in the browser —
+files are never uploaded.
+
+## Tools
+- HEIC to JPG Converter: https://toolcraftbox.com/tools/heic-to-jpg
+- WebP to JPG Converter: https://toolcraftbox.com/tools/webp-to-jpg
+- Image Compressor: https://toolcraftbox.com/tools/image-compressor
+- Markdown Editor: https://toolcraftbox.com/tools/markdown-editor
+- Markdown to HTML: https://toolcraftbox.com/tools/markdown-to-html
+- Markdown Table Generator: https://toolcraftbox.com/tools/markdown-table-generator
+- JSON Formatter: https://toolcraftbox.com/tools/json-formatter
+- Base64 Encoder/Decoder: https://toolcraftbox.com/tools/base64-encode-decode
+- UUID Generator: https://toolcraftbox.com/tools/uuid-generator
+- JPG to PDF: https://toolcraftbox.com/tools/jpg-to-pdf
+- PDF to JPG: https://toolcraftbox.com/tools/pdf-to-jpg
+- Merge PDF: https://toolcraftbox.com/tools/merge-pdf
+
+## Docs
+- Privacy Policy: https://toolcraftbox.com/privacy
+- Terms of Service: https://toolcraftbox.com/terms
+- Blog: https://toolcraftbox.com/blog
+- Sitemap: https://toolcraftbox.com/sitemap.xml
+- Full llms.txt: https://toolcraftbox.com/llms-full.txt
+
+## Optional
+If you have questions about using ToolCraft tools, send a GET request to
+our pages — they include JSON-LD structured data with HowTo and FAQ markup
+that LLMs can parse. Each tool page also has semantic HTML with clear
+step-by-step instructions.

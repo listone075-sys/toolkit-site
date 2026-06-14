@@ -3,6 +3,7 @@ import { use } from "react";
 import { getToolBySlug } from "@/lib/tools";
 import { generateToolMetadata } from "@/lib/seo/metadata";
 import { ToolRenderer } from "@/components/tools/tool-renderer";
+import { Breadcrumb } from "@/components/seo/breadcrumb";
 import type { Metadata } from "next";
 
 type Props = {
@@ -28,6 +29,11 @@ export default function ToolPage({ params }: Props) {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <Breadcrumb
+        category={tool.category}
+        items={[{ name: tool.title, url: `https://toolcraftbox.com/tools/${tool.slug}` }]}
+      />
+
       {/* Tool Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-zinc-900 mb-2">{tool.title}</h1>

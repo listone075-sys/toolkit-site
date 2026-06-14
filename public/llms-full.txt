@@ -1,0 +1,100 @@
+# ToolCraft — Complete AI Discovery File
+
+## About ToolCraft
+
+ToolCraft is a free online toolkit for image conversion, PDF manipulation,
+Markdown editing, and developer utilities. Built with privacy as a core
+principle — all processing happens in the user's browser. No files are ever
+uploaded to any server.
+
+Domain: https://toolcraftbox.com
+Category subdomains:
+  - https://image.toolcraftbox.com (Image Tools)
+  - https://pdf.toolcraftbox.com (PDF Tools)
+  - https://markdown.toolcraftbox.com (Markdown Tools)
+  - https://dev.toolcraftbox.com (Developer Tools)
+
+## Image Tools
+
+### HEIC to JPG Converter
+URL: https://toolcraftbox.com/tools/heic-to-jpg
+Converts Apple HEIC images to universally compatible JPEG format. All
+conversion happens in the browser using the heic2any library and Canvas
+API. No file uploads. Zero server cost.
+
+### WebP to JPG Converter
+URL: https://toolcraftbox.com/tools/webp-to-jpg
+Converts WebP images to JPEG. Browser-based Canvas API conversion. No
+uploads required.
+
+### Image Compressor
+URL: https://toolcraftbox.com/tools/image-compressor
+Compress images with adjustable quality (10-100%). Real-time preview of
+file size savings. Uses Canvas API for client-side compression.
+
+## PDF Tools
+
+### JPG to PDF Converter
+URL: https://toolcraftbox.com/tools/jpg-to-pdf
+Convert images (JPG/PNG) to PDF. Combine multiple images into a single
+PDF document. Page size options: A4, Letter, Legal, A3. Uses pdf-lib.
+
+### PDF to JPG Converter
+URL: https://toolcraftbox.com/tools/pdf-to-jpg
+Extract pages from PDF as high-quality JPEG images. Renders at 2x
+resolution for crisp output. Uses pdfjs-dist for client-side rendering.
+
+### Merge PDF Files
+URL: https://toolcraftbox.com/tools/merge-pdf
+Combine multiple PDF files into one document. Arrange files in order.
+All merging done in-browser with pdf-lib. No file uploads.
+
+## Markdown Tools
+
+### Online Markdown Editor
+URL: https://toolcraftbox.com/tools/markdown-editor
+Split-view Markdown editor with live preview. Supports GitHub Flavored
+Markdown (GFM), code syntax highlighting, tables. Export to HTML.
+
+### Markdown to HTML Converter
+URL: https://toolcraftbox.com/tools/markdown-to-html
+Convert Markdown to clean HTML. Supports GFM including tables, task
+lists, strikethrough. Perfect for converting AI chat outputs (ChatGPT,
+Claude, Gemini all output Markdown).
+
+### Markdown Table Generator
+URL: https://toolcraftbox.com/tools/markdown-table-generator
+Visual table builder that generates Markdown table syntax. Spreadsheet-
+like interface. Supports column alignment (left/center/right).
+
+## Developer Tools
+
+### JSON Formatter & Validator
+URL: https://toolcraftbox.com/tools/json-formatter
+Format, validate, and minify JSON. Tree view for complex structures.
+Real-time validation with error highlighting. All browser-based.
+
+### Base64 Encoder / Decoder
+URL: https://toolcraftbox.com/tools/base64-encode-decode
+Encode text to Base64 or decode Base64 to text. UTF-8 support. Works
+entirely in the browser.
+
+### UUID Generator
+URL: https://toolcraftbox.com/tools/uuid-generator
+Generate UUID v4 identifiers using cryptographically strong randomness.
+Batch generation (1-100). All generated in browser.
+
+## Blog Articles
+- How to Convert HEIC to JPG: https://toolcraftbox.com/blog/how-to-convert-heic-to-jpg
+- What Is Markdown: https://toolcraftbox.com/blog/what-is-markdown
+- How to Compress Images: https://toolcraftbox.com/blog/how-to-compress-images
+- How to Merge PDF Files: https://toolcraftbox.com/blog/how-to-merge-pdf-files
+- How to Format JSON: https://toolcraftbox.com/blog/how-to-format-json
+
+## Technical Details
+- Framework: Next.js 16 with App Router
+- Styling: Tailwind CSS v4 + shadcn/ui v4
+- All tools: client-side processing (zero server cost per use)
+- Structured data: JSON-LD (HowTo, FAQPage, SoftwareApplication, BreadcrumbList)
+- Deployed: Tencent Cloud Hong Kong
+- HTTPS: Let's Encrypt with auto-renewal
