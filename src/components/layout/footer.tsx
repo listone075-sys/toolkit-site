@@ -44,6 +44,7 @@ export function Footer() {
           <div className="mt-2 flex justify-center gap-4">
             <Link href="/privacy" className="text-xs text-zinc-400 hover:text-zinc-600">Privacy Policy</Link>
             <Link href="/terms" className="text-xs text-zinc-400 hover:text-zinc-600">Terms of Service</Link>
+            <a href="mailto:hello@toolcraftbox.com" className="text-xs text-zinc-400 hover:text-zinc-600">Contact</a>
           </div>
         </div>
       </div>
