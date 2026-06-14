@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ToolConfig } from "@/lib/tools/types";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolkit.futuretime.site";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 
 /**
  * Generate page metadata for a tool page
