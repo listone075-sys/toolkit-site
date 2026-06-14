@@ -1,0 +1,65 @@
+export const meta = {
+  title: "What Is a UUID? Universal Unique Identifier Explained",
+  description: "What are UUIDs, why do developers use them, and how to generate them for free. UUID v1 vs v4 explained.",
+  date: "2026-06-14",
+  category: "Dev Tools",
+};
+
+# What Is a UUID? Universal Unique Identifier Explained
+
+You've seen strings like `550e8400-e29b-41d4-a716-446655440000` in code, databases, and URLs. That's a UUID. Here's what it is and why developers use it.
+
+## What Is a UUID?
+
+A UUID (Universally Unique Identifier) is a 128-bit number used to identify information uniquely across space and time. The chance of generating a duplicate is so low it's considered impossible for practical purposes.
+
+Format: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (32 hex digits + 4 hyphens)
+
+## UUID Versions
+
+| Version | How It's Generated | Best For |
+|---------|-------------------|----------|
+| **v1** | Timestamp + MAC address | Time-sortable IDs |
+| **v4** | Random numbers | **Most common — general purpose** |
+| **v7** | Timestamp + random | Sortable, newer standard |
+
+## Why Developers Use UUIDs
+
+### Instead of Auto-Increment IDs
+
+```sql
+-- Old way: predictable, reveals row count
+id: 1, 2, 3, 4...
+
+-- UUID way: unpredictable, no info leak
+id: a3f2b1c4-... , 8e7d6f5a-...
+```
+
+### Benefits
+
+- **No central authority needed** — generate anywhere, no collision
+- **Can't guess the next one** — unlike sequential IDs
+- **Works across systems** — merge databases without ID conflicts
+- **URL-safe** — no special characters that break URLs
+
+## Generate UUIDs for Free
+
+Use our [UUID Generator](https://toolcraftbox.com/tools/uuid-generator):
+
+1. Set how many UUIDs you need (1–100)
+2. Click Generate
+3. Copy or download — all generated in your browser
+
+## UUID v4 Structure
+
+```
+550e8400-e29b-41d4-a716-446655440000
+       │       │
+       │       └─ Version nibble (4 = v4)
+       └─ Variant bits (indicates UUID layout)
+```
+
+## Related Tools
+
+- [UUID Generator](https://toolcraftbox.com/tools/uuid-generator) — generate UUIDs instantly
+- [Base64 Encoder](https://toolcraftbox.com/tools/base64-encode-decode) — encode UUIDs to Base64

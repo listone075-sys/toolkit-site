@@ -1,0 +1,114 @@
+export const meta = {
+  title: "Markdown Cheat Sheet — Quick Reference Guide (2026)",
+  description: "Complete Markdown syntax reference. Headings, lists, links, images, tables, code blocks — everything you need in one page.",
+  date: "2026-06-14",
+  category: "Markdown",
+};
+
+# Markdown Cheat Sheet — Quick Reference Guide
+
+Bookmark this page. Every Markdown syntax you'll ever need, with examples.
+
+## Basic Syntax
+
+```markdown
+# H1 Heading
+## H2 Heading
+### H3 Heading
+
+**bold text**
+*italic text*
+~~strikethrough~~
+
+[link text](https://example.com)
+![image alt](image-url.jpg)
+
+> blockquote
+```
+
+## Lists
+
+```markdown
+- Unordered item 1
+- Unordered item 2
+  - Nested item
+
+1. Ordered item 1
+2. Ordered item 2
+
+- [ ] Todo item
+- [x] Completed item
+```
+
+## Code
+
+````markdown
+`inline code`
+
+```javascript
+// Code block with syntax highlighting
+const greeting = "Hello, world!";
+console.log(greeting);
+```
+````
+
+## Tables
+
+```markdown
+| Header 1 | Header 2 | Header 3 |
+|----------|:--------:|---------:|
+| Left     | Center   | Right    |
+| Data     | Data     | Data     |
+```
+
+Result:
+
+| Header 1 | Header 2 | Header 3 |
+|----------|:--------:|---------:|
+| Left     | Center   | Right    |
+| Data     | Data     | Data     |
+
+## Links & References
+
+```markdown
+[Basic link](https://example.com)
+[Link with title](https://example.com "Title")
+
+[Reference-style link][ref]
+
+[ref]: https://example.com
+```
+
+## Images
+
+```markdown
+![Alt text](image.jpg)
+![Alt text](image.jpg "Title")
+```
+
+## Horizontal Rule
+
+```markdown
+---
+```
+
+## HTML in Markdown
+
+Markdown supports raw HTML:
+
+```html
+<details>
+<summary>Click to expand</summary>
+Hidden content here.
+</details>
+```
+
+## Try It Live
+
+Use our [Markdown Editor](https://toolcraftbox.com/tools/markdown-editor) to practice. Left panel = write, right panel = instant preview.
+
+## Related Tools
+
+- [Markdown Editor](https://toolcraftbox.com/tools/markdown-editor) — write and preview
+- [Markdown to HTML](https://toolcraftbox.com/tools/markdown-to-html) — convert MD to HTML
+- [Markdown Table Generator](https://toolcraftbox.com/tools/markdown-table-generator) — build tables visually

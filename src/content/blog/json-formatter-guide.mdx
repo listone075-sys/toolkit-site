@@ -1,0 +1,70 @@
+export const meta = {
+  title: "How to Format, Validate, and Debug JSON (The Right Way)",
+  description: "Staring at a wall of minified JSON? Learn how to format, validate, and debug JSON with free online tools.",
+  date: "2026-06-14",
+  category: "Dev Tools",
+};
+
+# How to Format, Validate, and Debug JSON
+
+JSON is everywhere — APIs, config files, databases. But when it's minified into one line, it's unreadable. Here's how to make sense of it.
+
+## The Problem
+
+```json
+{"users":[{"id":1,"name":"Alice","email":"alice@example.com","roles":["admin","editor"]},{"id":2,"name":"Bob","email":"bob@example.com","roles":["viewer"]}]}
+```
+
+That's valid JSON. But try finding Bob's email.
+
+## Step 1: Format (Beautify)
+
+Paste it into the [JSON Formatter](https://toolcraftbox.com/tools/json-formatter) and click **Format**:
+
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "roles": ["admin", "editor"]
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "roles": ["viewer"]
+    }
+  ]
+}
+```
+
+Instantly readable.
+
+## Step 2: Validate
+
+The formatter also validates your JSON in real time:
+
+- ✅ Valid JSON → green badge
+- ❌ Missing comma, trailing comma, unclosed bracket → red badge with exact error location
+
+## Step 3: Minify (When Needed)
+
+Need to send JSON in an API request? Click **Minify** to compress it back to a single line. Saves bandwidth for large payloads.
+
+## Common JSON Errors
+
+```json
+❌ { name: "Alice" }          ← Unquoted key
+❌ { "name": "Alice", }       ← Trailing comma
+❌ { "name": 'Alice' }        ← Single quotes
+❌ { "name": "Alice"          ← Missing closing brace
+
+✅ { "name": "Alice" }
+```
+
+## Related Tools
+
+- [JSON Formatter](https://toolcraftbox.com/tools/json-formatter) — format, validate, minify
+- [Base64 Encoder](https://toolcraftbox.com/tools/base64-encode-decode) — decode JWT payloads

@@ -1,0 +1,71 @@
+export const meta = {
+  title: "How to Create Tables in Markdown — The Complete Guide",
+  description: "Struggling with Markdown tables? Learn the syntax, alignment tricks, and use our free visual table builder.",
+  date: "2026-06-14",
+  category: "Markdown",
+};
+
+# How to Create Tables in Markdown
+
+Writing tables in Markdown by hand is tedious. One wrong pipe character and it breaks. Here's the syntax — and a better way.
+
+## Basic Table Syntax
+
+```markdown
+| Name  | Age | City          |
+|-------|-----|---------------|
+| Alice | 30  | New York      |
+| Bob   | 25  | San Francisco |
+| Carol | 28  | Chicago       |
+```
+
+Renders as:
+
+| Name  | Age | City          |
+|-------|-----|---------------|
+| Alice | 30  | New York      |
+| Bob   | 25  | San Francisco |
+| Carol | 28  | Chicago       |
+
+## Column Alignment
+
+```markdown
+| Left      | Center    |     Right |
+|:----------|:---------:|----------:|
+| `:---`    | `:---:`   | `---:`    |
+| Aligns L  | Aligns C  | Aligns R  |
+```
+
+## The Easy Way: Visual Table Builder
+
+Instead of counting pipe characters, use our [Markdown Table Generator](https://toolcraftbox.com/tools/markdown-table-generator):
+
+1. Set your rows and columns
+2. Fill in cells like a spreadsheet
+3. Copy the generated Markdown
+4. Paste into your README, docs, or blog post
+
+## Table Tips
+
+- **Header row is required** — every Markdown table needs column headers
+- **Alignment row is required** — the second row (`|---|---|`) defines alignment
+- **Escaping pipes** — use `\|` to include a literal pipe character in a cell
+- **Consistent columns** — every row must have the same number of columns
+
+## Common Mistakes
+
+```markdown
+❌ | A | B | C |         ← Header
+   |---|---|             ← Missing column!
+   | 1 | 2 | 3 |
+
+✅ | A | B | C |
+   |---|---|---|
+   | 1 | 2 | 3 |
+```
+
+## Related Tools
+
+- [Markdown Table Generator](https://toolcraftbox.com/tools/markdown-table-generator) — visual builder
+- [Markdown Editor](https://toolcraftbox.com/tools/markdown-editor) — live preview
+- [Markdown to HTML](https://toolcraftbox.com/tools/markdown-to-html) — convert tables to HTML

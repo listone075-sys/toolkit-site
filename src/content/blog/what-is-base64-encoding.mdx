@@ -1,0 +1,54 @@
+export const meta = {
+  title: "What Is Base64 Encoding? A Beginner's Guide",
+  description: "What is Base64, how does it work, and when should you use it? Learn the basics and try our free encoder/decoder.",
+  date: "2026-06-14",
+  category: "Dev Tools",
+};
+
+# What Is Base64 Encoding? A Beginner's Guide
+
+You've seen strings like `SGVsbG8gV29ybGQh` and wondered what they are. That's Base64. Here's what it does and when to use it.
+
+## What Is Base64?
+
+Base64 is a way to convert binary data (like images, or special characters) into plain ASCII text. It takes any data and represents it using only 64 "safe" characters: `A-Z`, `a-z`, `0-9`, `+`, `/`, and `=` for padding.
+
+## How It Works
+
+```
+Input:  "Hello World!"
+Base64: "SGVsbG8gV29ybGQh"
+```
+
+Each character in the input is converted to its binary representation, then split into 6-bit chunks, each mapped to one of the 64 safe characters.
+
+## Common Uses
+
+| Use Case | Example |
+|----------|---------|
+| **Data URLs** | Embedding small images directly in HTML/CSS: `data:image/png;base64,...` |
+| **API Authentication** | HTTP Basic Auth: `Authorization: Basic <base64-encoded-credentials>` |
+| **Email attachments** | MIME encoding for binary attachments |
+| **JSON Web Tokens** | JWT payloads are Base64-encoded |
+| **URL-safe data** | Passing binary data in query strings |
+
+## Is Base64 Encryption?
+
+**No.** Base64 is **encoding**, not encryption. It's trivially reversible. Anyone can decode a Base64 string back to its original form. Never use Base64 to "protect" sensitive data like passwords.
+
+## Try It
+
+Use our [Base64 Encoder / Decoder](https://toolcraftbox.com/tools/base64-encode-decode):
+
+1. Paste text to encode → get Base64
+2. Paste Base64 to decode → get original text
+3. All processing happens in your browser
+
+## Size Increase
+
+Base64 encoding makes data about **33% larger** than the original binary. That's the trade-off: bigger size for text-safe transport.
+
+## Related Tools
+
+- [Base64 Encoder/Decoder](https://toolcraftbox.com/tools/base64-encode-decode) — encode or decode instantly
+- [JSON Formatter](https://toolcraftbox.com/tools/json-formatter) — decode Base64 JWT payloads
