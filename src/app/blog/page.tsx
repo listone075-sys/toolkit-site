@@ -5,7 +5,7 @@ import path from "path";
 import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Blog — Free Online Tools Guides & Tips | ToolKit",
+  title: "Blog — Free Online Tools Guides & Tips",
   description:
     "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
 };

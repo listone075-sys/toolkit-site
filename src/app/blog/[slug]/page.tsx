@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const match = raw.match(/export const meta = ({[\s\S]*?});/);
     if (match) {
       const meta = eval(`(${match[1]})`);
-      return { title: `${meta.title} | ToolKit Blog`, description: meta.description };
+      return { title: meta.title, description: meta.description };
     }
   } catch { /* not found */ }
   return { title: "Blog Post | ToolKit" };

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  openGraph: {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolkit.futuretime.site"), alternates: { canonical: "/" }, openGraph: { url: "/",
     type: "website",
     siteName: "ToolCraft",
     title: "ToolCraft — Free Online Tools",
