@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import type { ToolConfig } from "@/lib/tools/types";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolkit.futuretime.site";
+
 /**
  * Generate page metadata for a tool page
  */
 export function generateToolMetadata(tool: ToolConfig): Metadata {
-  const url = `https://toolkit.com/tools/${tool.slug}`;
+  const url = `${SITE_URL}/tools/${tool.slug}`;
   return {
-    title: `${tool.title} — Free Online Tool | ToolKit`,
+    title: `${tool.title} — Free Online Tool`,
     description: tool.description,
     keywords: tool.keywords,
     alternates: {

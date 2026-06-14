@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { readdirSync } from "fs";
 import path from "path";
 
-const BASE_URL = "https://toolkit.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolkit.futuretime.site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
