@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(curl *)",
+      "Bash(ls *)",
+      "Bash(cd *)",
+      "Bash(cat *)",
+      "Bash(mkdir *)",
+      "Bash(rm *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(echo *)",
+      "Bash(pkill *)",
+      "Bash(taskkill *)",
+      "Bash(sleep *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(tail *)",
+      "Bash(head *)",
+      "Bash(which *)",
+      "Bash(uname *)",
+      "Bash(ssh 香港01 *)",
+      "Bash(ssh -o *)",
+      "Bash(rsync *)",
+      "Bash(scp *)",
+      "Bash(wget *)",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "C:\\Users\\Administrator\\toolkit-site"
+    ]
+  }
+}
