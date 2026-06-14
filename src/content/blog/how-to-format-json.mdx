@@ -1,0 +1,55 @@
+export const meta = {
+  title: "How to Format and Validate JSON Online",
+  description:
+    "Staring at a wall of unformatted JSON? Learn how to beautify, validate, and debug JSON with free online tools.",
+  date: "2026-06-10",
+  category: "Dev Tools",
+};
+
+# How to Format and Validate JSON Online
+
+JSON (JavaScript Object Notation) is the backbone of modern APIs and configuration files. But when you're debugging, a single-line, minified JSON blob is impossible to read.
+
+## The Problem
+
+```json
+{"users":[{"name":"Alice","age":30,"email":"alice@example.com"},{"name":"Bob","age":25,"email":"bob@example.com"}]}
+```
+
+That's valid JSON, but try finding Bob's email in there.
+
+## The Solution: JSON Formatter
+
+1. Go to the [JSON Formatter](/tools/json-formatter)
+2. Paste your JSON
+3. Click **Format**
+4. Instantly get beautifully indented, readable JSON:
+
+```json
+{
+  "users": [
+    {
+      "name": "Alice",
+      "age": 30,
+      "email": "alice@example.com"
+    },
+    {
+      "name": "Bob",
+      "age": 25,
+      "email": "bob@example.com"
+    }
+  ]
+}
+```
+
+## Validation
+
+The tool also validates your JSON in real time. If you have a missing comma, unclosed bracket, or trailing comma, it will highlight exactly what's wrong.
+
+## Minification
+
+Need to go the other way? Click **Minify** to compress formatted JSON back to a single line — perfect for API payloads.
+
+## Security
+
+All formatting happens in your browser. Your JSON data never leaves your device.

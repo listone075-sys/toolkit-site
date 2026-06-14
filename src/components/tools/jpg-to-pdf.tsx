@@ -1,0 +1,139 @@
+"use client";
+
+import { useState, useCallback, type DragEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { imagesToPdf } from "@/lib/tools/pdf/image-to-pdf";
+import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
+import { Upload, Download, X, Plus, GripVertical } from "lucide-react";
+
+const PAGE_SIZES = ["A4", "Letter", "Legal", "A3"] as const;
+
+export function JpgToPdf() {
+  const [files, setFiles] = useState<File[]>([]);
+  const [previews, setPreviews] = useState<string[]>([]);
+  const [pageSize, setPageSize] = useState<string>("A4");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [dragOver, setDragOver] = useState(false);
+
+  const addFiles = useCallback(
+    (newFiles: FileList | File[]) => {
+      const arr = Array.from(newFiles).filter((f) => isImageFile(f));
+      setFiles((prev) => [...prev, ...arr]);
+      arr.forEach((f) => {
+        const url = URL.createObjectURL(f);
+        setPreviews((prev) => [...prev, url]);
+      });
+      setError(null);
+    },
+    [],
+  );
+
+  const removeFile = (i: number) => {
+    setFiles((prev) => prev.filter((_, idx) => idx !== i));
+    setPreviews((prev) => {
+      URL.revokeObjectURL(prev[i]);
+      return prev.filter((_, idx) => idx !== i);
+    });
+  };
+
+  const handleDrop = useCallback(
+    (e: DragEvent) => {
+      e.preventDefault();
+      setDragOver(false);
+      if (e.dataTransfer.files.length > 0) addFiles(e.dataTransfer.files);
+    },
+    [addFiles],
+  );
+
+  const handleConvert = async () => {
+    if (files.length === 0) {
+      setError("Please add at least one image.");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      const pdfBytes = await imagesToPdf(files, { pageSize: pageSize as keyof typeof import("pdf-lib").PageSizes });
+      const blob = new Blob([new Uint8Array(pdfBytes).buffer], { type: "application/pdf" });
+      downloadFile(blob, "converted.pdf", "application/pdf");
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* Options */}
+      <div className="flex items-center gap-4 p-3 bg-zinc-50 rounded-lg border flex-wrap">
+        <span className="text-sm font-medium text-zinc-700">Page Size:</span>
+        <select
+          value={pageSize}
+          onChange={(e) => setPageSize(e.target.value)}
+          className="h-8 rounded-md border px-2 text-sm bg-white"
+        >
+          {PAGE_SIZES.map((s) => <option key={s} value={s}>{s}</option>)}
+        </select>
+        <span className="text-xs text-zinc-400 ml-auto">{files.length} image(s) added</span>
+      </div>
+
+      {/* Upload / Preview */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Upload Area */}
+        <div
+          className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center min-h-[250px] transition-colors ${
+            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
+          }`}
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={handleDrop}
+        >
+          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
+          <p className="text-sm font-medium text-zinc-600 mb-1">Upload Images</p>
+          <p className="text-xs text-zinc-400 mb-3">PNG or JPEG — drag multiple files</p>
+          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
+            <Plus className="h-4 w-4 mr-1" /> Browse
+            <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => e.target.files && addFiles(e.target.files)} />
+          </label>
+        </div>
+
+        {/* File list */}
+        <div className="border rounded-lg p-4 min-h-[250px]">
+          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Image Order</div>
+          {files.length === 0 ? (
+            <p className="text-sm text-zinc-400 text-center mt-12">No images yet</p>
+          ) : (
+            <div className="space-y-2 max-h-[350px] overflow-auto">
+              {files.map((f, i) => (
+                <div key={i} className="flex items-center gap-2 p-2 bg-zinc-50 rounded text-sm">
+                  <GripVertical className="h-4 w-4 text-zinc-300 shrink-0" />
+                  {previews[i] && <img src={previews[i]} alt="" className="h-10 w-10 object-cover rounded" />}
+                  <span className="flex-1 truncate text-zinc-700">{f.name}</span>
+                  <span className="text-xs text-zinc-400">{formatFileSize(f.size)}</span>
+                  <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => removeFile(i)}>
+                    <X className="h-3 w-3" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Error + Convert button */}
+      {error && <p className="text-sm text-red-500">{error}</p>}
+      <div className="flex justify-center">
+        <Button onClick={handleConvert} disabled={files.length === 0 || loading} size="lg" className="gap-2">
+          {loading ? (
+            <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+          ) : (
+            <Download className="h-4 w-4" />
+          )}
+          {loading ? "Converting..." : `Convert ${files.length} image(s) to PDF`}
+        </Button>
+      </div>
+    </div>
+  );
+}
