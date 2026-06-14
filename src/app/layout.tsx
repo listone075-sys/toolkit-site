@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { CookieBanner } from "@/components/layout/cookie-banner";
+import { Analytics } from "@/components/layout/analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,8 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "ToolKit — Free Online Tools",
-    template: "%s | ToolKit",
+    default: "ToolCraft — Free Online Tools",
+    template: "%s | ToolCraft",
   },
   description:
     "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser — your files are never uploaded.",
@@ -36,8 +38,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "ToolKit",
-    title: "ToolKit — Free Online Tools",
+    siteName: "ToolCraft",
+    title: "ToolCraft — Free Online Tools",
     description:
       "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
   },
@@ -47,9 +49,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <Analytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieBanner />
         <Toaster />
       </body>
     </html>

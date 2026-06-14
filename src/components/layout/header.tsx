@@ -14,7 +14,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-zinc-900">
           <Wrench className="h-6 w-6 text-blue-600" />
-          <span>ToolKit</span>
+          <span>ToolCraft</span>
         </Link>
 
         {/* Desktop nav */}

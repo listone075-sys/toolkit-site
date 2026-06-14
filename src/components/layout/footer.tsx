@@ -40,7 +40,11 @@ export function Footer() {
         </div>
         <div className="mt-10 pt-6 border-t text-center text-sm text-zinc-500">
           <p>All tools run in your browser. Your files are never uploaded to any server.</p>
-          <p className="mt-1">© {new Date().getFullYear()} ToolKit. Free online tools for everyone.</p>
+          <p className="mt-1">© {new Date().getFullYear()} ToolCraft. Free online tools for everyone.</p>
+          <div className="mt-2 flex justify-center gap-4">
+            <Link href="/privacy" className="text-xs text-zinc-400 hover:text-zinc-600">Privacy Policy</Link>
+            <Link href="/terms" className="text-xs text-zinc-400 hover:text-zinc-600">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
