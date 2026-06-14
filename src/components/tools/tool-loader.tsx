@@ -95,6 +95,36 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
       default: m.MergePdf,
     })),
   ),
+
+  "qr-code-generator": dynamic(() =>
+    import("./qrcode-generator").then((m) => ({
+      default: m.QrCodeGenerator,
+    })),
+  ),
+
+  "password-generator": dynamic(() =>
+    import("./password-generator").then((m) => ({
+      default: m.PasswordGenerator,
+    })),
+  ),
+
+  "text-diff-checker": dynamic(() =>
+    import("./text-diff-checker").then((m) => ({
+      default: m.TextDiffChecker,
+    })),
+  ),
+
+  "image-resizer": dynamic(() =>
+    import("./image-resizer").then((m) => ({
+      default: m.ImageResizer,
+    })),
+  ),
+
+  "percentage-calculator": dynamic(() =>
+    import("./percentage-calculator").then((m) => ({
+      default: m.PercentageCalculator,
+    })),
+  ),
 };
 
 /**

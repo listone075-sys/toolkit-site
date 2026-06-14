@@ -398,6 +398,139 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+
+  // ── Calculator Tools ──────────────────────────────────────
+  {
+    slug: "percentage-calculator",
+    title: "Percentage Calculator",
+    description: "Free online percentage calculator. Calculate % of a number, % change, % increase/decrease. Instant results.",
+    category: "calculator",
+    keywords: ["percentage calculator", "percent calculator", "percentage change", "percent of", "% calculator"],
+    searchVolume: "~1M/mo",
+    isClientSide: true,
+    icon: "Calculator",
+    howToUse: [
+      "Choose a calculation mode: % of, is what %, % change, or +/− %",
+      "Enter your numbers",
+      "See the result instantly",
+    ],
+    faqs: [
+      {
+        question: "What is the formula for percentage?",
+        answer: "Percentage = (Part / Whole) × 100. For example, 30 is 20% of 150 because (30/150) × 100 = 20.",
+      },
+      {
+        question: "How do I calculate percentage increase?",
+        answer: "Use the % Change tab. Formula: ((New − Old) / Old) × 100. Enter the old and new values to see the change.",
+      },
+    ],
+  },
+
+  // ── More Developer Tools ──────────────────────────────────
+  {
+    slug: "qr-code-generator",
+    title: "QR Code Generator",
+    description: "Generate QR codes online for free. Create QR codes for URLs, text, and more. Download as PNG.",
+    category: "dev",
+    keywords: ["qr code generator", "qr code", "generate qr code", "free qr code", "qr code maker"],
+    searchVolume: "~300K/mo",
+    isClientSide: true,
+    icon: "QrCode",
+    howToUse: [
+      "Enter a URL or text",
+      "Click Generate",
+      "Preview your QR code",
+      "Download as PNG image",
+    ],
+    faqs: [
+      {
+        question: "Is the QR code generation free?",
+        answer: "Yes, completely free. The QR code is generated in your browser — no data is sent to any server.",
+      },
+      {
+        question: "What can I put in a QR code?",
+        answer: "URLs, plain text, phone numbers, email addresses, and more. Most smartphones can scan and open the content automatically.",
+      },
+    ],
+  },
+  {
+    slug: "password-generator",
+    title: "Password Generator",
+    description: "Generate strong, secure passwords online. Choose length and character types. Cryptographically random.",
+    category: "dev",
+    keywords: ["password generator", "strong password", "random password", "secure password generator", "password maker"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Key",
+    howToUse: [
+      "Set your password length (6–64 characters)",
+      "Choose character types: uppercase, lowercase, numbers, symbols",
+      "Click Generate",
+      "Copy the password or regenerate",
+    ],
+    faqs: [
+      {
+        question: "How strong should my password be?",
+        answer: "Aim for at least 12 characters with a mix of uppercase, lowercase, numbers, and symbols. Our strength meter helps you gauge security.",
+      },
+      {
+        question: "Are the passwords stored anywhere?",
+        answer: "No. Passwords are generated in your browser using cryptographically strong randomness (crypto.getRandomValues). They are never stored or transmitted.",
+      },
+    ],
+  },
+  {
+    slug: "text-diff-checker",
+    title: "Text Diff Checker",
+    description: "Compare two texts and find differences online. Line-by-line diff with added, removed, and unchanged highlighting.",
+    category: "dev",
+    keywords: ["text diff", "diff checker", "compare text", "text comparison", "find differences", "diff tool"],
+    searchVolume: "~20K/mo",
+    isClientSide: true,
+    icon: "GitCompare",
+    howToUse: [
+      "Paste the original text in the left panel",
+      "Paste the modified text in the right panel",
+      "Click Compare",
+      "Review highlighted differences — green for added, red for removed",
+    ],
+    faqs: [
+      {
+        question: "How does text diff work?",
+        answer: "It compares two texts line by line using the diff algorithm. Lines present only in the modified text are highlighted green (added), lines only in the original are red (removed).",
+      },
+      {
+        question: "Can I compare code?",
+        answer: "Yes! The diff checker works for any plain text: code, configuration files, prose, or data.",
+      },
+    ],
+  },
+  {
+    slug: "image-resizer",
+    title: "Image Resizer",
+    description: "Resize images online for free. Set exact dimensions, maintain aspect ratio. All processing in your browser.",
+    category: "image",
+    keywords: ["image resizer", "resize image", "image resize", "change image size", "resize photo"],
+    searchVolume: "~300K/mo",
+    isClientSide: true,
+    icon: "Crop",
+    howToUse: [
+      "Upload your image",
+      "Enter new width and/or height",
+      "Toggle aspect ratio lock on/off",
+      "Preview and download the resized image",
+    ],
+    faqs: [
+      {
+        question: "Will resizing reduce quality?",
+        answer: "Downsizing (making smaller) preserves quality well. Upsizing (making larger) may result in some blur. We render at high quality to minimize quality loss.",
+      },
+      {
+        question: "What aspect ratio lock does",
+        answer: "When locked, changing width automatically adjusts height (and vice versa) to maintain the original proportions. Unlock to set width and height independently.",
+      },
+    ],
+  },
 ];
 
 /**

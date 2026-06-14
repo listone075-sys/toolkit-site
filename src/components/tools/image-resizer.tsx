@@ -1,0 +1,158 @@
+"use client";
+
+import { useState, useCallback, type DragEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { resizeImage } from "@/lib/tools/image/resize";
+import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
+import { Upload, Download, X, Lock, Unlock } from "lucide-react";
+
+export function ImageResizer() {
+  const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [origW, setOrigW] = useState(0);
+  const [origH, setOrigH] = useState(0);
+  const [targetW, setTargetW] = useState("");
+  const [targetH, setTargetH] = useState("");
+  const [keepRatio, setKeepRatio] = useState(true);
+  const [outputUrl, setOutputUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [dragOver, setDragOver] = useState(false);
+
+  const handleFile = useCallback(async (f: File) => {
+    if (!isImageFile(f)) { setError("Upload an image file"); return; }
+    setFile(f);
+    if (preview) URL.revokeObjectURL(preview);
+    const url = URL.createObjectURL(f);
+    setPreview(url);
+    const img = new Image();
+    img.onload = () => {
+      setOrigW(img.naturalWidth);
+      setOrigH(img.naturalHeight);
+      setTargetW(String(img.naturalWidth));
+      setTargetH(String(img.naturalHeight));
+    };
+    img.src = url;
+    setError(null);
+    setOutputUrl(null);
+  }, [preview]);
+
+  const handleDrop = useCallback((e: DragEvent) => {
+    e.preventDefault(); setDragOver(false);
+    const f = e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  }, [handleFile]);
+
+  const handleWChange = (v: string) => {
+    setTargetW(v);
+    if (keepRatio && origW && origH) {
+      const w = Number(v);
+      if (w > 0) setTargetH(String(Math.round((origH * w) / origW)));
+    }
+  };
+
+  const handleHChange = (v: string) => {
+    setTargetH(v);
+    if (keepRatio && origW && origH) {
+      const h = Number(v);
+      if (h > 0) setTargetW(String(Math.round((origW * h) / origH)));
+    }
+  };
+
+  const handleResize = async () => {
+    if (!file) return;
+    setLoading(true); setError(null);
+    try {
+      const w = Number(targetW) || undefined;
+      const h = Number(targetH) || undefined;
+      const result = await resizeImage(file, { width: w, height: h, maintainAspectRatio: keepRatio });
+      if (outputUrl) URL.revokeObjectURL(outputUrl);
+      setOutputUrl(URL.createObjectURL(result.blob));
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* Dimensions */}
+      <div className="flex items-center gap-3 flex-wrap p-3 bg-zinc-50 rounded-lg border">
+        <span className="text-sm text-zinc-600">Width:</span>
+        <Input className="w-24 h-8" value={targetW} onChange={(e) => handleWChange(e.target.value)} placeholder="px" />
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setKeepRatio(!keepRatio)} title={keepRatio ? "Unlock ratio" : "Lock ratio"}>
+          {keepRatio ? <Lock className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
+        </Button>
+        <span className="text-sm text-zinc-600">Height:</span>
+        <Input className="w-24 h-8" value={targetH} onChange={(e) => handleHChange(e.target.value)} placeholder="px" />
+        <span className="text-xs text-zinc-400 ml-auto">Original: {origW} × {origH}px</span>
+      </div>
+
+      {/* Upload + Output */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div
+          className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center min-h-[250px] transition-colors ${
+            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
+          }`}
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={handleDrop}
+        >
+          {!file ? (
+            <>
+              <Upload className="h-10 w-10 text-zinc-300 mb-3" />
+              <p className="text-sm text-zinc-600 mb-1">Upload Image</p>
+              <p className="text-xs text-zinc-400 mb-3">or drag & drop</p>
+              <label className="cursor-pointer inline-flex items-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
+                Browse
+                <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
+              </label>
+            </>
+          ) : (
+            <div className="w-full space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium truncate">{file.name}</span>
+                <Button variant="ghost" size="icon" onClick={() => { setFile(null); setPreview(null); setOutputUrl(null); }}>
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              {preview && <img src={preview} alt="" className="max-h-40 rounded mx-auto" />}
+            </div>
+          )}
+        </div>
+
+        <div className="border rounded-lg p-4 min-h-[250px] flex flex-col items-center justify-center">
+          {loading ? (
+            <div className="animate-spin h-8 w-8 border-2 border-blue-500 border-t-transparent rounded-full" />
+          ) : error ? (
+            <p className="text-sm text-red-500">{error}</p>
+          ) : outputUrl ? (
+            <div className="space-y-3 w-full">
+              <img src={outputUrl} alt="Resized" className="max-h-40 rounded mx-auto" />
+              <div className="flex justify-center">
+                <Button onClick={() => {
+                  const ext = file?.name.includes(".") ? file.name.split(".").pop() : "jpg";
+                  fetch(outputUrl).then(r => r.blob()).then(b => downloadFile(b, `resized.${ext}`, b.type));
+                }} size="sm">
+                  <Download className="h-4 w-4 mr-1" /> Download
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-zinc-400">Resized preview will appear here</p>
+          )}
+        </div>
+      </div>
+
+      {file && (
+        <div className="flex justify-center">
+          <Button onClick={handleResize} disabled={loading} size="lg">
+            {loading ? "Resizing..." : "Resize Image"}
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
