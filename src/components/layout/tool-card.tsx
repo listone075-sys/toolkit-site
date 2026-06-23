@@ -2,13 +2,14 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { ToolConfig } from "@/lib/tools/types";
-import { Image, FileCode, FileText, Braces } from "lucide-react";
+import { Image, FileCode, FileText, Braces, Calculator } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   image: <Image className="h-4 w-4" />,
   pdf: <FileText className="h-4 w-4" />,
   markdown: <FileCode className="h-4 w-4" />,
   dev: <Braces className="h-4 w-4" />,
+  calculator: <Calculator className="h-4 w-4" />,
 };
 
 const categoryColors: Record<string, string> = {
@@ -16,6 +17,7 @@ const categoryColors: Record<string, string> = {
   pdf: "bg-red-100 text-red-800",
   markdown: "bg-blue-100 text-blue-800",
   dev: "bg-purple-100 text-purple-800",
+  calculator: "bg-orange-100 text-orange-800",
 };
 
 export function ToolCard({ tool }: { tool: ToolConfig }) {

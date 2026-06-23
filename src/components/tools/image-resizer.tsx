@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback, useEffect, useRef, type DragEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { resizeImage } from "@/lib/tools/image/resize";
@@ -16,9 +16,17 @@ export function ImageResizer() {
   const [targetH, setTargetH] = useState("");
   const [keepRatio, setKeepRatio] = useState(true);
   const [outputUrl, setOutputUrl] = useState<string | null>(null);
+  const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
+  const mountedRef = useRef(true);
+
+  // Track mounted state to prevent state updates and blob URL creation after unmount
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
 
   const handleFile = useCallback(async (f: File) => {
     if (!isImageFile(f)) { setError("Upload an image file"); return; }
@@ -67,7 +75,9 @@ export function ImageResizer() {
       const w = Number(targetW) || undefined;
       const h = Number(targetH) || undefined;
       const result = await resizeImage(file, { width: w, height: h, maintainAspectRatio: keepRatio });
+      if (!mountedRef.current) return; // Component unmounted during resize — abort
       if (outputUrl) URL.revokeObjectURL(outputUrl);
+      setOutputBlob(result.blob);
       setOutputUrl(URL.createObjectURL(result.blob));
     } catch (e) {
       setError((e as Error).message);
@@ -75,6 +85,16 @@ export function ImageResizer() {
       setLoading(false);
     }
   };
+
+  // Revoke preview blob URL on change or unmount
+  useEffect(() => {
+    return () => { if (preview) URL.revokeObjectURL(preview); };
+  }, [preview]);
+
+  // Revoke output blob URL on change or unmount
+  useEffect(() => {
+    return () => { if (outputUrl) URL.revokeObjectURL(outputUrl); };
+  }, [outputUrl]);
 
   return (
     <div className="space-y-4">
@@ -114,7 +134,11 @@ export function ImageResizer() {
             <div className="w-full space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium truncate">{file.name}</span>
-                <Button variant="ghost" size="icon" onClick={() => { setFile(null); setPreview(null); setOutputUrl(null); }}>
+                <Button variant="ghost" size="icon" onClick={() => {
+                  if (preview) URL.revokeObjectURL(preview);
+                  if (outputUrl) URL.revokeObjectURL(outputUrl);
+                  setFile(null); setPreview(null); setOutputUrl(null); setOutputBlob(null);
+                }}>
                   <X className="h-4 w-4" />
                 </Button>
               </div>
@@ -133,8 +157,9 @@ export function ImageResizer() {
               <img src={outputUrl} alt="Resized" className="max-h-40 rounded mx-auto" />
               <div className="flex justify-center">
                 <Button onClick={() => {
+                  if (!outputBlob) { setError("Download not available — please resize again"); return; }
                   const ext = file?.name.includes(".") ? file.name.split(".").pop() : "jpg";
-                  fetch(outputUrl).then(r => r.blob()).then(b => downloadFile(b, `resized.${ext}`, b.type));
+                  downloadFile(outputBlob, `resized.${ext}`, outputBlob.type);
                 }} size="sm">
                   <Download className="h-4 w-4 mr-1" /> Download
                 </Button>

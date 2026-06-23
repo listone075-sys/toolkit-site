@@ -16,6 +16,7 @@ function ResultBox({ label, value, unit = "" }: { label: string; value: string; 
 export function PercentageCalculator() {
   // Tab state
   const [tab, setTab] = useState<"percentOf" | "isWhatPercent" | "change" | "addSub">("percentOf");
+  const [calcError, setCalcError] = useState<string | null>(null);
 
   // Percent of
   const [p1, setP1] = useState("");
@@ -44,9 +45,22 @@ export function PercentageCalculator() {
   let result: { label: string; value: string; unit: string } | null = null;
 
   if (tab === "percentOf" && p1 && p2) {
-    result = { label: `${p1}% of ${p2}`, value: percentOf(Number(p1), Number(p2)).toLocaleString(), unit: "" };
+    const val = percentOf(Number(p1), Number(p2));
+    if (isNaN(val)) {
+      setCalcError("Please enter valid numbers");
+      result = null;
+    } else {
+      setCalcError(null);
+      result = { label: `${p1}% of ${p2}`, value: val.toLocaleString(), unit: "" };
+    }
   } else if (tab === "isWhatPercent" && w1 && w2) {
-    result = { label: `${w1} is what % of ${w2}`, value: isWhatPercent(Number(w1), Number(w2)).toFixed(2), unit: "%" };
+    try {
+      result = { label: `${w1} is what % of ${w2}`, value: isWhatPercent(Number(w1), Number(w2)).toFixed(2), unit: "%" };
+      setCalcError(null);
+    } catch (e) {
+      setCalcError((e as Error).message);
+      result = null;
+    }
   } else if (tab === "change" && c1 && c2) {
     try {
       const r = percentChange(Number(c1), Number(c2));
@@ -55,10 +69,20 @@ export function PercentageCalculator() {
         value: `${r.direction === "increase" ? "+" : "−"}${r.percent.toFixed(2)}`,
         unit: "%",
       };
-    } catch { /* ignore */ }
+      setCalcError(null);
+    } catch (e) {
+      setCalcError((e as Error).message);
+      result = null;
+    }
   } else if (tab === "addSub" && a1 && a2) {
     const val = aMode === "add" ? addPercent(Number(a1), Number(a2)) : subtractPercent(Number(a1), Number(a2));
-    result = { label: `${a1} ${aMode === "add" ? "+" : "−"} ${a2}%`, value: val.toFixed(2), unit: "" };
+    if (isNaN(val)) {
+      setCalcError("Please enter valid numbers");
+      result = null;
+    } else {
+      setCalcError(null);
+      result = { label: `${a1} ${aMode === "add" ? "+" : "−"} ${a2}%`, value: val.toFixed(2), unit: "" };
+    }
   }
 
   return (
@@ -68,7 +92,7 @@ export function PercentageCalculator() {
         {tabs.map((t) => (
           <button
             key={t.key}
-            onClick={() => setTab(t.key)}
+            onClick={() => { setTab(t.key); setCalcError(null); }}
             className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${
               tab === t.key ? "bg-white shadow text-zinc-900" : "text-zinc-500 hover:text-zinc-700"
             }`}
@@ -139,6 +163,9 @@ export function PercentageCalculator() {
           </>
         )}
       </div>
+
+      {/* Error */}
+      {calcError && <p className="text-sm text-red-500 text-center">{calcError}</p>}
 
       {/* Result */}
       {result && <ResultBox label={result.label} value={result.value} unit={result.unit} />}

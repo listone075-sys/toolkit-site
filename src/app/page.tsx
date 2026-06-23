@@ -13,6 +13,7 @@ const categories = [
   { value: "pdf", label: "PDF" },
   { value: "markdown", label: "Markdown" },
   { value: "dev", label: "Dev Tools" },
+  { value: "calculator", label: "Calculators" },
 ] as const;
 
 const categoryMeta: Record<ToolCategory, { hero: string; desc: string }> = {

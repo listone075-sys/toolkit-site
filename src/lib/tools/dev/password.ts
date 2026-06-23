@@ -29,11 +29,19 @@ export function generatePassword(options: PasswordOptions): string {
   if (selected.length === 0) throw new Error("Select at least one character type");
 
   const pool = selected.join("");
-  const randomValues = crypto.getRandomValues(new Uint32Array(length));
+
+  // Rejection sampling to avoid modulo bias:
+  // find the largest multiple of pool.length within the 32-bit range
+  const maxValid = Math.floor(2 ** 32 / pool.length) * pool.length;
 
   let result = "";
-  for (let i = 0; i < length; i++) {
-    result += pool[randomValues[i] % pool.length];
+  while (result.length < length) {
+    const values = crypto.getRandomValues(new Uint32Array(length));
+    for (let i = 0; i < values.length && result.length < length; i++) {
+      if (values[i] < maxValid) {
+        result += pool[values[i] % pool.length];
+      }
+    }
   }
 
   return result;

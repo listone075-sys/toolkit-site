@@ -13,13 +13,18 @@ export function PasswordGenerator() {
   const [numbers, setNumbers] = useState(true);
   const [symbols, setSymbols] = useState(true);
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const { copied, copy } = useClipboard();
 
   const handleGenerate = useCallback(() => {
     try {
       const pwd = generatePassword({ length, uppercase, lowercase, numbers, symbols });
       setPassword(pwd);
-    } catch { /* ignored */ }
+      setError(null);
+    } catch (e) {
+      setError((e as Error).message);
+      setPassword("");
+    }
   }, [length, uppercase, lowercase, numbers, symbols]);
 
   const strength = password ? estimateStrength(password) : null;
@@ -86,6 +91,8 @@ export function PasswordGenerator() {
           </label>
         ))}
       </div>
+
+      {error && <p className="text-sm text-red-500 text-center">{error}</p>}
 
       <div className="flex items-start gap-2 p-3 bg-blue-50 rounded-lg text-sm text-blue-700">
         <Shield className="h-4 w-4 mt-0.5 shrink-0" />

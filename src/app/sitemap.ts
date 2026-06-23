@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { readdirSync } from "fs";
 import path from "path";
+import { getAllToolSlugs } from "@/lib/tools";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 
@@ -20,15 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Add all tool pages
-  const toolSlugs = [
-    "heic-to-jpg", "webp-to-jpg", "image-compressor",
-    "markdown-editor", "markdown-to-html", "markdown-table-generator",
-    "json-formatter", "base64-encode-decode", "uuid-generator",
-    "jpg-to-pdf", "pdf-to-jpg", "merge-pdf",
-  ];
-
-  for (const slug of toolSlugs) {
+  // Add all tool pages (derived from the single registry)
+  for (const slug of getAllToolSlugs()) {
     entries.push({
       url: `${BASE_URL}/tools/${slug}`,
       lastModified: new Date(),
