@@ -125,6 +125,24 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
       default: m.PercentageCalculator,
     })),
   ),
+
+  "markdown-to-docx": dynamic(() =>
+    import("./markdown-to-docx").then((m) => ({
+      default: m.MarkdownToDocx,
+    })),
+  ),
+
+  "markdown-to-pptx": dynamic(() =>
+    import("./markdown-to-pptx").then((m) => ({
+      default: m.MarkdownToPptx,
+    })),
+  ),
+
+  "docx-to-markdown": dynamic(() =>
+    import("./docx-to-markdown").then((m) => ({
+      default: m.DocxToMarkdown,
+    })),
+  ),
 };
 
 /**

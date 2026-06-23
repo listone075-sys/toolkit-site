@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ToolShell } from "./tool-shell";
 import { markdownToHtml, markdownToHtmlDocument } from "@/lib/tools/markdown/md-to-html";
+import { markdownToDocxBlob } from "@/lib/tools/markdown/md-to-docx";
+import { markdownToPptxBlob } from "@/lib/tools/markdown/md-to-pptx";
 import { downloadFile } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { useDebounce } from "@/hooks/use-debounce";
-import { Copy, Download, Eye, FileCode } from "lucide-react";
+import { Copy, Download, Eye, FileCode, FileText } from "lucide-react";
 
 const placeholderMarkdown = `# Welcome to Markdown Editor
 
@@ -62,6 +64,26 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
     downloadFile(doc, "document.html", "text/html");
   };
 
+  const handleDownloadDocx = async () => {
+    const md = input.trim() || placeholderMarkdown;
+    const blob = await markdownToDocxBlob(md);
+    downloadFile(
+      blob,
+      "document.docx",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    );
+  };
+
+  const handleDownloadPptx = async () => {
+    const md = input.trim() || placeholderMarkdown;
+    const blob = await markdownToPptxBlob(md);
+    downloadFile(
+      blob,
+      "presentation.pptx",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    );
+  };
+
   return (
     <div className="space-y-4">
       {/* Toolbar */}
@@ -93,6 +115,12 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
               </Button>
               <Button variant="outline" size="sm" onClick={handleDownloadHtml}>
                 <Download className="h-4 w-4 mr-1" /> Download HTML
+              </Button>
+              <Button variant="outline" size="sm" onClick={handleDownloadDocx}>
+                <FileText className="h-4 w-4 mr-1" /> DOCX
+              </Button>
+              <Button variant="outline" size="sm" onClick={handleDownloadPptx}>
+                <Download className="h-4 w-4 mr-1" /> PPTX
               </Button>
             </>
           )}

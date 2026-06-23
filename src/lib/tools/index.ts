@@ -303,6 +303,123 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
 
+  // ── More Markdown Tools ────────────────────────────────────
+  {
+    slug: "markdown-to-docx",
+    title: "Markdown to DOCX Converter",
+    description:
+      "Convert Markdown to Word documents (DOCX) online for free. Preserves headings, tables, code blocks, and formatting. All browser-based.",
+    category: "markdown",
+    keywords: [
+      "markdown to docx",
+      "md to docx",
+      "markdown to word",
+      "convert markdown to word",
+      "md to word converter",
+    ],
+    searchVolume: "~20K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "Paste your Markdown text in the input area",
+      "Click Convert to DOCX",
+      "Wait for the conversion (usually instant)",
+      "Download the .docx file to your device",
+    ],
+    faqs: [
+      {
+        question: "Does it preserve Markdown formatting?",
+        answer:
+          "Yes! Headings, bold, italic, code, tables, lists, and links are all preserved in the DOCX output with proper Word styling.",
+      },
+      {
+        question: "Is it really free?",
+        answer:
+          "Yes, completely free. All conversion happens in your browser — no file is ever uploaded to any server.",
+      },
+      {
+        question: "Can I convert large Markdown files?",
+        answer:
+          "Yes, there are no file size limits since processing is done locally. Very large documents (100+ pages) may take a few seconds.",
+      },
+    ],
+  },
+  {
+    slug: "markdown-to-pptx",
+    title: "Markdown to PPTX Converter",
+    description:
+      "Convert Markdown to PowerPoint presentations (PPTX) online for free. Each heading becomes a new slide. Browser-based, no uploads.",
+    category: "markdown",
+    keywords: [
+      "markdown to pptx",
+      "md to pptx",
+      "markdown to powerpoint",
+      "convert markdown to ppt",
+      "md to powerpoint",
+    ],
+    searchVolume: "~8K/mo",
+    isClientSide: true,
+    icon: "Presentation",
+    howToUse: [
+      "Paste your Markdown in the input area",
+      "Use ## headings to define slide breaks",
+      "Click Convert to PPTX",
+      "Download the .pptx presentation",
+    ],
+    faqs: [
+      {
+        question: "How are slides created?",
+        answer:
+          "Top-level headings (# Title) become the title slide. Each ## heading becomes a new slide with its content, lists, and tables.",
+      },
+      {
+        question: "Can I include images?",
+        answer:
+          "Image references in Markdown (![alt](url)) are noted as placeholders in the presentation. For full image support, embed them manually in PowerPoint after export.",
+      },
+      {
+        question: "How many slides can I create?",
+        answer:
+          "There's no hard limit — all processing happens in your browser. Presentations with 50+ slides may take a moment to generate.",
+      },
+    ],
+  },
+  {
+    slug: "docx-to-markdown",
+    title: "DOCX to Markdown Converter",
+    description:
+      "Convert Word documents (DOCX) to Markdown online for free. Extract text, headings, and formatting from Word files into clean Markdown.",
+    category: "markdown",
+    keywords: [
+      "docx to markdown",
+      "word to markdown",
+      "docx to md",
+      "convert word to markdown",
+      "word to md",
+    ],
+    searchVolume: "~15K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "Upload your .docx file by clicking or dragging",
+      "Wait for conversion (instant for most files)",
+      "Preview the extracted Markdown",
+      "Copy to clipboard or download as .md file",
+    ],
+    faqs: [
+      {
+        question: "Does it preserve all formatting?",
+        answer:
+          "We preserve headings, bold, italic, lists, links, and tables. Complex Word formatting like text boxes and embedded charts may not convert perfectly.",
+      },
+      {
+        question: "Is my document secure?",
+        answer:
+          "Yes. Your DOCX file is processed entirely in your browser. Nothing is uploaded to any server.",
+      },
+    ],
+  },
+
   // ── Developer Tools ──────────────────────────────────────
   {
     slug: "json-formatter",
