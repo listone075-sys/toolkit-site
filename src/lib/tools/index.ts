@@ -226,12 +226,22 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "What Markdown flavors are supported?",
         answer:
-          "We support GitHub Flavored Markdown (GFM) including tables, task lists, strikethrough, and code blocks with syntax highlighting.",
+          "We support GitHub Flavored Markdown (GFM) including tables, task lists, strikethrough, code blocks, and auto-links.",
       },
       {
         question: "Can I convert AI chat outputs?",
         answer:
-          "Yes! ChatGPT, Claude, Gemini, and other AI tools output Markdown by default. Paste it directly into our converter to get clean HTML.",
+          "Yes! ChatGPT, Claude, Gemini, and other AI tools output Markdown by default. Paste it directly into our converter to get clean, safe HTML.",
+      },
+      {
+        question: "Does the HTML output include styling?",
+        answer:
+          "Yes, the downloaded HTML file includes built-in CSS styling for typography, code blocks, tables, and blockquotes — so your document looks polished without any external stylesheets.",
+      },
+      {
+        question: "Can I export to other formats?",
+        answer:
+          "Yes! The editor also lets you download as DOCX (Word document) or PPTX (PowerPoint), so you can convert your Markdown to the format you need.",
       },
     ],
   },
@@ -253,14 +263,14 @@ export const toolRegistry: ToolConfig[] = [
     howToUse: [
       "Write Markdown in the left editor panel",
       "See the live rendered preview on the right",
-      "Use the toolbar for quick formatting",
-      "Export as HTML, PDF, or download as .md file",
+      "Use the tabs to switch between preview and raw HTML view",
+      "Export as HTML, DOCX, PPTX, or copy to clipboard",
     ],
     faqs: [
       {
-        question: "Does it support Mermaid diagrams?",
+        question: "Can I export my Markdown to Word or PowerPoint?",
         answer:
-          "Yes! You can include Mermaid diagrams in your Markdown — they will be rendered in the preview.",
+          "Yes! The editor has built-in export buttons for DOCX (Word) and PPTX (PowerPoint). Just write or paste your Markdown and click the format you need.",
       },
       {
         question: "Can I use it offline?",

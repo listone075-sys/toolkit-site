@@ -1,8 +1,6 @@
-import { marked, type Token } from "marked";
+import { type Token } from "marked";
 import PptxGenJS from "pptxgenjs";
-
-/** Pre-configure shared marked instance */
-marked.setOptions({ gfm: true, breaks: true });
+import { md } from "./md-to-html";
 
 interface SlideGroup {
   title: string;
@@ -15,7 +13,7 @@ interface SlideGroup {
  * Content between headings becomes the slide body.
  */
 export async function markdownToPptxBlob(markdown: string): Promise<Blob> {
-  const tokens = marked.lexer(markdown);
+  const tokens = md.lexer(markdown);
   const groups = splitIntoSlides(tokens);
 
   if (groups.length === 0) {

@@ -1,25 +1,54 @@
-import { marked } from "marked";
+import { Marked } from "marked";
 
-// Configure marked for GitHub Flavored Markdown
-marked.setOptions({
+/**
+ * Shared pre-configured Marked instance.
+ *
+ * Uses GFM (GitHub Flavored Markdown) + line-break support.
+ * The HTML renderer is overridden to escape raw HTML, preventing XSS
+ * when the output is rendered via dangerouslySetInnerHTML.
+ */
+const md = new Marked({
   gfm: true,
   breaks: true,
 });
 
+// Override the HTML renderer to escape raw HTML blocks (XSS prevention).
+// Marked v18 does NOT sanitize output — raw HTML in the markdown source
+// would otherwise pass through verbatim and execute in the browser.
+md.use({
+  renderer: {
+    html(token: { text: string }): string {
+      return escapeHtml(token.text);
+    },
+  },
+});
+
 /**
- * Convert Markdown string to HTML
+ * Convert a Markdown string to an HTML fragment.
+ *
+ * Raw HTML embedded in the markdown source is escaped to prevent XSS.
+ * Returns an empty string for blank input.
+ *
+ * @example
+ *   markdownToHtml("# Hello\n\n**bold**")  // "<h1>Hello</h1>\n<p><strong>bold</strong></p>"
  */
 export function markdownToHtml(markdown: string): string {
-  if (!markdown.trim()) return "";
+  if (!markdown || !markdown.trim()) return "";
   try {
-    return marked.parse(markdown) as string;
+    return md.parse(markdown) as string;
   } catch {
     return `<p style="color:red">Error parsing Markdown</p>`;
   }
 }
 
 /**
- * Get a full HTML document from Markdown
+ * Convert a Markdown string to a complete, self-contained HTML document.
+ *
+ * Includes embedded CSS for code blocks, tables, blockquotes, and typography
+ * so the downloaded file renders nicely without external stylesheets.
+ *
+ * @param markdown — the markdown source text
+ * @param title    — HTML document title (embedded as plain text; HTML-escaped)
  */
 export function markdownToHtmlDocument(markdown: string, title = "Document"): string {
   const body = markdownToHtml(markdown);
@@ -53,11 +82,28 @@ ${body}
 </html>`;
 }
 
+// ── Helpers ──────────────────────────────────────────────────────
+
+/**
+ * Escape HTML special characters so they render as visible text
+ * rather than being parsed as HTML.
+ */
 function escapeHtml(str: string): string {
   return str.replace(/[&<>"']/g, (char) => {
     const map: Record<string, string> = {
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
     };
     return map[char] ?? char;
   });
 }
+
+/**
+ * The shared marked instance — exported so that `md-to-docx` and
+ * `md-to-pptx` can reuse the same configuration instead of calling
+ * `marked.setOptions()` separately.
+ */
+export { md };

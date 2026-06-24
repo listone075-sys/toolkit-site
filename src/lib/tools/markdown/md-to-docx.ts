@@ -1,4 +1,4 @@
-import { marked, type Token } from "marked";
+import { type Token } from "marked";
 import {
   Document,
   Packer,
@@ -8,8 +8,7 @@ import {
   ShadingType,
   convertInchesToTwip,
 } from "docx";
-
-marked.setOptions({ gfm: true, breaks: true });
+import { md } from "./md-to-html";
 
 const DEFAULT_FONT = "Calibri";
 const CODE_FONT = "Consolas";
@@ -24,7 +23,7 @@ interface DocxContext {
  * Preserves headings, bold, italic, code, links, tables, lists, and code blocks.
  */
 export async function markdownToDocxBlob(markdown: string): Promise<Blob> {
-  const tokens = marked.lexer(markdown);
+  const tokens = md.lexer(markdown);
   const ctx: DocxContext = { paragraphs: [] };
 
   for (const token of tokens) {
