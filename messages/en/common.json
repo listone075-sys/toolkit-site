@@ -1,0 +1,63 @@
+{
+  "header": {
+    "logo": "ToolCraft",
+    "nav": {
+      "image": "Image",
+      "pdf": "PDF",
+      "markdown": "Markdown",
+      "dev": "Dev Tools"
+    },
+    "mobile": {
+      "imageTools": "Image Tools",
+      "pdfTools": "PDF Tools",
+      "markdownTools": "Markdown Tools",
+      "devTools": "Dev Tools"
+    }
+  },
+  "footer": {
+    "imageTools": "Image Tools",
+    "markdownTools": "Markdown Tools",
+    "pdfTools": "PDF Tools",
+    "devTools": "Dev Tools",
+    "heicToJpg": "HEIC to JPG",
+    "webpToJpg": "WebP to JPG",
+    "imageCompressor": "Image Compressor",
+    "imageResizer": "Image Resizer",
+    "markdownEditor": "Markdown Editor",
+    "mdToHtml": "MD to HTML",
+    "tableGenerator": "Table Generator",
+    "jpgToPdf": "JPG to PDF",
+    "pdfToJpg": "PDF to JPG",
+    "mergePdf": "Merge PDF",
+    "jsonFormatter": "JSON Formatter",
+    "base64": "Base64",
+    "uuidGenerator": "UUID Generator",
+    "privacyBrowserTagline": "All tools run in your browser. Your files are never uploaded to any server.",
+    "copyright": "© {year} ToolCraft. Free online tools for everyone.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contact": "Contact"
+  },
+  "cookieBanner": {
+    "text": "We use cookies for analytics and to serve relevant ads via Google AdSense.",
+    "learnMore": "Learn more",
+    "continuation": "By continuing, you agree to our use of cookies.",
+    "accept": "Accept"
+  },
+  "breadcrumb": {
+    "home": "ToolCraft",
+    "imageTools": "Image Tools",
+    "pdfTools": "PDF Tools",
+    "markdownTools": "Markdown Tools",
+    "devTools": "Developer Tools",
+    "calculators": "Calculators"
+  },
+  "toolCard": {
+    "freeBadge": "Free & Browser-based"
+  },
+  "languageSwitcher": {
+    "en": "English",
+    "zh": "简体中文",
+    "label": "Language"
+  }
+}

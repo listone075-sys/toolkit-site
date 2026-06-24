@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { readFileSync, readdirSync } from "fs";
 import path from "path";
 import { Card } from "@/components/ui/card";
 
-export const metadata: Metadata = {
-  title: "Blog — Free Online Tools Guides & Tips",
-  description:
-    "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
-};
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 
 interface BlogMeta {
   slug: string;
@@ -18,8 +15,8 @@ interface BlogMeta {
   category: string;
 }
 
-function getBlogPosts(): BlogMeta[] {
-  const dir = path.join(process.cwd(), "src/content/blog");
+function getBlogPosts(locale: string): BlogMeta[] {
+  const dir = path.join(process.cwd(), "src/content/blog", locale);
   try {
     const files = readdirSync(dir).filter((f) => f.endsWith(".mdx"));
     return files
@@ -41,8 +38,35 @@ function getBlogPosts(): BlogMeta[] {
   }
 }
 
-export default function BlogPage() {
-  const posts = getBlogPosts();
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "Blog — Free Online Tools Guides & Tips",
+    description:
+      "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/blog`,
+      languages: {
+        en: `${SITE_URL}/en/blog`,
+        zh: `${SITE_URL}/zh/blog`,
+      },
+    },
+  };
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  // Try locale-specific directory first, fall back to root blog dir
+  let posts = getBlogPosts(locale);
+  if (posts.length === 0) {
+    posts = getBlogPosts("en");
+  }
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

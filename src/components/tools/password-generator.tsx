@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { generatePassword, estimateStrength } from "@/lib/tools/dev/password";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { Copy, RefreshCw, Shield } from "lucide-react";
 
 export function PasswordGenerator() {
+  const t = useTranslations("components");
   const [length, setLength] = useState(16);
   const [uppercase, setUppercase] = useState(true);
   const [lowercase, setLowercase] = useState(true);
@@ -35,15 +37,15 @@ export function PasswordGenerator() {
       <div className="border rounded-lg p-4 bg-zinc-50">
         <div className="flex items-center gap-3">
           <div className="flex-1 font-mono text-lg tracking-wider text-zinc-900 select-all">
-            {password || "Click Generate to create a password"}
+            {password || t("passwordGenerator.emptyState")}
           </div>
           <div className="flex items-center gap-1 shrink-0">
             <Button variant="outline" size="sm" onClick={handleGenerate}>
-              <RefreshCw className="h-4 w-4 mr-1" /> Generate
+              <RefreshCw className="h-4 w-4 mr-1" /> {t("passwordGenerator.generate")}
             </Button>
             {password && (
               <Button variant="outline" size="sm" onClick={() => copy(password)}>
-                <Copy className="h-4 w-4 mr-1" /> {copied ? "Copied!" : "Copy"}
+                <Copy className="h-4 w-4 mr-1" /> {copied ? t("passwordGenerator.copied") : t("passwordGenerator.copy")}
               </Button>
             )}
           </div>
@@ -60,7 +62,15 @@ export function PasswordGenerator() {
                 }`}
               />
             </div>
-            <span className={`text-xs font-medium ${strength.color}`}>{strength.label}</span>
+            <span className={`text-xs font-medium ${strength.color}`}>
+              {t("passwordGenerator.strength", {
+                level: strength.label === "Very Strong" || strength.label === "Strong"
+                  ? t("passwordGenerator.strong")
+                  : strength.label === "Moderate"
+                  ? t("passwordGenerator.fair")
+                  : t("passwordGenerator.weak"),
+              })}
+            </span>
           </div>
         )}
       </div>
@@ -68,7 +78,7 @@ export function PasswordGenerator() {
       {/* Options */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-3 bg-zinc-50 rounded-lg border">
         <div>
-          <label className="text-xs font-medium text-zinc-600 block mb-1">Length: {length}</label>
+          <label className="text-xs font-medium text-zinc-600 block mb-1">{t("passwordGenerator.length", { length })}</label>
           <input
             type="range" min={6} max={64} value={length}
             onChange={(e) => setLength(Number(e.target.value))}
@@ -76,10 +86,10 @@ export function PasswordGenerator() {
           />
         </div>
         {[
-          { label: "A-Z", value: uppercase, set: setUppercase },
-          { label: "a-z", value: lowercase, set: setLowercase },
-          { label: "0-9", value: numbers, set: setNumbers },
-          { label: "!@#$", value: symbols, set: setSymbols },
+          { label: t("passwordGenerator.uppercase"), value: uppercase, set: setUppercase },
+          { label: t("passwordGenerator.lowercase"), value: lowercase, set: setLowercase },
+          { label: t("passwordGenerator.numbers"), value: numbers, set: setNumbers },
+          { label: t("passwordGenerator.symbols"), value: symbols, set: setSymbols },
         ].map((opt) => (
           <label key={opt.label} className="flex items-center gap-2 text-sm cursor-pointer">
             <input
@@ -96,7 +106,7 @@ export function PasswordGenerator() {
 
       <div className="flex items-start gap-2 p-3 bg-blue-50 rounded-lg text-sm text-blue-700">
         <Shield className="h-4 w-4 mt-0.5 shrink-0" />
-        <span>Generated in your browser using cryptographically strong randomness. Never stored or transmitted.</span>
+        <span>{t("passwordGenerator.tip")}</span>
       </div>
     </div>
   );

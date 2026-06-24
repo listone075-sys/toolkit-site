@@ -1,25 +1,29 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 /**
  * Global site-wide structured data: Organization + WebSite
  */
 export function SiteSchema() {
+  const t = useTranslations("seo");
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        name: "ToolCraft",
+        name: t("siteName"),
         url: "https://toolcraftbox.com",
-        description:
-          "Free online tools for image conversion, PDF manipulation, Markdown editing, and developer utilities.",
+        description: t("siteDescription"),
         logo: "https://toolcraftbox.com/favicon.ico",
         sameAs: [],
       },
       {
         "@type": "WebSite",
-        name: "ToolCraft",
+        name: t("siteName"),
         url: "https://toolcraftbox.com",
-        description:
-          "Free online tools — all processing happens in your browser. No file uploads, no sign-ups.",
+        description: t("siteDescription"),
         potentialAction: {
           "@type": "SearchAction",
           target: {

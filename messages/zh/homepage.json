@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "ToolCraft — 免费在线工具",
+    "subtitle": "转换图片、编辑 PDF、编写 Markdown、格式化代码——一切都在浏览器中完成。无需上传，无需注册，100% 免费。",
+    "privateSecure": "私密安全",
+    "instant": "即时处理",
+    "free": "完全免费"
+  },
+  "categories": {
+    "all": "全部工具",
+    "image": "图片",
+    "pdf": "PDF",
+    "markdown": "Markdown",
+    "dev": "开发工具",
+    "calculator": "计算器"
+  },
+  "categoryMeta": {
+    "image": {
+      "hero": "图片工具",
+      "desc": "转换、压缩和优化图片——全部在浏览器中完成，无需上传。"
+    },
+    "pdf": {
+      "hero": "PDF 工具",
+      "desc": "图片转 PDF、提取页面、合并文档——完全基于浏览器。"
+    },
+    "markdown": {
+      "hero": "Markdown 工具",
+      "desc": "编写、预览和转换 Markdown。非常适合 AI 聊天输出、文档和 README 文件。"
+    },
+    "dev": {
+      "hero": "开发者工具",
+      "desc": "格式化 JSON、编码 Base64、生成 UUID——快速、免费、私密。"
+    },
+    "calculator": {
+      "hero": "计算器",
+      "desc": "免费的在线计算器，满足财务、健康和日常计算需求。"
+    }
+  },
+  "whyTitle": "为什么选择 ToolCraft？",
+  "privacyFirst": {
+    "title": "隐私优先",
+    "description": "所有工具均在浏览器中运行。文件不会离开您的设备。"
+  },
+  "lightningFast": {
+    "title": "闪电般快速",
+    "description": "无需服务器往返。处理即时完成。"
+  },
+  "alwaysFree": {
+    "title": "永久免费",
+    "description": "没有限制，没有付费层级。所有工具永久免费。"
+  },
+  "exploreMore": "探索更多工具",
+  "categoryLinks": "{label} 工具 →"
+}

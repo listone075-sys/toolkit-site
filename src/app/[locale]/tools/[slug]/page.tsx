@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import { getToolBySlug } from "@/lib/tools";
 import { generateToolMetadata } from "@/lib/seo/metadata";
@@ -6,22 +7,26 @@ import { ToolRenderer } from "@/components/tools/tool-renderer";
 import { Breadcrumb } from "@/components/seo/breadcrumb";
 import type { Metadata } from "next";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
+
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const tool = getToolBySlug(slug);
+  const { locale, slug } = await params;
+  const tool = getToolBySlug(slug, locale);
   if (!tool) {
     return { title: "Tool Not Found" };
   }
-  return generateToolMetadata(tool);
+  return generateToolMetadata(tool, locale);
 }
 
 export default function ToolPage({ params }: Props) {
-  const { slug } = use(params);
-  const tool = getToolBySlug(slug);
+  const { locale, slug } = use(params);
+  setRequestLocale(locale);
+
+  const tool = getToolBySlug(slug, locale);
 
   if (!tool) {
     notFound();
@@ -31,7 +36,7 @@ export default function ToolPage({ params }: Props) {
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <Breadcrumb
         category={tool.category}
-        items={[{ name: tool.title, url: `https://toolcraftbox.com/tools/${tool.slug}` }]}
+        items={[{ name: tool.title, url: `${SITE_URL}/${locale}/tools/${tool.slug}` }]}
       />
 
       {/* Tool Header */}

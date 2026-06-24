@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { generateUuidV4, generateUuids } from "@/lib/tools/dev/uuid";
@@ -9,6 +10,7 @@ import { downloadFile } from "@/lib/utils/file";
 import { Copy, Download, RefreshCw, Fingerprint } from "lucide-react";
 
 export function UuidGenerator() {
+  const t = useTranslations("components");
   const [count, setCount] = useState(1);
   const [uuids, setUuids] = useState<string[]>([]);
   const { copied, copy } = useClipboard();
@@ -29,7 +31,7 @@ export function UuidGenerator() {
     <div className="space-y-4">
       {/* Controls */}
       <div className="flex items-center gap-3 p-3 bg-zinc-50 rounded-lg border flex-wrap">
-        <span className="text-sm font-medium text-zinc-700">Count:</span>
+        <span className="text-sm font-medium text-zinc-700">{t("uuidGenerator.count")}</span>
         <input
           type="number"
           min={1}
@@ -39,15 +41,15 @@ export function UuidGenerator() {
           className="w-20 h-8 rounded-md border px-2 text-sm"
         />
         <Button onClick={handleGenerate} size="sm">
-          <RefreshCw className="h-4 w-4 mr-1" /> Generate
+          <RefreshCw className="h-4 w-4 mr-1" /> {t("uuidGenerator.generate")}
         </Button>
         {uuids.length > 0 && (
           <div className="ml-auto flex items-center gap-1">
             <Button variant="outline" size="sm" onClick={handleCopyAll}>
-              <Copy className="h-4 w-4 mr-1" /> {copied ? "Copied!" : "Copy All"}
+              <Copy className="h-4 w-4 mr-1" /> {copied ? t("uuidGenerator.copied") : t("uuidGenerator.copyAll")}
             </Button>
             <Button variant="outline" size="sm" onClick={handleDownloadAll}>
-              <Download className="h-4 w-4 mr-1" /> Download
+              <Download className="h-4 w-4 mr-1" /> {t("uuidGenerator.download")}
             </Button>
           </div>
         )}
@@ -58,7 +60,7 @@ export function UuidGenerator() {
         {uuids.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-40">
             <Fingerprint className="h-10 w-10 text-zinc-200 mb-3" />
-            <p className="text-sm text-zinc-400">Click Generate to create UUIDs</p>
+            <p className="text-sm text-zinc-400">{t("uuidGenerator.emptyState")}</p>
           </div>
         ) : (
           <div className="space-y-1.5">

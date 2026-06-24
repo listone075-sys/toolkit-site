@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, type DragEvent } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { imagesToPdf } from "@/lib/tools/pdf/image-to-pdf";
 import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
@@ -9,6 +10,7 @@ import { Upload, Download, X, Plus, GripVertical } from "lucide-react";
 const PAGE_SIZES = ["A4", "Letter", "Legal", "A3"] as const;
 
 export function JpgToPdf() {
+  const t = useTranslations("components");
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [pageSize, setPageSize] = useState<string>("A4");
@@ -48,7 +50,7 @@ export function JpgToPdf() {
 
   const handleConvert = async () => {
     if (files.length === 0) {
-      setError("Please add at least one image.");
+      setError(t("jpgToPdf.uploadError"));
       return;
     }
     setLoading(true);
@@ -68,7 +70,7 @@ export function JpgToPdf() {
     <div className="space-y-4">
       {/* Options */}
       <div className="flex items-center gap-4 p-3 bg-zinc-50 rounded-lg border flex-wrap">
-        <span className="text-sm font-medium text-zinc-700">Page Size:</span>
+        <span className="text-sm font-medium text-zinc-700">{t("jpgToPdf.pageSize")}</span>
         <select
           value={pageSize}
           onChange={(e) => setPageSize(e.target.value)}
@@ -76,7 +78,7 @@ export function JpgToPdf() {
         >
           {PAGE_SIZES.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
-        <span className="text-xs text-zinc-400 ml-auto">{files.length} image(s) added</span>
+        <span className="text-xs text-zinc-400 ml-auto">{t("jpgToPdf.imagesToConvert", { count: files.length })}</span>
       </div>
 
       {/* Upload / Preview */}
@@ -91,10 +93,10 @@ export function JpgToPdf() {
           onDrop={handleDrop}
         >
           <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">Upload Images</p>
-          <p className="text-xs text-zinc-400 mb-3">PNG or JPEG — drag multiple files</p>
+          <p className="text-sm font-medium text-zinc-600 mb-1">{t("jpgToPdf.uploadImages")}</p>
+          <p className="text-xs text-zinc-400 mb-3">{t("jpgToPdf.orDragDrop")}</p>
           <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            <Plus className="h-4 w-4 mr-1" /> Browse
+            <Plus className="h-4 w-4 mr-1" /> {t("jpgToPdf.browse")}
             <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => e.target.files && addFiles(e.target.files)} />
           </label>
         </div>
@@ -131,7 +133,7 @@ export function JpgToPdf() {
           ) : (
             <Download className="h-4 w-4" />
           )}
-          {loading ? "Converting..." : `Convert ${files.length} image(s) to PDF`}
+          {loading ? t("jpgToPdf.converting") : `Convert ${files.length} image(s) to PDF`}
         </Button>
       </div>
     </div>

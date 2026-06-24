@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useCallback, type DragEvent } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { pdfToImages, getPdfPageCount, type PdfPageInfo } from "@/lib/tools/pdf/pdf-to-image";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
 import { Upload, Download, X, FileText } from "lucide-react";
 
 export function PdfToJpg() {
+  const t = useTranslations("components");
   const [file, setFile] = useState<File | null>(null);
   const [pages, setPages] = useState<PdfPageInfo[]>([]);
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ export function PdfToJpg() {
 
   const processPdf = useCallback(async (f: File) => {
     if (f.type !== "application/pdf") {
-      setError("Please upload a PDF file.");
+      setError(t("pdfToJpg.uploadError"));
       return;
     }
     setFile(f);
@@ -58,10 +60,10 @@ export function PdfToJpg() {
         {!file ? (
           <>
             <Upload className="h-12 w-12 text-zinc-300 mx-auto mb-3" />
-            <p className="text-sm font-medium text-zinc-600 mb-1">Upload PDF</p>
-            <p className="text-xs text-zinc-400 mb-3">or drag & drop</p>
+            <p className="text-sm font-medium text-zinc-600 mb-1">{t("pdfToJpg.uploadPdf")}</p>
+            <p className="text-xs text-zinc-400 mb-3">{t("pdfToJpg.orDragDrop")}</p>
             <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-              Browse files
+              {t("pdfToJpg.browse")}
               <input type="file" accept="application/pdf" className="hidden" onChange={(e) => e.target.files?.[0] && processPdf(e.target.files[0])} />
             </label>
           </>
@@ -85,7 +87,7 @@ export function PdfToJpg() {
       {loading && (
         <div className="text-center py-6">
           <div className="animate-spin h-8 w-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-3" />
-          <p className="text-sm text-zinc-500">Converting PDF pages to images...</p>
+          <p className="text-sm text-zinc-500">{t("pdfToJpg.rendering")}</p>
         </div>
       )}
 
@@ -96,9 +98,9 @@ export function PdfToJpg() {
       {pages.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="font-medium text-zinc-900">{pages.length} page(s) extracted</h3>
+            <h3 className="font-medium text-zinc-900">{t("pdfToJpg.pages", { count: pages.length })}</h3>
             <Button variant="outline" size="sm" onClick={downloadAll}>
-              <Download className="h-4 w-4 mr-1" /> Download All
+              <Download className="h-4 w-4 mr-1" /> {t("pdfToJpg.downloadAll", { count: pages.length })}
             </Button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -106,11 +108,11 @@ export function PdfToJpg() {
               <div key={page.pageNumber} className="border rounded-lg p-2 group relative">
                 <img
                   src={page.dataUrl}
-                  alt={`Page ${page.pageNumber}`}
+                  alt={t("pdfToJpg.downloadPage", { page: page.pageNumber })}
                   className="w-full h-40 object-contain bg-zinc-50 rounded mb-1"
                 />
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-zinc-500">Page {page.pageNumber}</span>
+                  <span className="text-xs text-zinc-500">{t("pdfToJpg.downloadPage", { page: page.pageNumber })}</span>
                   <Button variant="ghost" size="sm" className="h-6 text-xs" onClick={() => downloadPage(page)}>
                     <Download className="h-3 w-3 mr-1" /> JPG
                   </Button>

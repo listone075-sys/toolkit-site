@@ -1,0 +1,43 @@
+export const meta = {
+  title: "如何压缩 PDF 文件大小（不损失质量）",
+  description: "PDF 太大无法通过邮件发送或上传？在浏览器中免费压缩 — 无需注册，无需上传文件。",
+  date: "2026-06-14",
+  category: "PDF",
+};
+
+# 如何压缩 PDF 文件大小
+
+你需要通过邮件发送一份 PDF，但它有 15MB，而邮件附件限制是 10MB。或者某个表单提示"最大文件：5MB"。以下是如何缩小它的方法。
+
+## PDF 为什么这么大
+
+- **嵌入的图片** — 高分辨率照片会让 PDF 臃肿不堪
+- **未优化的字体** — 嵌入的字体文件会增加数 MB
+- **扫描页面** — 每页本质上就是一张全尺寸图片
+- **未使用的对象** — 编辑历史记录和元数据
+
+## 如何压缩（快捷方式）
+
+1. 前往 [合并 PDF](https://toolcraftbox.com/tools/merge-pdf) 工具 — 它也可以帮你在压缩之前重新整理结构
+2. 真正压缩的话，可以先用 [PDF 转 JPG](https://toolcraftbox.com/tools/pdf-to-jpg) 提取页面，再使用 [图片压缩器](https://toolcraftbox.com/tools/image-compressor)
+3. 用优化后的图片重新构建你的 PDF
+
+## 压缩效果预期
+
+| 原始大小 | 压缩后 | 节省 |
+|----------|--------|------|
+| 15 MB | 3–5 MB | 67–80% |
+| 5 MB | 1–2 MB | 60–80% |
+| 1 MB | 300–500 KB | 50–70% |
+
+## 专业技巧
+
+- **不要过度压缩** — 低于 150 DPI，文字会变得难以阅读
+- **检查结果** — 务必打开压缩后的 PDF 验证可读性
+- **考虑拆分** — 如果一份 PDF 太大，可以用我们的合并/拆分工具将其拆分为多个章节
+
+## 相关工具
+
+- [PDF 转 JPG](https://toolcraftbox.com/tools/pdf-to-jpg) — 将页面提取为图片以进行优化
+- [JPG 转 PDF](https://toolcraftbox.com/tools/jpg-to-pdf) — 用优化后的图片重建 PDF
+- [合并 PDF](https://toolcraftbox.com/tools/merge-pdf) — 合并或调整页面顺序

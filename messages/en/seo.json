@@ -1,0 +1,9 @@
+{
+  "siteName": "ToolCraft",
+  "siteDescription": "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
+  "homepage": {
+    "defaultTitle": "ToolCraft — Free Online Tools",
+    "titleTemplate": "{title} | ToolCraft",
+    "description": "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser."
+  }
+}

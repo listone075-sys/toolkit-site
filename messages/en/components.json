@@ -1,0 +1,212 @@
+{
+  "toolShell": {
+    "input": "Input",
+    "output": "Output"
+  },
+  "toolRenderer": {
+    "comingSoon": "Coming soon — this tool is under development."
+  },
+  "imageConverter": {
+    "uploadImage": "Upload Image",
+    "orDragDrop": "or drag & drop your image here",
+    "browse": "Browse files",
+    "converting": "Converting...",
+    "download": "Download",
+    "seeResult": "Upload an image to see the result",
+    "uploadError": "Please upload an image file."
+  },
+  "imageCompressor": {
+    "quality": "Quality:",
+    "smallerFile": "Smaller file",
+    "betterQuality": "Better quality",
+    "original": "Original",
+    "compressed": "Compressed",
+    "uploadImage": "Upload Image",
+    "orDragDrop": "or drag & drop",
+    "browse": "Browse files",
+    "compressing": "Compressing...",
+    "download": "Download",
+    "smaller": "{percent}% smaller",
+    "uploadPrompt": "Upload an image to compress",
+    "uploadError": "Please upload an image file."
+  },
+  "imageResizer": {
+    "uploadImage": "Upload Image",
+    "orDragDrop": "or drag & drop",
+    "browse": "Browse files",
+    "width": "Width",
+    "height": "Height",
+    "pixels": "px",
+    "lockRatio": "Lock aspect ratio",
+    "resizing": "Resizing...",
+    "download": "Download",
+    "uploadPrompt": "Upload an image to resize",
+    "uploadError": "Please upload an image file."
+  },
+  "pdfToJpg": {
+    "uploadPdf": "Upload PDF File",
+    "orDragDrop": "or drag & drop your PDF here",
+    "browse": "Browse files",
+    "rendering": "Rendering pages...",
+    "pages": "{count} pages",
+    "downloadAll": "Download All ({count} pages)",
+    "downloadPage": "Download Page {page}",
+    "emptyState": "Upload a PDF to extract pages",
+    "uploadError": "Please upload a PDF file."
+  },
+  "jpgToPdf": {
+    "uploadImages": "Upload Images",
+    "orDragDrop": "or drag & drop images here",
+    "browse": "Browse files",
+    "imagesToConvert": "Images to Convert ({count})",
+    "pageSize": "Page Size:",
+    "converting": "Converting...",
+    "download": "Download PDF",
+    "uploadPrompt": "Upload images to create PDF",
+    "uploadError": "Please upload at least one image file."
+  },
+  "mergePdf": {
+    "uploadPdfs": "Upload PDF Files",
+    "orDragDrop": "Drag multiple PDFs or click to browse",
+    "browse": "Browse files",
+    "filesToMerge": "Files to Merge ({count})",
+    "merging": "Merging...",
+    "mergeBtn": "Merge {count} PDFs",
+    "download": "Download Merged PDF",
+    "minFilesError": "Add at least 2 PDF files.",
+    "emptyState": "Upload PDFs to merge"
+  },
+  "markdownEditor": {
+    "markdown": "Markdown",
+    "preview": "Preview",
+    "htmlOutput": "HTML Output",
+    "copyMd": "Copy MD",
+    "copied": "Copied!",
+    "copyHtml": "Copy HTML",
+    "downloadHtml": "Download HTML",
+    "docx": "DOCX",
+    "pptx": "PPTX",
+    "placeholder": "# Heading\n\nType **Markdown** here...\n\n- List item\n- Another\n\n> Blockquote\n\n```js\nconsole.log('code');\n```",
+    "htmlPlaceholder": "HTML will appear here...",
+    "converting": "Converting..."
+  },
+  "jsonFormatter": {
+    "format": "Format",
+    "minify": "Minify",
+    "validJson": "Valid JSON",
+    "invalid": "Invalid",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "emptyResult": "Click Format or Minify to see the result",
+    "placeholder": "{\n  \"key\": \"value\"\n}"
+  },
+  "base64": {
+    "encode": "Encode",
+    "decode": "Decode",
+    "swap": "Swap",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "clear": "Clear",
+    "plainText": "Plain Text",
+    "base64String": "Base64 String",
+    "base64Output": "Base64 Output",
+    "decodedText": "Decoded Text",
+    "encodePlaceholder": "Enter text to encode...",
+    "decodePlaceholder": "Enter Base64 string to decode...",
+    "clickToProcess": "Click Encode or Decode to see the result"
+  },
+  "uuidGenerator": {
+    "count": "Count:",
+    "generate": "Generate",
+    "copyAll": "Copy All",
+    "copied": "Copied!",
+    "download": "Download",
+    "emptyState": "Click Generate to create UUIDs"
+  },
+  "qrCodeGenerator": {
+    "placeholder": "Enter URL or text...",
+    "generating": "Generating...",
+    "generate": "Generate",
+    "download": "Download PNG",
+    "emptyState": "Enter text or URL and click Generate",
+    "errorEmpty": "Enter text or URL"
+  },
+  "passwordGenerator": {
+    "emptyState": "Click Generate to create a password",
+    "generate": "Generate",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "length": "Length: {length}",
+    "uppercase": "A-Z",
+    "lowercase": "a-z",
+    "numbers": "0-9",
+    "symbols": "!@#$",
+    "strength": "Strength: {level}",
+    "weak": "Weak",
+    "fair": "Fair",
+    "strong": "Strong",
+    "tip": "Aim for at least 12 characters with a mix of uppercase, lowercase, numbers, and symbols."
+  },
+  "percentageCalculator": {
+    "percentOf": "% of",
+    "isWhatPercent": "Is what %",
+    "percentChange": "% Change",
+    "addSubtract": "+ / − %",
+    "percent": "Percent",
+    "ofTotal": "Of total",
+    "part": "Part",
+    "from": "From",
+    "to": "To",
+    "baseValue": "Base value",
+    "error": "Please enter valid numbers"
+  },
+  "textDiff": {
+    "original": "Original",
+    "modified": "Modified",
+    "pasteOriginal": "Paste original text here...",
+    "pasteModified": "Paste modified text here...",
+    "compare": "Compare",
+    "clear": "Clear",
+    "added": "{count} added",
+    "removed": "{count} removed",
+    "unchanged": "{count} unchanged"
+  },
+  "markdownTableGenerator": {
+    "columns": "Columns",
+    "rows": "Rows",
+    "addRow": "Add Row",
+    "addColumn": "Add Column",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download .md",
+    "markdownOutput": "Markdown Output",
+    "columnLabel": "Column {n}"
+  },
+  "docxToMarkdown": {
+    "uploadDocx": "Upload DOCX File",
+    "orDragDrop": "or drag & drop your .docx file here",
+    "browse": "Browse",
+    "markdownOutput": "Markdown Output",
+    "readyToConvert": "Ready to convert",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download .md",
+    "converting": "Converting...",
+    "uploadError": "Please upload a .docx file."
+  },
+  "markdownToDocx": {
+    "pasteMarkdown": "Paste your Markdown text...",
+    "convert": "Convert to DOCX",
+    "converting": "Converting...",
+    "download": "Download DOCX",
+    "emptyState": "Paste Markdown and click Convert"
+  },
+  "markdownToPptx": {
+    "pasteMarkdown": "Paste your Markdown text...",
+    "convert": "Convert to PPTX",
+    "converting": "Converting...",
+    "download": "Download PPTX",
+    "emptyState": "Paste Markdown and click Convert"
+  }
+}

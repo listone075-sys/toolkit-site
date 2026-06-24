@@ -2,49 +2,72 @@ import type { MetadataRoute } from "next";
 import { readdirSync } from "fs";
 import path from "path";
 import { getAllToolSlugs } from "@/lib/tools";
+import { routing } from "@/i18n/routing";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [
-    {
-      url: BASE_URL,
+  const entries: MetadataRoute.Sitemap = [];
+
+  // Entry per locale for all pages
+  for (const locale of routing.locales) {
+    // Homepage
+    entries.push({
+      url: `${BASE_URL}/${locale}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
-    },
-    {
-      url: `${BASE_URL}/blog`,
+    });
+
+    // Blog listing
+    entries.push({
+      url: `${BASE_URL}/${locale}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
-    },
-  ];
+    });
 
-  // Add all tool pages (derived from the single registry)
-  for (const slug of getAllToolSlugs()) {
+    // Tool pages
+    for (const slug of getAllToolSlugs()) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/tools/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.9,
+      });
+    }
+
+    // Privacy & Terms
     entries.push({
-      url: `${BASE_URL}/tools/${slug}`,
+      url: `${BASE_URL}/${locale}/privacy`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.3,
+    });
+    entries.push({
+      url: `${BASE_URL}/${locale}/terms`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.3,
     });
   }
 
-  // Add blog posts
-  try {
-    const blogDir = path.join(process.cwd(), "src/content/blog");
-    const files = readdirSync(blogDir).filter((f) => f.endsWith(".mdx"));
-    for (const file of files) {
-      entries.push({
-        url: `${BASE_URL}/blog/${file.replace(".mdx", "")}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
+  // Blog posts (only for locales that have them)
+  for (const locale of routing.locales) {
+    try {
+      const blogDir = path.join(process.cwd(), "src/content/blog", locale);
+      const files = readdirSync(blogDir).filter((f) => f.endsWith(".mdx"));
+      for (const file of files) {
+        entries.push({
+          url: `${BASE_URL}/${locale}/blog/${file.replace(".mdx", "")}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    } catch {
+      // Locale directory doesn't exist yet
     }
-  } catch {
-    // Blog dir may not exist yet
   }
 
   return entries;

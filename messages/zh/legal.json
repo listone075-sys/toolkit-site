@@ -1,0 +1,94 @@
+{
+  "privacy": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2026年6月14日",
+    "sections": [
+      {
+        "heading": "1. 我们对隐私的承诺",
+        "body": "ToolCraft 以隐私为核心原则构建。<strong>所有工具完全在您的浏览器中运行。</strong>当您转换图片、编辑 PDF 或格式化 JSON 时，您的文件和数据永远不会离开您的设备。我们不会上传、存储或访问您的文件。"
+      },
+      {
+        "heading": "2. 我们收集的信息",
+        "body": "我们收集最少量的信息来运营和改进网站：",
+        "list": [
+          "<strong>使用分析</strong> — 通过 Google Analytics 匿名收集页面浏览和工具使用情况（不含个人数据）",
+          "<strong>Cookie</strong> — 用于分析、广告投放（Google AdSense）和偏好设置",
+          "<strong>服务器日志</strong> — 标准的 Web 服务器访问日志（IP 地址、浏览器类型、访问页面）"
+        ],
+        "footer": "我们<strong>不</strong>收集：姓名、电子邮件地址、文件内容或任何个人身份信息。"
+      },
+      {
+        "heading": "3. 我们如何使用信息",
+        "list": [
+          "了解哪些工具最受欢迎并加以改进",
+          "通过 Google AdSense 展示相关广告",
+          "维护服务器的安全性和性能"
+        ]
+      },
+      {
+        "heading": "4. 第三方服务",
+        "body": "我们使用以下可能设置 Cookie 的第三方服务：",
+        "list": [
+          "<strong>Google AdSense</strong> — 根据兴趣和浏览历史投放广告。请参阅 <a href=\"https://policies.google.com/privacy\" class=\"text-blue-600 hover:underline\">Google 隐私政策</a>。",
+          "<strong>Google Analytics</strong> — 追踪匿名使用统计。"
+        ]
+      },
+      {
+        "heading": "5. 您的选择",
+        "list": [
+          "您可以在浏览器设置中禁用 Cookie",
+          "您可以通过 <a href=\"https://adssettings.google.com\" class=\"text-blue-600 hover:underline\">Google 广告设置</a> 选择退出个性化广告",
+          "所有工具在未启用 Cookie 的情况下也能完全正常工作"
+        ]
+      },
+      {
+        "heading": "6. 联系方式",
+        "body": "如有隐私相关问题，请通过 <a href=\"mailto:privacy@toolcraftbox.com\" class=\"text-blue-600 hover:underline\">privacy@toolcraftbox.com</a> 联系我们。"
+      }
+    ]
+  },
+  "terms": {
+    "title": "服务条款",
+    "lastUpdated": "最后更新：2026年6月14日",
+    "sections": [
+      {
+        "heading": "1. 条款接受",
+        "body": "使用 ToolCraft（\"服务\"）即表示您同意本服务条款。如果您不同意，请不要使用本服务。"
+      },
+      {
+        "heading": "2. 服务描述",
+        "body": "ToolCraft 提供免费的在线工具，用于图片转换、PDF 操作、Markdown 编辑和开发者实用工具。所有工具均在您的浏览器中运行——文件在您的设备上本地处理。"
+      },
+      {
+        "heading": "3. 可接受使用",
+        "body": "您同意不：",
+        "list": [
+          "将本服务用于任何非法目的",
+          "试图破坏或超负荷运行本服务",
+          "逆向工程或抓取本服务",
+          "未经许可使用自动化工具访问本服务"
+        ]
+      },
+      {
+        "heading": "4. 知识产权",
+        "body": "ToolCraft 网站、代码和设计受版权保护。本工具在本地处理您的文件——我们不对您的内容主张所有权。"
+      },
+      {
+        "heading": "5. 免责声明",
+        "body": "本服务按\"原样\"提供，不作任何形式的保证。我们不保证服务无错误、不中断或能满足您的所有需求。"
+      },
+      {
+        "heading": "6. 责任限制",
+        "body": "ToolCraft 不对因使用或无法使用本服务而产生的任何损害承担责任。由于所有文件处理均在您的浏览器中本地完成，我们不对数据丢失或文件损坏负责。"
+      },
+      {
+        "heading": "7. 条款变更",
+        "body": "我们保留随时修改这些条款的权利。在变更后继续使用本服务即表示接受更新后的条款。"
+      },
+      {
+        "heading": "8. 联系方式",
+        "body": "如对这些条款有疑问，请联系 <a href=\"mailto:legal@toolcraftbox.com\" class=\"text-blue-600 hover:underline\">legal@toolcraftbox.com</a>。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "toolShell": {
+    "input": "输入",
+    "output": "输出"
+  },
+  "toolRenderer": {
+    "comingSoon": "即将上线——此工具正在开发中。"
+  },
+  "imageConverter": {
+    "uploadImage": "上传图片",
+    "orDragDrop": "或拖放图片到此处",
+    "browse": "浏览文件",
+    "converting": "转换中...",
+    "download": "下载",
+    "seeResult": "上传图片以查看结果",
+    "uploadError": "请上传图片文件。"
+  },
+  "imageCompressor": {
+    "quality": "质量：",
+    "smallerFile": "更小文件",
+    "betterQuality": "更好质量",
+    "original": "原始",
+    "compressed": "压缩后",
+    "uploadImage": "上传图片",
+    "orDragDrop": "或拖放",
+    "browse": "浏览文件",
+    "compressing": "压缩中...",
+    "download": "下载",
+    "smaller": "减小 {percent}%",
+    "uploadPrompt": "上传图片以压缩",
+    "uploadError": "请上传图片文件。"
+  },
+  "imageResizer": {
+    "uploadImage": "上传图片",
+    "orDragDrop": "或拖放",
+    "browse": "浏览文件",
+    "width": "宽度",
+    "height": "高度",
+    "pixels": "px",
+    "lockRatio": "锁定宽高比",
+    "resizing": "调整中...",
+    "download": "下载",
+    "uploadPrompt": "上传图片以调整大小",
+    "uploadError": "请上传图片文件。"
+  },
+  "pdfToJpg": {
+    "uploadPdf": "上传 PDF 文件",
+    "orDragDrop": "或拖放 PDF 到此处",
+    "browse": "浏览文件",
+    "rendering": "渲染页面中...",
+    "pages": "{count} 页",
+    "downloadAll": "下载全部（{count} 页）",
+    "downloadPage": "下载第 {page} 页",
+    "emptyState": "上传 PDF 以提取页面",
+    "uploadError": "请上传 PDF 文件。"
+  },
+  "jpgToPdf": {
+    "uploadImages": "上传图片",
+    "orDragDrop": "或拖放图片到此处",
+    "browse": "浏览文件",
+    "imagesToConvert": "待转换图片（{count}）",
+    "pageSize": "页面尺寸：",
+    "converting": "转换中...",
+    "download": "下载 PDF",
+    "uploadPrompt": "上传图片以创建 PDF",
+    "uploadError": "请至少上传一张图片。"
+  },
+  "mergePdf": {
+    "uploadPdfs": "上传 PDF 文件",
+    "orDragDrop": "拖放多个 PDF 或点击浏览",
+    "browse": "浏览文件",
+    "filesToMerge": "待合并文件（{count}）",
+    "merging": "合并中...",
+    "mergeBtn": "合并 {count} 个 PDF",
+    "download": "下载合并的 PDF",
+    "minFilesError": "请至少添加 2 个 PDF 文件。",
+    "emptyState": "上传 PDF 文件以合并"
+  },
+  "markdownEditor": {
+    "markdown": "Markdown",
+    "preview": "预览",
+    "htmlOutput": "HTML 输出",
+    "copyMd": "复制 MD",
+    "copied": "已复制！",
+    "copyHtml": "复制 HTML",
+    "downloadHtml": "下载 HTML",
+    "docx": "DOCX",
+    "pptx": "PPTX",
+    "placeholder": "# 标题\n\n在这里输入 **Markdown**...\n\n- 列表项\n- 另一个\n\n> 引用块\n\n```js\nconsole.log('代码');\n```",
+    "htmlPlaceholder": "HTML 将显示在这里...",
+    "converting": "转换中..."
+  },
+  "jsonFormatter": {
+    "format": "格式化",
+    "minify": "压缩",
+    "validJson": "有效 JSON",
+    "invalid": "无效",
+    "copy": "复制",
+    "copied": "已复制！",
+    "download": "下载",
+    "emptyResult": "点击格式化或压缩查看结果",
+    "placeholder": "{\n  \"key\": \"value\"\n}"
+  },
+  "base64": {
+    "encode": "编码",
+    "decode": "解码",
+    "swap": "交换",
+    "copy": "复制",
+    "copied": "已复制！",
+    "clear": "清除",
+    "plainText": "纯文本",
+    "base64String": "Base64 字符串",
+    "base64Output": "Base64 输出",
+    "decodedText": "解码文本",
+    "encodePlaceholder": "输入要编码的文本...",
+    "decodePlaceholder": "输入要解码的 Base64 字符串...",
+    "clickToProcess": "点击编码或解码查看结果"
+  },
+  "uuidGenerator": {
+    "count": "数量：",
+    "generate": "生成",
+    "copyAll": "复制全部",
+    "copied": "已复制！",
+    "download": "下载",
+    "emptyState": "点击生成创建 UUID"
+  },
+  "qrCodeGenerator": {
+    "placeholder": "输入 URL 或文本...",
+    "generating": "生成中...",
+    "generate": "生成",
+    "download": "下载 PNG",
+    "emptyState": "输入文本或 URL 并点击生成",
+    "errorEmpty": "请输入文本或 URL"
+  },
+  "passwordGenerator": {
+    "emptyState": "点击生成创建密码",
+    "generate": "生成",
+    "copy": "复制",
+    "copied": "已复制！",
+    "length": "长度：{length}",
+    "uppercase": "A-Z",
+    "lowercase": "a-z",
+    "numbers": "0-9",
+    "symbols": "!@#$",
+    "strength": "强度：{level}",
+    "weak": "弱",
+    "fair": "一般",
+    "strong": "强",
+    "tip": "建议至少 12 个字符，混合使用大写、小写、数字和符号。"
+  },
+  "percentageCalculator": {
+    "percentOf": "求百分比",
+    "isWhatPercent": "是百分之几",
+    "percentChange": "百分比变化",
+    "addSubtract": "加减百分比",
+    "percent": "百分比",
+    "ofTotal": "总数",
+    "part": "部分",
+    "from": "从",
+    "to": "到",
+    "baseValue": "基准值",
+    "error": "请输入有效数字"
+  },
+  "textDiff": {
+    "original": "原始文本",
+    "modified": "修改文本",
+    "pasteOriginal": "在此粘贴原始文本...",
+    "pasteModified": "在此粘贴修改后的文本...",
+    "compare": "对比",
+    "clear": "清除",
+    "added": "新增 {count}",
+    "removed": "删除 {count}",
+    "unchanged": "未变 {count}"
+  },
+  "markdownTableGenerator": {
+    "columns": "列",
+    "rows": "行",
+    "addRow": "添加行",
+    "addColumn": "添加列",
+    "copy": "复制",
+    "copied": "已复制！",
+    "download": "下载 .md",
+    "markdownOutput": "Markdown 输出",
+    "columnLabel": "列 {n}"
+  },
+  "docxToMarkdown": {
+    "uploadDocx": "上传 DOCX 文件",
+    "orDragDrop": "或拖放 .docx 文件到此处",
+    "browse": "浏览",
+    "markdownOutput": "Markdown 输出",
+    "readyToConvert": "准备转换",
+    "copy": "复制",
+    "copied": "已复制！",
+    "download": "下载 .md",
+    "converting": "转换中...",
+    "uploadError": "请上传 .docx 文件。"
+  },
+  "markdownToDocx": {
+    "pasteMarkdown": "粘贴您的 Markdown 文本...",
+    "convert": "转换为 DOCX",
+    "converting": "转换中...",
+    "download": "下载 DOCX",
+    "emptyState": "粘贴 Markdown 并点击转换"
+  },
+  "markdownToPptx": {
+    "pasteMarkdown": "粘贴您的 Markdown 文本...",
+    "convert": "转换为 PPTX",
+    "converting": "转换中...",
+    "download": "下载 PPTX",
+    "emptyState": "粘贴 Markdown 并点击转换"
+  }
+}

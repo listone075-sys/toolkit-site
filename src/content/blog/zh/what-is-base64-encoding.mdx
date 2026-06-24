@@ -1,0 +1,54 @@
+export const meta = {
+  title: "什么是 Base64 编码？新手入门指南",
+  description: "什么是 Base64，它是如何工作的，什么时候应该使用它？了解基础知识并试用我们的免费编码/解码器。",
+  date: "2026-06-14",
+  category: "开发者",
+};
+
+# 什么是 Base64 编码？新手入门指南
+
+你可能见过类似 `SGVsbG8gV29ybGQh` 这样的字符串，搞不清楚它是什么。这就是 Base64。下面介绍它的作用和使用场景。
+
+## 什么是 Base64？
+
+Base64 是一种将二进制数据（如图片或特殊字符）转换为纯 ASCII 文本的方法。它接收任意数据，仅使用 64 个"安全"字符来表示：`A-Z`、`a-z`、`0-9`、`+`、`/`，以及用于填充的 `=`。
+
+## 工作原理
+
+```
+输入：  "Hello World!"
+Base64："SGVsbG8gV29ybGQh"
+```
+
+输入中的每个字符被转换为其二进制表示，然后分割为 6 位一组，每组映射到 64 个安全字符之一。
+
+## 常见用途
+
+| 用途 | 示例 |
+|------|------|
+| **Data URL** | 在 HTML/CSS 中直接嵌入小图片：`data:image/png;base64,...` |
+| **API 认证** | HTTP 基本认证：`Authorization: Basic <base64编码的凭据>` |
+| **电子邮件附件** | 二进制附件的 MIME 编码 |
+| **JSON Web Token** | JWT 负载采用 Base64 编码 |
+| **URL 安全数据** | 在查询字符串中传递二进制数据 |
+
+## Base64 是加密吗？
+
+**不是。** Base64 是**编码**，不是加密。它可以被轻松逆向。任何人都可以将 Base64 字符串解码回原始形式。绝不要用 Base64 来"保护"密码之类的敏感数据。
+
+## 动手试试
+
+使用我们的 [Base64 编码/解码器](https://toolcraftbox.com/tools/base64-encode-decode)：
+
+1. 粘贴文本进行编码 → 获得 Base64
+2. 粘贴 Base64 进行解码 → 获得原始文本
+3. 所有处理都在你的浏览器中完成
+
+## 体积增加
+
+Base64 编码后的数据比原始二进制大约 **33%**。这就是代价：用更大的体积换取文本安全的传输。
+
+## 相关工具
+
+- [Base64 编码/解码器](https://toolcraftbox.com/tools/base64-encode-decode) — 即时编码或解码
+- [JSON 格式化工具](https://toolcraftbox.com/tools/json-formatter) — 解码 Base64 JWT 负载

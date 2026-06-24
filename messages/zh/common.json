@@ -1,0 +1,63 @@
+{
+  "header": {
+    "logo": "ToolCraft",
+    "nav": {
+      "image": "图片",
+      "pdf": "PDF",
+      "markdown": "Markdown",
+      "dev": "开发者"
+    },
+    "mobile": {
+      "imageTools": "图片工具",
+      "pdfTools": "PDF 工具",
+      "markdownTools": "Markdown 工具",
+      "devTools": "开发者工具"
+    }
+  },
+  "footer": {
+    "imageTools": "图片工具",
+    "markdownTools": "Markdown 工具",
+    "pdfTools": "PDF 工具",
+    "devTools": "开发者工具",
+    "heicToJpg": "HEIC 转 JPG",
+    "webpToJpg": "WebP 转 JPG",
+    "imageCompressor": "图片压缩",
+    "imageResizer": "图片调整",
+    "markdownEditor": "Markdown 编辑器",
+    "mdToHtml": "MD 转 HTML",
+    "tableGenerator": "表格生成器",
+    "jpgToPdf": "JPG 转 PDF",
+    "pdfToJpg": "PDF 转 JPG",
+    "mergePdf": "PDF 合并",
+    "jsonFormatter": "JSON 格式化",
+    "base64": "Base64",
+    "uuidGenerator": "UUID 生成器",
+    "privacyBrowserTagline": "所有工具均在浏览器中运行。您的文件永远不会上传到任何服务器。",
+    "copyright": "© {year} ToolCraft. 为所有人提供的免费在线工具。",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "contact": "联系我们"
+  },
+  "cookieBanner": {
+    "text": "我们使用 Cookie 进行分析并通过 Google AdSense 提供相关广告。",
+    "learnMore": "了解更多",
+    "continuation": "继续使用即表示您同意我们使用 Cookie。",
+    "accept": "接受"
+  },
+  "breadcrumb": {
+    "home": "ToolCraft",
+    "imageTools": "图片工具",
+    "pdfTools": "PDF 工具",
+    "markdownTools": "Markdown 工具",
+    "devTools": "开发者工具",
+    "calculators": "计算器"
+  },
+  "toolCard": {
+    "freeBadge": "免费 · 基于浏览器"
+  },
+  "languageSwitcher": {
+    "en": "English",
+    "zh": "简体中文",
+    "label": "语言"
+  }
+}

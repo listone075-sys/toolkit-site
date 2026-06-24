@@ -3,6 +3,7 @@
 import { type ReactNode } from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils/cn";
+import { useTranslations } from "next-intl";
 
 interface ToolShellProps {
   inputPanel: ReactNode;
@@ -12,6 +13,7 @@ interface ToolShellProps {
 }
 
 export function ToolShell({ inputPanel, outputPanel, optionsBar, direction = "horizontal" }: ToolShellProps) {
+  const t = useTranslations("components");
   const isHorizontal = direction === "horizontal";
 
   return (
@@ -33,7 +35,7 @@ export function ToolShell({ inputPanel, outputPanel, optionsBar, direction = "ho
         {/* Input */}
         <Card className="p-4 min-h-[300px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            Input
+            {t("toolShell.input")}
           </div>
           <div className="flex-1 flex flex-col">{inputPanel}</div>
         </Card>
@@ -41,7 +43,7 @@ export function ToolShell({ inputPanel, outputPanel, optionsBar, direction = "ho
         {/* Output */}
         <Card className="p-4 min-h-[300px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            Output
+            {t("toolShell.output")}
           </div>
           <div className="flex-1 flex flex-col">{outputPanel}</div>
         </Card>

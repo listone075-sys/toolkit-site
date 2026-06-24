@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { percentOf, isWhatPercent, percentChange, addPercent, subtractPercent } from "@/lib/tools/calculator/percentage";
@@ -14,6 +15,7 @@ function ResultBox({ label, value, unit = "" }: { label: string; value: string; 
 }
 
 export function PercentageCalculator() {
+  const t = useTranslations("components");
   // Tab state
   const [tab, setTab] = useState<"percentOf" | "isWhatPercent" | "change" | "addSub">("percentOf");
   const [calcError, setCalcError] = useState<string | null>(null);
@@ -36,10 +38,10 @@ export function PercentageCalculator() {
   const [aMode, setAMode] = useState<"add" | "sub">("add");
 
   const tabs = [
-    { key: "percentOf" as const, label: "% of" },
-    { key: "isWhatPercent" as const, label: "Is what %" },
-    { key: "change" as const, label: "% Change" },
-    { key: "addSub" as const, label: "+ / − %" },
+    { key: "percentOf" as const, label: t("percentageCalculator.percentOf") },
+    { key: "isWhatPercent" as const, label: t("percentageCalculator.isWhatPercent") },
+    { key: "change" as const, label: t("percentageCalculator.percentChange") },
+    { key: "addSub" as const, label: t("percentageCalculator.addSubtract") },
   ];
 
   let result: { label: string; value: string; unit: string } | null = null;
@@ -47,7 +49,7 @@ export function PercentageCalculator() {
   if (tab === "percentOf" && p1 && p2) {
     const val = percentOf(Number(p1), Number(p2));
     if (isNaN(val)) {
-      setCalcError("Please enter valid numbers");
+      setCalcError(t("percentageCalculator.error"));
       result = null;
     } else {
       setCalcError(null);
@@ -77,7 +79,7 @@ export function PercentageCalculator() {
   } else if (tab === "addSub" && a1 && a2) {
     const val = aMode === "add" ? addPercent(Number(a1), Number(a2)) : subtractPercent(Number(a1), Number(a2));
     if (isNaN(val)) {
-      setCalcError("Please enter valid numbers");
+      setCalcError(t("percentageCalculator.error"));
       result = null;
     } else {
       setCalcError(null);
@@ -107,11 +109,11 @@ export function PercentageCalculator() {
         {tab === "percentOf" && (
           <>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">Percent</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.percent")}</label>
               <Input value={p1} onChange={(e) => setP1(e.target.value)} placeholder="e.g. 20" type="number" />
             </div>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">Of total</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.ofTotal")}</label>
               <Input value={p2} onChange={(e) => setP2(e.target.value)} placeholder="e.g. 150" type="number" />
             </div>
           </>
@@ -119,11 +121,11 @@ export function PercentageCalculator() {
         {tab === "isWhatPercent" && (
           <>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">Part</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.part")}</label>
               <Input value={w1} onChange={(e) => setW1(e.target.value)} placeholder="e.g. 30" type="number" />
             </div>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">Of total</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.ofTotal")}</label>
               <Input value={w2} onChange={(e) => setW2(e.target.value)} placeholder="e.g. 150" type="number" />
             </div>
           </>
@@ -131,11 +133,11 @@ export function PercentageCalculator() {
         {tab === "change" && (
           <>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">From</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.from")}</label>
               <Input value={c1} onChange={(e) => setC1(e.target.value)} placeholder="e.g. 100" type="number" />
             </div>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">To</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.to")}</label>
               <Input value={c2} onChange={(e) => setC2(e.target.value)} placeholder="e.g. 120" type="number" />
             </div>
           </>
@@ -143,11 +145,11 @@ export function PercentageCalculator() {
         {tab === "addSub" && (
           <>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">Base value</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.baseValue")}</label>
               <Input value={a1} onChange={(e) => setA1(e.target.value)} placeholder="e.g. 150" type="number" />
             </div>
             <div>
-              <label className="text-sm text-zinc-600 block mb-1">Percent</label>
+              <label className="text-sm text-zinc-600 block mb-1">{t("percentageCalculator.percent")}</label>
               <div className="flex gap-2">
                 <Input value={a2} onChange={(e) => setA2(e.target.value)} placeholder="e.g. 20" type="number" />
                 <button

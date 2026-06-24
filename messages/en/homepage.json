@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "ToolCraft — Free Online Tools",
+    "subtitle": "Convert images, edit PDFs, write Markdown, format code — all in your browser. No uploads, no sign-ups, 100% free.",
+    "privateSecure": "Private & Secure",
+    "instant": "Instant",
+    "free": "Free"
+  },
+  "categories": {
+    "all": "All Tools",
+    "image": "Image",
+    "pdf": "PDF",
+    "markdown": "Markdown",
+    "dev": "Dev Tools",
+    "calculator": "Calculators"
+  },
+  "categoryMeta": {
+    "image": {
+      "hero": "Image Tools",
+      "desc": "Convert, compress, and optimize images — all in your browser, no uploads needed."
+    },
+    "pdf": {
+      "hero": "PDF Tools",
+      "desc": "Convert images to PDF, extract pages, merge documents — entirely browser-based."
+    },
+    "markdown": {
+      "hero": "Markdown Tools",
+      "desc": "Write, preview, and convert Markdown. Perfect for AI chat outputs, docs, and README files."
+    },
+    "dev": {
+      "hero": "Developer Tools",
+      "desc": "Format JSON, encode Base64, generate UUIDs — fast, free, and private."
+    },
+    "calculator": {
+      "hero": "Calculators",
+      "desc": "Free online calculators for finance, health, and everyday use."
+    }
+  },
+  "whyTitle": "Why ToolCraft?",
+  "privacyFirst": {
+    "title": "Privacy First",
+    "description": "All tools run in your browser. Files never leave your device."
+  },
+  "lightningFast": {
+    "title": "Lightning Fast",
+    "description": "No server round-trips. Processing happens instantly."
+  },
+  "alwaysFree": {
+    "title": "Always Free",
+    "description": "No limits, no premium tiers. All tools free forever."
+  },
+  "exploreMore": "Explore more tools",
+  "categoryLinks": "{label} Tools →"
+}

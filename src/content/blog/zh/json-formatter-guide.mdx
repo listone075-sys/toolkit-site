@@ -1,0 +1,70 @@
+export const meta = {
+  title: "如何正确格式化、验证和调试 JSON",
+  description: "面对一堆压缩成一行的 JSON 无从下手？学习如何使用免费在线工具格式化、验证和调试 JSON。",
+  date: "2026-06-14",
+  category: "开发者",
+};
+
+# 如何格式化、验证和调试 JSON
+
+JSON 无处不在——API、配置文件、数据库。但当它被压缩成一行时，完全无法阅读。下面教你如何让它变得清晰易懂。
+
+## 问题所在
+
+```json
+{"users":[{"id":1,"name":"张三","email":"zhangsan@example.com","roles":["admin","editor"]},{"id":2,"name":"李四","email":"lisi@example.com","roles":["viewer"]}]}
+```
+
+这是合法的 JSON。但试试从中找到李四的邮箱地址。
+
+## 第一步：格式化（美化）
+
+将其粘贴到 [JSON 格式化工具](https://toolcraftbox.com/tools/json-formatter) 中，点击**格式化**：
+
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "张三",
+      "email": "zhangsan@example.com",
+      "roles": ["admin", "editor"]
+    },
+    {
+      "id": 2,
+      "name": "李四",
+      "email": "lisi@example.com",
+      "roles": ["viewer"]
+    }
+  ]
+}
+```
+
+立刻清晰可读。
+
+## 第二步：验证
+
+格式化工具还能实时验证你的 JSON：
+
+- ✅ 合法的 JSON → 绿色标记
+- ❌ 缺少逗号、多余逗号、未闭合括号 → 红色标记并显示确切错误位置
+
+## 第三步：压缩（按需使用）
+
+需要通过 API 发送 JSON？点击**压缩**将其恢复为一行。对于大型数据可以节省带宽。
+
+## 常见 JSON 错误
+
+```json
+❌ { name: "张三" }           ← 键名未加引号
+❌ { "name": "张三", }        ← 多余逗号
+❌ { "name": '张三' }         ← 使用了单引号
+❌ { "name": "张三"           ← 缺少闭合花括号
+
+✅ { "name": "张三" }
+```
+
+## 相关工具
+
+- [JSON 格式化工具](https://toolcraftbox.com/tools/json-formatter) — 格式化、验证、压缩
+- [Base64 编码器](https://toolcraftbox.com/tools/base64-encode-decode) — 解码 JWT 负载

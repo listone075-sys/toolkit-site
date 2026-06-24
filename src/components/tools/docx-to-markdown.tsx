@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, type DragEvent } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { docxToMarkdown } from "@/lib/tools/markdown/docx-to-md";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
@@ -8,6 +9,7 @@ import { useClipboard } from "@/hooks/use-clipboard";
 import { Upload, Download, Copy, X, FileText } from "lucide-react";
 
 export function DocxToMarkdown() {
+  const t = useTranslations("components");
   const [file, setFile] = useState<File | null>(null);
   const [output, setOutput] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -17,7 +19,7 @@ export function DocxToMarkdown() {
 
   const handleFile = useCallback(async (f: File) => {
     if (!f.name.endsWith(".docx")) {
-      setError("Please upload a .docx file");
+      setError(t("docxToMarkdown.uploadError"));
       return;
     }
     setFile(f);
@@ -67,10 +69,10 @@ export function DocxToMarkdown() {
         {!file ? (
           <>
             <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-            <p className="text-sm text-zinc-600 mb-1">Upload DOCX File</p>
-            <p className="text-xs text-zinc-400 mb-3">or drag & drop</p>
+            <p className="text-sm text-zinc-600 mb-1">{t("docxToMarkdown.uploadDocx")}</p>
+            <p className="text-xs text-zinc-400 mb-3">{t("docxToMarkdown.orDragDrop")}</p>
             <label className="cursor-pointer inline-flex items-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-              Browse
+              {t("docxToMarkdown.browse")}
               <input
                 type="file"
                 accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -118,15 +120,15 @@ export function DocxToMarkdown() {
             <div className="flex items-center gap-2">
               <FileText className="h-4 w-4 text-zinc-400" />
               <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
-                Markdown Output
+                {t("docxToMarkdown.markdownOutput")}
               </span>
             </div>
             <div className="flex items-center gap-1">
               <Button variant="outline" size="sm" onClick={() => copy(output)}>
-                <Copy className="h-4 w-4 mr-1" /> {copied ? "Copied!" : "Copy"}
+                <Copy className="h-4 w-4 mr-1" /> {copied ? t("docxToMarkdown.copied") : t("docxToMarkdown.copy")}
               </Button>
               <Button variant="outline" size="sm" onClick={handleDownload}>
-                <Download className="h-4 w-4 mr-1" /> Download .md
+                <Download className="h-4 w-4 mr-1" /> {t("docxToMarkdown.download")}
               </Button>
             </div>
           </div>

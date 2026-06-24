@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useCallback, useEffect, useRef, type DragEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
 import { Upload, Download, X, Lock, Unlock } from "lucide-react";
 
 export function ImageResizer() {
+  const t = useTranslations("components");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [origW, setOrigW] = useState(0);
@@ -29,7 +31,7 @@ export function ImageResizer() {
   }, []);
 
   const handleFile = useCallback(async (f: File) => {
-    if (!isImageFile(f)) { setError("Upload an image file"); return; }
+    if (!isImageFile(f)) { setError(t("imageResizer.uploadError")); return; }
     setFile(f);
     if (preview) URL.revokeObjectURL(preview);
     const url = URL.createObjectURL(f);
@@ -100,14 +102,14 @@ export function ImageResizer() {
     <div className="space-y-4">
       {/* Dimensions */}
       <div className="flex items-center gap-3 flex-wrap p-3 bg-zinc-50 rounded-lg border">
-        <span className="text-sm text-zinc-600">Width:</span>
-        <Input className="w-24 h-8" value={targetW} onChange={(e) => handleWChange(e.target.value)} placeholder="px" />
-        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setKeepRatio(!keepRatio)} title={keepRatio ? "Unlock ratio" : "Lock ratio"}>
+        <span className="text-sm text-zinc-600">{t("imageResizer.width")}:</span>
+        <Input className="w-24 h-8" value={targetW} onChange={(e) => handleWChange(e.target.value)} placeholder={t("imageResizer.pixels")} />
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setKeepRatio(!keepRatio)} title={t("imageResizer.lockRatio")}>
           {keepRatio ? <Lock className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
         </Button>
-        <span className="text-sm text-zinc-600">Height:</span>
-        <Input className="w-24 h-8" value={targetH} onChange={(e) => handleHChange(e.target.value)} placeholder="px" />
-        <span className="text-xs text-zinc-400 ml-auto">Original: {origW} × {origH}px</span>
+        <span className="text-sm text-zinc-600">{t("imageResizer.height")}:</span>
+        <Input className="w-24 h-8" value={targetH} onChange={(e) => handleHChange(e.target.value)} placeholder={t("imageResizer.pixels")} />
+        <span className="text-xs text-zinc-400 ml-auto">{t("imageResizer.width")}: {origW} x {origH}{t("imageResizer.pixels")}</span>
       </div>
 
       {/* Upload + Output */}
@@ -123,10 +125,10 @@ export function ImageResizer() {
           {!file ? (
             <>
               <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-              <p className="text-sm text-zinc-600 mb-1">Upload Image</p>
-              <p className="text-xs text-zinc-400 mb-3">or drag & drop</p>
+              <p className="text-sm text-zinc-600 mb-1">{t("imageResizer.uploadImage")}</p>
+              <p className="text-xs text-zinc-400 mb-3">{t("imageResizer.orDragDrop")}</p>
               <label className="cursor-pointer inline-flex items-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-                Browse
+                {t("imageResizer.browse")}
                 <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
               </label>
             </>
@@ -161,12 +163,12 @@ export function ImageResizer() {
                   const ext = file?.name.includes(".") ? file.name.split(".").pop() : "jpg";
                   downloadFile(outputBlob, `resized.${ext}`, outputBlob.type);
                 }} size="sm">
-                  <Download className="h-4 w-4 mr-1" /> Download
+                  <Download className="h-4 w-4 mr-1" /> {t("imageResizer.download")}
                 </Button>
               </div>
             </div>
           ) : (
-            <p className="text-sm text-zinc-400">Resized preview will appear here</p>
+            <p className="text-sm text-zinc-400">{t("imageResizer.uploadPrompt")}</p>
           )}
         </div>
       </div>
@@ -174,7 +176,7 @@ export function ImageResizer() {
       {file && (
         <div className="flex justify-center">
           <Button onClick={handleResize} disabled={loading} size="lg">
-            {loading ? "Resizing..." : "Resize Image"}
+            {loading ? t("imageResizer.resizing") : "Resize Image"}
           </Button>
         </div>
       )}

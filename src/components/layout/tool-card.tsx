@@ -1,8 +1,11 @@
-import Link from "next/link";
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { ToolConfig } from "@/lib/tools/types";
 import { Image, FileCode, FileText, Braces, Calculator } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   image: <Image className="h-4 w-4" />,
@@ -21,6 +24,8 @@ const categoryColors: Record<string, string> = {
 };
 
 export function ToolCard({ tool }: { tool: ToolConfig }) {
+  const t = useTranslations("common");
+
   return (
     <Link href={`/tools/${tool.slug}`}>
       <Card className="group h-full p-6 hover:shadow-md hover:border-blue-200 transition-all duration-200">
@@ -40,7 +45,7 @@ export function ToolCard({ tool }: { tool: ToolConfig }) {
         <p className="text-sm text-zinc-500 line-clamp-2">{tool.description}</p>
         <div className="mt-3 flex items-center gap-1 text-xs text-green-600 font-medium">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500" />
-          Free & Browser-based
+          {t("toolCard.freeBadge")}
         </div>
       </Card>
     </Link>

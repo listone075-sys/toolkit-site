@@ -1,28 +1,36 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
 
   async headers() {
     return [
-      // Tool pages: security + caching
+      // Tool pages: security + caching (with locale prefix)
       {
-        source: "/tools/:path*",
+        source: "/:locale(en|zh)/tools/:path*",
         headers: [
           { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
           { key: "Cross-Origin-Embedder-Policy", value: "credentialless" },
           { key: "Cache-Control", value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
         ],
       },
-      // Blog & legal pages: medium cache
+      // Blog & legal pages: medium cache (with locale prefix)
       {
-        source: "/(blog|privacy|terms)/:path*",
+        source: "/:locale(en|zh)/(blog|privacy|terms)/:path*",
         headers: [
           { key: "Cache-Control", value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
         ],
       },
-      // Homepage: short cache
+      // Locale-prefixed homepage: short cache
+      {
+        source: "/:locale(en|zh)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=600, s-maxage=3600, stale-while-revalidate=86400" },
+        ],
+      },
+      // Root path (legacy / redirect): short cache
       {
         source: "/",
         headers: [
@@ -37,4 +45,6 @@ const withMDX = createMDX({
   extension: /\.mdx$/,
 });
 
-export default withMDX(nextConfig);
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+export default withNextIntl(withMDX(nextConfig));

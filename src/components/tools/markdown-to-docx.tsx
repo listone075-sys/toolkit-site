@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ToolShell } from "./tool-shell";
@@ -35,6 +36,7 @@ Revenue increased by *34%* compared to the previous year.
 _Generated with ToolCraft Markdown to DOCX Converter_`;
 
 export function MarkdownToDocx() {
+  const t = useTranslations("components");
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -77,7 +79,7 @@ export function MarkdownToDocx() {
         <div className="flex flex-col items-center justify-center text-center space-y-4 min-h-[350px]">
           <FileText className="h-16 w-16 text-blue-200" />
           <div>
-            <p className="text-sm text-zinc-600 mb-1">Ready to convert</p>
+            <p className="text-sm text-zinc-600 mb-1">{t("markdownToDocx.emptyState")}</p>
             <p className="text-xs text-zinc-400">
               {headingCount} heading{headingCount !== 1 ? "s" : ""} •{" "}
               {wordCount} word{wordCount !== 1 ? "s" : ""}
@@ -86,7 +88,7 @@ export function MarkdownToDocx() {
           {error && <p className="text-sm text-red-500">{error}</p>}
           <Button onClick={handleConvert} disabled={loading} size="lg" className="gap-2">
             <Download className="h-4 w-4" />
-            {loading ? "Converting..." : "Download DOCX"}
+            {loading ? t("markdownToDocx.converting") : t("markdownToDocx.download")}
           </Button>
         </div>
       }

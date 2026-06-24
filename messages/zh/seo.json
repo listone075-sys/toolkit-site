@@ -1,0 +1,9 @@
+{
+  "siteName": "ToolCraft",
+  "siteDescription": "免费的在线图片、PDF、Markdown 和开发者工具。全部在浏览器中运行，无需上传文件。",
+  "homepage": {
+    "defaultTitle": "ToolCraft — 免费在线工具",
+    "titleTemplate": "{title} | ToolCraft",
+    "description": "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
+  }
+}

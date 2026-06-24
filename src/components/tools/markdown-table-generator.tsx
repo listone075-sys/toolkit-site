@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { generateMarkdownTable, type CellAlignment, type TableData } from "@/lib/tools/markdown/table-gen";
@@ -9,7 +10,8 @@ import { downloadFile } from "@/lib/utils/file";
 import { Plus, Trash2, Copy, Download, AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 
 export function MarkdownTableGenerator() {
-  const [headers, setHeaders] = useState<string[]>(["Column 1", "Column 2", "Column 3"]);
+  const t = useTranslations("components");
+  const [headers, setHeaders] = useState<string[]>([t("markdownTableGenerator.columnLabel", { n: 1 }), t("markdownTableGenerator.columnLabel", { n: 2 }), t("markdownTableGenerator.columnLabel", { n: 3 })]);
   const [alignments, setAlignments] = useState<CellAlignment[]>(["left", "left", "left"]);
   const [rows, setRows] = useState<string[][]>([
     ["", "", ""],
@@ -38,7 +40,7 @@ export function MarkdownTableGenerator() {
   };
 
   const addColumn = () => {
-    setHeaders([...headers, `Column ${headers.length + 1}`]);
+    setHeaders([...headers, t("markdownTableGenerator.columnLabel", { n: headers.length + 1 })]);
     setAlignments([...alignments, "left"]);
     setRows(rows.map((r) => [...r, ""]));
   };
@@ -144,7 +146,7 @@ export function MarkdownTableGenerator() {
 
       <div className="flex items-center gap-2">
         <Button variant="outline" size="sm" onClick={addRow}>
-          <Plus className="h-4 w-4 mr-1" /> Add Row
+          <Plus className="h-4 w-4 mr-1" /> {t("markdownTableGenerator.addRow")}
         </Button>
       </div>
 
@@ -152,18 +154,18 @@ export function MarkdownTableGenerator() {
       <div className="border rounded-lg p-4 bg-zinc-50">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
-            Markdown Output
+            {t("markdownTableGenerator.markdownOutput")}
           </span>
           <div className="flex items-center gap-1">
             <Button variant="outline" size="sm" onClick={() => copy(markdown)}>
-              <Copy className="h-3 w-3 mr-1" /> {copied ? "Copied!" : "Copy"}
+              <Copy className="h-3 w-3 mr-1" /> {copied ? t("markdownTableGenerator.copied") : t("markdownTableGenerator.copy")}
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => downloadFile(markdown, "table.md", "text/markdown")}
             >
-              <Download className="h-3 w-3 mr-1" /> Download .md
+              <Download className="h-3 w-3 mr-1" /> {t("markdownTableGenerator.download")}
             </Button>
           </div>
         </div>

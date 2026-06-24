@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ToolShell } from "./tool-shell";
@@ -41,6 +42,7 @@ Welcome to the presentation! Here's what we'll cover:
 > Use \`##\` headings to create new slides. Each heading becomes a slide title.`;
 
 export function MarkdownToPptx() {
+  const t = useTranslations("components");
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -81,7 +83,7 @@ export function MarkdownToPptx() {
         <div className="flex flex-col items-center justify-center text-center space-y-4 min-h-[350px]">
           <Presentation className="h-16 w-16 text-orange-200" />
           <div>
-            <p className="text-sm text-zinc-600 mb-1">Ready to convert</p>
+            <p className="text-sm text-zinc-600 mb-1">{t("markdownToPptx.emptyState")}</p>
             <p className="text-xs text-zinc-400">
               ~{slideCount} slide{slideCount !== 1 ? "s" : ""} estimated
             </p>
@@ -93,7 +95,7 @@ export function MarkdownToPptx() {
           {error && <p className="text-sm text-red-500">{error}</p>}
           <Button onClick={handleConvert} disabled={loading} size="lg" className="gap-2">
             <Download className="h-4 w-4" />
-            {loading ? "Converting..." : "Download PPTX"}
+            {loading ? t("markdownToPptx.converting") : t("markdownToPptx.download")}
           </Button>
         </div>
       }

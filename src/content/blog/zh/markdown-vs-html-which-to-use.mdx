@@ -1,0 +1,64 @@
+export const meta = {
+  title: "Markdown 与 HTML：应该使用哪一个？",
+  description: "Markdown 还是 HTML？从文档编写、博客写作、AI 提示词和网页开发的角度对比两者。优缺点分析及使用场景推荐。",
+  date: "2026-06-14",
+  category: "Markdown",
+};
+
+# Markdown 与 HTML：应该使用哪一个？
+
+Markdown 和 HTML 都能在网页上生成格式化内容。但它们服务于不同的目的。下面介绍何时使用哪个。
+
+## 概览一览
+
+| | Markdown | HTML |
+|---|----------|------|
+| **学习曲线** | 几分钟 | 几天/几周 |
+| **原始可读性** | 优秀 | 较差 |
+| **格式化能力** | 有限 | 无限 |
+| **AI 令牌消耗** | 约少 40% | 全额消耗 |
+| **浏览器渲染** | 需要转换 | 原生支持 |
+| **最适合** | 写作、文档、AI | 完整网页 |
+
+## 何时使用 Markdown
+
+✅ **文档编写** — README 文件、知识库、API 文档
+✅ **AI 提示词与输出** — ChatGPT、Claude 都使用 Markdown
+✅ **博客写作** — 静态网站（Hugo、Astro、Jekyll）
+✅ **笔记记录** — Obsidian、Notion、Bear
+✅ **评论系统** — GitHub Issues、Reddit、Stack Overflow
+✅ **电子邮件** — 部分邮件客户端支持 Markdown
+
+## 何时使用 HTML
+
+✅ **完整网站** — 复杂布局、交互式元素
+✅ **邮件模板** — 像素级精确设计
+✅ **表单和按钮** — 任何需要交互的内容
+✅ **自定义样式** — Markdown 的样式能力有限
+✅ **SEO 落地页** — 结构化标记至关重要
+
+## 转换流水线
+
+很多工作流同时使用两者：
+
+```
+用 Markdown 编写 → 转换为 HTML → 发布
+```
+
+ToolCraft 的 [Markdown 转 HTML 转换器](https://toolcraftbox.com/tools/markdown-to-html) 可以即时完成此操作：
+
+1. 用 Markdown 编写内容（快速、简洁）
+2. 点击转换为 HTML
+3. 将 HTML 粘贴到你的 CMS、邮件工具或网站中
+
+## 为什么 AI 使用 Markdown
+
+所有主流 AI 模型——ChatGPT、Claude、Gemini——都输出 Markdown。为什么？
+
+- **更少令牌**——对于相同内容，Markdown 比 HTML 少消耗约 40% 的令牌
+- **更好的训练数据**——85% 的 AI 训练数据集使用 Markdown
+- **更清晰的解析**——AI 模型能原生理解 Markdown 结构
+
+## 总结
+
+**用 Markdown 编写，以 HTML 发布。** 使用我们的 [Markdown 编辑器](https://toolcraftbox.com/tools/markdown-editor) 来编写、预览并导出为 HTML——一切都在浏览器中完成。

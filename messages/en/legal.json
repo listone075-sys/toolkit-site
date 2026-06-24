@@ -1,0 +1,94 @@
+{
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: June 14, 2026",
+    "sections": [
+      {
+        "heading": "1. Our Commitment to Privacy",
+        "body": "ToolCraft is built with privacy as a core principle. <strong>All tools run entirely in your browser.</strong> When you convert an image, edit a PDF, or format JSON, your files and data never leave your device. We do not upload, store, or have access to your files."
+      },
+      {
+        "heading": "2. Information We Collect",
+        "body": "We collect minimal information to operate and improve the site:",
+        "list": [
+          "<strong>Usage analytics</strong> — anonymous page views and tool usage via Google Analytics (no personal data)",
+          "<strong>Cookies</strong> — for analytics, ad delivery (Google AdSense), and preferences",
+          "<strong>Server logs</strong> — standard web server access logs (IP address, browser type, pages visited)"
+        ],
+        "footer": "We do <strong>not</strong> collect: names, email addresses, file contents, or any personally identifiable information."
+      },
+      {
+        "heading": "3. How We Use Information",
+        "list": [
+          "To understand which tools are most popular and improve them",
+          "To display relevant advertisements via Google AdSense",
+          "To maintain the security and performance of our servers"
+        ]
+      },
+      {
+        "heading": "4. Third-Party Services",
+        "body": "We use the following third-party services that may set cookies:",
+        "list": [
+          "<strong>Google AdSense</strong> — serves advertisements based on interests and browsing history. See <a href=\"https://policies.google.com/privacy\" class=\"text-blue-600 hover:underline\">Google's Privacy Policy</a>.",
+          "<strong>Google Analytics</strong> — tracks anonymous usage statistics."
+        ]
+      },
+      {
+        "heading": "5. Your Choices",
+        "list": [
+          "You can disable cookies in your browser settings",
+          "You can opt out of personalized ads via <a href=\"https://adssettings.google.com\" class=\"text-blue-600 hover:underline\">Google's Ad Settings</a>",
+          "All tools work fully without cookies enabled"
+        ]
+      },
+      {
+        "heading": "6. Contact",
+        "body": "For privacy-related questions, contact us at <a href=\"mailto:privacy@toolcraftbox.com\" class=\"text-blue-600 hover:underline\">privacy@toolcraftbox.com</a>."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: June 14, 2026",
+    "sections": [
+      {
+        "heading": "1. Acceptance of Terms",
+        "body": "By using ToolCraft (\"the Service\"), you agree to these Terms of Service. If you do not agree, please do not use the Service."
+      },
+      {
+        "heading": "2. Description of Service",
+        "body": "ToolCraft provides free online tools for image conversion, PDF manipulation, Markdown editing, and developer utilities. All tools run in your browser — files are processed locally on your device."
+      },
+      {
+        "heading": "3. Acceptable Use",
+        "body": "You agree not to:",
+        "list": [
+          "Use the Service for any illegal purpose",
+          "Attempt to disrupt or overload the Service",
+          "Reverse engineer or scrape the Service",
+          "Use automated tools to access the Service without permission"
+        ]
+      },
+      {
+        "heading": "4. Intellectual Property",
+        "body": "The ToolCraft website, code, and design are protected by copyright. The tools process your files locally — we do not claim ownership of your content."
+      },
+      {
+        "heading": "5. Disclaimer of Warranties",
+        "body": "The Service is provided \"as is\" without warranties of any kind. We do not guarantee that the Service will be error-free, uninterrupted, or meet all your requirements."
+      },
+      {
+        "heading": "6. Limitation of Liability",
+        "body": "ToolCraft shall not be liable for any damages arising from the use or inability to use the Service. As all file processing is done locally in your browser, we cannot be responsible for data loss or file corruption."
+      },
+      {
+        "heading": "7. Changes to Terms",
+        "body": "We reserve the right to modify these terms at any time. Continued use of the Service after changes constitutes acceptance of the updated terms."
+      },
+      {
+        "heading": "8. Contact",
+        "body": "For questions about these terms, contact <a href=\"mailto:legal@toolcraftbox.com\" class=\"text-blue-600 hover:underline\">legal@toolcraftbox.com</a>."
+      }
+    ]
+  }
+}

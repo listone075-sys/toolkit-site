@@ -1,20 +1,7 @@
+"use client";
+
 import type { ToolCategory } from "@/lib/tools/types";
-
-const categoryLabels: Record<ToolCategory, string> = {
-  image: "Image Tools",
-  pdf: "PDF Tools",
-  markdown: "Markdown Tools",
-  dev: "Developer Tools",
-  calculator: "Calculators",
-};
-
-const categoryUrls: Record<ToolCategory, string> = {
-  image: "https://image.toolcraftbox.com",
-  pdf: "https://pdf.toolcraftbox.com",
-  markdown: "https://markdown.toolcraftbox.com",
-  dev: "https://dev.toolcraftbox.com",
-  calculator: "https://toolcraftbox.com",
-};
+import { useTranslations, useLocale } from "next-intl";
 
 interface BreadcrumbItem {
   name: string;
@@ -30,8 +17,27 @@ interface BreadcrumbProps {
  * Renders breadcrumb navigation with JSON-LD structured data
  */
 export function Breadcrumb({ items, category }: BreadcrumbProps) {
+  const t = useTranslations("common");
+  const locale = useLocale();
+
+  const categoryUrls: Record<ToolCategory, string> = {
+    image: `https://image.toolcraftbox.com/${locale}`,
+    pdf: `https://pdf.toolcraftbox.com/${locale}`,
+    markdown: `https://markdown.toolcraftbox.com/${locale}`,
+    dev: `https://dev.toolcraftbox.com/${locale}`,
+    calculator: `https://toolcraftbox.com/${locale}`,
+  };
+
+  const categoryLabels: Record<ToolCategory, string> = {
+    image: t("breadcrumb.imageTools"),
+    pdf: t("breadcrumb.pdfTools"),
+    markdown: t("breadcrumb.markdownTools"),
+    dev: t("breadcrumb.devTools"),
+    calculator: t("breadcrumb.calculators"),
+  };
+
   const fullItems: BreadcrumbItem[] = [
-    { name: "ToolCraft", url: "https://toolcraftbox.com" },
+    { name: t("breadcrumb.home"), url: `https://toolcraftbox.com/${locale}` },
   ];
 
   if (category) {

@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useCallback, type DragEvent } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { mergePdfs } from "@/lib/tools/pdf/merge-pdf";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
 import { Upload, Download, X, FileText, ArrowDown } from "lucide-react";
 
 export function MergePdf() {
+  const t = useTranslations("components");
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +28,7 @@ export function MergePdf() {
   );
 
   const handleMerge = async () => {
-    if (files.length < 2) { setError("Add at least 2 PDF files."); return; }
+    if (files.length < 2) { setError(t("mergePdf.minFilesError")); return; }
     setLoading(true);
     setError(null);
     try {
@@ -51,10 +53,10 @@ export function MergePdf() {
         onDrop={handleDrop}
       >
         <Upload className="h-12 w-12 text-zinc-300 mx-auto mb-3" />
-        <p className="text-sm font-medium text-zinc-600 mb-1">Upload PDF Files</p>
-        <p className="text-xs text-zinc-400 mb-3">Drag multiple PDFs — they will be merged in order</p>
+        <p className="text-sm font-medium text-zinc-600 mb-1">{t("mergePdf.uploadPdfs")}</p>
+        <p className="text-xs text-zinc-400 mb-3">{t("mergePdf.orDragDrop")}</p>
         <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-          Browse files
+          {t("mergePdf.browse")}
           <input type="file" accept="application/pdf" multiple className="hidden" onChange={(e) => e.target.files && addFiles(e.target.files)} />
         </label>
       </div>
@@ -63,7 +65,7 @@ export function MergePdf() {
       {files.length > 0 && (
         <div className="border rounded-lg p-4">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            Files to Merge ({files.length})
+            {t("mergePdf.filesToMerge", { count: files.length })}
           </div>
           <div className="space-y-2">
             {files.map((f, i) => (
@@ -91,7 +93,7 @@ export function MergePdf() {
           ) : (
             <Download className="h-4 w-4" />
           )}
-          {loading ? "Merging..." : `Merge ${files.length} PDFs`}
+          {loading ? t("mergePdf.merging") : t("mergePdf.mergeBtn", { count: files.length })}
         </Button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useCallback, type DragEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { ToolShell } from "./tool-shell";
@@ -16,10 +17,12 @@ interface ImageConverterProps {
 
 export function ImageConverter({
   convertFn,
-  inputLabel = "Upload Image",
+  inputLabel,
   outputFormat = "image/jpeg",
   outputExtension = "jpg",
 }: ImageConverterProps) {
+  const t = useTranslations("components");
+  const label = inputLabel ?? t("imageConverter.uploadImage");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
@@ -31,7 +34,7 @@ export function ImageConverter({
   const processFile = useCallback(
     async (f: File) => {
       if (!isImageFile(f)) {
-        setError("Please upload an image file.");
+        setError(t("imageConverter.uploadError"));
         return;
       }
 
@@ -111,10 +114,10 @@ export function ImageConverter({
           {!file ? (
             <>
               <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-              <p className="text-sm font-medium text-zinc-600 mb-1">{inputLabel}</p>
-              <p className="text-xs text-zinc-400 mb-3">or drag & drop your image here</p>
+              <p className="text-sm font-medium text-zinc-600 mb-1">{label}</p>
+              <p className="text-xs text-zinc-400 mb-3">{t("imageConverter.orDragDrop")}</p>
               <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground">
-                Browse files
+                {t("imageConverter.browse")}
                 <input type="file" accept="image/*" className="hidden" onChange={handleFileInput} />
               </label>
             </>
@@ -142,7 +145,7 @@ export function ImageConverter({
           {loading ? (
             <div className="text-center">
               <div className="animate-spin h-8 w-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-3" />
-              <p className="text-sm text-zinc-500">Converting...</p>
+              <p className="text-sm text-zinc-500">{t("imageConverter.converting")}</p>
             </div>
           ) : error ? (
             <div className="text-center">
@@ -156,14 +159,14 @@ export function ImageConverter({
               </p>
               <div className="flex justify-center">
                 <Button onClick={handleDownload} size="sm" className="gap-2">
-                  <Download className="h-4 w-4" /> Download
+                  <Download className="h-4 w-4" /> {t("imageConverter.download")}
                 </Button>
               </div>
             </div>
           ) : (
             <div className="text-center">
               <Download className="h-10 w-10 text-zinc-200 mb-3 mx-auto" />
-              <p className="text-sm text-zinc-400">Upload an image to see the result</p>
+              <p className="text-sm text-zinc-400">{t("imageConverter.seeResult")}</p>
             </div>
           )}
         </div>
