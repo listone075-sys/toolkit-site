@@ -2,11 +2,10 @@
 
 import Script from "next/script";
 
-const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID;
+const FALLBACK_ADSENSE_ID = "ca-pub-5142105226310650";
+const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID ?? FALLBACK_ADSENSE_ID;
 
 export function AdSense() {
-  if (!ADSENSE_ID) return null;
-
   return (
     <Script
       async

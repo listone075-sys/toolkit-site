@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { Analytics } from "@/components/layout/analytics";
+import { AdSense } from "@/components/layout/adsense";
 import { SiteSchema } from "@/components/seo/site-schema";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -85,8 +86,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         <meta name="google-site-verification" content="b9LnPakW02bBFDppFZysgx3q6V89qDkmD2SkSohVj8Y" />
         <meta name="msvalidate.01" content="00065E437FE00E67C1EB622A839A5166" />
         <meta name="google-site-verification" content="mx7ab6UFuWD0OuKTdl7ai0kqoMJ1Dad7kIL7FivkrX8" />
-        {/* Google AdSense */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5142105226310650" crossOrigin="anonymous" />
+        {/* AdSense account verification */}
+        <meta name="google-adsense-account" content="ca-pub-5142105226310650" />
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHKDP008P" />
         <script
@@ -99,6 +100,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages}>
           <SiteSchema />
           <Analytics />
+          <AdSense />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
