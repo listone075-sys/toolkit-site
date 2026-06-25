@@ -80,10 +80,14 @@ export default async function BlogPost({ params }: Props) {
   }
 
   const { default: Post } = await import(importPath);
+  const { AdUnit } = await import("@/components/layout/ad-unit");
 
   return (
     <article className="container mx-auto px-4 py-12 max-w-3xl">
       <Post />
+      <div className="mt-12 flex justify-center">
+        <AdUnit format="horizontal" />
+      </div>
     </article>
   );
 }

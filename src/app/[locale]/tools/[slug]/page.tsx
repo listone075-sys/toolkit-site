@@ -5,6 +5,7 @@ import { getToolBySlug } from "@/lib/tools";
 import { generateToolMetadata } from "@/lib/seo/metadata";
 import { ToolRenderer } from "@/components/tools/tool-renderer";
 import { Breadcrumb } from "@/components/seo/breadcrumb";
+import { AdUnit } from "@/components/layout/ad-unit";
 import type { Metadata } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
@@ -47,6 +48,11 @@ export default function ToolPage({ params }: Props) {
 
       {/* Tool Component (client-side renderer) */}
       <ToolRenderer slug={slug} />
+
+      {/* Ad Unit */}
+      <div className="mt-8 flex justify-center">
+        <AdUnit format="horizontal" />
+      </div>
 
       {/* How to Use */}
       <div className="mt-12">

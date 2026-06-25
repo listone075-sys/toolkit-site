@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { getToolRegistry, getToolsByCategory } from "@/lib/tools";
 import type { ToolCategory, ToolConfig } from "@/lib/tools/types";
 import { ToolCard } from "@/components/layout/tool-card";
+import { AdUnit } from "@/components/layout/ad-unit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, Shield, Zap, ArrowRight } from "lucide-react";
 
@@ -155,6 +156,11 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Ad Unit */}
+      <div className="container mx-auto px-4 pt-10 flex justify-center">
+        <AdUnit format="horizontal" />
+      </div>
 
       <section className="container mx-auto px-4 py-12">
         <Tabs defaultValue="all">

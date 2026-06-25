@@ -22,6 +22,20 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "png-to-jpg": dynamic(() =>
+    import("./image-converter").then((m) => ({
+      default: () =>
+        m.ImageConverter({
+          convertFn: async (file: File) => {
+            const { pngToJpg } = await import("@/lib/tools/image/convert");
+            return pngToJpg(file);
+          },
+          inputLabel: "Upload PNG Image",
+          outputExtension: "jpg",
+        }),
+    })),
+  ),
+
   "webp-to-jpg": dynamic(() =>
     import("./image-converter").then((m) => ({
       default: () =>
@@ -72,6 +86,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "url-encode-decode": dynamic(() =>
+    import("./url-encoder").then((m) => ({
+      default: m.UrlEncoderDecoder,
+    })),
+  ),
+
   "uuid-generator": dynamic(() =>
     import("./uuid-generator").then((m) => ({
       default: m.UuidGenerator,
@@ -114,15 +134,69 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "case-converter": dynamic(() =>
+    import("./case-converter").then((m) => ({
+      default: m.CaseConverter,
+    })),
+  ),
+
+  "regex-tester": dynamic(() =>
+    import("./regex-tester").then((m) => ({
+      default: m.RegexTester,
+    })),
+  ),
+
+  "css-formatter": dynamic(() =>
+    import("./css-formatter").then((m) => ({
+      default: m.CssFormatter,
+    })),
+  ),
+
   "image-resizer": dynamic(() =>
     import("./image-resizer").then((m) => ({
       default: m.ImageResizer,
     })),
   ),
 
+  "image-cropper": dynamic(() =>
+    import("./image-cropper").then((m) => ({
+      default: m.ImageCropper,
+    })),
+  ),
+
+  "image-to-base64": dynamic(() =>
+    import("./image-to-base64").then((m) => ({
+      default: m.ImageToBase64Converter,
+    })),
+  ),
+
   "percentage-calculator": dynamic(() =>
     import("./percentage-calculator").then((m) => ({
       default: m.PercentageCalculator,
+    })),
+  ),
+
+  "word-counter": dynamic(() =>
+    import("./word-counter").then((m) => ({
+      default: m.WordCounter,
+    })),
+  ),
+
+  "age-calculator": dynamic(() =>
+    import("./age-calculator").then((m) => ({
+      default: m.AgeCalculator,
+    })),
+  ),
+
+  "bmi-calculator": dynamic(() =>
+    import("./bmi-calculator").then((m) => ({
+      default: m.BmiCalculator,
+    })),
+  ),
+
+  "discount-calculator": dynamic(() =>
+    import("./discount-calculator").then((m) => ({
+      default: m.DiscountCalculator,
     })),
   ),
 

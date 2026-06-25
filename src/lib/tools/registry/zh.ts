@@ -37,6 +37,98 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "png-to-jpg",
+    title: "PNG 转 JPG 转换器",
+    description:
+      "在线免费将 PNG 图片转换为 JPG 格式。在保持质量的同时减小文件体积。所有处理均在浏览器中完成。",
+    category: "image",
+    keywords: ["png转jpg", "png转换器", "png转jpeg", "png转jpg在线", "免费png转换"],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "Image",
+    howToUse: [
+      "通过点击或拖放上传您的 PNG 图片",
+      "转换在浏览器中即时运行",
+      "预览转换后的 JPG 图片",
+      "下载为 JPG — 通常比 PNG 小 50-80%",
+    ],
+    faqs: [
+      {
+        question: "为什么要将 PNG 转换为 JPG？",
+        answer:
+          "PNG 文件通常比 JPG 大得多，因为它们支持透明通道和无损压缩。如果您不需要透明背景，转换为 JPG 可以将文件大小减少 50-80%。",
+      },
+      {
+        question: "会损失质量吗？",
+        answer:
+          "我们以高质量（92%）进行转换。对于照片和复杂图片，质量差异几乎不可察觉，而文件大小的减小非常显著。对于有锐利边缘和文字的图形，建议保留 PNG 格式。",
+      },
+      {
+        question: "我的文件安全吗？",
+        answer:
+          "安全。所有处理均在浏览器端完成。您的文件永远不会上传到任何服务器。",
+      },
+    ],
+  },
+  {
+    slug: "image-cropper",
+    title: "图片裁剪器",
+    description:
+      "在线免费裁剪图片。选择任意区域，即时预览并下载。所有处理均在浏览器中完成。",
+    category: "image",
+    keywords: ["图片裁剪", "裁剪照片", "在线裁剪图片", "图片裁切", "照片裁剪器"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Crop",
+    howToUse: [
+      "通过点击或拖放上传您的图片",
+      "在图片上点击并拖动以选择裁剪区域",
+      "点击裁剪应用",
+      "预览并下载裁剪后的图片",
+    ],
+    faqs: [
+      {
+        question: "支持哪些输出格式？",
+        answer:
+          "裁剪后的图片默认下载为 JPG 格式，在质量和文件大小之间取得良好平衡。",
+      },
+      {
+        question: "我的图片安全吗？",
+        answer:
+          "安全。所有裁剪操作均在浏览器中完成。您的图片不会被上传到任何服务器。",
+      },
+    ],
+  },
+  {
+    slug: "image-to-base64",
+    title: "图片转 Base64 转换器",
+    description:
+      "在线将图片转换为 Base64 数据 URL。可直接嵌入 HTML、CSS 或 JSON。无需上传。",
+    category: "image",
+    keywords: ["图片转base64", "base64图片", "图片转数据url", "base64编码图片", "在线图片base64"],
+    searchVolume: "~60K/mo",
+    isClientSide: true,
+    icon: "FileCode",
+    howToUse: [
+      "通过点击或拖放上传您的图片",
+      "Base64 数据 URL 即时生成",
+      "将 Base64 字符串复制到剪贴板",
+      "用于 HTML <img> 标签或 CSS 背景",
+    ],
+    faqs: [
+      {
+        question: "Base64 图片编码有什么用途？",
+        answer:
+          "Base64 编码的图片可以直接嵌入 HTML 或 CSS 中，无需单独的文件。对于小图标这类小图片，可以减少 HTTP 请求数量，但会使 HTML 大小增加约 33%。",
+      },
+      {
+        question: "有文件大小限制吗？",
+        answer:
+          "由于处理在客户端完成，没有服务器限制。但 Base64 编码会增加约 33% 的文件大小，因此最适合 100KB 以下的小图片。",
+      },
+    ],
+  },
+  {
     slug: "webp-to-jpg",
     title: "WebP 转 JPG 转换器",
     description:
@@ -529,6 +621,35 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "url-encode-decode",
+    title: "URL 编码 / 解码器",
+    description:
+      "将文本编码为 URL 安全格式，或将 URL 编码的字符串解码回纯文本。快速、完全基于浏览器。",
+    category: "dev",
+    keywords: ["url编码", "url解码", "url百分号编码", "在线url编码", "url转码"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "Link",
+    howToUse: [
+      "在输入区域粘贴您的文本或 URL 编码字符串",
+      "点击编码将文本转换为 URL 安全格式",
+      "点击解码将 URL 编码字符串转换回纯文本",
+      "将结果复制到剪贴板",
+    ],
+    faqs: [
+      {
+        question: "URL 编码有什么用途？",
+        answer:
+          "URL 编码将特殊字符（空格、符号、非 ASCII 字符）转换为 URL 安全的格式。例如，空格变成 %20。这对于在查询字符串和表单提交中传递数据至关重要。",
+      },
+      {
+        question: "encodeURI 和 encodeURIComponent 有什么区别？",
+        answer:
+          "我们使用 encodeURIComponent，它会对所有特殊字符（包括 / ? & = #）进行编码。这是编码单个查询参数值的最安全方法。",
+      },
+    ],
+  },
+  {
     slug: "uuid-generator",
     title: "UUID 生成器",
     description: "在线生成随机 UUID（v4）。一次性批量生成多个 UUID——免费且快速。",
@@ -607,6 +728,93 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "case-converter",
+    title: "大小写转换器",
+    description:
+      "在 大写、小写、首字母大写、句子大小写、驼峰命名、短横线命名等之间转换文本。即时出结果。",
+    category: "dev",
+    keywords: ["大小写转换", "文本大小写", "大写转小写", "标题大小写", "在线大小写转换"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "CaseSensitive",
+    howToUse: [
+      "在输入区域粘贴您的文本",
+      "点击大小写风格按钮：大写、小写、首字母大写、句子、驼峰、短横线或翻转",
+      "在输出面板即时查看转换结果",
+      "复制到剪贴板",
+    ],
+    faqs: [
+      {
+        question: "支持哪些文本大小写风格？",
+        answer:
+          "我们支持 大写（UPPERCASE）、小写（lowercase）、首字母大写（Title Case）、句子大小写（Sentence case）、驼峰命名（camelCase，用于编程）、短横线命名（kebab-case，用于 URL/CSS）和翻转大小写（iNVERT）。",
+      },
+      {
+        question: "支持多语言文本吗？",
+        answer:
+          "支持，转换器适用于任何使用标准 Unicode 字母大小写规则的文本。大多数基于拉丁字母的语言都能完美处理。",
+      },
+    ],
+  },
+  {
+    slug: "regex-tester",
+    title: "正则表达式测试器",
+    description:
+      "在线测试正则表达式，实时匹配高亮显示。支持所有 JavaScript 正则标志。即时反馈。",
+    category: "dev",
+    keywords: ["正则测试", "正则表达式测试", "regex在线", "正则匹配", "在线正则"],
+    searchVolume: "~60K/mo",
+    isClientSide: true,
+    icon: "Regex",
+    howToUse: [
+      "在斜杠之间输入您的正则表达式模式",
+      "切换标志：g（全局）、i（忽略大小写）、m（多行）、s（点匹配换行）、u（Unicode）",
+      "在下方粘贴或输入测试文本",
+      "匹配项以黄色高亮显示——右侧可见匹配详情",
+    ],
+    faqs: [
+      {
+        question: "使用哪种正则引擎？",
+        answer:
+          "我们使用 JavaScript 内置的 RegExp 引擎。这与 Node.js、浏览器 JavaScript 和大多数在线代码编辑器中使用的引擎一致。",
+      },
+      {
+        question: "为什么没有匹配结果？",
+        answer:
+          "请检查模式是否有拼写错误。使用全局标志（g）查找所有匹配项。点匹配换行标志（s）使 . 可以匹配换行符。如果模式语法无效，将显示错误信息。",
+      },
+    ],
+  },
+  {
+    slug: "css-formatter",
+    title: "CSS 格式化与压缩器",
+    description:
+      "在线美化或压缩 CSS。用合适的缩进格式化混乱的 CSS，或压缩用于生产环境。免费、即时。",
+    category: "dev",
+    keywords: ["css格式化", "css美化", "css压缩", "格式化css", "css排版", "在线压缩css"],
+    searchVolume: "~40K/mo",
+    isClientSide: true,
+    icon: "Paintbrush",
+    howToUse: [
+      "在输入面板粘贴您的 CSS",
+      "点击美化以缩进格式化，或点击压缩以精简",
+      "结果将在输出面板显示",
+      "复制到剪贴板",
+    ],
+    faqs: [
+      {
+        question: "支持哪些 CSS 语法？",
+        answer:
+          "我们支持标准的 CSS3 语法，包括媒体查询、关键帧和伪选择器。预处理器语法（SCSS、Less）可能无法正确格式化——请使用专用工具。",
+      },
+      {
+        question: "压缩会破坏我的 CSS 吗？",
+        answer:
+          "不会。压缩仅删除空白字符和注释——不会改变 CSS 逻辑。请始终保留未压缩的原始版本用于编辑。",
+      },
+    ],
+  },
+  {
     slug: "text-diff-checker",
     title: "文本差异对比器",
     description: "在线比较两段文本并找出差异。逐行对比，高亮显示新增、删除和未更改的内容。",
@@ -656,6 +864,120 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "如何计算百分比增长？",
         answer: "使用「百分比变化」选项卡。公式：((新值 − 旧值) / 旧值) × 100。输入旧值和新值即可查看变化。",
+      },
+    ],
+  },
+  {
+    slug: "word-counter",
+    title: "字数统计器",
+    description:
+      "统计文本中的字数、字符数、行数、句子数和段落数。实时统计，随输入更新。",
+    category: "calculator",
+    keywords: ["字数统计", "字符统计", "在线字数统计", "文本统计", "数字数"],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "Text",
+    howToUse: [
+      "在文本区域粘贴或输入您的文本",
+      "查看实时统计：字数、字符数、行数、句子数、段落数",
+      "复制文本或清除以重新开始",
+    ],
+    faqs: [
+      {
+        question: "字数是怎样计算的？",
+        answer:
+          "字数通过按空白字符（空格、制表符、换行符）分割文本来计算。空行不计入。这与大多数文字处理器的计数方式一致。",
+      },
+      {
+        question: "我的文本隐私安全吗？",
+        answer:
+          "安全。所有统计均在浏览器中完成。您的文本永远不会上传到任何服务器。",
+      },
+    ],
+  },
+  {
+    slug: "age-calculator",
+    title: "年龄计算器",
+    description:
+      "精确计算您的年龄，以年、月、日显示。还可查看总天数、总周数以及距离下一个生日的倒计时。",
+    category: "calculator",
+    keywords: ["年龄计算器", "计算年龄", "生日计算器", "年龄计算", "在线年龄计算"],
+    searchVolume: "~800K/mo",
+    isClientSide: true,
+    icon: "Calendar",
+    howToUse: [
+      "输入您的出生日期",
+      "可选设置不同的截止日期（默认为今天）",
+      "点击计算",
+      "查看精确年龄（年、月、日）以及总天数、总周数和下一个生日倒计时",
+    ],
+    faqs: [
+      {
+        question: "年龄是如何计算的？",
+        answer:
+          "我们精确计算年龄，考虑闰年和不同月份的天数差异。计算结果显示了自出生以来已完成的年、月、日数。",
+      },
+      {
+        question: "可以计算任意两个日期之间的年龄/时长吗？",
+        answer:
+          "可以！将「截止日期」更改为任意日期，即可计算两个日期之间的年龄/时长。适用于计算工作周年纪念日或活动倒计时。",
+      },
+    ],
+  },
+  {
+    slug: "bmi-calculator",
+    title: "BMI 计算器",
+    description:
+      "即时计算您的身体质量指数（BMI）。查看分类、健康体重范围和可视化 BMI 标尺。",
+    category: "calculator",
+    keywords: ["bmi计算器", "身体质量指数", "bmi检测", "健康体重计算", "bmi图表"],
+    searchVolume: "~600K/mo",
+    isClientSide: true,
+    icon: "Heart",
+    howToUse: [
+      "输入您的身高（厘米）",
+      "输入您的体重（公斤）",
+      "点击计算",
+      "查看您的 BMI 分数、分类以及适合您身高的健康体重范围",
+    ],
+    faqs: [
+      {
+        question: "BMI 分类代表什么？",
+        answer:
+          "偏瘦：BMI < 18.5。正常：18.5–24.9。超重：25–29.9。肥胖：≥ 30。BMI 是一个筛查工具，不能替代医学诊断。请咨询医疗专业人员获取全面评估。",
+      },
+      {
+        question: "BMI 对所有人都准确吗？",
+        answer:
+          "BMI 无法区分肌肉和脂肪，因此肌肉发达的人可能被归类为超重。它只是一般性指导原则，不能替代专业医疗建议。",
+      },
+    ],
+  },
+  {
+    slug: "discount-calculator",
+    title: "折扣计算器",
+    description:
+      "即时计算折扣价格。输入原价和折扣百分比，查看节省金额和最终价格。",
+    category: "calculator",
+    keywords: ["折扣计算器", "优惠价格计算", "百分比折扣计算", "价格计算器", "省钱计算"],
+    searchVolume: "~300K/mo",
+    isClientSide: true,
+    icon: "Tag",
+    howToUse: [
+      "输入原价（例如 $100）",
+      "输入折扣百分比（例如 20%）",
+      "即时查看节省金额、最终价格和折扣百分比",
+    ],
+    faqs: [
+      {
+        question: "能计算叠加折扣吗？",
+        answer:
+          "对于多重折扣，请逐个应用。例如，8 折后再打 9 折：先计算 8 折，然后将结果作为新原价计算 9 折。",
+      },
+      {
+        question: "适用于任何货币吗？",
+        answer:
+          "可以！只需将 $ 符号视为占位符。计算方法对任何货币都一样。",
       },
     ],
   },

@@ -37,6 +37,98 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "png-to-jpg",
+    title: "PNG to JPG Converter",
+    description:
+      "Convert PNG images to JPG format online for free. Reduce file size while maintaining quality. All processing in your browser.",
+    category: "image",
+    keywords: ["png to jpg", "convert png to jpg", "png converter", "png to jpg online free", "png to jpeg"],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "Image",
+    howToUse: [
+      "Upload your PNG image by clicking or dragging",
+      "The conversion runs instantly in your browser",
+      "Preview the converted JPG image",
+      "Download as JPG — typically 50-80% smaller than PNG",
+    ],
+    faqs: [
+      {
+        question: "Why convert PNG to JPG?",
+        answer:
+          "PNG files are often much larger than JPG because they support transparency and lossless compression. If you don't need transparency, converting to JPG can reduce file size by 50-80%.",
+      },
+      {
+        question: "Will I lose quality?",
+        answer:
+          "We convert at high quality (92%). For photos and complex images, the quality difference is barely noticeable while the file size reduction is significant. For graphics with sharp edges and text, consider keeping PNG format.",
+      },
+      {
+        question: "Is my file secure?",
+        answer:
+          "Yes. All processing is done client-side in your browser. Your files are never uploaded to any server.",
+      },
+    ],
+  },
+  {
+    slug: "image-cropper",
+    title: "Image Cropper",
+    description:
+      "Crop images online for free. Select any area, preview instantly, and download. All processing in your browser.",
+    category: "image",
+    keywords: ["image cropper", "crop image", "crop photo", "image crop online", "photo cropper"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Crop",
+    howToUse: [
+      "Upload your image by clicking or dragging",
+      "Click and drag on the image to select the crop area",
+      "Click Crop to apply",
+      "Preview and download the cropped image",
+    ],
+    faqs: [
+      {
+        question: "What output formats are supported?",
+        answer:
+          "The cropped image downloads as JPG by default. This provides a good balance of quality and file size.",
+      },
+      {
+        question: "Is my image secure?",
+        answer:
+          "Yes. All cropping happens in your browser. Your image is never uploaded to any server.",
+      },
+    ],
+  },
+  {
+    slug: "image-to-base64",
+    title: "Image to Base64 Converter",
+    description:
+      "Convert images to Base64 data URLs online. Embed images directly in HTML, CSS, or JSON. No uploads needed.",
+    category: "image",
+    keywords: ["image to base64", "convert image to base64", "base64 image", "image to data url", "base64 encoder image"],
+    searchVolume: "~60K/mo",
+    isClientSide: true,
+    icon: "FileCode",
+    howToUse: [
+      "Upload your image by clicking or dragging",
+      "The Base64 data URL is generated instantly",
+      "Copy the Base64 string to clipboard",
+      "Use it in your HTML <img> tag or CSS background",
+    ],
+    faqs: [
+      {
+        question: "What is Base64 image encoding used for?",
+        answer:
+          "Base64-encoded images can be embedded directly in HTML or CSS without needing a separate file. This reduces HTTP requests for small images like icons, but increases the HTML size by ~33%.",
+      },
+      {
+        question: "Are there file size limits?",
+        answer:
+          "Since processing is client-side, there's no server limit. However, Base64 encoding increases file size by ~33%, so it's best for small images under 100KB.",
+      },
+    ],
+  },
+  {
     slug: "webp-to-jpg",
     title: "WebP to JPG Converter",
     description:
@@ -526,6 +618,35 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "url-encode-decode",
+    title: "URL Encoder / Decoder",
+    description:
+      "Encode text to URL-safe format or decode URL-encoded strings back to plain text. Fast and entirely browser-based.",
+    category: "dev",
+    keywords: ["url encoder", "url decoder", "url encode decode", "url percent encoding", "encode url online"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "Link",
+    howToUse: [
+      "Paste your text or URL-encoded string in the input area",
+      "Click Encode to convert text → URL-safe format",
+      "Click Decode to convert URL-encoded string → plain text",
+      "Copy the result to clipboard",
+    ],
+    faqs: [
+      {
+        question: "What is URL encoding used for?",
+        answer:
+          "URL encoding converts special characters (spaces, symbols, non-ASCII) into a format safe for URLs. For example, spaces become %20. It's essential for passing data in query strings and form submissions.",
+      },
+      {
+        question: "What's the difference between encodeURI and encodeURIComponent?",
+        answer:
+          "We use encodeURIComponent which encodes all special characters including / ? & = #. This is the safest method for encoding individual query parameter values.",
+      },
+    ],
+  },
+  {
     slug: "uuid-generator",
     title: "UUID Generator",
     description: "Generate random UUIDs (v4) online. Batch generate multiple UUIDs at once — free and fast.",
@@ -604,6 +725,93 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "case-converter",
+    title: "Case Converter",
+    description:
+      "Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, kebab-case, and more. Instant results.",
+    category: "dev",
+    keywords: ["case converter", "text case converter", "uppercase to lowercase", "title case converter", "change case online"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "CaseSensitive",
+    howToUse: [
+      "Paste your text in the input area",
+      "Click a case style button: UPPER, lower, Title, Sentence, camelCase, kebab-case, or iNVERT",
+      "See the converted result instantly in the output panel",
+      "Copy to clipboard",
+    ],
+    faqs: [
+      {
+        question: "What text cases are supported?",
+        answer:
+          "We support UPPERCASE, lowercase, Title Case (Each Word Capitalized), Sentence case, camelCase (for coding), kebab-case (for URLs/CSS), and inverted case.",
+      },
+      {
+        question: "Does it handle multilingual text?",
+        answer:
+          "Yes, the converter works with any text that uses standard Unicode letter casing rules. Most Latin-based languages work perfectly.",
+      },
+    ],
+  },
+  {
+    slug: "regex-tester",
+    title: "Regex Tester",
+    description:
+      "Test regular expressions online with real-time match highlighting. Supports all JS regex flags. Instant feedback.",
+    category: "dev",
+    keywords: ["regex tester", "regex test", "regular expression tester", "regex online", "regex matcher"],
+    searchVolume: "~60K/mo",
+    isClientSide: true,
+    icon: "Regex",
+    howToUse: [
+      "Type your regex pattern between the slashes",
+      "Toggle flags: g (global), i (case-insensitive), m (multiline), s (dotall), u (unicode)",
+      "Paste or type your test text below",
+      "Matches are highlighted in yellow — see match details on the right",
+    ],
+    faqs: [
+      {
+        question: "What regex flavor is used?",
+        answer:
+          "We use JavaScript's built-in RegExp engine. This matches what you'd use in Node.js, browser JavaScript, and most online code editors.",
+      },
+      {
+        question: "Why am I getting no matches?",
+        answer:
+          "Check the pattern for typos. Use the global flag (g) to find all matches. The dotall flag (s) makes . match newlines. See the error message if the pattern syntax is invalid.",
+      },
+    ],
+  },
+  {
+    slug: "css-formatter",
+    title: "CSS Formatter & Minifier",
+    description:
+      "Beautify or minify CSS online. Format messy CSS with proper indentation or compress for production. Free and instant.",
+    category: "dev",
+    keywords: ["css formatter", "css beautifier", "css minifier", "format css", "css prettify", "minify css online"],
+    searchVolume: "~40K/mo",
+    isClientSide: true,
+    icon: "Paintbrush",
+    howToUse: [
+      "Paste your CSS in the input panel",
+      "Click Beautify to format with indentation, or Minify to compress",
+      "The result appears in the output panel",
+      "Copy to clipboard",
+    ],
+    faqs: [
+      {
+        question: "What CSS syntax is supported?",
+        answer:
+          "We support standard CSS3 syntax including media queries, keyframes, and pseudo-selectors. Preprocessor syntax (SCSS, Less) may not format correctly — use a dedicated tool for those.",
+      },
+      {
+        question: "Will minifying break my CSS?",
+        answer:
+          "No. Minification only removes whitespace and comments — it doesn't change the CSS logic. Always keep the original unminified version for editing.",
+      },
+    ],
+  },
+  {
     slug: "text-diff-checker",
     title: "Text Diff Checker",
     description: "Compare two texts and find differences online. Line-by-line diff with added, removed, and unchanged highlighting.",
@@ -653,6 +861,120 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "How do I calculate percentage increase?",
         answer: "Use the % Change tab. Formula: ((New − Old) / Old) × 100. Enter the old and new values to see the change.",
+      },
+    ],
+  },
+  {
+    slug: "word-counter",
+    title: "Word Counter",
+    description:
+      "Count words, characters, lines, sentences, and paragraphs in your text. Real-time stats as you type.",
+    category: "calculator",
+    keywords: ["word counter", "character counter", "word count online", "text statistics", "character count"],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "Text",
+    howToUse: [
+      "Paste or type your text in the text area",
+      "View real-time statistics: words, characters, lines, sentences, paragraphs",
+      "Copy your text or clear to start over",
+    ],
+    faqs: [
+      {
+        question: "How are words counted?",
+        answer:
+          "Words are counted by splitting text on whitespace (spaces, tabs, newlines). Empty lines are excluded. This matches how most word processors count words.",
+      },
+      {
+        question: "Is my text private?",
+        answer:
+          "Yes. All counting happens in your browser. Your text is never uploaded to any server.",
+      },
+    ],
+  },
+  {
+    slug: "age-calculator",
+    title: "Age Calculator",
+    description:
+      "Calculate your exact age in years, months, and days. Find total days, weeks, and countdown to your next birthday.",
+    category: "calculator",
+    keywords: ["age calculator", "calculate age", "birthday calculator", "age in days", "how old am i"],
+    searchVolume: "~800K/mo",
+    isClientSide: true,
+    icon: "Calendar",
+    howToUse: [
+      "Enter your birth date",
+      "Optionally set a different end date (defaults to today)",
+      "Click Calculate",
+      "See your exact age in years, months, days plus total days, weeks, and next birthday countdown",
+    ],
+    faqs: [
+      {
+        question: "How is age calculated?",
+        answer:
+          "We calculate age precisely accounting for leap years and varying month lengths. The calculation shows the completed years, months, and days since birth.",
+      },
+      {
+        question: "Can I calculate age between any two dates?",
+        answer:
+          "Yes! Change the 'To Date' field to any date to calculate the age/duration between any two dates. Useful for calculating work anniversaries or event countdowns.",
+      },
+    ],
+  },
+  {
+    slug: "bmi-calculator",
+    title: "BMI Calculator",
+    description:
+      "Calculate your Body Mass Index (BMI) instantly. See your category, healthy weight range, and visual BMI scale.",
+    category: "calculator",
+    keywords: ["bmi calculator", "body mass index", "bmi checker", "healthy weight calculator", "bmi chart"],
+    searchVolume: "~600K/mo",
+    isClientSide: true,
+    icon: "Heart",
+    howToUse: [
+      "Enter your height in centimeters",
+      "Enter your weight in kilograms",
+      "Click Calculate",
+      "See your BMI score, category, and healthy weight range for your height",
+    ],
+    faqs: [
+      {
+        question: "What do the BMI categories mean?",
+        answer:
+          "Underweight: BMI < 18.5. Normal: 18.5–24.9. Overweight: 25–29.9. Obese: ≥ 30. BMI is a screening tool, not a diagnosis. Consult a healthcare professional for a full assessment.",
+      },
+      {
+        question: "Is BMI accurate for everyone?",
+        answer:
+          "BMI doesn't distinguish between muscle and fat, so very muscular people may be classified as overweight. It's a general guideline — not a substitute for professional medical advice.",
+      },
+    ],
+  },
+  {
+    slug: "discount-calculator",
+    title: "Discount Calculator",
+    description:
+      "Calculate sale prices instantly. Enter the original price and discount percentage to see your savings and final price.",
+    category: "calculator",
+    keywords: ["discount calculator", "sale price calculator", "percent off calculator", "price calculator", "savings calculator"],
+    searchVolume: "~300K/mo",
+    isClientSide: true,
+    icon: "Tag",
+    howToUse: [
+      "Enter the original price (e.g. $100)",
+      "Enter the discount percentage (e.g. 20%)",
+      "See your savings amount, final price, and savings percentage instantly",
+    ],
+    faqs: [
+      {
+        question: "Can I calculate stacked discounts?",
+        answer:
+          "For multiple discounts, apply them one at a time. For example, a 20% off + extra 10% off: calculate 20% off first, then use that result as the new original price for the 10% discount.",
+      },
+      {
+        question: "Does it work for any currency?",
+        answer:
+          "Yes! Just use the $ symbol as a placeholder. The math is the same for any currency.",
       },
     ],
   },

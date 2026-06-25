@@ -66,6 +66,13 @@ export async function convertImage(
 }
 
 /**
+ * Convert a PNG image to JPEG
+ */
+export async function pngToJpg(file: File, quality = 0.92): Promise<Blob> {
+  return await convertImage(file, "image/jpeg", quality);
+}
+
+/**
  * Convert image to PNG format
  */
 export async function imageToPng(file: File): Promise<Blob> {
