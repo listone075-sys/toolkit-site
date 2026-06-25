@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { compressPdf } from "@/lib/tools/pdf/compress";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
-import { Upload, Download, X, FileArchive } from "lucide-react";
+import { Download, X, FileArchive } from "lucide-react";
 
 export function CompressPdf() {
   const t = useTranslations("components");
@@ -13,9 +14,9 @@ export function CompressPdf() {
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
 
-  const loadFile = useCallback((f: File) => {
+  const loadFile = useCallback((files: File[]) => {
+    const f = files[0];
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
       setError(t("compressPdf.uploadError"));
       return;
@@ -24,13 +25,6 @@ export function CompressPdf() {
     setError(null);
     setOutputBlob(null);
   }, [t]);
-
-  const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    const f = e.dataTransfer.files[0];
-    if (f) loadFile(f);
-  }, [loadFile]);
 
   const handleCompress = async () => {
     if (!file) return;
@@ -66,25 +60,13 @@ export function CompressPdf() {
   return (
     <div className="space-y-4">
       {!file ? (
-        <div
-          className={`flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 transition-colors min-h-[200px] ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">{t("compressPdf.uploadPdf")}</p>
-          <p className="text-xs text-zinc-400 mb-3">{t("compressPdf.orDragDrop")}</p>
-          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            {t("compressPdf.browse")}
-            <input type="file" accept=".pdf,application/pdf" className="hidden" onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) loadFile(f);
-            }} />
-          </label>
-        </div>
+        <FileUploadZone
+          title={t("compressPdf.uploadPdf")}
+          description={t("compressPdf.orDragDrop")}
+          browseLabel={t("compressPdf.browse")}
+          accept=".pdf,application/pdf"
+          onFiles={loadFile}
+        />
       ) : (
         <>
           {/* File info + actions */}
@@ -106,7 +88,13 @@ export function CompressPdf() {
           {outputBlob && (
             <div className="border rounded-lg p-6 space-y-3 text-center">
               <div className="text-3xl font-bold text-green-600">
-                {savings !== null && savings > 0 ? `−${savings}%` : savings !== null && savings === 0 ? "0%" : "✓"}
+                {savings !== null
+                  ? savings > 0
+                    ? `−${savings}%`
+                    : savings < 0
+                    ? `+${Math.abs(savings)}%`
+                    : "0%"
+                  : "✓"}
               </div>
               <div className="flex items-center justify-center gap-4 text-sm text-zinc-600">
                 <span>{formatFileSize(file.size)} → {formatFileSize(outputBlob.size)}</span>

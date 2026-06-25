@@ -131,10 +131,8 @@ export function decodeHtmlEntities(text: string): string {
     safeCodePoint(parseInt(dec, 10)),
   );
 
-  // Named entities &xxx;
-  for (const [entity, char] of Object.entries(ENTITY_TO_CHAR)) {
-    result = result.split(entity).join(char);
-  }
+  // Named entities &xxx; — single regex pass instead of O(n*m) per-entity split/join loop
+  result = result.replace(/&[a-zA-Z]+;/g, (match) => ENTITY_TO_CHAR[match] ?? match);
 
   return result;
 }

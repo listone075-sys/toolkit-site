@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { reorderPdfPages, reversePdfPages } from "@/lib/tools/pdf/reorder";
 import { downloadFile } from "@/lib/utils/file";
-import { Upload, Download, X, FileText, GripVertical, ArrowUpDown } from "lucide-react";
+import { Download, X, FileText, GripVertical, ArrowUpDown } from "lucide-react";
 
 export function PdfReorder() {
   const t = useTranslations("components");
@@ -15,10 +16,10 @@ export function PdfReorder() {
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const [dragIdx, setDragIdx] = useState<number | null>(null);
 
-  const loadFile = useCallback(async (f: File) => {
+  const loadFile = useCallback(async (files: File[]) => {
+    const f = files[0];
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
       setError(t("pdfReorder.uploadError"));
       return;
@@ -41,13 +42,6 @@ export function PdfReorder() {
       setOrder([]);
     }
   }, [t]);
-
-  const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    const f = e.dataTransfer.files[0];
-    if (f) loadFile(f);
-  }, [loadFile]);
 
   const movePage = (fromIdx: number, toIdx: number) => {
     const newOrder = [...order];
@@ -103,25 +97,13 @@ export function PdfReorder() {
   return (
     <div className="space-y-4">
       {!file ? (
-        <div
-          className={`flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 transition-colors min-h-[200px] ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">{t("pdfReorder.uploadPdf")}</p>
-          <p className="text-xs text-zinc-400 mb-3">{t("pdfReorder.orDragDrop")}</p>
-          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            {t("pdfReorder.browse")}
-            <input type="file" accept=".pdf,application/pdf" className="hidden" onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) loadFile(f);
-            }} />
-          </label>
-        </div>
+        <FileUploadZone
+          title={t("pdfReorder.uploadPdf")}
+          description={t("pdfReorder.orDragDrop")}
+          browseLabel={t("pdfReorder.browse")}
+          accept=".pdf,application/pdf"
+          onFiles={loadFile}
+        />
       ) : (
         <>
           <div className="flex items-center gap-2 p-3 bg-zinc-50 rounded-lg border flex-wrap">

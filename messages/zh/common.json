@@ -5,7 +5,8 @@
       "image": "图片",
       "pdf": "PDF",
       "markdown": "Markdown",
-      "dev": "开发者"
+      "dev": "开发者",
+      "favorites": "收藏夹"
     },
     "mobile": {
       "imageTools": "图片工具",
@@ -44,6 +45,19 @@
     "continuation": "继续使用即表示您同意我们使用 Cookie。",
     "accept": "接受"
   },
+  "favorites": {
+    "title": "我的收藏",
+    "empty": "暂无收藏。点击任何工具上的心形图标即可收藏。",
+    "addTooltip": "添加到收藏",
+    "removeTooltip": "取消收藏"
+  },
+  "recent": {
+    "title": "最近使用"
+  },
+  "recommendations": {
+    "similarTools": "相似工具推荐",
+    "youMightLike": "您可能也喜欢"
+  },
   "breadcrumb": {
     "home": "ToolCraft",
     "imageTools": "图片工具",
@@ -55,6 +69,16 @@
   "toolCard": {
     "freeBadge": "免费 · 基于浏览器"
   },
+  "newsletter": {
+    "title": "保持关注",
+    "description": "获取新工具和功能的通知。无垃圾邮件，随时可退订。",
+    "placeholder": "your@email.com",
+    "subscribe": "订阅",
+    "success": "感谢订阅！请检查您的邮箱确认。",
+    "error": "出错了，请稍后重试。",
+    "privacy": "我们尊重您的隐私。随时可退订。"
+  },
+  "dismiss": "关闭",
   "languageSwitcher": {
     "en": "English",
     "zh": "简体中文",

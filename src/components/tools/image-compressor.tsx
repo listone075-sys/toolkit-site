@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, type DragEvent, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { compressImage, type CompressResult } from "@/lib/tools/image/compress";
 import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
-import { Upload, Download, Image as ImageIcon, X, CheckCircle } from "lucide-react";
+import { Download, Image as ImageIcon, X, CheckCircle } from "lucide-react";
 
 export function ImageCompressor() {
   const t = useTranslations("components");
@@ -15,11 +16,11 @@ export function ImageCompressor() {
   const [outputUrl, setOutputUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const [quality, setQuality] = useState(80);
 
   const processFile = useCallback(
-    async (f: File) => {
+    async (files: File[]) => {
+      const f = files[0];
       if (!isImageFile(f)) {
         setError(t("imageCompressor.uploadError"));
         return;
@@ -49,28 +50,10 @@ export function ImageCompressor() {
   // Re-process when quality changes
   useEffect(() => {
     if (file) {
-      const timer = setTimeout(() => processFile(file), 200);
+      const timer = setTimeout(() => processFile([file]), 200);
       return () => clearTimeout(timer);
     }
   }, [quality]);
-
-  const handleDrop = useCallback(
-    (e: DragEvent) => {
-      e.preventDefault();
-      setDragOver(false);
-      const f = e.dataTransfer.files[0];
-      if (f) processFile(f);
-    },
-    [processFile],
-  );
-
-  const handleFileInput = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const f = e.target.files?.[0];
-      if (f) processFile(f);
-    },
-    [processFile],
-  );
 
   const handleDownload = () => {
     if (!result || !file) return;
@@ -115,27 +98,17 @@ export function ImageCompressor() {
         {/* Input */}
         <div className="border rounded-lg p-4 min-h-[300px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t("imageCompressor.original")}</div>
-          <div
-            className={`
-              flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 transition-colors
-              ${dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"}
-              ${file ? "border-green-300 bg-green-50/50" : ""}
-            `}
-            onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-            onDragLeave={() => setDragOver(false)}
-            onDrop={handleDrop}
-          >
-            {!file ? (
-              <>
-                <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-                <p className="text-sm font-medium text-zinc-600 mb-1">{t("imageCompressor.uploadImage")}</p>
-                <p className="text-xs text-zinc-400 mb-3">{t("imageCompressor.orDragDrop")}</p>
-                <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-                  {t("imageCompressor.browse")}
-                  <input type="file" accept="image/*" className="hidden" onChange={handleFileInput} />
-                </label>
-              </>
-            ) : (
+          {!file ? (
+            <FileUploadZone
+              title={t("imageCompressor.uploadImage")}
+              description={t("imageCompressor.orDragDrop")}
+              browseLabel={t("imageCompressor.browse")}
+              accept="image/*"
+              onFiles={processFile}
+              className="flex-1 p-6"
+            />
+          ) : (
+            <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 border-green-300 bg-green-50/50">
               <div className="w-full space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-zinc-700 truncate">{file.name}</span>
@@ -148,8 +121,8 @@ export function ImageCompressor() {
                   <img src={preview} alt="Original" className="max-h-40 rounded object-contain mx-auto" />
                 )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Output */}

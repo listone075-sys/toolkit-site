@@ -50,5 +50,9 @@
     "description": "No limits, no premium tiers. All tools free forever."
   },
   "exploreMore": "Explore more tools",
-  "categoryLinks": "{label} Tools →"
+  "categoryLinks": "{label} Tools →",
+  "aiSection": {
+    "title": "AI-Powered Tools",
+    "new": "NEW"
+  }
 }

@@ -50,5 +50,9 @@
     "description": "没有限制，没有付费层级。所有工具永久免费。"
   },
   "exploreMore": "探索更多工具",
-  "categoryLinks": "{label} 工具 →"
+  "categoryLinks": "{label} 工具 →",
+  "aiSection": {
+    "title": "AI 驱动工具",
+    "new": "新增"
+  }
 }

@@ -143,6 +143,7 @@ No `.env` file is tracked in git. Google Analytics and AdSense IDs are currently
 | `src/components/tools/tool-loader.tsx` | Map tool slugs to lazy-loaded components |
 | `src/components/tools/tool-renderer.tsx` | Client boundary for tool rendering |
 | `src/components/tools/tool-shell.tsx` | Reusable input/output panel layout |
+| `src/components/tools/file-upload-zone.tsx` | Reusable drag-and-drop file upload zone used by 15+ tools |
 | `src/app/tools/[slug]/page.tsx` | Dynamic tool page (SEO + tool UI) |
 | `src/app/page.tsx` | Homepage + subdomain category pages |
 | `src/app/layout.tsx` | Root layout (fonts, analytics, ads, verification tags) |

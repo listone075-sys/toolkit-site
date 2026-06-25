@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { pdfToImages, getPdfPageCount, type PdfPageInfo } from "@/lib/tools/pdf/pdf-to-image";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
-import { Upload, Download, X, FileText } from "lucide-react";
+import { Download, X, FileText } from "lucide-react";
 
 export function PdfToJpg() {
   const t = useTranslations("components");
@@ -13,9 +14,9 @@ export function PdfToJpg() {
   const [pages, setPages] = useState<PdfPageInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
 
-  const processPdf = useCallback(async (f: File) => {
+  const processPdf = useCallback(async (files: File[]) => {
+    const f = files[0];
     if (f.type !== "application/pdf") {
       setError(t("pdfToJpg.uploadError"));
       return;
@@ -33,11 +34,6 @@ export function PdfToJpg() {
     }
   }, []);
 
-  const handleDrop = useCallback(
-    (e: DragEvent) => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files[0]; if (f) processPdf(f); },
-    [processPdf],
-  );
-
   const downloadPage = (page: PdfPageInfo) => {
     downloadFile(page.blob, `page-${page.pageNumber}.jpg`, "image/jpeg");
   };
@@ -49,39 +45,25 @@ export function PdfToJpg() {
   return (
     <div className="space-y-4">
       {/* Upload */}
-      <div
-        className={`border-2 border-dashed rounded-lg p-10 text-center transition-colors ${
-          dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
-        }`}
-        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={handleDrop}
-      >
-        {!file ? (
-          <>
-            <Upload className="h-12 w-12 text-zinc-300 mx-auto mb-3" />
-            <p className="text-sm font-medium text-zinc-600 mb-1">{t("pdfToJpg.uploadPdf")}</p>
-            <p className="text-xs text-zinc-400 mb-3">{t("pdfToJpg.orDragDrop")}</p>
-            <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-              {t("pdfToJpg.browse")}
-              <input type="file" accept="application/pdf" className="hidden" onChange={(e) => e.target.files?.[0] && processPdf(e.target.files[0])} />
-            </label>
-          </>
-        ) : (
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <FileText className="h-8 w-8 text-red-500" />
-              <div className="text-left">
-                <p className="font-medium text-zinc-700">{file.name}</p>
-                <p className="text-xs text-zinc-400">{formatFileSize(file.size)}</p>
-              </div>
-            </div>
-            <Button variant="ghost" size="icon" onClick={() => { setFile(null); setPages([]); }}>
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-      </div>
+      {!file ? (
+        <FileUploadZone
+          title={t("pdfToJpg.uploadPdf")}
+          description={t("pdfToJpg.orDragDrop")}
+          browseLabel={t("pdfToJpg.browse")}
+          accept="application/pdf"
+          onFiles={processPdf}
+          className="text-center p-10"
+        />
+      ) : (
+        <div className="flex items-center gap-2 p-3 bg-zinc-50 rounded-lg border">
+          <FileText className="h-5 w-5 text-zinc-500" />
+          <span className="text-sm font-medium flex-1 min-w-0 truncate">{file.name}</span>
+          <span className="text-xs text-zinc-400">{formatFileSize(file.size)}</span>
+          <Button variant="ghost" size="sm" onClick={() => { setFile(null); setPages([]); }}>
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
 
       {/* Loading */}
       {loading && (

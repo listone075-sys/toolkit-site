@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { imagesToPdf } from "@/lib/tools/pdf/image-to-pdf";
 import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
-import { Upload, Download, X, Plus, GripVertical } from "lucide-react";
+import { Download, X, Plus, GripVertical } from "lucide-react";
 
 const PAGE_SIZES = ["A4", "Letter", "Legal", "A3"] as const;
 
@@ -16,11 +17,10 @@ export function JpgToPdf() {
   const [pageSize, setPageSize] = useState<string>("A4");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
 
   const addFiles = useCallback(
-    (newFiles: FileList | File[]) => {
-      const arr = Array.from(newFiles).filter((f) => isImageFile(f));
+    (newFiles: File[]) => {
+      const arr = newFiles.filter((f) => isImageFile(f));
       setFiles((prev) => [...prev, ...arr]);
       arr.forEach((f) => {
         const url = URL.createObjectURL(f);
@@ -38,15 +38,6 @@ export function JpgToPdf() {
       return prev.filter((_, idx) => idx !== i);
     });
   };
-
-  const handleDrop = useCallback(
-    (e: DragEvent) => {
-      e.preventDefault();
-      setDragOver(false);
-      if (e.dataTransfer.files.length > 0) addFiles(e.dataTransfer.files);
-    },
-    [addFiles],
-  );
 
   const handleConvert = async () => {
     if (files.length === 0) {
@@ -84,22 +75,16 @@ export function JpgToPdf() {
       {/* Upload / Preview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Upload Area */}
-        <div
-          className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center min-h-[250px] transition-colors ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">{t("jpgToPdf.uploadImages")}</p>
-          <p className="text-xs text-zinc-400 mb-3">{t("jpgToPdf.orDragDrop")}</p>
-          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            <Plus className="h-4 w-4 mr-1" /> {t("jpgToPdf.browse")}
-            <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => e.target.files && addFiles(e.target.files)} />
-          </label>
-        </div>
+        <FileUploadZone
+          title={t("jpgToPdf.uploadImages")}
+          description={t("jpgToPdf.orDragDrop")}
+          browseLabel={t("jpgToPdf.browse")}
+          accept="image/*"
+          multiple
+          onFiles={addFiles}
+          icon={<Plus className="h-10 w-10 text-zinc-300 mb-3" />}
+          className="min-h-[250px] p-6"
+        />
 
         {/* File list */}
         <div className="border rounded-lg p-4 min-h-[250px]">

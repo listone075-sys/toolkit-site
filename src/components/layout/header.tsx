@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Wrench } from "lucide-react";
+import { Menu, X, Wrench, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/cn";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
+import { useLocalStorage } from "@/hooks/use-local-storage";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const t = useTranslations("common");
+  const [favorites] = useLocalStorage<string[]>("toolcraft-favorites", []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
@@ -34,6 +36,11 @@ export function Header() {
           <Link href="/tools/json-formatter" className="text-sm text-zinc-600 hover:text-zinc-900">
             {t("header.nav.dev")}
           </Link>
+          {/* Reserve space for favorites link to prevent CLS on hydration */}
+          <span className="text-sm text-red-500 flex items-center gap-1" style={{ visibility: favorites.length > 0 ? "visible" : "hidden" }}>
+            <Heart className="h-4 w-4 fill-current" />
+            {t("header.nav.favorites")}
+          </span>
           <LanguageSwitcher />
         </nav>
 

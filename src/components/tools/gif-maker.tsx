@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, useRef, type DragEvent } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { encodeGif, createFrame, imageToImageData } from "@/lib/tools/image/gif-maker";
 import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
-import { Upload, Download, X, Play, Plus, Trash2, GripVertical } from "lucide-react";
+import { Download, X, Play, Plus, Trash2, GripVertical } from "lucide-react";
 
 interface FrameEntry {
   id: number;
@@ -21,11 +22,12 @@ export function GifMaker() {
   const [outputUrl, setOutputUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const [delay, setDelay] = useState(500); // ms per frame
   const nextId = useRef(0);
+  const outputUrlRef = useRef(outputUrl);
+  useEffect(() => { outputUrlRef.current = outputUrl; }, [outputUrl]);
 
-  const addFiles = useCallback((files: FileList | File[]) => {
+  const addFiles = useCallback((files: File[]) => {
     const newFrames: FrameEntry[] = [];
     for (const f of files) {
       if (!isImageFile(f)) continue;
@@ -42,9 +44,9 @@ export function GifMaker() {
     setFrames((prev) => [...prev, ...newFrames]);
     setError(null);
     setOutputBlob(null);
-    if (outputUrl) URL.revokeObjectURL(outputUrl);
+    if (outputUrlRef.current) URL.revokeObjectURL(outputUrlRef.current);
     setOutputUrl(null);
-  }, [t, outputUrl]);
+  }, [t]);
 
   const removeFrame = (id: number) => {
     setFrames((prev) => {
@@ -124,28 +126,16 @@ export function GifMaker() {
   return (
     <div className="space-y-4">
       {/* Upload area */}
-      <div
-        className={`flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 transition-colors ${
-          dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-        }`}
-        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={(e) => {
-          e.preventDefault();
-          setDragOver(false);
-          addFiles(e.dataTransfer.files);
-        }}
-      >
-        <Upload className="h-8 w-8 text-zinc-300 mb-2" />
-        <p className="text-sm font-medium text-zinc-600 mb-1">{t("gifMaker.uploadImages")}</p>
-        <p className="text-xs text-zinc-400 mb-3">{t("gifMaker.orDragDrop")}</p>
-        <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-          <Plus className="h-4 w-4 mr-1" /> {t("gifMaker.addImages")}
-          <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => {
-            if (e.target.files) addFiles(e.target.files);
-          }} />
-        </label>
-      </div>
+      <FileUploadZone
+        title={t("gifMaker.uploadImages")}
+        description={t("gifMaker.orDragDrop")}
+        browseLabel={t("gifMaker.addImages")}
+        accept="image/*"
+        multiple
+        onFiles={addFiles}
+        icon={<Plus className="h-8 w-8 text-zinc-300 mb-2" />}
+        className="p-6"
+      />
 
       {error && <p className="text-sm text-red-500">{error}</p>}
 

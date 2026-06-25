@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, useEffect, useRef, type DragEvent } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { FileUploadZone, DropTarget } from "@/components/tools/file-upload-zone";
 import { resizeImage } from "@/lib/tools/image/resize";
 import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
-import { Upload, Download, X, Lock, Unlock } from "lucide-react";
+import { Download, X, Lock, Unlock } from "lucide-react";
 
 export function ImageResizer() {
   const t = useTranslations("components");
@@ -21,7 +22,6 @@ export function ImageResizer() {
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const mountedRef = useRef(true);
 
   // Track mounted state to prevent state updates and blob URL creation after unmount
@@ -30,7 +30,8 @@ export function ImageResizer() {
     return () => { mountedRef.current = false; };
   }, []);
 
-  const handleFile = useCallback(async (f: File) => {
+  const handleFile = useCallback(async (files: File[]) => {
+    const f = files[0];
     if (!isImageFile(f)) { setError(t("imageResizer.uploadError")); return; }
     setFile(f);
     if (preview) URL.revokeObjectURL(preview);
@@ -47,12 +48,6 @@ export function ImageResizer() {
     setError(null);
     setOutputUrl(null);
   }, [preview]);
-
-  const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault(); setDragOver(false);
-    const f = e.dataTransfer.files[0];
-    if (f) handleFile(f);
-  }, [handleFile]);
 
   const handleWChange = (v: string) => {
     setTargetW(v);
@@ -114,25 +109,17 @@ export function ImageResizer() {
 
       {/* Upload + Output */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div
-          className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center min-h-[250px] transition-colors ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          {!file ? (
-            <>
-              <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-              <p className="text-sm text-zinc-600 mb-1">{t("imageResizer.uploadImage")}</p>
-              <p className="text-xs text-zinc-400 mb-3">{t("imageResizer.orDragDrop")}</p>
-              <label className="cursor-pointer inline-flex items-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-                {t("imageResizer.browse")}
-                <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
-              </label>
-            </>
-          ) : (
+        {!file ? (
+          <FileUploadZone
+            title={t("imageResizer.uploadImage")}
+            description={t("imageResizer.orDragDrop")}
+            browseLabel={t("imageResizer.browse")}
+            accept="image/*"
+            onFiles={handleFile}
+            className="min-h-[250px] p-6"
+          />
+        ) : (
+          <DropTarget onFiles={handleFile} className="border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center min-h-[250px]">
             <div className="w-full space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium truncate">{file.name}</span>
@@ -146,8 +133,8 @@ export function ImageResizer() {
               </div>
               {preview && <img src={preview} alt="" className="max-h-40 rounded mx-auto" />}
             </div>
-          )}
-        </div>
+          </DropTarget>
+        )}
 
         <div className="border rounded-lg p-4 min-h-[250px] flex flex-col items-center justify-center">
           {loading ? (
@@ -176,7 +163,7 @@ export function ImageResizer() {
       {file && (
         <div className="flex justify-center">
           <Button onClick={handleResize} disabled={loading} size="lg">
-            {loading ? t("imageResizer.resizing") : "Resize Image"}
+            {loading ? t("imageResizer.resizing") : t("imageResizer.resize")}
           </Button>
         </div>
       )}

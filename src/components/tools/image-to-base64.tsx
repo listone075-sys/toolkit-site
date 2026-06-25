@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { imageToBase64, parseBase64Image } from "@/lib/tools/image/image-to-base64";
 import { formatFileSize, isImageFile } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
-import { Upload, Copy, X, Image as ImageIcon } from "lucide-react";
+import { Copy, X, Image as ImageIcon } from "lucide-react";
 
 export function ImageToBase64Converter() {
   const t = useTranslations("components");
@@ -15,12 +16,12 @@ export function ImageToBase64Converter() {
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const { copied, copy } = useClipboard();
 
   const info = base64 ? parseBase64Image(base64) : null;
 
-  const processFile = useCallback(async (f: File) => {
+  const processFile = useCallback(async (files: File[]) => {
+    const f = files[0];
     if (!isImageFile(f)) {
       setError(t("imageToBase64.uploadError"));
       return;
@@ -40,18 +41,6 @@ export function ImageToBase64Converter() {
     }
   }, [t]);
 
-  const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    const f = e.dataTransfer.files[0];
-    if (f) processFile(f);
-  }, [processFile]);
-
-  const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0];
-    if (f) processFile(f);
-  }, [processFile]);
-
   const handleClear = () => {
     setFile(null);
     setBase64(null);
@@ -64,22 +53,13 @@ export function ImageToBase64Converter() {
     <div className="space-y-4">
       {/* Input */}
       {!file ? (
-        <div
-          className={`flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 transition-colors min-h-[200px] ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">{t("imageToBase64.uploadImage")}</p>
-          <p className="text-xs text-zinc-400 mb-3">{t("imageToBase64.orDragDrop")}</p>
-          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            {t("imageToBase64.browse")}
-            <input type="file" accept="image/*" className="hidden" onChange={handleFileInput} />
-          </label>
-        </div>
+        <FileUploadZone
+          title={t("imageToBase64.uploadImage")}
+          description={t("imageToBase64.orDragDrop")}
+          browseLabel={t("imageToBase64.browse")}
+          accept="image/*"
+          onFiles={processFile}
+        />
       ) : (
         <>
           {/* Toolbar */}

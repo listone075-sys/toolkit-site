@@ -283,6 +283,42 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
       default: m.TipCalculator,
     })),
   ),
+
+  "remove-background": dynamic(() =>
+    import("./background-removal").then((m) => ({
+      default: m.BackgroundRemoval,
+    })),
+  ),
+
+  "image-upscaler": dynamic(() =>
+    import("./image-upscaler").then((m) => ({
+      default: m.ImageUpscaler,
+    })),
+  ),
+
+  "html-to-markdown": dynamic(() =>
+    import("./html-to-markdown").then((m) => ({
+      default: m.HtmlToMarkdown,
+    })),
+  ),
+
+  "markdown-formatter": dynamic(() =>
+    import("./markdown-formatter").then((m) => ({
+      default: m.MarkdownFormatter,
+    })),
+  ),
+
+  "markdown-to-pdf": dynamic(() =>
+    import("./markdown-to-pdf").then((m) => ({
+      default: m.MarkdownToPdf,
+    })),
+  ),
+
+  "url-to-markdown": dynamic(() =>
+    import("./url-to-markdown").then((m) => ({
+      default: m.UrlToMarkdown,
+    })),
+  ),
 };
 
 /**

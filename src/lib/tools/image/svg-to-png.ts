@@ -30,7 +30,7 @@ export async function svgToPng(
   if (!width || !height) {
     const viewBox = svgEl.getAttribute("viewBox");
     if (viewBox) {
-      const parts = viewBox.split(/[\s,]+/);
+      const parts = viewBox.trim().split(/[\s,]+/);
       width = width || parseFloat(parts[2]);
       height = height || parseFloat(parts[3]);
     }

@@ -721,6 +721,121 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "html-to-markdown",
+    title: "HTML to Markdown Converter",
+    description:
+      "Convert HTML code to clean Markdown instantly. Paste any HTML and get well-formatted Markdown output. Free, fast, browser-based.",
+    category: "markdown",
+    keywords: ["html to markdown", "html to md", "convert html to markdown", "html markdown converter"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "FileCode",
+    howToUse: [
+      "Paste your HTML code in the input panel",
+      "Click Convert to transform it to Markdown",
+      "Review the Markdown output",
+      "Copy the result or use it directly",
+    ],
+    faqs: [
+      {
+        question: "What HTML elements are supported?",
+        answer:
+          "Most common elements are supported: headings, paragraphs, lists, links, images, tables, code blocks, blockquotes, and inline formatting (bold, italic). Complex nested structures are flattened to reasonable Markdown.",
+      },
+      {
+        question: "Is my HTML data safe?",
+        answer: "Yes, all processing happens in your browser. Your HTML never leaves your device.",
+      },
+    ],
+  },
+  {
+    slug: "markdown-formatter",
+    title: "Markdown Formatter & Beautifier",
+    description:
+      "Format and beautify messy Markdown. Fix spacing, normalize headings, clean up lists, and make your Markdown readable in one click.",
+    category: "markdown",
+    keywords: ["markdown formatter", "markdown beautifier", "format markdown", "prettify markdown", "markdown tidy"],
+    searchVolume: "~40K/mo",
+    isClientSide: true,
+    icon: "Sparkles",
+    howToUse: [
+      "Paste your Markdown text in the input panel",
+      "Click Format to normalize spacing and structure",
+      "Review the cleaned-up Markdown output",
+      "Copy the result or paste it back into your editor",
+    ],
+    faqs: [
+      {
+        question: "What does the formatter fix?",
+        answer:
+          "It normalizes heading spacing, fixes list indentation, ensures blank lines between sections, removes trailing whitespace, and standardizes code fences (~~~ → ```).",
+      },
+      {
+        question: "Will it change my Markdown content?",
+        answer:
+          "No content is changed — only formatting and spacing. Your headings, lists, links, and text remain exactly the same, just better organized.",
+      },
+    ],
+  },
+  {
+    slug: "markdown-to-pdf",
+    title: "Markdown to PDF Converter",
+    description:
+      "Convert Markdown to PDF with professional styling. Live preview, print-to-PDF, and HTML download. Free, instant, browser-based.",
+    category: "markdown",
+    keywords: ["markdown to pdf", "md to pdf", "convert markdown to pdf", "markdown pdf export"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "Paste or write your Markdown in the editor",
+      "Click Preview to see the rendered document",
+      "Click Print to PDF to save as a PDF file",
+      "Or download as a styled HTML file",
+    ],
+    faqs: [
+      {
+        question: "How does Markdown to PDF work?",
+        answer:
+          "Your Markdown is rendered to a professionally styled HTML document. You can preview it, then use your browser's Print → Save as PDF feature to create the final PDF file.",
+      },
+      {
+        question: "Can I customize the PDF styling?",
+        answer:
+          "The default styling includes clean typography, code highlighting, and print-friendly formatting. For advanced customization, you can download the HTML file and modify the CSS.",
+      },
+    ],
+  },
+  {
+    slug: "url-to-markdown",
+    title: "URL to Markdown Converter",
+    description:
+      "Convert any webpage to clean Markdown. Paste a URL and get the main content as well-formatted Markdown. Perfect for research and note-taking.",
+    category: "markdown",
+    keywords: ["url to markdown", "webpage to markdown", "convert url to markdown", "website to markdown", "html to markdown url"],
+    searchVolume: "~60K/mo",
+    isClientSide: true,
+    icon: "Globe",
+    howToUse: [
+      "Paste a webpage URL in the input field",
+      "Click Fetch to download and convert the page",
+      "Review the extracted Markdown content",
+      "Copy or download the Markdown file",
+    ],
+    faqs: [
+      {
+        question: "Why does it fail for some URLs?",
+        answer:
+          "Some websites block cross-origin requests (CORS policy). If a URL fails, try pasting the page's HTML source into our HTML to Markdown converter instead.",
+      },
+      {
+        question: "Is the conversion accurate?",
+        answer:
+          "We extract the main content area (<main>, <article>, or <body>) and convert it to Markdown. Navigation, scripts, and styles are stripped. Most articles and documentation pages convert cleanly.",
+      },
+    ],
+  },
 
   // ── Developer Tools ──────────────────────────────────────
   {
@@ -1294,6 +1409,81 @@ export const toolRegistry: ToolConfig[] = [
         question: "How is the per-person split calculated?",
         answer:
           "The tip amount and total bill are divided equally among the number of people you specify. For uneven splits, calculate each person's share individually.",
+      },
+    ],
+  },
+  {
+    slug: "image-upscaler",
+    title: "AI Image Upscaler",
+    description:
+      "Upscale images by 2x, 3x, or 4x with high-quality interpolation. Enhance resolution without losing quality. Free, instant, browser-based.",
+    category: "image",
+    keywords: ["image upscaler", "upscale image", "ai upscale", "increase resolution", "image enlarger", "super resolution", "2x upscale"],
+    searchVolume: "~300K/mo",
+    isClientSide: true,
+    isAi: true,
+    icon: "Maximize2",
+    howToUse: [
+      "Upload or drag & drop your image",
+      "Select the desired scale factor (2x, 3x, or 4x)",
+      "Toggle sharpening for edge enhancement",
+      "Download the upscaled image in PNG, JPEG, or WebP format",
+    ],
+    faqs: [
+      {
+        question: "How does image upscaling work?",
+        answer:
+          "Our upscaler uses the browser's high-quality Lanczos/bicubic interpolation and optional unsharp mask sharpening to enlarge images while preserving detail. Processing happens entirely in your browser.",
+      },
+      {
+        question: "Will upscaling reduce image quality?",
+        answer:
+          "Upscaling always adds pixels that weren't in the original. Our high-quality interpolation minimizes blur and artifacts. The optional sharpening pass enhances edges for a crisper result.",
+      },
+      {
+        question: "What's the maximum upscale?",
+        answer:
+          "You can upscale images by up to 4x. For example, a 500×500 image becomes 2000×2000. Keep in mind that larger scales will result in larger file sizes.",
+      },
+    ],
+  },
+  {
+    slug: "remove-background",
+    title: "AI Background Remover",
+    description:
+      "Remove image backgrounds instantly with AI. 100% free, no upload required — all processing happens locally in your browser. Privacy-first.",
+    category: "image",
+    keywords: ["remove background", "background remover", "ai background removal", "remove bg", "transparent background", "free background remover"],
+    searchVolume: "~2M/mo",
+    isClientSide: true,
+    isAi: true,
+    icon: "Sparkles",
+    howToUse: [
+      "Upload or drag & drop your image",
+      "The AI model downloads once (~40MB, cached for future visits)",
+      "Wait a few seconds while the AI processes your image",
+      "Download the result with transparent background",
+    ],
+    faqs: [
+      {
+        question: "Is this really free?",
+        answer:
+          "Yes, completely free with no limits. All AI processing runs locally in your browser using ONNX runtime — your images never leave your device.",
+      },
+      {
+        question: "How does the AI background removal work?",
+        answer:
+          "We use the ISNet (Image Segmentation Network) model running in your browser via WebAssembly. It detects the main subject in your image and separates it from the background with pixel-level accuracy.",
+      },
+      {
+        question: "Will my image quality be preserved?",
+        answer:
+          "Yes, the output is a PNG with lossless quality and a transparent background. You can also choose JPEG or WebP format with adjustable quality if you need a smaller file.",
+      },
+      {
+        question: "How long does it take?",
+        answer:
+          "The first use downloads the AI model (~40MB, cached after that). Processing takes 2-10 seconds depending on image size and your device. GPU acceleration is used when available.",
       },
     ],
   },

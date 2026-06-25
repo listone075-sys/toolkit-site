@@ -724,6 +724,121 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "html-to-markdown",
+    title: "HTML 转 Markdown 转换器",
+    description:
+      "将 HTML 代码即时转换为干净的 Markdown。粘贴任意 HTML 即可获取格式良好的 Markdown 输出。免费、快速、浏览器端处理。",
+    category: "markdown",
+    keywords: ["html 转 markdown", "html 转 md", "html markdown 转换", "html 转 markdown 在线"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "FileCode",
+    howToUse: [
+      "在输入面板中粘贴您的 HTML 代码",
+      "点击转换按钮将其转为 Markdown",
+      "查看输出的 Markdown",
+      "复制结果或直接使用",
+    ],
+    faqs: [
+      {
+        question: "支持哪些 HTML 元素？",
+        answer:
+          "支持大多数常见元素：标题、段落、列表、链接、图片、表格、代码块、引用块和内联格式（加粗、斜体）。复杂的嵌套结构会被展平为合理的 Markdown。",
+      },
+      {
+        question: "我的 HTML 数据安全吗？",
+        answer: "安全。所有处理均在浏览器中完成。您的 HTML 不会离开您的设备。",
+      },
+    ],
+  },
+  {
+    slug: "markdown-formatter",
+    title: "Markdown 格式化与美化器",
+    description:
+      "格式化和美化凌乱的 Markdown。一键修复间距、规范化标题、清理列表，让 Markdown 变得整洁易读。",
+    category: "markdown",
+    keywords: ["markdown 格式化", "markdown 美化", "格式化 markdown", "markdown 排版"],
+    searchVolume: "~40K/mo",
+    isClientSide: true,
+    icon: "Sparkles",
+    howToUse: [
+      "在输入面板中粘贴您的 Markdown 文本",
+      "点击格式化以规范间距和结构",
+      "查看清理后的 Markdown 输出",
+      "复制结果或粘贴回您的编辑器中",
+    ],
+    faqs: [
+      {
+        question: "格式化器修复什么？",
+        answer:
+          "它规范标题间距、修复列表缩进、确保段落间的空行、移除尾部空格，并将代码围栏标准化（~~~ → ```）。",
+      },
+      {
+        question: "会改变我的 Markdown 内容吗？",
+        answer:
+          "不会改变内容——仅调整格式和间距。标题、列表、链接和文本保持完全不变，只是更有条理。",
+      },
+    ],
+  },
+  {
+    slug: "markdown-to-pdf",
+    title: "Markdown 转 PDF 转换器",
+    description:
+      "将 Markdown 转换为专业排版的 PDF。实时预览、打印为 PDF 和 HTML 下载。免费、即时、浏览器端处理。",
+    category: "markdown",
+    keywords: ["markdown 转 pdf", "md 转 pdf", "markdown pdf 转换", "markdown 导出 pdf"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "在编辑器中粘贴或编写 Markdown",
+      "点击预览查看渲染后的文档",
+      "点击打印为 PDF 保存为 PDF 文件",
+      "或下载为带样式的 HTML 文件",
+    ],
+    faqs: [
+      {
+        question: "Markdown 转 PDF 如何工作？",
+        answer:
+          "您的 Markdown 会被渲染为专业排版的 HTML 文档。您可以预览，然后使用浏览器的「打印 → 另存为 PDF」功能生成最终的 PDF 文件。",
+      },
+      {
+        question: "可以自定义 PDF 样式吗？",
+        answer:
+          "默认样式包含清晰的排版、代码高亮和友好的打印格式。如需高级自定义，可下载 HTML 文件并修改 CSS。",
+      },
+    ],
+  },
+  {
+    slug: "url-to-markdown",
+    title: "URL 转 Markdown 转换器",
+    description:
+      "将任何网页转换为干净的 Markdown。粘贴 URL，即可将主要内容提取为格式良好的 Markdown。非常适合研究和笔记。",
+    category: "markdown",
+    keywords: ["url 转 markdown", "网页转 markdown", "网址转 markdown", "网站转 markdown"],
+    searchVolume: "~60K/mo",
+    isClientSide: true,
+    icon: "Globe",
+    howToUse: [
+      "在输入框中粘贴网页 URL",
+      "点击获取以下载并转换页面",
+      "查看提取的 Markdown 内容",
+      "复制或下载 Markdown 文件",
+    ],
+    faqs: [
+      {
+        question: "为什么有些 URL 会失败？",
+        answer:
+          "部分网站阻止跨域请求（CORS 策略）。如果某个 URL 转换失败，请尝试将页面 HTML 源码粘贴到我们的 HTML 转 Markdown 工具中。",
+      },
+      {
+        question: "转换准确吗？",
+        answer:
+          "我们会提取主要内容区域（<main>、<article> 或 <body>）并转换为 Markdown。导航、脚本和样式会被剥离。大多数文章和文档页面都能干净地转换。",
+      },
+    ],
+  },
 
   // ── 开发者工具 ──────────────────────────────────────
   {
@@ -1297,6 +1412,81 @@ export const toolRegistry: ToolConfig[] = [
         question: "人均分摊是如何计算的？",
         answer:
           "小费金额和总账单按您指定的人数平均分配。如需不均等分摊，请分别计算每人的份额。",
+      },
+    ],
+  },
+  {
+    slug: "image-upscaler",
+    title: "AI 图片放大",
+    description:
+      "将图片放大 2 倍、3 倍或 4 倍，采用高质量插值算法。提升分辨率同时保持画质。免费、即时、浏览器端处理。",
+    category: "image",
+    keywords: ["图片放大", "AI 放大", "增加分辨率", "图片增强", "超分辨率", "2倍放大"],
+    searchVolume: "~300K/mo",
+    isClientSide: true,
+    isAi: true,
+    icon: "Maximize2",
+    howToUse: [
+      "上传或拖放您的图片",
+      "选择放大倍数（2x、3x 或 4x）",
+      "可选开启锐化以增强边缘",
+      "以 PNG、JPEG 或 WebP 格式下载放大后的图片",
+    ],
+    faqs: [
+      {
+        question: "图片放大是如何工作的？",
+        answer:
+          "我们的放大工具使用浏览器内置的高质量 Lanczos/双三次插值算法和可选的非锐度遮罩锐化来放大图片，同时保留细节。所有处理均在您的浏览器中完成。",
+      },
+      {
+        question: "放大会降低图片质量吗？",
+        answer:
+          "放大必然会添加原始图片中不存在的像素。我们的高质量插值算法可最大限度减少模糊和伪影。可选的锐化功能可增强边缘，使结果更清晰。",
+      },
+      {
+        question: "最大可以放大多少倍？",
+        answer:
+          "最多可将图片放大 4 倍。例如，500×500 的图片可变为 2000×2000。请注意，放大倍数越大，文件体积也越大。",
+      },
+    ],
+  },
+  {
+    slug: "remove-background",
+    title: "AI 背景移除",
+    description:
+      "用 AI 即时移除图片背景。100% 免费，无需上传——所有处理均在您浏览器本地完成。隐私优先。",
+    category: "image",
+    keywords: ["移除背景", "背景移除", "AI 去背景", "去背景", "透明背景", "免费去背景"],
+    searchVolume: "~2M/mo",
+    isClientSide: true,
+    isAi: true,
+    icon: "Sparkles",
+    howToUse: [
+      "上传或拖放您的图片",
+      "AI 模型仅首次下载（~40MB，后续访问自动缓存）",
+      "等待几秒钟，AI 处理您的图片",
+      "下载透明背景的结果图片",
+    ],
+    faqs: [
+      {
+        question: "真的免费吗？",
+        answer:
+          "是的，完全免费且无限制。所有 AI 处理均通过 ONNX 运行时在您浏览器本地完成——您的图片不会离开您的设备。",
+      },
+      {
+        question: "AI 背景移除是如何工作的？",
+        answer:
+          "我们使用 ISNet（图像分割网络）模型在您浏览器中通过 WebAssembly 运行。它能检测图片中的主体，并以像素级精度将其与背景分离。",
+      },
+      {
+        question: "图片质量会保留吗？",
+        answer:
+          "是的，输出为无损质量的 PNG 格式，带透明背景。如需要更小文件，您也可选择 JPEG 或 WebP 格式并调整质量。",
+      },
+      {
+        question: "处理需要多长时间？",
+        answer:
+          "首次使用时需下载 AI 模型（约 40MB，后续自动缓存）。处理时间根据图片大小和设备性能约为 2-10 秒。支持 GPU 加速。",
       },
     ],
   },

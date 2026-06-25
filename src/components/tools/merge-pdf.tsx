@@ -1,31 +1,26 @@
 "use client";
 
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { mergePdfs } from "@/lib/tools/pdf/merge-pdf";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
-import { Upload, Download, X, FileText, ArrowDown } from "lucide-react";
+import { Download, X, FileText, ArrowDown } from "lucide-react";
 
 export function MergePdf() {
   const t = useTranslations("components");
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
 
-  const addFiles = useCallback((newFiles: FileList | File[]) => {
-    const arr = Array.from(newFiles).filter((f) => f.type === "application/pdf");
+  const addFiles = useCallback((newFiles: File[]) => {
+    const arr = newFiles.filter((f) => f.type === "application/pdf");
     setFiles((prev) => [...prev, ...arr]);
     setError(null);
   }, []);
 
   const removeFile = (i: number) => setFiles((prev) => prev.filter((_, idx) => idx !== i));
-
-  const handleDrop = useCallback(
-    (e: DragEvent) => { e.preventDefault(); setDragOver(false); if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files); },
-    [addFiles],
-  );
 
   const handleMerge = async () => {
     if (files.length < 2) { setError(t("mergePdf.minFilesError")); return; }
@@ -44,22 +39,15 @@ export function MergePdf() {
   return (
     <div className="space-y-4">
       {/* Upload */}
-      <div
-        className={`border-2 border-dashed rounded-lg p-10 text-center transition-colors ${
-          dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
-        }`}
-        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={handleDrop}
-      >
-        <Upload className="h-12 w-12 text-zinc-300 mx-auto mb-3" />
-        <p className="text-sm font-medium text-zinc-600 mb-1">{t("mergePdf.uploadPdfs")}</p>
-        <p className="text-xs text-zinc-400 mb-3">{t("mergePdf.orDragDrop")}</p>
-        <label className="cursor-pointer inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-          {t("mergePdf.browse")}
-          <input type="file" accept="application/pdf" multiple className="hidden" onChange={(e) => e.target.files && addFiles(e.target.files)} />
-        </label>
-      </div>
+      <FileUploadZone
+        title={t("mergePdf.uploadPdfs")}
+        description={t("mergePdf.orDragDrop")}
+        browseLabel={t("mergePdf.browse")}
+        accept="application/pdf"
+        multiple
+        onFiles={addFiles}
+        className="text-center p-10"
+      />
 
       {/* File list */}
       {files.length > 0 && (

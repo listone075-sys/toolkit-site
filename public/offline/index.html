@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You are offline — ToolCraft</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; background: #f8fafc; color: #1e293b;
+    }
+    .card {
+      text-align: center; padding: 3rem 2rem; max-width: 400px;
+      background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .icon { font-size: 3rem; margin-bottom: 1rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    p { color: #64748b; font-size: 0.95rem; line-height: 1.6; }
+    .tools { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .tool { padding: 0.25rem 0.75rem; background: #f1f5f9; border-radius: 6px; font-size: 0.85rem; color: #475569; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">&#x1F4E1;</div>
+    <h1>You're Offline</h1>
+    <p>ToolCraft tools you've visited before should still work offline.</p>
+    <p style="margin-top:0.5rem">Reconnect to discover new tools.</p>
+    <div class="tools">
+      <span class="tool">Image Compressor</span>
+      <span class="tool">PDF Merger</span>
+      <span class="tool">JSON Formatter</span>
+      <span class="tool">Markdown Editor</span>
+    </div>
+  </div>
+</body>
+</html>

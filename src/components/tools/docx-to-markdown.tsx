@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { docxToMarkdown } from "@/lib/tools/markdown/docx-to-md";
 import { downloadFile, formatFileSize } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
-import { Upload, Download, Copy, X, FileText } from "lucide-react";
+import { Download, Copy, X, FileText } from "lucide-react";
 
 export function DocxToMarkdown() {
   const t = useTranslations("components");
@@ -14,10 +15,10 @@ export function DocxToMarkdown() {
   const [output, setOutput] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const { copied, copy } = useClipboard();
 
-  const handleFile = useCallback(async (f: File) => {
+  const handleFile = useCallback(async (files: File[]) => {
+    const f = files[0];
     if (!f.name.endsWith(".docx")) {
       setError(t("docxToMarkdown.uploadError"));
       return;
@@ -36,16 +37,6 @@ export function DocxToMarkdown() {
     }
   }, []);
 
-  const handleDrop = useCallback(
-    (e: DragEvent) => {
-      e.preventDefault();
-      setDragOver(false);
-      const f = e.dataTransfer.files[0];
-      if (f) handleFile(f);
-    },
-    [handleFile],
-  );
-
   const handleDownload = () => {
     if (!output) return;
     const fileName = file?.name.replace(/\.docx$/i, "") ?? "document";
@@ -55,33 +46,16 @@ export function DocxToMarkdown() {
   return (
     <div className="space-y-4">
       {/* Upload zone */}
-      <div
-        className={`border-2 border-dashed rounded-lg p-8 flex flex-col items-center justify-center min-h-[200px] transition-colors ${
-          dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200"
-        }`}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setDragOver(true);
-        }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={handleDrop}
-      >
-        {!file ? (
-          <>
-            <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-            <p className="text-sm text-zinc-600 mb-1">{t("docxToMarkdown.uploadDocx")}</p>
-            <p className="text-xs text-zinc-400 mb-3">{t("docxToMarkdown.orDragDrop")}</p>
-            <label className="cursor-pointer inline-flex items-center rounded-md border px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-              {t("docxToMarkdown.browse")}
-              <input
-                type="file"
-                accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                className="hidden"
-                onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
-              />
-            </label>
-          </>
-        ) : (
+      {!file ? (
+        <FileUploadZone
+          title={t("docxToMarkdown.uploadDocx")}
+          description={t("docxToMarkdown.orDragDrop")}
+          browseLabel={t("docxToMarkdown.browse")}
+          accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          onFiles={handleFile}
+        />
+      ) : (
+        <div className="border-2 border-dashed rounded-lg p-8 flex flex-col items-center justify-center min-h-[200px]">
           <div className="w-full space-y-2">
             <div className="flex items-center justify-between">
               <div>
@@ -108,8 +82,8 @@ export function DocxToMarkdown() {
               </div>
             )}
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {error && <p className="text-sm text-red-500">{error}</p>}
 

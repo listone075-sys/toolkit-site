@@ -5,8 +5,12 @@ import type { Metadata } from "next";
 import { getToolRegistry, getToolsByCategory } from "@/lib/tools";
 import type { ToolCategory, ToolConfig } from "@/lib/tools/types";
 import { ToolCard } from "@/components/layout/tool-card";
+import { FavoritesSection } from "@/components/layout/favorites-client";
+import { RecentSection } from "@/components/layout/recent-client";
+import { NewsletterSection } from "@/components/layout/newsletter-form";
 import { AdUnit } from "@/components/layout/ad-unit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { Sparkles, Shield, Zap, ArrowRight } from "lucide-react";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
@@ -97,8 +101,34 @@ export default async function HomePage({ params }: Props) {
         </section>
 
         <section className="container mx-auto px-4 py-10">
+          {/* AI tools featured row on category pages */}
+          {(() => {
+            const aiTools = filteredTools.filter((t) => t.isAi);
+            if (aiTools.length > 0) {
+              return (
+                <div className="mb-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles className="h-5 w-5 text-purple-500" />
+                    <h2 className="text-lg font-bold text-zinc-900">
+                      {hp("aiSection.title")}
+                    </h2>
+                    <Badge className="text-xs bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0">
+                      {hp("aiSection.new")}
+                    </Badge>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {aiTools.map((tool) => (
+                      <ToolCard key={tool.slug} tool={tool} />
+                    ))}
+                  </div>
+                  <hr className="mt-8 border-zinc-200" />
+                </div>
+              );
+            }
+            return null;
+          })()}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredTools.map((tool) => (
+            {filteredTools.filter((t) => !t.isAi).map((tool) => (
               <ToolCard key={tool.slug} tool={tool} />
             ))}
           </div>
@@ -157,6 +187,34 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
+      {/* AI Tools featured section */}
+      {(() => {
+        const aiTools = registry.filter((t) => t.isAi);
+        if (aiTools.length === 0) return null;
+        return (
+          <section className="container mx-auto px-4 pt-12">
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="h-5 w-5 text-purple-500" />
+              <h2 className="text-xl font-bold text-zinc-900">
+                {hp("aiSection.title")}
+              </h2>
+              <Badge className="text-xs bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0">
+                {hp("aiSection.new")}
+              </Badge>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {aiTools.map((tool) => (
+                <ToolCard key={tool.slug} tool={tool} />
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* Favorites + Recent sections (client-side, only shown when data exists) */}
+      <FavoritesSection locale={locale} />
+      <RecentSection locale={locale} />
+
       {/* Ad Unit */}
       <div className="container mx-auto px-4 pt-10 flex justify-center">
         <AdUnit format="horizontal" />
@@ -176,7 +234,7 @@ export default async function HomePage({ params }: Props) {
 
           <TabsContent value="all" className="mt-0">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {registry.map((tool) => (
+              {registry.filter((t) => !t.isAi).map((tool) => (
                 <ToolCard key={tool.slug} tool={tool} />
               ))}
             </div>
@@ -185,7 +243,7 @@ export default async function HomePage({ params }: Props) {
           {categories.slice(1).map((cat) => (
             <TabsContent key={cat.value} value={cat.value} className="mt-0">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {getToolsByCategory(cat.value as ToolCategory, locale).map((tool) => (
+                {getToolsByCategory(cat.value as ToolCategory, locale).filter((t) => !t.isAi).map((tool) => (
                   <ToolCard key={tool.slug} tool={tool} />
                 ))}
               </div>
@@ -193,6 +251,9 @@ export default async function HomePage({ params }: Props) {
           ))}
         </Tabs>
       </section>
+
+      {/* Newsletter — shown after 3+ tool visits */}
+      <NewsletterSection />
 
       <section className="bg-zinc-50 py-16 px-4 mt-12">
         <div className="container mx-auto max-w-3xl text-center">

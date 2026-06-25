@@ -6,6 +6,8 @@ import { generateToolMetadata } from "@/lib/seo/metadata";
 import { ToolRenderer } from "@/components/tools/tool-renderer";
 import { Breadcrumb } from "@/components/seo/breadcrumb";
 import { AdUnit } from "@/components/layout/ad-unit";
+import { FavoritesButton } from "@/components/layout/favorites-button";
+import { SimilarTools } from "@/components/layout/similar-tools";
 import type { Metadata } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
@@ -42,7 +44,10 @@ export default function ToolPage({ params }: Props) {
 
       {/* Tool Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-zinc-900 mb-2">{tool.title}</h1>
+        <div className="flex items-center gap-3 mb-2">
+          <h1 className="text-3xl font-bold text-zinc-900">{tool.title}</h1>
+          <FavoritesButton toolSlug={slug} iconOnly={false} className="mt-1" />
+        </div>
         <p className="text-zinc-600 max-w-2xl">{tool.description}</p>
       </div>
 
@@ -63,6 +68,9 @@ export default function ToolPage({ params }: Props) {
           ))}
         </ol>
       </div>
+
+      {/* Similar Tools */}
+      <SimilarTools slug={slug} locale={locale} />
 
       {/* FAQs */}
       <div className="mt-10 mb-12">

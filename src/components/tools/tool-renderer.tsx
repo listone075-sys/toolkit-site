@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { getToolComponent } from "./tool-loader";
+import { useRecordToolUsage } from "@/hooks/use-record-tool-usage";
 
 interface ToolRendererProps {
   slug: string;
@@ -10,6 +11,7 @@ interface ToolRendererProps {
 export function ToolRenderer({ slug }: ToolRendererProps) {
   const t = useTranslations("components");
   const ToolComponent = getToolComponent(slug);
+  useRecordToolUsage(slug);
 
   if (!ToolComponent) {
     return (

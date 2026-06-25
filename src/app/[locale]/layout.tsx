@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { Analytics } from "@/components/layout/analytics";
 import { AdSense } from "@/components/layout/adsense";
+import { PwaRegister } from "@/components/layout/pwa-register";
 import { SiteSchema } from "@/components/seo/site-schema";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -82,25 +83,26 @@ export default async function LocaleLayout({ children, params }: Props) {
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en`} />
         <link rel="alternate" hrefLang="zh" href={`${SITE_URL}/zh`} />
         <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/en`} />
+        {/* PWA */}
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="ToolCraft" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
         {/* Site verification */}
         <meta name="google-site-verification" content="b9LnPakW02bBFDppFZysgx3q6V89qDkmD2SkSohVj8Y" />
         <meta name="msvalidate.01" content="00065E437FE00E67C1EB622A839A5166" />
         <meta name="google-site-verification" content="mx7ab6UFuWD0OuKTdl7ai0kqoMJ1Dad7kIL7FivkrX8" />
         {/* AdSense account verification */}
         <meta name="google-adsense-account" content="ca-pub-5142105226310650" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EHKDP008P" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0EHKDP008P',{anonymize_ip:true});`,
-          }}
-        />
       </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <SiteSchema />
           <Analytics />
           <AdSense />
+          <PwaRegister />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

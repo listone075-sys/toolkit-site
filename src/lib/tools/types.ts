@@ -15,6 +15,8 @@ export interface ToolConfig {
   searchVolume: string;
   /** Whether this tool runs entirely in the browser (no server cost) */
   isClientSide: boolean;
+  /** If true, marks this tool as AI-powered (shown with AI badge and featured section) */
+  isAi?: boolean;
   /** Icon name from lucide-react to display */
   icon: string;
   /** Steps shown in HowTo structured data */

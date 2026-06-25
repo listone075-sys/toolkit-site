@@ -39,6 +39,7 @@
     "pixels": "px",
     "lockRatio": "锁定宽高比",
     "resizing": "调整中...",
+    "resize": "调整图片大小",
     "download": "下载",
     "uploadPrompt": "上传图片以调整大小",
     "uploadError": "请上传图片文件。"
@@ -364,7 +365,10 @@
     "download": "下载",
     "pagesExtracted": "已提取 {count} 页",
     "pageLabel": "第 {n} 页",
-    "uploadError": "请上传 PDF 文件。"
+    "uploadError": "请上传 PDF 文件。",
+    "invalidRange": "请输入范围，如 1-5",
+    "invalidOrder": "起始页必须小于或等于结束页。",
+    "rangePlaceholder": "例如 1-5"
   },
   "rotatePdf": {
     "uploadPdf": "上传 PDF 文件",
@@ -414,7 +418,8 @@
     "convert": "转换为 PNG",
     "download": "下载 PNG",
     "placeholder": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\">...",
-    "uploadError": "请上传 SVG 文件。"
+    "uploadError": "请上传 SVG 文件。",
+    "provideInput": "请提供 SVG 文件或粘贴 SVG 代码。"
   },
   "htmlEntities": {
     "encode": "编码",
@@ -480,5 +485,80 @@
     "totalPerPerson": "每人应付",
     "countryRates": "各国常见小费比例",
     "error": "请输入有效的账单金额。"
+  },
+  "imageUpscaler": {
+    "scale": "放大倍数",
+    "format": "格式",
+    "sharpen": "锐化",
+    "original": "原图",
+    "result": "结果",
+    "uploadImage": "上传图片",
+    "orDragDrop": "或拖放图片到此处",
+    "browse": "浏览文件",
+    "uploadError": "请上传图片文件。",
+    "upscaling": "放大中...",
+    "download": "下载",
+    "clear": "清除",
+    "readyPrompt": "上传图片以放大"
+  },
+  "htmlToMarkdown": {
+    "placeholder": "<h1>Hello World</h1>\n<p>在这里粘贴您的 <strong>HTML</strong>...</p>",
+    "clickToConvert": "粘贴 HTML 并点击转换以查看 Markdown 输出",
+    "convert": "转换为 Markdown",
+    "copy": "复制",
+    "copied": "已复制！",
+    "clear": "清除"
+  },
+  "markdownFormatter": {
+    "input": "原始 Markdown",
+    "output": "格式化后的 Markdown",
+    "placeholder": "# 我的文档\n\n在这里粘贴您的 **Markdown**...\n\n- 凌乱的列表\n-   间距不均匀\n\n```js\nconsole.log('hello')\n```",
+    "clickToFormat": "粘贴 Markdown 并点击格式化以美化",
+    "format": "格式化 Markdown",
+    "copyMd": "复制 MD",
+    "copy": "复制",
+    "copied": "已复制！",
+    "clear": "清除"
+  },
+  "markdownToPdf": {
+    "placeholder": "# 我的文档\n\n在这里编写您的 **Markdown**...\n\n## 章节\n\n- 项目 1\n- 项目 2\n\n[点击预览查看结果]",
+    "preview": "PDF 预览",
+    "clickPreview": "点击预览查看渲染后的文档",
+    "previewBtn": "预览",
+    "printBtn": "打印为 PDF",
+    "downloadHtml": "下载 HTML",
+    "clear": "清除",
+    "printHint": "提示：在打印对话框中，选择「另存为 PDF」作为目标来创建 PDF 文件。",
+    "popupBlocked": "弹窗被拦截。请允许本站弹窗以使用打印为 PDF 功能。"
+  },
+  "urlToMarkdown": {
+    "urlPlaceholder": "https://example.com/article",
+    "fetch": "获取并转换",
+    "fetching": "获取中...",
+    "enterUrl": "输入 URL 并点击获取将网页转换为 Markdown",
+    "loading": "获取并转换中...",
+    "copy": "复制",
+    "copied": "已复制！",
+    "downloadMd": "下载 .md",
+    "corsError": "无法获取此 URL。该网站可能阻止了跨域请求。请尝试将页面 HTML 源码粘贴到 HTML 转 Markdown 工具中。",
+    "corsNote": "部分网站因 CORS 策略阻止外部请求。如果 URL 转换失败，请将页面源码粘贴到 HTML → Markdown 工具中。"
+  },
+  "backgroundRemoval": {
+    "aiPowered": "AI 驱动 · 背景移除",
+    "privacyNote": "隐私优先——图片不会离开您的设备",
+    "outputFormat": "输出格式：",
+    "original": "原图",
+    "result": "结果",
+    "uploadImage": "上传图片",
+    "orDragDrop": "或拖放图片到此处",
+    "browse": "浏览文件",
+    "uploadError": "请上传图片文件。",
+    "processing": "处理中...",
+    "download": "下载",
+    "clear": "清除",
+    "tryAgain": "重试",
+    "loadingModel": "正在加载 AI 模型...",
+    "readyPrompt": "上传图片以移除背景",
+    "preloadFailed": "模型预加载失败——将在首次使用时下载"
   }
 }

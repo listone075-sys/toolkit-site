@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useRef, useCallback, type DragEvent } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { cropImage } from "@/lib/tools/image/crop";
 import { downloadFile, formatFileSize, isImageFile } from "@/lib/utils/file";
-import { Upload, Download, X, Crop } from "lucide-react";
+import { Download, X, Crop } from "lucide-react";
 
 export function ImageCropper() {
   const t = useTranslations("components");
@@ -15,7 +16,6 @@ export function ImageCropper() {
   const [outputUrl, setOutputUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
 
   // Crop state
   const [cropping, setCropping] = useState(false);
@@ -24,7 +24,8 @@ export function ImageCropper() {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const loadFile = useCallback((f: File) => {
+  const loadFile = useCallback((files: File[]) => {
+    const f = files[0];
     if (!isImageFile(f)) {
       setError(t("imageCropper.uploadError"));
       return;
@@ -37,18 +38,6 @@ export function ImageCropper() {
     const url = URL.createObjectURL(f);
     setImageUrl(url);
   }, [t, outputUrl]);
-
-  const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    const f = e.dataTransfer.files[0];
-    if (f) loadFile(f);
-  }, [loadFile]);
-
-  const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0];
-    if (f) loadFile(f);
-  }, [loadFile]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!imgRef.current || !containerRef.current) return;
@@ -122,22 +111,13 @@ export function ImageCropper() {
   return (
     <div className="space-y-4">
       {!imageUrl ? (
-        <div
-          className={`flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 transition-colors min-h-[200px] ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">{t("imageCropper.uploadImage")}</p>
-          <p className="text-xs text-zinc-400 mb-3">{t("imageCropper.orDragDrop")}</p>
-          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            {t("imageCropper.browse")}
-            <input type="file" accept="image/*" className="hidden" onChange={handleFileInput} />
-          </label>
-        </div>
+        <FileUploadZone
+          title={t("imageCropper.uploadImage")}
+          description={t("imageCropper.orDragDrop")}
+          browseLabel={t("imageCropper.browse")}
+          accept="image/*"
+          onFiles={loadFile}
+        />
       ) : (
         <>
           {/* Toolbar */}

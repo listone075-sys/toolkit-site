@@ -39,6 +39,7 @@
     "pixels": "px",
     "lockRatio": "Lock aspect ratio",
     "resizing": "Resizing...",
+    "resize": "Resize Image",
     "download": "Download",
     "uploadPrompt": "Upload an image to resize",
     "uploadError": "Please upload an image file."
@@ -364,7 +365,10 @@
     "download": "Download",
     "pagesExtracted": "{count} pages extracted",
     "pageLabel": "Page {n}",
-    "uploadError": "Please upload a PDF file."
+    "uploadError": "Please upload a PDF file.",
+    "invalidRange": "Enter a range like 1-5",
+    "invalidOrder": "Start page must be less than or equal to end page.",
+    "rangePlaceholder": "e.g. 1-5"
   },
   "rotatePdf": {
     "uploadPdf": "Upload PDF File",
@@ -414,7 +418,8 @@
     "convert": "Convert to PNG",
     "download": "Download PNG",
     "placeholder": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\">...",
-    "uploadError": "Please upload an SVG file."
+    "uploadError": "Please upload an SVG file.",
+    "provideInput": "Provide an SVG file or paste SVG code."
   },
   "htmlEntities": {
     "encode": "Encode",
@@ -480,5 +485,80 @@
     "totalPerPerson": "Total / Person",
     "countryRates": "Common Tip Rates by Country",
     "error": "Please enter a valid bill amount."
+  },
+  "imageUpscaler": {
+    "scale": "Scale",
+    "format": "Format",
+    "sharpen": "Sharpen",
+    "original": "Original",
+    "result": "Result",
+    "uploadImage": "Upload Image",
+    "orDragDrop": "or drag & drop your image here",
+    "browse": "Browse files",
+    "uploadError": "Please upload an image file.",
+    "upscaling": "Upscaling...",
+    "download": "Download",
+    "clear": "Clear",
+    "readyPrompt": "Upload an image to upscale"
+  },
+  "htmlToMarkdown": {
+    "placeholder": "<h1>Hello World</h1>\n<p>Paste your <strong>HTML</strong> here...</p>",
+    "clickToConvert": "Paste HTML and click Convert to see Markdown output",
+    "convert": "Convert to Markdown",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "clear": "Clear"
+  },
+  "markdownFormatter": {
+    "input": "Raw Markdown",
+    "output": "Formatted Markdown",
+    "placeholder": "# My Document\n\nPaste your **Markdown** here...\n\n- messy list\n-   with uneven spacing\n\n```js\nconsole.log('hello')\n```",
+    "clickToFormat": "Paste Markdown and click Format to beautify",
+    "format": "Format Markdown",
+    "copyMd": "Copy MD",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "clear": "Clear"
+  },
+  "markdownToPdf": {
+    "placeholder": "# My Document\n\nWrite your **Markdown** here...\n\n## Section\n\n- Item 1\n- Item 2\n\n[Click Preview to see the result]",
+    "preview": "PDF Preview",
+    "clickPreview": "Click Preview to see the rendered document",
+    "previewBtn": "Preview",
+    "printBtn": "Print to PDF",
+    "downloadHtml": "Download HTML",
+    "clear": "Clear",
+    "printHint": "Tip: In the print dialog, select \"Save as PDF\" as the destination to create a PDF file.",
+    "popupBlocked": "Popup was blocked. Please allow popups for this site to use Print to PDF."
+  },
+  "urlToMarkdown": {
+    "urlPlaceholder": "https://example.com/article",
+    "fetch": "Fetch & Convert",
+    "fetching": "Fetching...",
+    "enterUrl": "Enter a URL and click Fetch to convert the webpage to Markdown",
+    "loading": "Fetching and converting...",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "downloadMd": "Download .md",
+    "corsError": "Unable to fetch this URL. The site may block cross-origin requests. Try pasting the page's HTML source into our HTML to Markdown converter.",
+    "corsNote": "Some websites block external requests due to CORS policy. If a URL fails, paste the page source into HTML → Markdown."
+  },
+  "backgroundRemoval": {
+    "aiPowered": "AI-Powered · Background Removal",
+    "privacyNote": "Privacy-first — images never leave your device",
+    "outputFormat": "Output format:",
+    "original": "Original",
+    "result": "Result",
+    "uploadImage": "Upload Image",
+    "orDragDrop": "or drag & drop your image here",
+    "browse": "Browse files",
+    "uploadError": "Please upload an image file.",
+    "processing": "Processing...",
+    "download": "Download",
+    "clear": "Clear",
+    "tryAgain": "Try Again",
+    "loadingModel": "Loading AI model...",
+    "readyPrompt": "Upload an image to remove its background",
+    "preloadFailed": "Model preload failed — will download on first use"
   }
 }

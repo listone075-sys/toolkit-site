@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, type DragEvent } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { FileUploadZone } from "@/components/tools/file-upload-zone";
 import { splitPdf, extractPages } from "@/lib/tools/pdf/split";
 import type { SplitResult } from "@/lib/tools/pdf/split";
 import { downloadFile } from "@/lib/utils/file";
-import { Upload, Download, X, FileText, Scissors } from "lucide-react";
+import { Download, X, FileText, Scissors } from "lucide-react";
 
 export function SplitPdf() {
   const t = useTranslations("components");
@@ -14,11 +15,11 @@ export function SplitPdf() {
   const [pages, setPages] = useState<SplitResult[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
   const [pageRange, setPageRange] = useState("");
   const [rangeBlob, setRangeBlob] = useState<Blob | null>(null);
 
-  const loadFile = useCallback((f: File) => {
+  const loadFile = useCallback((files: File[]) => {
+    const f = files[0];
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
       setError(t("splitPdf.uploadError"));
       return;
@@ -28,13 +29,6 @@ export function SplitPdf() {
     setPages(null);
     setRangeBlob(null);
   }, [t]);
-
-  const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    const f = e.dataTransfer.files[0];
-    if (f) loadFile(f);
-  }, [loadFile]);
 
   const handleSplit = async () => {
     if (!file) return;
@@ -54,13 +48,13 @@ export function SplitPdf() {
     if (!file || !pageRange.trim()) return;
     const match = pageRange.match(/^(\d+)\s*[-–]\s*(\d+)$/);
     if (!match) {
-      setError("Enter a range like 1-5");
+      setError(t("splitPdf.invalidRange"));
       return;
     }
     const startP = parseInt(match[1]);
     const endP = parseInt(match[2]);
     if (startP > endP) {
-      setError("Start page must be less than or equal to end page.");
+      setError(t("splitPdf.invalidOrder"));
       return;
     }
     setLoading(true);
@@ -86,25 +80,13 @@ export function SplitPdf() {
   return (
     <div className="space-y-4">
       {!file ? (
-        <div
-          className={`flex-1 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 transition-colors min-h-[200px] ${
-            dragOver ? "border-blue-400 bg-blue-50" : "border-zinc-200 hover:border-zinc-300"
-          }`}
-          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={handleDrop}
-        >
-          <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">{t("splitPdf.uploadPdf")}</p>
-          <p className="text-xs text-zinc-400 mb-3">{t("splitPdf.orDragDrop")}</p>
-          <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            {t("splitPdf.browse")}
-            <input type="file" accept=".pdf,application/pdf" className="hidden" onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) loadFile(f);
-            }} />
-          </label>
-        </div>
+        <FileUploadZone
+          title={t("splitPdf.uploadPdf")}
+          description={t("splitPdf.orDragDrop")}
+          browseLabel={t("splitPdf.browse")}
+          accept=".pdf,application/pdf"
+          onFiles={loadFile}
+        />
       ) : (
         <>
           <div className="flex items-center gap-2 p-3 bg-zinc-50 rounded-lg border flex-wrap">
@@ -125,7 +107,7 @@ export function SplitPdf() {
               type="text"
               value={pageRange}
               onChange={(e) => setPageRange(e.target.value)}
-              placeholder="e.g. 1-5"
+              placeholder={t("splitPdf.rangePlaceholder")}
               className="w-24 px-2 py-1 text-sm border rounded"
             />
             <Button onClick={handleExtractRange} disabled={loading || !pageRange.trim()} size="sm" variant="outline">

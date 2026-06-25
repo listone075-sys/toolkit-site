@@ -5,7 +5,8 @@
       "image": "Image",
       "pdf": "PDF",
       "markdown": "Markdown",
-      "dev": "Dev Tools"
+      "dev": "Dev Tools",
+      "favorites": "Favorites"
     },
     "mobile": {
       "imageTools": "Image Tools",
@@ -44,6 +45,19 @@
     "continuation": "By continuing, you agree to our use of cookies.",
     "accept": "Accept"
   },
+  "favorites": {
+    "title": "Your Favorites",
+    "empty": "No favorites yet. Click the heart icon on any tool to save it.",
+    "addTooltip": "Add to favorites",
+    "removeTooltip": "Remove from favorites"
+  },
+  "recent": {
+    "title": "Recently Used"
+  },
+  "recommendations": {
+    "similarTools": "Similar Tools",
+    "youMightLike": "You Might Also Like"
+  },
   "breadcrumb": {
     "home": "ToolCraft",
     "imageTools": "Image Tools",
@@ -55,6 +69,16 @@
   "toolCard": {
     "freeBadge": "Free & Browser-based"
   },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Get notified about new tools and features. No spam, unsubscribe anytime.",
+    "placeholder": "your@email.com",
+    "subscribe": "Subscribe",
+    "success": "Thanks! Check your email to confirm.",
+    "error": "Something went wrong. Please try again.",
+    "privacy": "We respect your privacy. Unsubscribe anytime."
+  },
+  "dismiss": "Dismiss",
   "languageSwitcher": {
     "en": "English",
     "zh": "简体中文",
