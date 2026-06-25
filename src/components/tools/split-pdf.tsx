@@ -20,14 +20,14 @@ export function SplitPdf() {
 
   const loadFile = useCallback((f: File) => {
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
-      setError("Please upload a PDF file.");
+      setError(t("splitPdf.uploadError"));
       return;
     }
     setFile(f);
     setError(null);
     setPages(null);
     setRangeBlob(null);
-  }, []);
+  }, [t]);
 
   const handleDrop = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -57,10 +57,16 @@ export function SplitPdf() {
       setError("Enter a range like 1-5");
       return;
     }
+    const startP = parseInt(match[1]);
+    const endP = parseInt(match[2]);
+    if (startP > endP) {
+      setError("Start page must be less than or equal to end page.");
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
-      const blob = await extractPages(file, parseInt(match[1]), parseInt(match[2]));
+      const blob = await extractPages(file, startP, endP);
       setRangeBlob(blob);
     } catch (e) {
       setError((e as Error).message);
@@ -89,10 +95,10 @@ export function SplitPdf() {
           onDrop={handleDrop}
         >
           <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">Upload PDF File</p>
-          <p className="text-xs text-zinc-400 mb-3">or drag & drop your PDF here</p>
+          <p className="text-sm font-medium text-zinc-600 mb-1">{t("splitPdf.uploadPdf")}</p>
+          <p className="text-xs text-zinc-400 mb-3">{t("splitPdf.orDragDrop")}</p>
           <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            Browse files
+            {t("splitPdf.browse")}
             <input type="file" accept=".pdf,application/pdf" className="hidden" onChange={(e) => {
               const f = e.target.files?.[0];
               if (f) loadFile(f);
@@ -105,7 +111,7 @@ export function SplitPdf() {
             <FileText className="h-5 w-5 text-zinc-500" />
             <span className="text-sm font-medium flex-1 min-w-0 truncate">{file.name}</span>
             <Button onClick={handleSplit} disabled={loading} size="sm">
-              <Scissors className="h-4 w-4 mr-1" /> {loading ? "Splitting..." : "Split All Pages"}
+              <Scissors className="h-4 w-4 mr-1" /> {loading ? t("splitPdf.splitting") : t("splitPdf.splitAll")}
             </Button>
             <Button variant="ghost" size="sm" onClick={handleClear}>
               <X className="h-4 w-4" />
@@ -114,7 +120,7 @@ export function SplitPdf() {
 
           {/* Page range extraction */}
           <div className="flex items-center gap-2 p-3 bg-zinc-50 rounded-lg border">
-            <span className="text-sm text-zinc-600">Extract pages:</span>
+            <span className="text-sm text-zinc-600">{t("splitPdf.extractRange")}</span>
             <input
               type="text"
               value={pageRange}
@@ -123,14 +129,14 @@ export function SplitPdf() {
               className="w-24 px-2 py-1 text-sm border rounded"
             />
             <Button onClick={handleExtractRange} disabled={loading || !pageRange.trim()} size="sm" variant="outline">
-              Extract
+              {t("splitPdf.extract")}
             </Button>
             {rangeBlob && (
               <Button size="sm" onClick={() => {
                 const name = file.name.replace(/\.pdf$/i, `_p${pageRange.replace(/[-–]/, "-")}.pdf`);
                 downloadFile(rangeBlob, name, "application/pdf");
               }}>
-                <Download className="h-4 w-4 mr-1" /> Download
+                <Download className="h-4 w-4 mr-1" /> {t("splitPdf.download")}
               </Button>
             )}
           </div>
@@ -140,11 +146,11 @@ export function SplitPdf() {
           {/* Individual pages */}
           {pages && (
             <div className="space-y-2">
-              <p className="text-sm font-medium text-zinc-600">{pages.length} pages extracted</p>
+              <p className="text-sm font-medium text-zinc-600">{t("splitPdf.pagesExtracted", { count: pages.length })}</p>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
                 {pages.map((page) => (
                   <div key={page.pageNumber} className="border rounded-lg p-3 text-center space-y-2">
-                    <p className="text-sm font-medium">Page {page.pageNumber}</p>
+                    <p className="text-sm font-medium">{t("splitPdf.pageLabel", { n: page.pageNumber })}</p>
                     <Button
                       size="sm"
                       variant="outline"
@@ -153,7 +159,7 @@ export function SplitPdf() {
                         downloadFile(page.blob, name, "application/pdf");
                       }}
                     >
-                      <Download className="h-3 w-3 mr-1" /> Download
+                      <Download className="h-3 w-3 mr-1" /> {t("splitPdf.download")}
                     </Button>
                   </div>
                 ))}

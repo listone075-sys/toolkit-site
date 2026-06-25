@@ -8,12 +8,6 @@ import type { RotationAngle } from "@/lib/tools/pdf/rotate";
 import { downloadFile } from "@/lib/utils/file";
 import { Upload, Download, X, FileText, RotateCw } from "lucide-react";
 
-const ROTATIONS: { label: string; angle: RotationAngle; icon: React.ReactNode }[] = [
-  { label: "90° Clockwise", angle: 90, icon: <RotateCw className="h-4 w-4" /> },
-  { label: "180°", angle: 180, icon: <RotateCw className="h-4 w-4 rotate-180" /> },
-  { label: "270° (90° CCW)", angle: 270, icon: <RotateCw className="h-4 w-4 -rotate-90" /> },
-];
-
 export function RotatePdf() {
   const t = useTranslations("components");
   const [file, setFile] = useState<File | null>(null);
@@ -24,13 +18,13 @@ export function RotatePdf() {
 
   const loadFile = useCallback((f: File) => {
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
-      setError("Please upload a PDF file.");
+      setError(t("rotatePdf.uploadError"));
       return;
     }
     setFile(f);
     setError(null);
     setOutputBlob(null);
-  }, []);
+  }, [t]);
 
   const handleDrop = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -65,6 +59,12 @@ export function RotatePdf() {
     setError(null);
   };
 
+  const rotations: { label: string; angle: RotationAngle }[] = [
+    { label: t("rotatePdf.c90"), angle: 90 },
+    { label: t("rotatePdf.c180"), angle: 180 },
+    { label: t("rotatePdf.c270"), angle: 270 },
+  ];
+
   return (
     <div className="space-y-4">
       {!file ? (
@@ -77,10 +77,10 @@ export function RotatePdf() {
           onDrop={handleDrop}
         >
           <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">Upload PDF File</p>
-          <p className="text-xs text-zinc-400 mb-3">or drag & drop your PDF here</p>
+          <p className="text-sm font-medium text-zinc-600 mb-1">{t("rotatePdf.uploadPdf")}</p>
+          <p className="text-xs text-zinc-400 mb-3">{t("rotatePdf.orDragDrop")}</p>
           <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            Browse files
+            {t("rotatePdf.browse")}
             <input type="file" accept=".pdf,application/pdf" className="hidden" onChange={(e) => {
               const f = e.target.files?.[0];
               if (f) loadFile(f);
@@ -98,7 +98,7 @@ export function RotatePdf() {
           </div>
 
           <div className="grid grid-cols-3 gap-3">
-            {ROTATIONS.map(({ label, angle, icon }) => (
+            {rotations.map(({ label, angle }) => (
               <Button
                 key={angle}
                 onClick={() => handleRotate(angle)}
@@ -106,7 +106,7 @@ export function RotatePdf() {
                 variant="outline"
                 className="flex-col gap-1 py-6"
               >
-                {icon}
+                <RotateCw className="h-4 w-4" />
                 <span className="text-sm">{label}</span>
               </Button>
             ))}
@@ -116,9 +116,9 @@ export function RotatePdf() {
 
           {outputBlob && (
             <div className="border rounded-lg p-6 text-center space-y-3">
-              <p className="text-sm text-green-600 font-medium">PDF rotated successfully!</p>
+              <p className="text-sm text-green-600 font-medium">{t("rotatePdf.rotated")}</p>
               <Button onClick={handleDownload}>
-                <Download className="h-4 w-4 mr-1" /> Download Rotated PDF
+                <Download className="h-4 w-4 mr-1" /> {t("rotatePdf.download")}
               </Button>
             </div>
           )}

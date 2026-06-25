@@ -53,7 +53,7 @@ export async function encodeGif(frames: GifFrame[]): Promise<Blob> {
     gce[0] = 0x21; // Extension introducer
     gce[1] = 0xf9; // Graphic Control Label
     gce[2] = 0x04; // Block size
-    gce[3] = 0x04; // Disposal method: none, no transparency
+    gce[3] = 0x00; // Disposal method 0 (none/unspecified), no transparency
     gce[4] = delay & 0xff;
     gce[5] = (delay >> 8) & 0xff;
     gce[6] = 0; // Transparent color index (none)
@@ -215,7 +215,7 @@ function netscapeExt(): Uint8Array {
 function lzwEncode(indices: Uint8Array, colorCount: number): Uint8Array {
   const clearCode = colorCount;
   const endCode = colorCount + 1;
-  let codeSize = Math.max(2, Math.ceil(Math.log2(colorCount + 1)));
+  let codeSize = Math.max(2, Math.ceil(Math.log2(colorCount)));
   if (codeSize < 2) codeSize = 2;
 
   const output: number[] = [];

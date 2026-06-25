@@ -14,10 +14,14 @@ export async function reorderPdfPages(file: File, order: number[]): Promise<Blob
   const totalPages = pdfDoc.getPageCount();
 
   // Validate all indices are within bounds
-  const validOrder = order.filter((i) => i >= 0 && i < totalPages);
+  for (const idx of order) {
+    if (idx < 0 || idx >= totalPages) {
+      throw new Error(`Invalid page index: ${idx + 1}. PDF has ${totalPages} pages.`);
+    }
+  }
 
   const newDoc = await PDFDocument.create();
-  const pages = await newDoc.copyPages(pdfDoc, validOrder);
+  const pages = await newDoc.copyPages(pdfDoc, order);
   for (const page of pages) {
     newDoc.addPage(page);
   }

@@ -25,13 +25,3 @@ export async function compressPdf(file: File): Promise<Blob> {
 
   return new Blob([new Uint8Array(compressedBytes)], { type: "application/pdf" });
 }
-
-/**
- * Get human-readable file size string
- */
-export function formatBytes(bytes: number): string {
-  if (bytes === 0) return "0 B";
-  const units = ["B", "KB", "MB", "GB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(1024));
-  return `${(bytes / Math.pow(1024, i)).toFixed(1)} ${units[i]}`;
-}

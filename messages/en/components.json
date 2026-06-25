@@ -346,6 +346,7 @@
     "orDragDrop": "or drag & drop your PDF here",
     "browse": "Browse files",
     "compressing": "Compressing...",
+    "compress": "Compress PDF",
     "download": "Download Compressed PDF",
     "originalSize": "Original",
     "compressedSize": "Compressed",

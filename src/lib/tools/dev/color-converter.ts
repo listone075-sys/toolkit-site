@@ -29,6 +29,11 @@ export function hexToRgb(hex: string): RgbColor | null {
       .join("");
   }
 
+  // Support 6-digit (RGB) and 8-digit (RGBA) — ignore alpha channel
+  if (hex.length === 8) {
+    hex = hex.slice(0, 6);
+  }
+
   if (hex.length !== 6) return null;
 
   const r = parseInt(hex.slice(0, 2), 16);

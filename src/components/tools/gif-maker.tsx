@@ -23,7 +23,6 @@ export function GifMaker() {
   const [error, setError] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
   const [delay, setDelay] = useState(500); // ms per frame
-  const [previewIdx, setPreviewIdx] = useState(0);
   const nextId = useRef(0);
 
   const addFiles = useCallback((files: FileList | File[]) => {
@@ -37,7 +36,7 @@ export function GifMaker() {
       });
     }
     if (newFrames.length === 0) {
-      setError("Please upload image files.");
+      setError(t("gifMaker.uploadError"));
       return;
     }
     setFrames((prev) => [...prev, ...newFrames]);
@@ -45,7 +44,7 @@ export function GifMaker() {
     setOutputBlob(null);
     if (outputUrl) URL.revokeObjectURL(outputUrl);
     setOutputUrl(null);
-  }, [outputUrl]);
+  }, [t, outputUrl]);
 
   const removeFrame = (id: number) => {
     setFrames((prev) => {
@@ -66,7 +65,7 @@ export function GifMaker() {
 
   const handleCreateGif = async () => {
     if (frames.length < 2) {
-      setError("Add at least 2 frames to create a GIF.");
+      setError(t("gifMaker.minError"));
       return;
     }
     setLoading(true);
@@ -138,10 +137,10 @@ export function GifMaker() {
         }}
       >
         <Upload className="h-8 w-8 text-zinc-300 mb-2" />
-        <p className="text-sm font-medium text-zinc-600 mb-1">Upload Images for GIF</p>
-        <p className="text-xs text-zinc-400 mb-3">Add 2+ images to create an animated GIF</p>
+        <p className="text-sm font-medium text-zinc-600 mb-1">{t("gifMaker.uploadImages")}</p>
+        <p className="text-xs text-zinc-400 mb-3">{t("gifMaker.orDragDrop")}</p>
         <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-          <Plus className="h-4 w-4 mr-1" /> Add Images
+          <Plus className="h-4 w-4 mr-1" /> {t("gifMaker.addImages")}
           <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => {
             if (e.target.files) addFiles(e.target.files);
           }} />
@@ -154,23 +153,23 @@ export function GifMaker() {
       {frames.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center gap-3 flex-wrap">
-            <span className="text-sm font-medium text-zinc-600">{frames.length} frames</span>
+            <span className="text-sm font-medium text-zinc-600">{t("gifMaker.frames", { count: frames.length })}</span>
             <label className="text-sm text-zinc-500">
-              Delay:
+              {t("gifMaker.delay")}
               <Input
                 type="number"
                 value={delay}
                 onChange={(e) => setDelay(Math.max(10, Number(e.target.value)))}
                 className="w-20 ml-2 inline-block"
               />
-              <span className="ml-1">ms</span>
+              <span className="ml-1">{t("gifMaker.delayUnit")}</span>
             </label>
             <div className="flex-1" />
             <Button onClick={handleCreateGif} disabled={loading || frames.length < 2}>
-              <Play className="h-4 w-4 mr-1" /> {loading ? "Creating..." : "Create GIF"}
+              <Play className="h-4 w-4 mr-1" /> {loading ? t("gifMaker.creating") : t("gifMaker.create")}
             </Button>
             <Button variant="ghost" size="sm" onClick={handleClear}>
-              <X className="h-4 w-4 mr-1" /> Clear All
+              <X className="h-4 w-4 mr-1" /> {t("gifMaker.clearAll")}
             </Button>
           </div>
 
@@ -209,7 +208,7 @@ export function GifMaker() {
           <img src={outputUrl} alt="Animated GIF" className="max-h-48 mx-auto rounded" />
           <p className="text-xs text-zinc-400">{formatFileSize(outputBlob.size)}</p>
           <Button onClick={handleDownload}>
-            <Download className="h-4 w-4 mr-1" /> Download GIF
+            <Download className="h-4 w-4 mr-1" /> {t("gifMaker.download")}
           </Button>
         </div>
       )}

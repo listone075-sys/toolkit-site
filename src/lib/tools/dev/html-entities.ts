@@ -2,13 +2,18 @@
  * HTML Entity encode/decode with support for named entities, decimal, and hex entities.
  */
 
-// Common named HTML entities
-const NAMED_ENTITIES: Record<string, string> = {
+// Security-critical characters always encoded in every mode
+const SECURITY_ENTITIES: Record<string, string> = {
   "&": "&amp;",
   "<": "&lt;",
   ">": "&gt;",
   '"': "&quot;",
   "'": "&#39;",
+};
+
+// Additional common named HTML entities (used in named mode and encodeAll)
+const NAMED_ENTITIES: Record<string, string> = {
+  ...SECURITY_ENTITIES,
   "`": "&#96;",
   "¢": "&cent;",
   "£": "&pound;",
@@ -27,7 +32,6 @@ const NAMED_ENTITIES: Record<string, string> = {
   "›": "&rsaquo;",
   "«": "&laquo;",
   "»": "&raquo;",
-  " ": "&nbsp;",
   "¡": "&iexcl;",
   "¿": "&iquest;",
   "§": "&sect;",
@@ -88,11 +92,14 @@ export function encodeHtmlEntities(
     return result;
   }
 
-  // Encode only HTML-sensitive characters
+  // Encode HTML-sensitive characters (OWASP-recommended: & < > " ')
+  // Always encode security-critical chars regardless of mode
   let result = "";
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
-    if (NAMED_ENTITIES[char] && (mode === "named" || char === "&" || char === "<" || char === ">" || char === '"')) {
+    if (SECURITY_ENTITIES[char]) {
+      result += SECURITY_ENTITIES[char];
+    } else if (mode === "named" && NAMED_ENTITIES[char]) {
       result += NAMED_ENTITIES[char];
     } else {
       result += char;
@@ -105,15 +112,23 @@ export function encodeHtmlEntities(
  * Decode HTML entities back to plain text.
  * Supports named entities, decimal (&#xxx;), and hex (&#xXX;) entities.
  */
+function safeCodePoint(code: number): string {
+  try {
+    return String.fromCodePoint(code);
+  } catch {
+    return `&#${code};`; // Preserve invalid entity as-is
+  }
+}
+
 export function decodeHtmlEntities(text: string): string {
   // Hex entities &#xXX;
   let result = text.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) =>
-    String.fromCodePoint(parseInt(hex, 16)),
+    safeCodePoint(parseInt(hex, 16)),
   );
 
   // Decimal entities &#xxx;
   result = result.replace(/&#(\d+);/g, (_, dec) =>
-    String.fromCodePoint(parseInt(dec, 10)),
+    safeCodePoint(parseInt(dec, 10)),
   );
 
   // Named entities &xxx;

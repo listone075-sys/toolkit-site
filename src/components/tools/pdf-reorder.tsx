@@ -20,7 +20,7 @@ export function PdfReorder() {
 
   const loadFile = useCallback(async (f: File) => {
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
-      setError("Please upload a PDF file.");
+      setError(t("pdfReorder.uploadError"));
       return;
     }
     setFile(f);
@@ -36,10 +36,11 @@ export function PdfReorder() {
       setPageCount(count);
       setOrder(Array.from({ length: count }, (_, i) => i));
     } catch {
+      setError("Failed to read PDF. The file may be corrupted or password-protected.");
       setPageCount(0);
       setOrder([]);
     }
-  }, []);
+  }, [t]);
 
   const handleDrop = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -55,13 +56,14 @@ export function PdfReorder() {
     setOrder(newOrder);
   };
 
-  const handleReorder = async () => {
+  const handleApply = async (newOrder: number[]) => {
     if (!file) return;
     setLoading(true);
     setError(null);
     try {
-      const blob = await reorderPdfPages(file, order);
+      const blob = await reorderPdfPages(file, newOrder);
       setOutputBlob(blob);
+      setOrder(newOrder);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -110,10 +112,10 @@ export function PdfReorder() {
           onDrop={handleDrop}
         >
           <Upload className="h-10 w-10 text-zinc-300 mb-3" />
-          <p className="text-sm font-medium text-zinc-600 mb-1">Upload PDF File</p>
-          <p className="text-xs text-zinc-400 mb-3">or drag & drop your PDF here</p>
+          <p className="text-sm font-medium text-zinc-600 mb-1">{t("pdfReorder.uploadPdf")}</p>
+          <p className="text-xs text-zinc-400 mb-3">{t("pdfReorder.orDragDrop")}</p>
           <label className="cursor-pointer inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-accent">
-            Browse files
+            {t("pdfReorder.browse")}
             <input type="file" accept=".pdf,application/pdf" className="hidden" onChange={(e) => {
               const f = e.target.files?.[0];
               if (f) loadFile(f);
@@ -125,12 +127,12 @@ export function PdfReorder() {
           <div className="flex items-center gap-2 p-3 bg-zinc-50 rounded-lg border flex-wrap">
             <FileText className="h-5 w-5 text-zinc-500" />
             <span className="text-sm font-medium flex-1 min-w-0 truncate">{file.name}</span>
-            <span className="text-xs text-zinc-400">{pageCount} pages</span>
+            <span className="text-xs text-zinc-400">{t("pdfReorder.pageCount", { count: pageCount })}</span>
             <Button onClick={handleReverse} disabled={loading} variant="outline" size="sm">
-              <ArrowUpDown className="h-4 w-4 mr-1" /> Reverse
+              <ArrowUpDown className="h-4 w-4 mr-1" /> {t("pdfReorder.reverse")}
             </Button>
-            <Button onClick={handleReorder} disabled={loading} size="sm">
-              {loading ? "Reordering..." : "Apply Order"}
+            <Button onClick={() => handleApply(order)} disabled={loading} size="sm">
+              {loading ? t("pdfReorder.reordering") : t("pdfReorder.apply")}
             </Button>
             <Button variant="ghost" size="sm" onClick={handleClear}>
               <X className="h-4 w-4" />
@@ -140,7 +142,7 @@ export function PdfReorder() {
           {/* Page order editor */}
           {order.length > 0 && (
             <div className="border rounded-lg p-4">
-              <p className="text-sm text-zinc-500 mb-3">Drag to reorder pages. Current order shown below.</p>
+              <p className="text-sm text-zinc-500 mb-3">{t("pdfReorder.dragHint")}</p>
               <div className="flex flex-wrap gap-2">
                 {order.map((pageNum, idx) => (
                   <div
@@ -160,7 +162,7 @@ export function PdfReorder() {
                     }`}
                   >
                     <GripVertical className="h-3 w-3 text-zinc-400" />
-                    Page {pageNum + 1}
+                    {t("pdfReorder.pageLabel", { n: pageNum + 1 })}
                   </div>
                 ))}
               </div>
@@ -171,9 +173,9 @@ export function PdfReorder() {
 
           {outputBlob && (
             <div className="border rounded-lg p-6 text-center space-y-3">
-              <p className="text-sm text-green-600 font-medium">PDF reordered successfully!</p>
+              <p className="text-sm text-green-600 font-medium">{t("pdfReorder.reordered")}</p>
               <Button onClick={handleDownload}>
-                <Download className="h-4 w-4 mr-1" /> Download Reordered PDF
+                <Download className="h-4 w-4 mr-1" /> {t("pdfReorder.download")}
               </Button>
             </div>
           )}

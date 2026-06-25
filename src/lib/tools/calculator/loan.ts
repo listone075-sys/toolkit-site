@@ -79,7 +79,7 @@ export function calculateLoan(input: LoanInput): LoanResult {
     monthlyPayment: Math.round(monthlyPayment * 100) / 100,
     totalPayment: Math.round(totalPayment * 100) / 100,
     totalInterest: Math.round(totalInterest * 100) / 100,
-    monthlyRate: Math.round(monthlyRate * 100 * 10000) / 10000,
+    monthlyRate,
     totalPayments,
     schedule,
   };
@@ -93,6 +93,7 @@ function buildSchedule(
 ): AmortizationRow[] {
   const schedule: AmortizationRow[] = [];
   let balance = principal;
+  const roundedPayment = Math.round(payment * 100) / 100;
 
   for (let i = 1; i <= totalPayments; i++) {
     const interest = balance * monthlyRate;
@@ -101,7 +102,7 @@ function buildSchedule(
 
     schedule.push({
       month: i,
-      payment: Math.round(payment * 100) / 100,
+      payment: roundedPayment,
       principal: Math.round(principalPart * 100) / 100,
       interest: Math.round(interest * 100) / 100,
       remainingBalance: Math.round(balance * 100) / 100,

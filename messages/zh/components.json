@@ -346,6 +346,7 @@
     "orDragDrop": "或拖放 PDF 到此处",
     "browse": "浏览文件",
     "compressing": "压缩中...",
+    "compress": "压缩 PDF",
     "download": "下载压缩后的 PDF",
     "originalSize": "原始",
     "compressedSize": "压缩后",
