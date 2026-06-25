@@ -15,11 +15,11 @@ const CATEGORY_COLORS: Record<BmiCategory, string> = {
   obese: "bg-red-100 text-red-800 border-red-200",
 };
 
-const CATEGORY_BAR: { cat: BmiCategory; max: number; label: string }[] = [
-  { cat: "underweight", max: 18.5, label: "< 18.5" },
-  { cat: "normal", max: 25, label: "18.5–24.9" },
-  { cat: "overweight", max: 30, label: "25–29.9" },
-  { cat: "obese", max: 40, label: "≥ 30" },
+const CATEGORY_BAR: { cat: BmiCategory; from: number; max: number; label: string }[] = [
+  { cat: "underweight", from: 0, max: 18.5, label: "< 18.5" },
+  { cat: "normal", from: 18.5, max: 25, label: "18.5–24.9" },
+  { cat: "overweight", from: 25, max: 30, label: "25–29.9" },
+  { cat: "obese", from: 30, max: 40, label: "≥ 30" },
 ];
 
 export function BmiCalculator() {
@@ -115,18 +115,18 @@ export function BmiCalculator() {
           </div>
 
           {/* Scale bar */}
-          <div className="bg-zinc-100 rounded-full h-4 overflow-hidden flex">
-            {CATEGORY_BAR.map(({ cat, max }) => (
+          <div className="relative bg-zinc-100 rounded-full h-4 overflow-hidden flex">
+            {CATEGORY_BAR.map(({ cat, from, max }) => (
               <div
                 key={cat}
                 className={`h-full transition-all ${CATEGORY_COLORS[cat].split(" ")[0]}`}
-                style={{ width: `${((max - (cat === "underweight" ? 0 : CATEGORY_BAR[CATEGORY_BAR.findIndex(b => b.cat === cat) - 1]?.max ?? 0)) / 40) * 100}%` }}
+                style={{ width: `${((max - from) / 40) * 100}%` }}
               />
             ))}
             {/* Marker */}
             <div
-              className="relative h-full w-0.5 bg-zinc-900"
-              style={{ marginLeft: `${Math.min((result.bmi / 40) * 100, 100)}%`, position: "absolute" }}
+              className="absolute top-0 h-full w-0.5 bg-zinc-900"
+              style={{ left: `${Math.min((result.bmi / 40) * 100, 100)}%` }}
             />
           </div>
         </div>

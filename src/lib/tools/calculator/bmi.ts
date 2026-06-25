@@ -12,6 +12,9 @@ export type BmiCategory = "underweight" | "normal" | "overweight" | "obese";
  * BMI = weight / (height/100)²
  */
 export function calculateBmi(weightKg: number, heightCm: number): BmiResult {
+  if (heightCm <= 0 || weightKg <= 0) {
+    return { bmi: 0, category: "normal", minHealthyWeight: 0, maxHealthyWeight: 0 };
+  }
   const heightM = heightCm / 100;
   const bmi = weightKg / (heightM * heightM);
 

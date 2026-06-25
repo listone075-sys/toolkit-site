@@ -64,8 +64,8 @@ export function ImageCropper() {
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const w = Math.max(10, x - cropStart.x);
-    const h = Math.max(10, y - cropStart.y);
+    const w = Math.max(10, Math.abs(x - cropStart.x));
+    const h = Math.max(10, Math.abs(y - cropStart.y));
     setCropRect({ x: Math.min(cropStart.x, x), y: Math.min(cropStart.y, y), w, h });
   };
 
@@ -82,7 +82,7 @@ export function ImageCropper() {
       if (!img || !container) return;
 
       const displayWidth = container.clientWidth;
-      const displayHeight = container.clientHeight;
+      const displayHeight = img.clientHeight || container.clientHeight;
       const scaleX = img.naturalWidth / displayWidth;
       const scaleY = img.naturalHeight / displayHeight;
 

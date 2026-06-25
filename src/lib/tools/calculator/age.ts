@@ -43,12 +43,12 @@ export function calculateAge(birthDate: Date, toDate: Date = new Date()): AgeRes
     months--;
   }
 
-  // Days
-  const lastBirthday = new Date(to.getFullYear(), birth.getMonth(), birth.getDate());
-  if (lastBirthday > to) {
-    lastBirthday.setFullYear(to.getFullYear() - 1);
+  // Days since last monthiversary
+  const lastMonthiversary = new Date(to.getFullYear(), to.getMonth(), birth.getDate());
+  if (lastMonthiversary > to) {
+    lastMonthiversary.setMonth(lastMonthiversary.getMonth() - 1);
   }
-  const days = Math.floor((to.getTime() - lastBirthday.getTime()) / (1000 * 60 * 60 * 24));
+  const days = Math.floor((to.getTime() - lastMonthiversary.getTime()) / (1000 * 60 * 60 * 24));
 
   // Total days
   const totalDays = Math.floor((to.getTime() - birth.getTime()) / (1000 * 60 * 60 * 24));
