@@ -226,6 +226,64 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "gif-maker",
+    title: "GIF Maker",
+    description:
+      "Create animated GIFs from multiple images online for free. Set frame delay, arrange order, and download. All processing in your browser.",
+    category: "image",
+    keywords: ["gif maker", "make gif", "create gif", "animated gif maker", "gif creator", "image to gif"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "Film",
+    howToUse: [
+      "Upload 2 or more images",
+      "Arrange frames in the desired order",
+      "Set the frame delay (animation speed)",
+      "Click Create GIF and download",
+    ],
+    faqs: [
+      {
+        question: "How many frames can I use?",
+        answer:
+          "There's no hard limit, but for best results keep it under 50 frames. Very large GIFs may be slow to generate and result in large file sizes.",
+      },
+      {
+        question: "What controls the animation speed?",
+        answer:
+          "The frame delay (in milliseconds) controls how long each frame is shown. Lower values create faster animations. The default 500ms shows each frame for half a second.",
+      },
+    ],
+  },
+  {
+    slug: "svg-to-png",
+    title: "SVG to PNG Converter",
+    description:
+      "Convert SVG images to PNG format online for free. Upload SVG files or paste code directly. Renders at 2x resolution for retina quality.",
+    category: "image",
+    keywords: ["svg to png", "convert svg to png", "svg converter", "svg to png online", "svg to bitmap"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "Image",
+    howToUse: [
+      "Upload an SVG file or paste your SVG code",
+      "Click Convert to PNG",
+      "Preview the rendered PNG output",
+      "Download the PNG file (rendered at 2x for sharp quality)",
+    ],
+    faqs: [
+      {
+        question: "Does it support complex SVGs?",
+        answer:
+          "Yes, we render SVGs using the browser's native SVG engine at 2x resolution. Inline styles, gradients, and basic animations (static first frame) are supported.",
+      },
+      {
+        question: "What is the output quality?",
+        answer:
+          "PNGs are rendered at 2x the original SVG dimensions for sharp, retina-quality output. The output is a standard PNG with transparent background preserved.",
+      },
+    ],
+  },
 
   // ── PDF Tools ────────────────────────────────────────────
   {
@@ -316,6 +374,122 @@ export const toolRegistry: ToolConfig[] = [
         question: "Will the formatting be preserved?",
         answer:
           "Yes! We use PDF-lib which preserves all content, fonts, and formatting from your original PDFs.",
+      },
+    ],
+  },
+  {
+    slug: "compress-pdf",
+    title: "Compress PDF",
+    description:
+      "Compress PDF files online for free. Reduce file size while maintaining quality. All processing happens in your browser.",
+    category: "pdf",
+    keywords: ["compress pdf", "reduce pdf size", "pdf compressor", "compress pdf online", "pdf size reducer"],
+    searchVolume: "~2M/mo",
+    isClientSide: true,
+    icon: "FileArchive",
+    howToUse: [
+      "Upload your PDF file by clicking or dragging",
+      "Click Compress PDF",
+      "See the size reduction percentage",
+      "Download the compressed PDF",
+    ],
+    faqs: [
+      {
+        question: "How much can PDFs be compressed?",
+        answer:
+          "Results vary depending on the PDF content. PDFs with many images may see 10-30% reduction. Text-heavy PDFs may see 20-50% size savings by removing unused objects and optimizing structure.",
+      },
+      {
+        question: "Will the quality be affected?",
+        answer:
+          "Our compression optimizes the PDF structure without altering the visible content. Text, images, and formatting remain identical to the original.",
+      },
+    ],
+  },
+  {
+    slug: "split-pdf",
+    title: "Split PDF",
+    description:
+      "Split PDF files into individual pages online for free. Extract specific page ranges or split all pages. Browser-based, no uploads.",
+    category: "pdf",
+    keywords: ["split pdf", "extract pdf pages", "pdf splitter", "separate pdf pages", "split pdf online"],
+    searchVolume: "~500K/mo",
+    isClientSide: true,
+    icon: "Scissors",
+    howToUse: [
+      "Upload your PDF file",
+      "Click Split All Pages to get each page as a separate PDF",
+      "Or enter a page range (e.g., 1-5) to extract specific pages",
+      "Download individual pages or the extracted range",
+    ],
+    faqs: [
+      {
+        question: "Can I extract specific pages?",
+        answer:
+          "Yes! Use the page range input to extract any range (e.g., 3-7). Each page is also available for individual download after splitting.",
+      },
+      {
+        question: "Is my PDF secure?",
+        answer:
+          "Yes. All splitting happens in your browser. Your PDF files are never uploaded to any server.",
+      },
+    ],
+  },
+  {
+    slug: "rotate-pdf",
+    title: "Rotate PDF",
+    description:
+      "Rotate PDF pages online for free. Choose 90°, 180°, or 270° rotation. All processing in your browser — no file uploads needed.",
+    category: "pdf",
+    keywords: ["rotate pdf", "rotate pdf pages", "pdf rotation", "turn pdf", "rotate pdf online"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "RotateCw",
+    howToUse: [
+      "Upload your PDF file",
+      "Choose rotation: 90° clockwise, 180°, or 270° (90° counter-clockwise)",
+      "Click to apply rotation to all pages",
+      "Download the rotated PDF",
+    ],
+    faqs: [
+      {
+        question: "Does it rotate all pages?",
+        answer:
+          "Yes, rotation is applied to every page in the PDF. Choose from 90° clockwise, 180°, or 270° (90° counter-clockwise).",
+      },
+      {
+        question: "Can I rotate only specific pages?",
+        answer:
+          "Currently, rotation applies to all pages. For page-specific rotation, split the PDF first, rotate individual pages, then merge them back.",
+      },
+    ],
+  },
+  {
+    slug: "pdf-reorder",
+    title: "PDF Page Reorder",
+    description:
+      "Rearrange PDF pages online for free. Drag and drop to reorder pages, reverse page order, or customize page sequence.",
+    category: "pdf",
+    keywords: ["reorder pdf pages", "rearrange pdf", "pdf page order", "reverse pdf", "pdf page sorter"],
+    searchVolume: "~30K/mo",
+    isClientSide: true,
+    icon: "GripVertical",
+    howToUse: [
+      "Upload your PDF",
+      "Drag and drop page tags to reorder them",
+      "Use Reverse for instant page order reversal",
+      "Click Apply Order and download the rearranged PDF",
+    ],
+    faqs: [
+      {
+        question: "How does page reordering work?",
+        answer:
+          "After uploading, you'll see each page as a draggable tag. Drag pages to your desired order, click Apply Order, and the PDF is rebuilt with the new page sequence.",
+      },
+      {
+        question: "Can I remove pages while reordering?",
+        answer:
+          "Currently, reordering rearranges existing pages. To remove pages, use the Split PDF tool to extract the pages you want to keep.",
       },
     ],
   },
@@ -837,6 +1011,93 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "html-entity-encode-decode",
+    title: "HTML Entity Encoder / Decoder",
+    description:
+      "Encode text to HTML entities or decode HTML entities back to plain text. Supports named, decimal, and hex entities. Free online tool.",
+    category: "dev",
+    keywords: ["html entity encoder", "html entity decoder", "html entities", "html escape", "html unescape", "encode html"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "Code",
+    howToUse: [
+      "Paste your text in the input panel",
+      "Click Encode to convert special characters to HTML entities",
+      "Or click Decode to convert HTML entities back to plain text",
+      "Copy the result or swap input/output",
+    ],
+    faqs: [
+      {
+        question: "What are HTML entities used for?",
+        answer:
+          "HTML entities represent special characters in HTML. For example, &lt; displays as '<'. They're essential for safely embedding user-generated content in web pages and preventing XSS attacks.",
+      },
+      {
+        question: "Does this prevent all XSS?",
+        answer:
+          "Encoding &, <, >, and \" as HTML entities is a key part of XSS prevention but not the complete solution. Always use proper security headers and Content Security Policy alongside encoding.",
+      },
+    ],
+  },
+  {
+    slug: "jwt-decoder",
+    title: "JWT Decoder",
+    description:
+      "Decode JWT (JSON Web Token) headers and payloads online. Inspect token claims, check expiration, and view formatted timestamps. No verification — inspection only.",
+    category: "dev",
+    keywords: ["jwt decoder", "decode jwt", "jwt token decoder", "json web token", "jwt parser", "jwt inspector"],
+    searchVolume: "~50K/mo",
+    isClientSide: true,
+    icon: "Key",
+    howToUse: [
+      "Paste your JWT token in the input area",
+      "Click Decode JWT",
+      "View the decoded header, payload, and signature",
+      "Check if the token is expired based on the 'exp' claim",
+    ],
+    faqs: [
+      {
+        question: "Is this secure? Can anyone see my token?",
+        answer:
+          "All decoding happens in your browser — your token is never sent to any server. However, JWT tokens can be decoded by anyone who has them, so never share tokens or expose them in public places.",
+      },
+      {
+        question: "Does this verify the token signature?",
+        answer:
+          "No, this tool only decodes the token contents. It does not verify signatures. For signature verification, use a JWT library in your application with the proper secret or public key.",
+      },
+    ],
+  },
+  {
+    slug: "color-converter",
+    title: "Color Converter",
+    description:
+      "Convert colors between HEX, RGB, and HSL formats online. Live preview, instant conversion in all three formats.",
+    category: "dev",
+    keywords: ["color converter", "hex to rgb", "rgb to hsl", "color picker", "hex to hsl", "color format converter"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Palette",
+    howToUse: [
+      "Enter a color in any format: HEX (#1a2b3c), RGB (rgb(26, 43, 60)), or HSL (hsl(210, 40%, 17%))",
+      "See the color preview box update instantly",
+      "Get the converted values in all three formats",
+      "Copy any format to clipboard",
+    ],
+    faqs: [
+      {
+        question: "What color formats are supported?",
+        answer:
+          "We support HEX (3/4/6 digit), RGB, and HSL formats. Any valid input in one format is instantly converted to the other two.",
+      },
+      {
+        question: "What is the difference between HSL and RGB?",
+        answer:
+          "RGB defines colors by mixing Red, Green, and Blue channels (how screens work). HSL describes colors by Hue (the color), Saturation (intensity), and Lightness (how bright). HSL is often more intuitive for designers.",
+      },
+    ],
+  },
 
   // ── Calculator Tools ──────────────────────────────────────
   {
@@ -975,6 +1236,64 @@ export const toolRegistry: ToolConfig[] = [
         question: "Does it work for any currency?",
         answer:
           "Yes! Just use the $ symbol as a placeholder. The math is the same for any currency.",
+      },
+    ],
+  },
+  {
+    slug: "loan-calculator",
+    title: "Loan Calculator",
+    description:
+      "Calculate monthly loan payments, total interest, and view amortization schedule. Free online loan calculator with full payment breakdown.",
+    category: "calculator",
+    keywords: ["loan calculator", "mortgage calculator", "amortization calculator", "loan payment", "interest calculator", "monthly payment calculator"],
+    searchVolume: "~500K/mo",
+    isClientSide: true,
+    icon: "Calculator",
+    howToUse: [
+      "Enter the loan amount (principal)",
+      "Enter the annual interest rate (e.g., 5.5 for 5.5%)",
+      "Enter the loan term in years",
+      "Click Calculate to see monthly payment, total interest, and amortization schedule",
+    ],
+    faqs: [
+      {
+        question: "What is amortization?",
+        answer:
+          "Amortization is the process of paying off a loan with fixed, regular payments. Each payment covers both interest and principal. Early payments are mostly interest, while later payments are mostly principal.",
+      },
+      {
+        question: "Does this include taxes and insurance?",
+        answer:
+          "No, this calculator shows principal and interest only. For a full monthly housing payment estimate, add property taxes, homeowners insurance, and possibly PMI to the calculated monthly payment.",
+      },
+    ],
+  },
+  {
+    slug: "tip-calculator",
+    title: "Tip Calculator",
+    description:
+      "Calculate tips instantly. Choose from common tip rates, split the bill among friends, and see per-person amounts. Free online tool.",
+    category: "calculator",
+    keywords: ["tip calculator", "gratuity calculator", "restaurant tip", "split bill calculator", "tip percentage", "tip amount"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Calculator",
+    howToUse: [
+      "Enter the bill amount",
+      "Select a tip percentage or enter a custom amount",
+      "Optionally set the number of people to split the bill",
+      "See the tip amount, total, and per-person breakdown",
+    ],
+    faqs: [
+      {
+        question: "What is the standard tip percentage?",
+        answer:
+          "In the US and Canada, 15-20% is standard for restaurant service. Other countries have different customs — Japan rarely tips, while the UK often includes a 10-12.5% service charge.",
+      },
+      {
+        question: "How is the per-person split calculated?",
+        answer:
+          "The tip amount and total bill are divided equally among the number of people you specify. For uneven splits, calculate each person's share individually.",
       },
     ],
   },

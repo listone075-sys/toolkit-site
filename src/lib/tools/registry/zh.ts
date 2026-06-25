@@ -226,6 +226,64 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "gif-maker",
+    title: "GIF 制作器",
+    description:
+      "在线免费将多张图片制作成动画 GIF。设置帧延迟、调整顺序并下载。所有处理均在浏览器中完成。",
+    category: "image",
+    keywords: ["gif制作", "制作gif", "动画gif", "图片转gif", "gif生成器", "在线gif制作"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "Film",
+    howToUse: [
+      "上传 2 张或更多图片",
+      "按所需顺序排列帧",
+      "设置帧延迟（动画速度）",
+      "点击创建 GIF 并下载",
+    ],
+    faqs: [
+      {
+        question: "最多能使用多少帧？",
+        answer:
+          "没有硬性限制，但为获得最佳效果，建议保持在 50 帧以内。帧数过多可能导致生成缓慢且文件较大。",
+      },
+      {
+        question: "如何控制动画速度？",
+        answer:
+          "帧延迟（毫秒）控制每帧显示的时间。数值越低动画越快。默认的 500ms 每帧显示半秒。",
+      },
+    ],
+  },
+  {
+    slug: "svg-to-png",
+    title: "SVG 转 PNG 转换器",
+    description:
+      "在线免费将 SVG 图片转换为 PNG 格式。上传 SVG 文件或直接粘贴代码。以 2 倍分辨率渲染，获得清晰输出。",
+    category: "image",
+    keywords: ["svg转png", "svg转换器", "svg转png在线", "svg转位图", "免费svg转换"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "Image",
+    howToUse: [
+      "上传 SVG 文件或粘贴 SVG 代码",
+      "点击转换为 PNG",
+      "预览渲染后的 PNG 输出",
+      "下载 PNG 文件（2 倍分辨率渲染，画质清晰）",
+    ],
+    faqs: [
+      {
+        question: "支持复杂的 SVG 吗？",
+        answer:
+          "是的，我们使用浏览器的原生 SVG 引擎以 2 倍分辨率渲染 SVG。支持内联样式、渐变和基本动画（静态首帧）。",
+      },
+      {
+        question: "输出质量如何？",
+        answer:
+          "PNG 以原始 SVG 尺寸的 2 倍渲染，获得清晰的视网膜级别输出。输出为标准 PNG，保留透明背景。",
+      },
+    ],
+  },
 
   // ── PDF 工具 ────────────────────────────────────────────
   {
@@ -316,6 +374,122 @@ export const toolRegistry: ToolConfig[] = [
         question: "格式会被保留吗？",
         answer:
           "是的！我们使用 PDF-lib，它能保留原始 PDF 中的所有内容、字体和格式。",
+      },
+    ],
+  },
+  {
+    slug: "compress-pdf",
+    title: "压缩 PDF",
+    description:
+      "在线免费压缩 PDF 文件。在保持质量的同时减小文件体积。所有处理均在浏览器中完成。",
+    category: "pdf",
+    keywords: ["压缩pdf", "减小pdf大小", "pdf压缩器", "在线压缩pdf", "pdf体积减小"],
+    searchVolume: "~2M/mo",
+    isClientSide: true,
+    icon: "FileArchive",
+    howToUse: [
+      "点击或拖放上传 PDF 文件",
+      "点击压缩 PDF",
+      "查看体积缩减百分比",
+      "下载压缩后的 PDF",
+    ],
+    faqs: [
+      {
+        question: "PDF 能压缩多少？",
+        answer:
+          "取决于 PDF 内容。包含大量图片的 PDF 可减少 10-30%。文本为主的 PDF 通过移除未使用对象和优化结构，可节省 20-50% 的空间。",
+      },
+      {
+        question: "会影响质量吗？",
+        answer:
+          "我们的压缩优化 PDF 结构而不改变可见内容。文本、图片和格式与原始文件完全一致。",
+      },
+    ],
+  },
+  {
+    slug: "split-pdf",
+    title: "分割 PDF",
+    description:
+      "在线免费将 PDF 分割为单独页面。提取特定页码范围或分割全部页面。基于浏览器，无需上传。",
+    category: "pdf",
+    keywords: ["分割pdf", "提取pdf页面", "pdf分割器", "分离pdf页面", "在线分割pdf"],
+    searchVolume: "~500K/mo",
+    isClientSide: true,
+    icon: "Scissors",
+    howToUse: [
+      "上传您的 PDF 文件",
+      "点击「分割全部页面」将每页提取为单独的 PDF",
+      "或输入页码范围（如 1-5）提取特定页面",
+      "下载单页或提取的页码范围",
+    ],
+    faqs: [
+      {
+        question: "可以提取特定页面吗？",
+        answer:
+          "可以！使用页码范围输入框提取任意范围（如 3-7）。分割后每页也可单独下载。",
+      },
+      {
+        question: "我的 PDF 安全吗？",
+        answer:
+          "安全。所有分割操作均在浏览器中完成，您的 PDF 文件不会上传到任何服务器。",
+      },
+    ],
+  },
+  {
+    slug: "rotate-pdf",
+    title: "旋转 PDF",
+    description:
+      "在线免费旋转 PDF 页面。选择 90°、180° 或 270° 旋转。所有处理在浏览器中完成——无需上传文件。",
+    category: "pdf",
+    keywords: ["旋转pdf", "旋转pdf页面", "pdf旋转", "翻转pdf", "在线旋转pdf"],
+    searchVolume: "~100K/mo",
+    isClientSide: true,
+    icon: "RotateCw",
+    howToUse: [
+      "上传您的 PDF 文件",
+      "选择旋转角度：顺时针 90°、180° 或 270°（逆时针 90°）",
+      "点击对所有页面应用旋转",
+      "下载旋转后的 PDF",
+    ],
+    faqs: [
+      {
+        question: "会旋转所有页面吗？",
+        answer:
+          "是的，旋转应用于 PDF 中的每一页。可选择顺时针 90°、180° 或 270°（逆时针 90°）。",
+      },
+      {
+        question: "能否只旋转特定页面？",
+        answer:
+          "目前旋转应用于所有页面。如需仅旋转特定页面，请先分割 PDF，单独旋转页面，再合并。",
+      },
+    ],
+  },
+  {
+    slug: "pdf-reorder",
+    title: "PDF 页面重排",
+    description:
+      "在线免费重排 PDF 页面顺序。拖放调整页面顺序、反转页面顺序或自定义页面排列。",
+    category: "pdf",
+    keywords: ["重排pdf页面", "调整pdf", "pdf页面顺序", "反转pdf", "pdf页面排序"],
+    searchVolume: "~30K/mo",
+    isClientSide: true,
+    icon: "GripVertical",
+    howToUse: [
+      "上传您的 PDF",
+      "拖放页面标签调整顺序",
+      "使用「反转」按钮快速反转页面顺序",
+      "点击「应用排序」并下载重排后的 PDF",
+    ],
+    faqs: [
+      {
+        question: "页面重排是如何工作的？",
+        answer:
+          "上传后，您会看到每个页面显示为可拖动的标签。将页面拖动到所需顺序，点击「应用排序」，PDF 将按新顺序重新构建。",
+      },
+      {
+        question: "重排时可以删除页面吗？",
+        answer:
+          "目前重排功能调整现有页面顺序。如需删除页面，请使用分割 PDF 工具提取想要保留的页面。",
       },
     ],
   },
@@ -840,6 +1014,93 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "html-entity-encode-decode",
+    title: "HTML 实体编解码器",
+    description:
+      "将文本编码为 HTML 实体或将 HTML 实体解码回纯文本。支持命名实体、十进制和十六进制实体。免费在线工具。",
+    category: "dev",
+    keywords: ["html实体编码", "html实体解码", "html实体", "html转义", "html反转义", "html编码"],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "Code",
+    howToUse: [
+      "在输入面板粘贴文本",
+      "点击「编码」将特殊字符转换为 HTML 实体",
+      "或点击「解码」将 HTML 实体转回纯文本",
+      "复制结果或交换输入/输出",
+    ],
+    faqs: [
+      {
+        question: "HTML 实体有什么用途？",
+        answer:
+          "HTML 实体用于在 HTML 中表示特殊字符。例如，&lt; 显示为 '<'。它们在安全嵌入用户生成内容和防止 XSS 攻击方面至关重要。",
+      },
+      {
+        question: "这能防止所有 XSS 吗？",
+        answer:
+          "将 &、<、> 和 \" 编码为 HTML 实体是 XSS 防护的关键部分，但不是完整解决方案。始终配合使用适当的安全头和内容安全策略。",
+      },
+    ],
+  },
+  {
+    slug: "jwt-decoder",
+    title: "JWT 解码器",
+    description:
+      "在线解码 JWT（JSON Web Token）的头部和负载。检查令牌声明、验证过期时间、查看格式化时间戳。仅解析，不验证签名。",
+    category: "dev",
+    keywords: ["jwt解码", "解码jwt", "jwt令牌解码", "json web token", "jwt解析", "jwt查看"],
+    searchVolume: "~50K/mo",
+    isClientSide: true,
+    icon: "Key",
+    howToUse: [
+      "在输入区粘贴您的 JWT 令牌",
+      "点击「解码 JWT」",
+      "查看解码后的头部、负载和签名",
+      "根据 'exp' 声明检查令牌是否过期",
+    ],
+    faqs: [
+      {
+        question: "这安全吗？别人能看到我的令牌吗？",
+        answer:
+          "所有解码均在浏览器中完成——您的令牌不会发送到任何服务器。但 JWT 令牌本身可被任何人解码，所以绝不要分享令牌或在公开场合暴露它们。",
+      },
+      {
+        question: "会验证令牌签名吗？",
+        answer:
+          "不会，此工具仅解码令牌内容，不验证签名。如需验证签名，请在您的应用中使用 JWT 库配合正确的密钥或公钥。",
+      },
+    ],
+  },
+  {
+    slug: "color-converter",
+    title: "颜色转换器",
+    description:
+      "在线转换 HEX、RGB 和 HSL 颜色格式。实时预览，三种格式即时转换。",
+    category: "dev",
+    keywords: ["颜色转换器", "hex转rgb", "rgb转hsl", "颜色选择器", "hex转hsl", "颜色格式转换"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Palette",
+    howToUse: [
+      "输入任意格式的颜色：HEX（#1a2b3c）、RGB（rgb(26, 43, 60)）或 HSL（hsl(210, 40%, 17%)）",
+      "实时查看颜色预览框更新",
+      "获取三种格式的转换值",
+      "复制任意格式到剪贴板",
+    ],
+    faqs: [
+      {
+        question: "支持哪些颜色格式？",
+        answer:
+          "我们支持 HEX（3/4/6 位）、RGB 和 HSL 格式。任意一种格式的有效输入会立即转换为其他两种格式。",
+      },
+      {
+        question: "HSL 和 RGB 有什么区别？",
+        answer:
+          "RGB 通过混合红、绿、蓝通道来定义颜色（屏幕的工作方式）。HSL 通过色相（颜色）、饱和度（强度）和亮度（明暗）来描述颜色。设计师通常觉得 HSL 更直观。",
+      },
+    ],
+  },
 
   // ── 计算器工具 ──────────────────────────────────────
   {
@@ -978,6 +1239,64 @@ export const toolRegistry: ToolConfig[] = [
         question: "适用于任何货币吗？",
         answer:
           "可以！只需将 $ 符号视为占位符。计算方法对任何货币都一样。",
+      },
+    ],
+  },
+  {
+    slug: "loan-calculator",
+    title: "贷款计算器",
+    description:
+      "计算每月贷款还款额、总利息并查看还款计划表。免费在线贷款计算器，提供完整的还款明细。",
+    category: "calculator",
+    keywords: ["贷款计算器", "房贷计算器", "还款计算器", "贷款还款", "利息计算器", "月供计算器"],
+    searchVolume: "~500K/mo",
+    isClientSide: true,
+    icon: "Calculator",
+    howToUse: [
+      "输入贷款金额（本金）",
+      "输入年利率（如 5.5 表示 5.5%）",
+      "输入贷款期限（年）",
+      "点击计算查看月供、总利息和还款计划表",
+    ],
+    faqs: [
+      {
+        question: "什么是等额本息还款？",
+        answer:
+          "等额本息是用固定金额按期还款的方式。每期还款同时覆盖利息和本金。前期还款中利息占比大，后期本金占比大。",
+      },
+      {
+        question: "包含税费和保险吗？",
+        answer:
+          "不包含，此计算器仅显示本金和利息。如需估算完整的月度住房支出，请将房产税、房主保险和可能的按揭保险费加到计算的月供中。",
+      },
+    ],
+  },
+  {
+    slug: "tip-calculator",
+    title: "小费计算器",
+    description:
+      "即时计算小费。选择常用小费比例，与朋友分摊账单，查看每人应付金额。免费在线工具。",
+    category: "calculator",
+    keywords: ["小费计算器", "服务费计算器", "餐厅小费", "分摊账单", "小费比例", "小费金额"],
+    searchVolume: "~200K/mo",
+    isClientSide: true,
+    icon: "Calculator",
+    howToUse: [
+      "输入账单金额",
+      "选择小费比例或输入自定义比例",
+      "可选设置分摊人数",
+      "查看小费金额、总金额和人均明细",
+    ],
+    faqs: [
+      {
+        question: "标准小费比例是多少？",
+        answer:
+          "在美国和加拿大，餐厅服务标准小费为 15-20%。其他国家的习惯不同——日本通常不给小费，而英国通常包含 10-12.5% 的服务费。",
+      },
+      {
+        question: "人均分摊是如何计算的？",
+        answer:
+          "小费金额和总账单按您指定的人数平均分配。如需不均等分摊，请分别计算每人的份额。",
       },
     ],
   },

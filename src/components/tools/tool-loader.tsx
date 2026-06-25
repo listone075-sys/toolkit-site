@@ -217,6 +217,72 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
       default: m.DocxToMarkdown,
     })),
   ),
+
+  "compress-pdf": dynamic(() =>
+    import("./compress-pdf").then((m) => ({
+      default: m.CompressPdf,
+    })),
+  ),
+
+  "split-pdf": dynamic(() =>
+    import("./split-pdf").then((m) => ({
+      default: m.SplitPdf,
+    })),
+  ),
+
+  "rotate-pdf": dynamic(() =>
+    import("./rotate-pdf").then((m) => ({
+      default: m.RotatePdf,
+    })),
+  ),
+
+  "pdf-reorder": dynamic(() =>
+    import("./pdf-reorder").then((m) => ({
+      default: m.PdfReorder,
+    })),
+  ),
+
+  "gif-maker": dynamic(() =>
+    import("./gif-maker").then((m) => ({
+      default: m.GifMaker,
+    })),
+  ),
+
+  "svg-to-png": dynamic(() =>
+    import("./svg-to-png").then((m) => ({
+      default: m.SvgToPng,
+    })),
+  ),
+
+  "html-entity-encode-decode": dynamic(() =>
+    import("./html-entities").then((m) => ({
+      default: m.HtmlEntities,
+    })),
+  ),
+
+  "jwt-decoder": dynamic(() =>
+    import("./jwt-decoder").then((m) => ({
+      default: m.JwtDecoder,
+    })),
+  ),
+
+  "color-converter": dynamic(() =>
+    import("./color-converter").then((m) => ({
+      default: m.ColorConverter,
+    })),
+  ),
+
+  "loan-calculator": dynamic(() =>
+    import("./loan-calculator").then((m) => ({
+      default: m.LoanCalculator,
+    })),
+  ),
+
+  "tip-calculator": dynamic(() =>
+    import("./tip-calculator").then((m) => ({
+      default: m.TipCalculator,
+    })),
+  ),
 };
 
 /**
