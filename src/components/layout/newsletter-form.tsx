@@ -96,7 +96,7 @@ export function NewsletterForm({ className }: NewsletterFormProps) {
               {t("newsletter.error")}
             </div>
             <Button variant="outline" size="sm" onClick={() => setStatus("idle")}>
-              Try Again
+              {t("newsletter.tryAgain")}
             </Button>
           </div>
         ) : (

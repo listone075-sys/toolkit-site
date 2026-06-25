@@ -35,7 +35,7 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
   };
 
   const handleDownloadHtml = () => {
-    const doc = markdownToHtmlDocument(input || t("markdownEditor.placeholder"), "Document");
+    const doc = markdownToHtmlDocument(input || t("markdownEditor.placeholder"), t("markdownEditor.documentTitle"));
     downloadFile(doc, "document.html", "text/html");
   };
 

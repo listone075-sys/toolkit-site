@@ -20,7 +20,7 @@ export function TipCalculator() {
     setError(null);
     const b = Number(bill);
     if (!b || b <= 0) {
-      setError("Please enter a valid bill amount.");
+      setError(t("tipCalculator.error"));
       setResult(null);
       return;
     }
@@ -46,7 +46,7 @@ export function TipCalculator() {
       {/* Bill input */}
       <div className="p-4 border rounded-lg space-y-4">
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-2">Bill Amount ($)</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-2">{t("tipCalculator.billAmount")}</label>
           <Input
             type="number"
             value={bill}
@@ -58,7 +58,7 @@ export function TipCalculator() {
 
         {/* Tip percentage quick select */}
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-2">Tip Percentage</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-2">{t("tipCalculator.tipPercent")}</label>
           <div className="flex flex-wrap gap-2 mb-2">
             {[10, 15, 18, 20, 25].map((pct) => (
               <Button
@@ -78,14 +78,14 @@ export function TipCalculator() {
               onChange={(e) => setTipPercent(Number(e.target.value))}
               className="w-20"
             />
-            <span className="text-sm text-zinc-500">% custom</span>
+            <span className="text-sm text-zinc-500">% {t("tipCalculator.custom")}</span>
           </div>
         </div>
 
         {/* People split */}
         <div>
           <label className="text-sm font-medium text-zinc-700 block mb-2">
-            <Users className="h-4 w-4 inline mr-1" /> Split Among
+            <Users className="h-4 w-4 inline mr-1" /> {t("tipCalculator.splitAmong")}
           </label>
           <Input
             type="number"
@@ -98,9 +98,9 @@ export function TipCalculator() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button onClick={handleCalculate}>Calculate Tip</Button>
+        <Button onClick={handleCalculate}>{t("tipCalculator.calculate")}</Button>
         <Button variant="outline" onClick={handleReset}>
-          <RefreshCw className="h-4 w-4 mr-1" /> Reset
+          <RefreshCw className="h-4 w-4 mr-1" /> {t("tipCalculator.reset")}
         </Button>
       </div>
 
@@ -112,26 +112,26 @@ export function TipCalculator() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div className="bg-blue-50 rounded-lg p-4 text-center">
               <p className="text-2xl font-bold text-blue-800">${result.tipAmount.toFixed(2)}</p>
-              <p className="text-sm text-blue-600 mt-1">Tip Amount</p>
+              <p className="text-sm text-blue-600 mt-1">{t("tipCalculator.tipAmount")}</p>
             </div>
             <div className="bg-green-50 rounded-lg p-4 text-center">
               <p className="text-2xl font-bold text-green-800">${result.totalAmount.toFixed(2)}</p>
-              <p className="text-sm text-green-600 mt-1">Total Bill</p>
+              <p className="text-sm text-green-600 mt-1">{t("tipCalculator.totalBill")}</p>
             </div>
             <div className="bg-zinc-50 rounded-lg p-4 text-center border">
               <p className="text-2xl font-bold text-zinc-800">${result.tipPerPerson.toFixed(2)}</p>
-              <p className="text-sm text-zinc-600 mt-1">Tip / Person</p>
+              <p className="text-sm text-zinc-600 mt-1">{t("tipCalculator.tipPerPerson")}</p>
             </div>
             <div className="bg-zinc-50 rounded-lg p-4 text-center border">
               <p className="text-2xl font-bold text-zinc-800">${result.totalPerPerson.toFixed(2)}</p>
-              <p className="text-sm text-zinc-600 mt-1">Total / Person</p>
+              <p className="text-sm text-zinc-600 mt-1">{t("tipCalculator.totalPerPerson")}</p>
             </div>
           </div>
 
           {/* Country reference */}
           <details className="border rounded-lg">
             <summary className="p-3 font-medium text-sm cursor-pointer bg-zinc-50 rounded-t-lg">
-              Common Tip Rates by Country
+              {t("tipCalculator.countryRates")}
             </summary>
             <div className="p-3 grid grid-cols-2 md:grid-cols-3 gap-2">
               {TIP_RATES.map((country) => (

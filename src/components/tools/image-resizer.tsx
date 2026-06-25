@@ -146,7 +146,7 @@ export function ImageResizer() {
               <img src={outputUrl} alt="Resized" className="max-h-40 rounded mx-auto" />
               <div className="flex justify-center">
                 <Button onClick={() => {
-                  if (!outputBlob) { setError("Download not available — please resize again"); return; }
+                  if (!outputBlob) { setError(t("imageResizer.downloadError")); return; }
                   const ext = file?.name.includes(".") ? file.name.split(".").pop() : "jpg";
                   downloadFile(outputBlob, `resized.${ext}`, outputBlob.type);
                 }} size="sm">

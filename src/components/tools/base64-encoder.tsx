@@ -63,7 +63,7 @@ export function Base64Encoder() {
             {t("base64.decode")}
           </Button>
         </div>
-        <Button variant="outline" size="sm" onClick={handleSwap} title="Swap input/output">
+        <Button variant="outline" size="sm" onClick={handleSwap} title={t("base64.swapTitle")}>
           <ArrowLeftRight className="h-4 w-4 mr-1" /> {t("base64.swap")}
         </Button>
         <Button variant="outline" size="sm" onClick={handleProcess} className="ml-2">

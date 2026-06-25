@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import { getToolBySlug } from "@/lib/tools";
@@ -22,7 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!tool) {
     return { title: "Tool Not Found" };
   }
-  return generateToolMetadata(tool, locale);
+  const host = (await headers()).get("host") ?? undefined;
+  return generateToolMetadata(tool, locale, host);
 }
 
 export default function ToolPage({ params }: Props) {

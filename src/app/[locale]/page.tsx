@@ -34,6 +34,12 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "homepage.hero" });
+
+  // Use request host for subdomain-aware canonical/hreflang
+  const hostHeader = (await headers()).get("host") ?? "";
+  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
+  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+
   return {
     title: t("title"),
     description:
@@ -41,11 +47,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
         : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.",
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
+      canonical: `${base}/${locale}`,
       languages: {
-        en: `${SITE_URL}/en`,
-        zh: `${SITE_URL}/zh`,
+        en: `${base}/en`,
+        zh: `${base}/zh`,
       },
+    },
+    openGraph: {
+      title: t("title"),
+      description:
+        locale === "zh"
+          ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
+          : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.",
+      url: `${base}/${locale}`,
+      type: "website",
+      siteName: "ToolCraft",
+      images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description:
+        locale === "zh"
+          ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
+          : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.",
+      images: [`${base}/og-default.svg`],
     },
   };
 }

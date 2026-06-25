@@ -75,16 +75,16 @@ export function ColorConverter() {
           style={{ backgroundColor: previewColor }}
         />
         <div className="space-y-1 text-sm">
-          {hex && <p><span className="text-zinc-500">HEX:</span> <code className="font-mono">{hex}</code></p>}
-          {rgb && <p><span className="text-zinc-500">RGB:</span> <code className="font-mono">rgb({rgb.r}, {rgb.g}, {rgb.b})</code></p>}
-          {hsl && <p><span className="text-zinc-500">HSL:</span> <code className="font-mono">hsl({hsl.h}, {hsl.s}%, {hsl.l}%)</code></p>}
+          {hex && <p><span className="text-zinc-500">{t("colorConverter.hex")}:</span> <code className="font-mono">{hex}</code></p>}
+          {rgb && <p><span className="text-zinc-500">{t("colorConverter.rgb")}:</span> <code className="font-mono">rgb({rgb.r}, {rgb.g}, {rgb.b})</code></p>}
+          {hsl && <p><span className="text-zinc-500">{t("colorConverter.hsl")}:</span> <code className="font-mono">hsl({hsl.h}, {hsl.s}%, {hsl.l}%)</code></p>}
         </div>
       </div>
 
       {/* Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-1">HEX</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-1">{t("colorConverter.hex")}</label>
           <Input
             value={hexInput}
             onChange={(e) => updateFromHex(e.target.value)}
@@ -92,7 +92,7 @@ export function ColorConverter() {
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-1">RGB</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-1">{t("colorConverter.rgb")}</label>
           <Input
             value={rgbInput}
             onChange={(e) => updateFromRgb(e.target.value)}
@@ -100,7 +100,7 @@ export function ColorConverter() {
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-1">HSL</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-1">{t("colorConverter.hsl")}</label>
           <Input
             value={hslInput}
             onChange={(e) => updateFromHsl(e.target.value)}
@@ -116,17 +116,17 @@ export function ColorConverter() {
         <div className="flex flex-wrap gap-2">
           {hex && (
             <Button size="sm" variant="outline" onClick={() => handleCopy(hex)}>
-              <Copy className="h-3 w-3 mr-1" /> Copy HEX
+              <Copy className="h-3 w-3 mr-1" /> {t("colorConverter.copyHex")}
             </Button>
           )}
           {rgb && (
             <Button size="sm" variant="outline" onClick={() => handleCopy(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`)}>
-              <Copy className="h-3 w-3 mr-1" /> Copy RGB
+              <Copy className="h-3 w-3 mr-1" /> {t("colorConverter.copyRgb")}
             </Button>
           )}
           {hsl && (
             <Button size="sm" variant="outline" onClick={() => handleCopy(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`)}>
-              <Copy className="h-3 w-3 mr-1" /> Copy HSL
+              <Copy className="h-3 w-3 mr-1" /> {t("colorConverter.copyHsl")}
             </Button>
           )}
         </div>

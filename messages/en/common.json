@@ -76,6 +76,7 @@
     "subscribe": "Subscribe",
     "success": "Thanks! Check your email to confirm.",
     "error": "Something went wrong. Please try again.",
+    "tryAgain": "Try Again",
     "privacy": "We respect your privacy. Unsubscribe anytime."
   },
   "dismiss": "Dismiss",

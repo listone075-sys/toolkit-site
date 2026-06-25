@@ -44,16 +44,37 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const { headers } = await import("next/headers");
+  const hostHeader = (await headers()).get("host") ?? "";
+  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
+  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+
   return {
     title: "Blog — Free Online Tools Guides & Tips",
     description:
       "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
     alternates: {
-      canonical: `${SITE_URL}/${locale}/blog`,
+      canonical: `${base}/${locale}/blog`,
       languages: {
-        en: `${SITE_URL}/en/blog`,
-        zh: `${SITE_URL}/zh/blog`,
+        en: `${base}/en/blog`,
+        zh: `${base}/zh/blog`,
       },
+    },
+    openGraph: {
+      title: "Blog — Free Online Tools Guides & Tips",
+      description:
+        "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
+      url: `${base}/${locale}/blog`,
+      type: "website",
+      siteName: "ToolCraft",
+      images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Blog — Free Online Tools Guides & Tips",
+      description:
+        "Learn how to convert images, edit PDFs, write Markdown, and use developer tools.",
+      images: [`${base}/og-default.svg`],
     },
   };
 }

@@ -17,13 +17,13 @@ export function JwtDecoder() {
   const handleDecode = () => {
     setError(null);
     if (!token.trim()) {
-      setError("Paste a JWT token to decode.");
+      setError(t("jwtDecoder.pasteToken"));
       setDecoded(null);
       return;
     }
     const result = decodeJwt(token.trim());
     if (!result.isValidStructure) {
-      setError("Invalid JWT. A valid JWT has three parts separated by dots: header.payload.signature");
+      setError(t("jwtDecoder.invalidToken"));
       setDecoded(null);
       return;
     }
@@ -41,7 +41,7 @@ export function JwtDecoder() {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <p className="text-sm font-medium text-zinc-600">JWT Token</p>
+        <p className="text-sm font-medium text-zinc-600">{t("jwtDecoder.tokenLabel")}</p>
         <textarea
           value={token}
           onChange={(e) => setToken(e.target.value)}
@@ -51,9 +51,9 @@ export function JwtDecoder() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button onClick={handleDecode}>Decode JWT</Button>
+        <Button onClick={handleDecode}>{t("jwtDecoder.decode")}</Button>
         <Button variant="ghost" size="sm" onClick={handleClear}>
-          <X className="h-4 w-4 mr-1" /> Clear
+          <X className="h-4 w-4 mr-1" /> {t("jwtDecoder.clear")}
         </Button>
       </div>
 
@@ -65,14 +65,14 @@ export function JwtDecoder() {
           {expired !== null && (
             <div className={`flex items-center gap-2 p-3 rounded-lg text-sm ${expired ? "bg-red-50 text-red-700" : "bg-green-50 text-green-700"}`}>
               {expired ? <AlertTriangle className="h-4 w-4" /> : <ShieldCheck className="h-4 w-4" />}
-              {expired ? "Token is expired" : "Token is valid (expiration check only)"}
+              {expired ? t("jwtDecoder.expired") : t("jwtDecoder.valid")}
             </div>
           )}
 
           {/* Header */}
           <details className="border rounded-lg" open>
             <summary className="p-3 font-medium text-sm cursor-pointer bg-zinc-50 rounded-t-lg">
-              Header
+              {t("jwtDecoder.header")}
             </summary>
             <pre className="p-3 text-xs font-mono overflow-x-auto whitespace-pre-wrap">
               {JSON.stringify(decoded.header, null, 2)}
@@ -82,7 +82,7 @@ export function JwtDecoder() {
           {/* Payload */}
           <details className="border rounded-lg" open>
             <summary className="p-3 font-medium text-sm cursor-pointer bg-zinc-50 rounded-t-lg">
-              Payload
+              {t("jwtDecoder.payload")}
             </summary>
             <pre className="p-3 text-xs font-mono overflow-x-auto whitespace-pre-wrap">
               {JSON.stringify(decoded.payload, (key, value) => {
@@ -101,7 +101,7 @@ export function JwtDecoder() {
           {/* Signature */}
           <details className="border rounded-lg">
             <summary className="p-3 font-medium text-sm cursor-pointer bg-zinc-50 rounded-t-lg">
-              Signature (raw)
+              {t("jwtDecoder.signature")}
             </summary>
             <pre className="p-3 text-xs font-mono text-zinc-500 break-all whitespace-pre-wrap">
               {decoded.signature}

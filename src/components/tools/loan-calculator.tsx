@@ -22,7 +22,7 @@ export function LoanCalculator() {
     const r = Number(rate);
     const y = Number(years);
     if (!p || p <= 0 || isNaN(r) || r < 0 || !y || y <= 0) {
-      setError("Please enter valid loan details.");
+      setError(t("loanCalculator.error"));
       setResult(null);
       return;
     }
@@ -42,7 +42,7 @@ export function LoanCalculator() {
       {/* Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-lg">
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-2">Loan Amount ($)</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-2">{t("loanCalculator.amount")}</label>
           <Input
             type="number"
             value={amount}
@@ -51,7 +51,7 @@ export function LoanCalculator() {
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-2">Annual Rate (%)</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-2">{t("loanCalculator.rate")}</label>
           <Input
             type="number"
             value={rate}
@@ -61,7 +61,7 @@ export function LoanCalculator() {
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-zinc-700 block mb-2">Term (Years)</label>
+          <label className="text-sm font-medium text-zinc-700 block mb-2">{t("loanCalculator.termYears")}</label>
           <Input
             type="number"
             value={years}
@@ -72,9 +72,9 @@ export function LoanCalculator() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button onClick={handleCalculate}>Calculate</Button>
+        <Button onClick={handleCalculate}>{t("loanCalculator.calculate")}</Button>
         <Button variant="outline" onClick={handleReset}>
-          <RefreshCw className="h-4 w-4 mr-1" /> Reset
+          <RefreshCw className="h-4 w-4 mr-1" /> {t("loanCalculator.reset")}
         </Button>
       </div>
 
@@ -86,15 +86,15 @@ export function LoanCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="bg-blue-50 rounded-lg p-4 text-center">
               <p className="text-3xl font-bold text-blue-800">${result.monthlyPayment.toLocaleString()}</p>
-              <p className="text-sm text-blue-600 mt-1">Monthly Payment</p>
+              <p className="text-sm text-blue-600 mt-1">{t("loanCalculator.monthlyPayment")}</p>
             </div>
             <div className="bg-green-50 rounded-lg p-4 text-center">
               <p className="text-2xl font-bold text-green-800">${result.totalInterest.toLocaleString()}</p>
-              <p className="text-sm text-green-600 mt-1">Total Interest</p>
+              <p className="text-sm text-green-600 mt-1">{t("loanCalculator.totalInterest")}</p>
             </div>
             <div className="bg-zinc-50 rounded-lg p-4 text-center border">
               <p className="text-2xl font-bold text-zinc-800">${result.totalPayment.toLocaleString()}</p>
-              <p className="text-sm text-zinc-600 mt-1">Total Payment</p>
+              <p className="text-sm text-zinc-600 mt-1">{t("loanCalculator.totalPayment")}</p>
             </div>
           </div>
 
@@ -102,17 +102,17 @@ export function LoanCalculator() {
           {result.schedule.length > 0 && (
             <details className="border rounded-lg">
               <summary className="p-3 font-medium text-sm cursor-pointer bg-zinc-50 rounded-t-lg">
-                Amortization Schedule (First 12 Months)
+                {t("loanCalculator.schedule")}
               </summary>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b bg-zinc-50">
-                      <th className="p-2 text-left">Month</th>
-                      <th className="p-2 text-right">Payment</th>
-                      <th className="p-2 text-right">Principal</th>
-                      <th className="p-2 text-right">Interest</th>
-                      <th className="p-2 text-right">Balance</th>
+                      <th className="p-2 text-left">{t("loanCalculator.month")}</th>
+                      <th className="p-2 text-right">{t("loanCalculator.payment")}</th>
+                      <th className="p-2 text-right">{t("loanCalculator.principal")}</th>
+                      <th className="p-2 text-right">{t("loanCalculator.interest")}</th>
+                      <th className="p-2 text-right">{t("loanCalculator.balance")}</th>
                     </tr>
                   </thead>
                   <tbody>

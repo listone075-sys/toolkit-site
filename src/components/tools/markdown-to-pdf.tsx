@@ -66,7 +66,7 @@ export function MarkdownToPdf() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="border rounded-lg p-4 min-h-[350px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            Markdown
+            {t("markdownToPdf.markdownLabel")}
           </div>
           <textarea
             value={input}
@@ -89,7 +89,7 @@ export function MarkdownToPdf() {
               srcDoc={previewHtml}
               className="flex-1 w-full border rounded bg-white"
               sandbox="allow-same-origin"
-              title="PDF Preview"
+              title={t("markdownToPdf.preview")}
             />
           ) : (
             <div className="flex-1 flex items-center justify-center">

@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import type { ComponentType } from "react";
 
 /**
@@ -10,43 +11,49 @@ import type { ComponentType } from "react";
 const toolComponentMap: Record<string, ComponentType<any>> = {
   "heic-to-jpg": dynamic(() =>
     import("./image-converter").then((m) => ({
-      default: () =>
-        m.ImageConverter({
+      default: function HeicConverter() {
+        const t = useTranslations("components");
+        return m.ImageConverter({
           convertFn: async (file: File) => {
             const { heicToJpg } = await import("@/lib/tools/image/convert");
             return heicToJpg(file);
           },
-          inputLabel: "Upload HEIC Image",
+          inputLabel: t("imageConverter.uploadHeicImage"),
           outputExtension: "jpg",
-        }),
+        });
+      },
     })),
   ),
 
   "png-to-jpg": dynamic(() =>
     import("./image-converter").then((m) => ({
-      default: () =>
-        m.ImageConverter({
+      default: function PngConverter() {
+        const t = useTranslations("components");
+        return m.ImageConverter({
           convertFn: async (file: File) => {
             const { pngToJpg } = await import("@/lib/tools/image/convert");
             return pngToJpg(file);
           },
-          inputLabel: "Upload PNG Image",
+          inputLabel: t("imageConverter.uploadPngImage"),
           outputExtension: "jpg",
-        }),
+        });
+      },
     })),
   ),
 
   "webp-to-jpg": dynamic(() =>
     import("./image-converter").then((m) => ({
-      default: () =>
-        m.ImageConverter({
+      default: function WebpConverter() {
+        const t = useTranslations("components");
+        return m.ImageConverter({
           convertFn: async (file: File) => {
             const { webpToJpg } = await import("@/lib/tools/image/convert");
             return webpToJpg(file);
           },
-          inputLabel: "Upload WebP Image",
+          inputLabel: t("imageConverter.uploadWebpImage"),
           outputExtension: "jpg",
-        }),
+        });
+      },
     })),
   ),
 

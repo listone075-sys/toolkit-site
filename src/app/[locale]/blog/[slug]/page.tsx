@@ -30,6 +30,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
+  // Use request host for subdomain-aware canonical/hreflang
+  const { headers } = await import("next/headers");
+  const hostHeader = (await headers()).get("host") ?? "";
+  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
+  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+
   // Try locale-specific file first, fall back to en
   let filePath = path.join(process.cwd(), "src/content/blog", locale, `${slug}.mdx`);
   try {
@@ -42,15 +48,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const match = raw.match(/export const meta = ({[\s\S]*?});/);
     if (match) {
       const meta = eval(`(${match[1]})`);
+      const url = `${base}/${locale}/blog/${slug}`;
       return {
         title: meta.title,
         description: meta.description,
         alternates: {
-          canonical: `${SITE_URL}/${locale}/blog/${slug}`,
+          canonical: url,
           languages: {
-            en: `${SITE_URL}/en/blog/${slug}`,
-            zh: `${SITE_URL}/zh/blog/${slug}`,
+            en: `${base}/en/blog/${slug}`,
+            zh: `${base}/zh/blog/${slug}`,
           },
+        },
+        openGraph: {
+          title: meta.title,
+          description: meta.description,
+          url,
+          type: "article",
+          siteName: "ToolCraft",
+          images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: meta.title,
+          description: meta.description,
+          images: [`${base}/og-default.svg`],
+        },
+        robots: {
+          index: true,
+          follow: true,
         },
       };
     }

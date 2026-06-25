@@ -10,6 +10,10 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "legal.privacy" });
+  const { headers } = await import("next/headers");
+  const hostHeader = (await headers()).get("host") ?? "";
+  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
+  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
   return {
     title: `${t("title")} | ToolCraft`,
     description:
@@ -18,10 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : "ToolCraft Privacy Policy — how we handle your data and protect your privacy.",
     robots: { index: true, follow: true },
     alternates: {
-      canonical: `${SITE_URL}/${locale}/privacy`,
+      canonical: `${base}/${locale}/privacy`,
       languages: {
-        en: `${SITE_URL}/en/privacy`,
-        zh: `${SITE_URL}/zh/privacy`,
+        en: `${base}/en/privacy`,
+        zh: `${base}/zh/privacy`,
       },
     },
   };

@@ -88,9 +88,9 @@ export function JpgToPdf() {
 
         {/* File list */}
         <div className="border rounded-lg p-4 min-h-[250px]">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Image Order</div>
+          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t("jpgToPdf.imageOrder")}</div>
           {files.length === 0 ? (
-            <p className="text-sm text-zinc-400 text-center mt-12">No images yet</p>
+            <p className="text-sm text-zinc-400 text-center mt-12">{t("jpgToPdf.noImages")}</p>
           ) : (
             <div className="space-y-2 max-h-[350px] overflow-auto">
               {files.map((f, i) => (
@@ -118,7 +118,7 @@ export function JpgToPdf() {
           ) : (
             <Download className="h-4 w-4" />
           )}
-          {loading ? t("jpgToPdf.converting") : `Convert ${files.length} image(s) to PDF`}
+          {loading ? t("jpgToPdf.converting") : t("jpgToPdf.convertBtn", { count: files.length })}
         </Button>
       </div>
     </div>

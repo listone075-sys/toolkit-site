@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -30,6 +31,10 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
+  const host = (await headers()).get("host") ?? "";
+  const protocol = host.startsWith("localhost") ? "http" : "https";
+  const base = host ? `${protocol}://${host}` : SITE_URL;
+
   return {
     title: {
       default: "ToolCraft — Free Online Tools",
@@ -45,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "markdown editor",
       "json formatter",
     ],
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(base),
     alternates: { canonical: "/" },
     openGraph: {
       url: "/",
@@ -54,6 +59,14 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "ToolCraft — Free Online Tools",
       description:
         "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
+      images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "ToolCraft — Free Online Tools",
+      description:
+        "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
+      images: [`${base}/og-default.svg`],
     },
   };
 }
@@ -76,13 +89,18 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
 
+  // hreflang base: use request host for subdomain support (image.toolcraftbox.com etc.)
+  const host = (await headers()).get("host") ?? "";
+  const protocol = host.startsWith("localhost") ? "http" : "https";
+  const hreflangBase = host ? `${protocol}://${host}` : SITE_URL;
+
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
         {/* hreflang tags for SEO */}
-        <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en`} />
-        <link rel="alternate" hrefLang="zh" href={`${SITE_URL}/zh`} />
-        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/en`} />
+        <link rel="alternate" hrefLang="en" href={`${hreflangBase}/en`} />
+        <link rel="alternate" hrefLang="zh" href={`${hreflangBase}/zh`} />
+        <link rel="alternate" hrefLang="x-default" href={`${hreflangBase}/en`} />
         {/* PWA */}
         <meta name="theme-color" content="#2563eb" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -96,6 +114,12 @@ export default async function LocaleLayout({ children, params }: Props) {
         <meta name="google-site-verification" content="mx7ab6UFuWD0OuKTdl7ai0kqoMJ1Dad7kIL7FivkrX8" />
         {/* AdSense account verification */}
         <meta name="google-adsense-account" content="ca-pub-5142105226310650" />
+        {/* Geo-targeting signals (supplementary to hreflang) */}
+        <meta name="geo.region" content={locale === "zh" ? "CN" : "US"} />
+        <meta name="geo.placename" content="Global" />
+        {/* Dublin Core metadata */}
+        <meta name="dc.language" content={locale} />
+        <meta name="dc.title" content="ToolCraft — Free Online Tools" />
       </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>

@@ -86,14 +86,14 @@ export function MarkdownTableGenerator() {
                       className="h-8 text-sm font-semibold"
                       value={h}
                       onChange={(e) => updateHeader(i, e.target.value)}
-                      placeholder="Header"
+                      placeholder={t("markdownTableGenerator.headerPlaceholder")}
                     />
                     <Button
                       variant="ghost"
                       size="icon"
                       className="h-6 w-6 shrink-0"
                       onClick={() => toggleAlignment(i)}
-                      title={`Align: ${alignments[i]}`}
+                      title={t("markdownTableGenerator.alignTitle", { align: alignments[i] })}
                     >
                       {alignIcon(alignments[i])}
                     </Button>
@@ -124,7 +124,7 @@ export function MarkdownTableGenerator() {
                       className="h-8 text-sm border-0 shadow-none"
                       value={cell}
                       onChange={(e) => updateCell(ri, ci, e.target.value)}
-                      placeholder="Cell"
+                      placeholder={t("markdownTableGenerator.cellPlaceholder")}
                     />
                   </td>
                 ))}

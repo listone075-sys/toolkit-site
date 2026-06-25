@@ -13,7 +13,10 @@
     "converting": "Converting...",
     "download": "Download",
     "seeResult": "Upload an image to see the result",
-    "uploadError": "Please upload an image file."
+    "uploadError": "Please upload an image file.",
+    "uploadHeicImage": "Upload HEIC Image",
+    "uploadPngImage": "Upload PNG Image",
+    "uploadWebpImage": "Upload WebP Image"
   },
   "imageCompressor": {
     "quality": "Quality:",
@@ -42,7 +45,8 @@
     "resize": "Resize Image",
     "download": "Download",
     "uploadPrompt": "Upload an image to resize",
-    "uploadError": "Please upload an image file."
+    "uploadError": "Please upload an image file.",
+    "downloadError": "Download not available — please resize again"
   },
   "pdfToJpg": {
     "uploadPdf": "Upload PDF File",
@@ -64,7 +68,10 @@
     "converting": "Converting...",
     "download": "Download PDF",
     "uploadPrompt": "Upload images to create PDF",
-    "uploadError": "Please upload at least one image file."
+    "uploadError": "Please upload at least one image file.",
+    "imageOrder": "Image Order",
+    "noImages": "No images yet",
+    "convertBtn": "Convert {count, plural, one {# image} other {# images}} to PDF"
   },
   "mergePdf": {
     "uploadPdfs": "Upload PDF Files",
@@ -89,7 +96,8 @@
     "pptx": "PPTX",
     "placeholder": "# Heading\n\nType **Markdown** here...\n\n- List item\n- Another\n\n> Blockquote\n\n```js\nconsole.log('code');\n```",
     "htmlPlaceholder": "HTML will appear here...",
-    "converting": "Converting..."
+    "converting": "Converting...",
+    "documentTitle": "Document"
   },
   "jsonFormatter": {
     "format": "Format",
@@ -115,7 +123,8 @@
     "decodedText": "Decoded Text",
     "encodePlaceholder": "Enter text to encode...",
     "decodePlaceholder": "Enter Base64 string to decode...",
-    "clickToProcess": "Click Encode or Decode to see the result"
+    "clickToProcess": "Click Encode or Decode to see the result",
+    "swapTitle": "Swap input/output"
   },
   "uuidGenerator": {
     "count": "Count:",
@@ -182,7 +191,10 @@
     "copied": "Copied!",
     "download": "Download .md",
     "markdownOutput": "Markdown Output",
-    "columnLabel": "Column {n}"
+    "columnLabel": "Column {n}",
+    "headerPlaceholder": "Header",
+    "cellPlaceholder": "Cell",
+    "alignTitle": "Align: {align}"
   },
   "docxToMarkdown": {
     "uploadDocx": "Upload DOCX File",
@@ -393,7 +405,8 @@
     "download": "Download Reordered PDF",
     "dragHint": "Drag to reorder pages. Current order shown below.",
     "pageLabel": "Page {n}",
-    "uploadError": "Please upload a PDF file."
+    "uploadError": "Please upload a PDF file.",
+    "readError": "Failed to read PDF. The file may be corrupted or password-protected."
   },
   "gifMaker": {
     "uploadImages": "Upload Images for GIF",
@@ -407,7 +420,10 @@
     "clearAll": "Clear All",
     "download": "Download GIF",
     "minError": "Add at least 2 frames to create a GIF.",
-    "uploadError": "Please upload image files."
+    "uploadError": "Please upload image files.",
+    "moveLeft": "Move left",
+    "remove": "Remove",
+    "loadError": "Failed to load image"
   },
   "svgToPng": {
     "uploadSvg": "Upload SVG File",
@@ -434,9 +450,12 @@
     "decodedText": "Decoded Text",
     "encodePlaceholder": "Enter text to encode...",
     "decodePlaceholder": "Enter HTML-encoded string to decode...",
-    "clickToProcess": "Click Encode or Decode to see the result"
+    "clickToProcess": "Click Encode or Decode to see the result",
+    "encodeOutputPlaceholder": "Encoded text will appear here...",
+    "decodeOutputPlaceholder": "Decoded text will appear here..."
   },
   "jwtDecoder": {
+    "tokenLabel": "JWT Token",
     "pasteToken": "Paste a JWT token to decode.",
     "invalidToken": "Invalid JWT. A valid JWT has three parts separated by dots: header.payload.signature",
     "decode": "Decode JWT",
@@ -529,7 +548,8 @@
     "downloadHtml": "Download HTML",
     "clear": "Clear",
     "printHint": "Tip: In the print dialog, select \"Save as PDF\" as the destination to create a PDF file.",
-    "popupBlocked": "Popup was blocked. Please allow popups for this site to use Print to PDF."
+    "popupBlocked": "Popup was blocked. Please allow popups for this site to use Print to PDF.",
+    "markdownLabel": "Markdown"
   },
   "urlToMarkdown": {
     "urlPlaceholder": "https://example.com/article",

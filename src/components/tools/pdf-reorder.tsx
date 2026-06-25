@@ -37,7 +37,7 @@ export function PdfReorder() {
       setPageCount(count);
       setOrder(Array.from({ length: count }, (_, i) => i));
     } catch {
-      setError("Failed to read PDF. The file may be corrupted or password-protected.");
+      setError(t("pdfReorder.readError"));
       setPageCount(0);
       setOrder([]);
     }

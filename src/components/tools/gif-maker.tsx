@@ -75,7 +75,7 @@ export function GifMaker() {
     try {
       // Determine the size from the first frame
       const firstFrame = frames[0];
-      const img = await loadImage(firstFrame.imageUrl);
+      const img = await loadImage(firstFrame.imageUrl, t("gifMaker.loadError"));
       const width = img.naturalWidth;
       const height = img.naturalHeight;
 
@@ -91,7 +91,7 @@ export function GifMaker() {
 
       const gifFrames = [];
       for (const frame of frames) {
-        const imgEl = await loadImage(frame.imageUrl);
+        const imgEl = await loadImage(frame.imageUrl, t("gifMaker.loadError"));
         const imgData = imageToImageData(imgEl, outW, outH);
         gifFrames.push(createFrame(imgData, delay));
       }
@@ -174,14 +174,14 @@ export function GifMaker() {
                   <button
                     className="p-1 bg-white rounded hover:bg-zinc-100"
                     onClick={() => idx > 0 && moveFrame(idx, idx - 1)}
-                    title="Move left"
+                    title={t("gifMaker.moveLeft")}
                   >
                     <GripVertical className="h-3 w-3" />
                   </button>
                   <button
                     className="p-1 bg-white rounded hover:bg-red-50 text-red-500"
                     onClick={() => removeFrame(frame.id)}
-                    title="Remove"
+                    title={t("gifMaker.remove")}
                   >
                     <Trash2 className="h-3 w-3" />
                   </button>
@@ -206,11 +206,11 @@ export function GifMaker() {
   );
 }
 
-function loadImage(url: string): Promise<HTMLImageElement> {
+function loadImage(url: string, errorMsg: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error("Failed to load image"));
+    img.onerror = () => reject(new Error(errorMsg));
     img.src = url;
   });
 }

@@ -48,35 +48,35 @@ export function HtmlEntities() {
       {/* Toolbar */}
       <div className="flex items-center gap-2 flex-wrap">
         <Button onClick={() => { setMode("encode"); setOutput(""); }} variant={mode === "encode" ? "default" : "outline"} size="sm">
-          Encode
+          {t("htmlEntities.encode")}
         </Button>
         <Button onClick={() => { setMode("decode"); setOutput(""); }} variant={mode === "decode" ? "default" : "outline"} size="sm">
-          Decode
+          {t("htmlEntities.decode")}
         </Button>
-        <Button onClick={handleSwap} variant="ghost" size="sm" title="Swap input/output">
+        <Button onClick={handleSwap} variant="ghost" size="sm" title={t("htmlEntities.swap")}>
           <ArrowLeftRight className="h-4 w-4" />
         </Button>
         <div className="flex-1" />
-        <Button onClick={handleProcess} size="sm">{mode === "encode" ? "Encode" : "Decode"}</Button>
+        <Button onClick={handleProcess} size="sm">{mode === "encode" ? t("htmlEntities.encode") : t("htmlEntities.decode")}</Button>
         <Button onClick={handleClear} variant="ghost" size="sm">
-          <X className="h-4 w-4 mr-1" /> Clear
+          <X className="h-4 w-4 mr-1" /> {t("htmlEntities.clear")}
         </Button>
       </div>
 
       {/* Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
-          <p className="text-sm font-medium text-zinc-600 mb-2">{mode === "encode" ? "Plain Text" : "HTML-Encoded String"}</p>
+          <p className="text-sm font-medium text-zinc-600 mb-2">{mode === "encode" ? t("htmlEntities.plainText") : t("htmlEntities.encodedString")}</p>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={mode === "encode" ? "Enter text to encode..." : "Enter HTML-encoded string to decode..."}
+            placeholder={mode === "encode" ? t("htmlEntities.encodePlaceholder") : t("htmlEntities.decodePlaceholder")}
             className="w-full h-48 p-3 text-sm font-mono border rounded-lg resize-y"
           />
         </div>
         <div>
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-zinc-600">{mode === "encode" ? "HTML-Encoded Output" : "Decoded Text"}</p>
+            <p className="text-sm font-medium text-zinc-600">{mode === "encode" ? t("htmlEntities.encodedOutput") : t("htmlEntities.decodedText")}</p>
             <Button size="sm" variant="ghost" onClick={handleCopy} disabled={!output}>
               {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
             </Button>
@@ -84,7 +84,7 @@ export function HtmlEntities() {
           <textarea
             value={output}
             readOnly
-            placeholder={mode === "encode" ? "Encoded text will appear here..." : "Decoded text will appear here..."}
+            placeholder={mode === "encode" ? t("htmlEntities.encodeOutputPlaceholder") : t("htmlEntities.decodeOutputPlaceholder")}
             className="w-full h-48 p-3 text-sm font-mono border rounded-lg resize-y bg-zinc-50"
           />
         </div>

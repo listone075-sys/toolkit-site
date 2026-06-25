@@ -13,7 +13,10 @@
     "converting": "转换中...",
     "download": "下载",
     "seeResult": "上传图片以查看结果",
-    "uploadError": "请上传图片文件。"
+    "uploadError": "请上传图片文件。",
+    "uploadHeicImage": "上传 HEIC 图片",
+    "uploadPngImage": "上传 PNG 图片",
+    "uploadWebpImage": "上传 WebP 图片"
   },
   "imageCompressor": {
     "quality": "质量：",
@@ -42,7 +45,8 @@
     "resize": "调整图片大小",
     "download": "下载",
     "uploadPrompt": "上传图片以调整大小",
-    "uploadError": "请上传图片文件。"
+    "uploadError": "请上传图片文件。",
+    "downloadError": "下载不可用 — 请重新调整大小"
   },
   "pdfToJpg": {
     "uploadPdf": "上传 PDF 文件",
@@ -64,7 +68,10 @@
     "converting": "转换中...",
     "download": "下载 PDF",
     "uploadPrompt": "上传图片以创建 PDF",
-    "uploadError": "请至少上传一张图片。"
+    "uploadError": "请至少上传一张图片。",
+    "imageOrder": "图片顺序",
+    "noImages": "暂无图片",
+    "convertBtn": "转换 {count} 张图片为 PDF"
   },
   "mergePdf": {
     "uploadPdfs": "上传 PDF 文件",
@@ -89,7 +96,8 @@
     "pptx": "PPTX",
     "placeholder": "# 标题\n\n在这里输入 **Markdown**...\n\n- 列表项\n- 另一个\n\n> 引用块\n\n```js\nconsole.log('代码');\n```",
     "htmlPlaceholder": "HTML 将显示在这里...",
-    "converting": "转换中..."
+    "converting": "转换中...",
+    "documentTitle": "文档"
   },
   "jsonFormatter": {
     "format": "格式化",
@@ -115,7 +123,8 @@
     "decodedText": "解码文本",
     "encodePlaceholder": "输入要编码的文本...",
     "decodePlaceholder": "输入要解码的 Base64 字符串...",
-    "clickToProcess": "点击编码或解码查看结果"
+    "clickToProcess": "点击编码或解码查看结果",
+    "swapTitle": "交换输入/输出"
   },
   "uuidGenerator": {
     "count": "数量：",
@@ -182,7 +191,10 @@
     "copied": "已复制！",
     "download": "下载 .md",
     "markdownOutput": "Markdown 输出",
-    "columnLabel": "列 {n}"
+    "columnLabel": "列 {n}",
+    "headerPlaceholder": "表头",
+    "cellPlaceholder": "单元格",
+    "alignTitle": "对齐: {align}"
   },
   "docxToMarkdown": {
     "uploadDocx": "上传 DOCX 文件",
@@ -393,7 +405,8 @@
     "download": "下载重排后的 PDF",
     "dragHint": "拖动调整页面顺序。当前顺序如下所示。",
     "pageLabel": "第 {n} 页",
-    "uploadError": "请上传 PDF 文件。"
+    "uploadError": "请上传 PDF 文件。",
+    "readError": "无法读取 PDF。文件可能已损坏或受密码保护。"
   },
   "gifMaker": {
     "uploadImages": "上传图片制作 GIF",
@@ -407,7 +420,10 @@
     "clearAll": "全部清除",
     "download": "下载 GIF",
     "minError": "至少添加 2 帧来创建 GIF。",
-    "uploadError": "请上传图片文件。"
+    "uploadError": "请上传图片文件。",
+    "moveLeft": "左移",
+    "remove": "移除",
+    "loadError": "加载图片失败"
   },
   "svgToPng": {
     "uploadSvg": "上传 SVG 文件",
@@ -434,9 +450,12 @@
     "decodedText": "解码文本",
     "encodePlaceholder": "输入要编码的文本...",
     "decodePlaceholder": "输入要解码的 HTML 编码字符串...",
-    "clickToProcess": "点击编码或解码查看结果"
+    "clickToProcess": "点击编码或解码查看结果",
+    "encodeOutputPlaceholder": "编码后的文本将显示在这里...",
+    "decodeOutputPlaceholder": "解码后的文本将显示在这里..."
   },
   "jwtDecoder": {
+    "tokenLabel": "JWT 令牌",
     "pasteToken": "粘贴 JWT 令牌进行解码。",
     "invalidToken": "无效 JWT。有效的 JWT 由点分隔的三部分组成：header.payload.signature",
     "decode": "解码 JWT",
@@ -529,7 +548,8 @@
     "downloadHtml": "下载 HTML",
     "clear": "清除",
     "printHint": "提示：在打印对话框中，选择「另存为 PDF」作为目标来创建 PDF 文件。",
-    "popupBlocked": "弹窗被拦截。请允许本站弹窗以使用打印为 PDF 功能。"
+    "popupBlocked": "弹窗被拦截。请允许本站弹窗以使用打印为 PDF 功能。",
+    "markdownLabel": "Markdown"
   },
   "urlToMarkdown": {
     "urlPlaceholder": "https://example.com/article",
