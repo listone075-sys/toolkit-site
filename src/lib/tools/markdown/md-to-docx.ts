@@ -38,7 +38,7 @@ export async function markdownToDocxBlob(markdown: string): Promise<Blob> {
         ctx.paragraphs.push(...renderList(token));
         break;
       case "code":
-        ctx.paragraphs.push(renderCodeBlock(token));
+        ctx.paragraphs.push(...renderCodeBlock(token));
         break;
       case "table":
         ctx.paragraphs.push(...renderTable(token));
@@ -116,15 +116,31 @@ function renderParagraph(token: Token): Paragraph {
   });
 }
 
-function renderCodeBlock(token: Token): Paragraph {
+function renderCodeBlock(token: Token): Paragraph[] {
   const c = token as { text: string };
-  return new Paragraph({
-    spacing: { after: 120 },
-    shading: { type: ShadingType.SOLID, fill: "F5F5F5" },
-    indent: { left: convertInchesToTwip(0.3) },
-    children: [
-      new TextRun({ text: c.text, font: CODE_FONT, size: 20 }),
-    ],
+  // Strip trailing newline (marked always appends one), then split into lines
+  const text = c.text.endsWith("\n") ? c.text.slice(0, -1) : c.text;
+  if (!text) {
+    return [
+      new Paragraph({
+        spacing: { after: 120 },
+        shading: { type: ShadingType.SOLID, fill: "F5F5F5" },
+        indent: { left: convertInchesToTwip(0.3) },
+        children: [new TextRun({ text: " ", font: CODE_FONT, size: 20 })],
+      }),
+    ];
+  }
+  const lines = text.split("\n");
+  return lines.map((line, i) => {
+    const isLast = i === lines.length - 1;
+    return new Paragraph({
+      // Zero spacing between lines so the shaded block is visually contiguous;
+      // only the last line carries the bottom spacing.
+      spacing: { after: isLast ? 120 : 0 },
+      shading: { type: ShadingType.SOLID, fill: "F5F5F5" },
+      indent: { left: convertInchesToTwip(0.3) },
+      children: [new TextRun({ text: line || " ", font: CODE_FONT, size: 20 })],
+    });
   });
 }
 
@@ -180,18 +196,20 @@ function renderTable(token: Token): Paragraph[] {
   for (const row of table.rows) {
     lines.push("| " + row.map((r) => r.text.trim()).join(" | ") + " |");
   }
-  const text = lines.join("\n");
 
-  return [
-    new Paragraph({
-      spacing: { before: 120, after: 120 },
+  return lines.map((text, i) => {
+    const isFirst = i === 0;
+    const isLast = i === lines.length - 1;
+    return new Paragraph({
+      spacing: {
+        before: isFirst ? 120 : 0,
+        after: isLast ? 120 : 0,
+      },
       shading: { type: ShadingType.SOLID, fill: "FAFAFA" },
       indent: { left: convertInchesToTwip(0.2) },
-      children: [
-        new TextRun({ text, font: CODE_FONT, size: 20 }),
-      ],
-    }),
-  ];
+      children: [new TextRun({ text, font: CODE_FONT, size: 20 })],
+    });
+  });
 }
 
 // ── Inline token parser ──────────────────────────────────────
