@@ -10,16 +10,6 @@ const withAnalyzer = withBundleAnalyzer({
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
 
-  // Serve IndexNow key file at /{key}.txt (for Bing/Yandex verification)
-  async rewrites() {
-    return [
-      {
-        source: "/:key([a-zA-Z0-9]+).txt",
-        destination: "/api/indexnow-key?key=:key",
-      },
-    ];
-  },
-
   async headers() {
     return [
       // Tool pages: security + caching (with locale prefix)

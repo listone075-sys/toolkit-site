@@ -5,6 +5,21 @@ import { type NextRequest, NextResponse } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Serve IndexNow key file at /{key}.txt
+  const txtMatch = pathname.match(/^\/([a-zA-Z0-9]+)\.txt$/);
+  if (txtMatch) {
+    const requestedKey = txtMatch[1];
+    const indexNowKey = process.env.INDEXNOW_KEY;
+    if (indexNowKey && requestedKey === indexNowKey) {
+      return new NextResponse(indexNowKey, {
+        headers: { "Content-Type": "text/plain; charset=utf-8" },
+      });
+    }
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
   const response = intlMiddleware(request) as NextResponse;
 
   const hasLocaleCookie = request.cookies.has("NEXT_LOCALE");
@@ -30,5 +45,6 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|offline|favicon.ico|.*\\..*).*)"],
+  // Include .txt files for IndexNow key verification
+  matcher: ["/((?!_next|api|offline|favicon.ico).*)"],
 };
