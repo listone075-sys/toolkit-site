@@ -108,7 +108,7 @@ export function GifMaker() {
   };
 
   const handleDownload = () => {
-    if (!outputBlob) return;
+    if (!outputBlob) { setError(t("gifMaker.downloadError")); return; }
     downloadFile(outputBlob, "animated.gif", "image/gif");
   };
 

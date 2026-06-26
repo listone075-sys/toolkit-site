@@ -93,7 +93,7 @@ export function ImageCropper() {
   };
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("imageCropper.downloadError")); return; }
     const name = file.name.replace(/\.[^.]+$/, "") + "_cropped.jpg";
     downloadFile(outputBlob, name, "image/jpeg");
   };

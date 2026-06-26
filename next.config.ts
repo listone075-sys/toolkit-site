@@ -17,7 +17,6 @@ const nextConfig: NextConfig = {
         source: "/:locale(en|zh)/tools/:path*",
         headers: [
           { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
-          { key: "Cross-Origin-Embedder-Policy", value: "credentialless" },
           { key: "Cache-Control", value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
         ],
       },

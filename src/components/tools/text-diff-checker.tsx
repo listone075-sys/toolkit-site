@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { compareTexts, diffStats } from "@/lib/tools/dev/text-diff";
 import { useClipboard } from "@/hooks/use-clipboard";
+import { DropTarget } from "./file-upload-zone";
 import { ArrowLeftRight, RotateCcw } from "lucide-react";
 
 export function TextDiffChecker() {
@@ -22,30 +23,58 @@ export function TextDiffChecker() {
     setStats(diffStats(diff));
   }, [left, right]);
 
+  const readTextFile = (file: File, onText: (text: string) => void) => {
+    const reader = new FileReader();
+    reader.onload = () => onText(reader.result as string);
+    reader.readAsText(file);
+  };
+
+  const handleLeftDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    readTextFile(file, setLeft);
+  }, []);
+
+  const handleRightDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    readTextFile(file, setRight);
+  }, []);
+
   return (
     <div className="space-y-4">
       {/* Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="border rounded-lg p-4 min-h-[200px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t("textDiff.original")}</div>
-          <Textarea
-            className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
-            placeholder={t("textDiff.pasteOriginal")}
-            value={left}
-            onChange={(e) => setLeft(e.target.value)}
-            spellCheck={false}
-          />
-        </div>
-        <div className="border rounded-lg p-4 min-h-[200px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t("textDiff.modified")}</div>
-          <Textarea
-            className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
-            placeholder={t("textDiff.pasteModified")}
-            value={right}
-            onChange={(e) => setRight(e.target.value)}
-            spellCheck={false}
-          />
-        </div>
+        <DropTarget onFiles={handleLeftDrop} className="flex flex-col min-h-[200px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>{t("textDiff.original")}</span>
+              <span className="font-normal tracking-normal text-zinc-300 text-[11px]">{t("textDiff.dropLeft")}</span>
+            </div>
+            <Textarea
+              className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
+              placeholder={t("textDiff.pasteOriginal")}
+              value={left}
+              onChange={(e) => setLeft(e.target.value)}
+              spellCheck={false}
+            />
+          </div>
+        </DropTarget>
+        <DropTarget onFiles={handleRightDrop} className="flex flex-col min-h-[200px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>{t("textDiff.modified")}</span>
+              <span className="font-normal tracking-normal text-zinc-300 text-[11px]">{t("textDiff.dropRight")}</span>
+            </div>
+            <Textarea
+              className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
+              placeholder={t("textDiff.pasteModified")}
+              value={right}
+              onChange={(e) => setRight(e.target.value)}
+              spellCheck={false}
+            />
+          </div>
+        </DropTarget>
       </div>
 
       {/* Actions */}

@@ -5,6 +5,7 @@ import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { htmlToMarkdown } from "@/lib/tools/markdown/html-to-md";
 import { useClipboard } from "@/hooks/use-clipboard";
+import { DropTarget } from "./file-upload-zone";
 import { Copy, ArrowRight, Trash2 } from "lucide-react";
 
 export function HtmlToMarkdown() {
@@ -24,24 +25,37 @@ export function HtmlToMarkdown() {
     setOutput("");
   };
 
+  const handleFileDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const name = file.name.toLowerCase();
+    if (!name.endsWith(".html") && !name.endsWith(".htm") && !file.type.startsWith("text/")) return;
+    const reader = new FileReader();
+    reader.onload = () => { setInput(reader.result as string); setOutput(""); };
+    reader.readAsText(file);
+  }, []);
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Input */}
-        <div className="border rounded-lg p-4 min-h-[300px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            HTML
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[300px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>HTML</span>
+              <span className="font-normal tracking-normal text-zinc-300 text-[11px]">{t("htmlToMarkdown.dropHint")}</span>
+            </div>
+            <textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (output) setOutput("");
+              }}
+              placeholder={t("htmlToMarkdown.placeholder")}
+              className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
+            />
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-              if (output) setOutput("");
-            }}
-            placeholder={t("htmlToMarkdown.placeholder")}
-            className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
-          />
-        </div>
+        </DropTarget>
 
         {/* Output */}
         <div className="border rounded-lg p-4 min-h-[300px] flex flex-col">

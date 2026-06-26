@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ToolShell } from "./tool-shell";
@@ -11,6 +11,7 @@ import { markdownToPptxBlob } from "@/lib/tools/markdown/md-to-pptx";
 import { downloadFile } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { useDebounce } from "@/hooks/use-debounce";
+import { DropTarget } from "./file-upload-zone";
 import { Copy, Download, Eye, FileCode, FileText } from "lucide-react";
 
 interface MarkdownEditorProps {
@@ -59,6 +60,33 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
     );
   };
 
+  const handleFileDrop = useCallback(
+    (files: File[]) => {
+      const file = files[0];
+      if (!file) return;
+      // Accept .md, .txt, .markdown, and any text/plain files
+      const name = file.name.toLowerCase();
+      if (
+        !name.endsWith(".md") &&
+        !name.endsWith(".txt") &&
+        !name.endsWith(".markdown") &&
+        !file.type.startsWith("text/")
+      ) {
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        const text = reader.result as string;
+        setInput(text);
+      };
+      reader.onerror = () => {
+        // Silently ignore read errors for unsupported files
+      };
+      reader.readAsText(file);
+    },
+    [],
+  );
+
   return (
     <div className="space-y-4">
       {/* Toolbar */}
@@ -105,17 +133,22 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
       {/* Editor + Output */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Editor */}
-        <div className="border rounded-lg p-4 min-h-[400px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            {t("markdownEditor.markdown")}
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[400px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>{t("markdownEditor.markdown")}</span>
+              <span className="font-normal normal-case tracking-normal text-zinc-300 text-[11px]">
+                {t("markdownEditor.dropHint")}
+              </span>
+            </div>
+            <Textarea
+              className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
+              placeholder={t("markdownEditor.placeholder")}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
           </div>
-          <Textarea
-            className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
-            placeholder={t("markdownEditor.placeholder")}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </div>
+        </DropTarget>
 
         {/* Output */}
         <div className="border rounded-lg p-4 min-h-[400px] flex flex-col">

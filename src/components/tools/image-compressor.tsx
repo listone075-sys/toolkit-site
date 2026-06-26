@@ -56,7 +56,7 @@ export function ImageCompressor() {
   }, [quality]);
 
   const handleDownload = () => {
-    if (!result || !file) return;
+    if (!result || !file) { setError(t("imageCompressor.downloadError")); return; }
     const ext = file.name.includes(".") ? file.name.split(".").pop() : "jpg";
     downloadFile(result.blob, `compressed.${ext}`, result.blob.type);
   };

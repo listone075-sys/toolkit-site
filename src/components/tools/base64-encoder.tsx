@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { encodeBase64, decodeBase64, isBase64 } from "@/lib/tools/dev/base64";
 import { useClipboard } from "@/hooks/use-clipboard";
+import { DropTarget } from "./file-upload-zone";
 import { ArrowLeftRight, Copy, Trash2 } from "lucide-react";
 
 export function Base64Encoder() {
@@ -42,6 +43,14 @@ export function Base64Encoder() {
     setOutput("");
     setError(null);
   };
+
+  const handleFileDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => setInput(reader.result as string);
+    reader.readAsText(file);
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -81,18 +90,21 @@ export function Base64Encoder() {
 
       {/* Input / Output */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="border rounded-lg p-4 min-h-[300px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            {mode === "encode" ? t("base64.plainText") : t("base64.base64String")}
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[300px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>{mode === "encode" ? t("base64.plainText") : t("base64.base64String")}</span>
+              <span className="font-normal tracking-normal text-zinc-300 text-[11px]">{t("base64.dropHint")}</span>
+            </div>
+            <Textarea
+              className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
+              placeholder={mode === "encode" ? t("base64.encodePlaceholder") : t("base64.decodePlaceholder")}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              spellCheck={false}
+            />
           </div>
-          <Textarea
-            className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
-            placeholder={mode === "encode" ? t("base64.encodePlaceholder") : t("base64.decodePlaceholder")}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            spellCheck={false}
-          />
-        </div>
+        </DropTarget>
         <div className="border rounded-lg p-4 min-h-[300px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
             {mode === "encode" ? t("base64.base64Output") : t("base64.decodedText")}

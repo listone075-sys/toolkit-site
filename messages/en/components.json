@@ -14,6 +14,7 @@
     "download": "Download",
     "seeResult": "Upload an image to see the result",
     "uploadError": "Please upload an image file.",
+    "downloadError": "Download not available — please convert again",
     "uploadHeicImage": "Upload HEIC Image",
     "uploadPngImage": "Upload PNG Image",
     "uploadWebpImage": "Upload WebP Image"
@@ -31,7 +32,8 @@
     "download": "Download",
     "smaller": "{percent}% smaller",
     "uploadPrompt": "Upload an image to compress",
-    "uploadError": "Please upload an image file."
+    "uploadError": "Please upload an image file.",
+    "downloadError": "Download not available — please compress again"
   },
   "imageResizer": {
     "uploadImage": "Upload Image",
@@ -97,7 +99,8 @@
     "placeholder": "# Heading\n\nType **Markdown** here...\n\n- List item\n- Another\n\n> Blockquote\n\n```js\nconsole.log('code');\n```",
     "htmlPlaceholder": "HTML will appear here...",
     "converting": "Converting...",
-    "documentTitle": "Document"
+    "documentTitle": "Document",
+    "dropHint": "Drop .md file here"
   },
   "jsonFormatter": {
     "format": "Format",
@@ -108,7 +111,8 @@
     "copied": "Copied!",
     "download": "Download",
     "emptyResult": "Click Format or Minify to see the result",
-    "placeholder": "{\n  \"key\": \"value\"\n}"
+    "placeholder": "{\n  \"key\": \"value\"\n}",
+    "dropHint": "Drop .json file here"
   },
   "base64": {
     "encode": "Encode",
@@ -124,7 +128,8 @@
     "encodePlaceholder": "Enter text to encode...",
     "decodePlaceholder": "Enter Base64 string to decode...",
     "clickToProcess": "Click Encode or Decode to see the result",
-    "swapTitle": "Swap input/output"
+    "swapTitle": "Swap input/output",
+    "dropHint": "Drop file here"
   },
   "uuidGenerator": {
     "count": "Count:",
@@ -140,7 +145,8 @@
     "generate": "Generate",
     "download": "Download PNG",
     "emptyState": "Enter text or URL and click Generate",
-    "errorEmpty": "Enter text or URL"
+    "errorEmpty": "Enter text or URL",
+    "downloadError": "Download not available — please generate again"
   },
   "passwordGenerator": {
     "emptyState": "Click Generate to create a password",
@@ -180,7 +186,9 @@
     "clear": "Clear",
     "added": "{count} added",
     "removed": "{count} removed",
-    "unchanged": "{count} unchanged"
+    "unchanged": "{count} unchanged",
+    "dropLeft": "Drop file on left",
+    "dropRight": "Drop file on right"
   },
   "markdownTableGenerator": {
     "columns": "Columns",
@@ -206,7 +214,8 @@
     "copied": "Copied!",
     "download": "Download .md",
     "converting": "Converting...",
-    "uploadError": "Please upload a .docx file."
+    "uploadError": "Please upload a .docx file.",
+    "downloadError": "Download not available — please convert again"
   },
   "markdownToDocx": {
     "pasteMarkdown": "Paste your Markdown text...",
@@ -293,7 +302,8 @@
     "clear": "Clear",
     "selectArea": "Click & drag on the image to select crop area, then click Crop",
     "dragToSelect": "Drag to select crop area",
-    "uploadError": "Please upload an image file."
+    "uploadError": "Please upload an image file.",
+    "downloadError": "Download not available — please crop again"
   },
   "imageToBase64": {
     "uploadImage": "Upload Image",
@@ -331,7 +341,8 @@
     "copied": "Copied!",
     "clear": "Clear",
     "inputPlaceholder": "Paste your CSS here...",
-    "clickToProcess": "Click Beautify or Minify to process"
+    "clickToProcess": "Click Beautify or Minify to process",
+    "dropHint": "Drop .css file here"
   },
   "bmiCalculator": {
     "height": "Height (cm)",
@@ -364,7 +375,8 @@
     "originalSize": "Original",
     "compressedSize": "Compressed",
     "compressed": "Compressed",
-    "uploadError": "Please upload a PDF file."
+    "uploadError": "Please upload a PDF file.",
+    "downloadError": "Download not available — please compress again"
   },
   "splitPdf": {
     "uploadPdf": "Upload PDF File",
@@ -391,7 +403,8 @@
     "uploadError": "Please upload a PDF file.",
     "c90": "90° Clockwise",
     "c180": "180°",
-    "c270": "270° (90° CCW)"
+    "c270": "270° (90° CCW)",
+    "downloadError": "Download not available — please rotate again"
   },
   "pdfReorder": {
     "uploadPdf": "Upload PDF File",
@@ -406,7 +419,8 @@
     "dragHint": "Drag to reorder pages. Current order shown below.",
     "pageLabel": "Page {n}",
     "uploadError": "Please upload a PDF file.",
-    "readError": "Failed to read PDF. The file may be corrupted or password-protected."
+    "readError": "Failed to read PDF. The file may be corrupted or password-protected.",
+    "downloadError": "Download not available — please reorder again"
   },
   "gifMaker": {
     "uploadImages": "Upload Images for GIF",
@@ -423,7 +437,8 @@
     "uploadError": "Please upload image files.",
     "moveLeft": "Move left",
     "remove": "Remove",
-    "loadError": "Failed to load image"
+    "loadError": "Failed to load image",
+    "downloadError": "Download not available — please create the GIF again"
   },
   "svgToPng": {
     "uploadSvg": "Upload SVG File",
@@ -435,13 +450,15 @@
     "download": "Download PNG",
     "placeholder": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\">...",
     "uploadError": "Please upload an SVG file.",
-    "provideInput": "Provide an SVG file or paste SVG code."
+    "provideInput": "Provide an SVG file or paste SVG code.",
+    "downloadError": "Download not available — please convert again"
   },
   "htmlEntities": {
     "encode": "Encode",
     "decode": "Decode",
     "swap": "Swap",
     "swapTitle": "Swap input/output",
+    "dropHint": "Drop file here",
     "copy": "Copy",
     "copied": "Copied!",
     "clear": "Clear",
@@ -519,7 +536,8 @@
     "upscaling": "Upscaling...",
     "download": "Download",
     "clear": "Clear",
-    "readyPrompt": "Upload an image to upscale"
+    "readyPrompt": "Upload an image to upscale",
+    "downloadError": "Download not available — please upscale again"
   },
   "htmlToMarkdown": {
     "placeholder": "<h1>Hello World</h1>\n<p>Paste your <strong>HTML</strong> here...</p>",
@@ -527,7 +545,8 @@
     "convert": "Convert to Markdown",
     "copy": "Copy",
     "copied": "Copied!",
-    "clear": "Clear"
+    "clear": "Clear",
+    "dropHint": "Drop .html file here"
   },
   "markdownFormatter": {
     "input": "Raw Markdown",
@@ -538,7 +557,8 @@
     "copyMd": "Copy MD",
     "copy": "Copy",
     "copied": "Copied!",
-    "clear": "Clear"
+    "clear": "Clear",
+    "dropHint": "Drop .md file here"
   },
   "markdownToPdf": {
     "placeholder": "# My Document\n\nWrite your **Markdown** here...\n\n## Section\n\n- Item 1\n- Item 2\n\n[Click Preview to see the result]",
@@ -550,7 +570,8 @@
     "clear": "Clear",
     "printHint": "Tip: In the print dialog, select \"Save as PDF\" as the destination to create a PDF file.",
     "popupBlocked": "Popup was blocked. Please allow popups for this site to use Print to PDF.",
-    "markdownLabel": "Markdown"
+    "markdownLabel": "Markdown",
+    "dropHint": "Drop .md file here"
   },
   "urlToMarkdown": {
     "urlPlaceholder": "https://example.com/article",
@@ -580,6 +601,7 @@
     "tryAgain": "Try Again",
     "loadingModel": "Loading AI model...",
     "readyPrompt": "Upload an image to remove its background",
-    "preloadFailed": "Model preload failed — will download on first use"
+    "preloadFailed": "Model preload failed — will download on first use",
+    "downloadError": "Download not available — please process again"
   }
 }

@@ -81,7 +81,7 @@ export function PdfReorder() {
   };
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("pdfReorder.downloadError")); return; }
     const name = file.name.replace(/\.pdf$/i, "_reordered.pdf");
     downloadFile(outputBlob, name, "application/pdf");
   };

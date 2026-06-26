@@ -64,7 +64,7 @@ export function ImageConverter({
   );
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("imageConverter.downloadError")); return; }
     const outName = getOutputFileName(file.name, outputExtension);
     downloadFile(outputBlob, outName, outputFormat);
   };

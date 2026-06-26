@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { formatJson, minifyJson, validateJson } from "@/lib/tools/dev/json-format";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { downloadFile } from "@/lib/utils/file";
+import { DropTarget } from "./file-upload-zone";
 import { Copy, Download, AlignLeft, Minus, CheckCircle, XCircle } from "lucide-react";
 
 export function JsonFormatter() {
@@ -69,6 +70,16 @@ export function JsonFormatter() {
     setError(result.valid ? null : result.error ?? null);
   };
 
+  const handleFileDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const name = file.name.toLowerCase();
+    if (!name.endsWith(".json") && !file.type.startsWith("text/") && !file.type.includes("json")) return;
+    const reader = new FileReader();
+    reader.onload = () => handleInputChange(reader.result as string);
+    reader.readAsText(file);
+  }, []);
+
   return (
     <div className="space-y-4">
       {/* Toolbar */}
@@ -102,16 +113,21 @@ export function JsonFormatter() {
 
       {/* Input / Output */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="border rounded-lg p-4 min-h-[400px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t("toolShell.input")}</div>
-          <Textarea
-            className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
-            placeholder={t("jsonFormatter.placeholder")}
-            value={input}
-            onChange={(e) => handleInputChange(e.target.value)}
-            spellCheck={false}
-          />
-        </div>
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[400px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>{t("toolShell.input")}</span>
+              <span className="font-normal tracking-normal text-zinc-300 text-[11px]">{t("jsonFormatter.dropHint")}</span>
+            </div>
+            <Textarea
+              className="flex-1 font-mono text-sm resize-none border-0 shadow-none focus-visible:ring-0 p-0"
+              placeholder={t("jsonFormatter.placeholder")}
+              value={input}
+              onChange={(e) => handleInputChange(e.target.value)}
+              spellCheck={false}
+            />
+          </div>
+        </DropTarget>
         <div className="border rounded-lg p-4 min-h-[400px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">{t("toolShell.output")}</div>
           {error ? (

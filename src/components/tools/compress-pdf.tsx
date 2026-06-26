@@ -41,7 +41,7 @@ export function CompressPdf() {
   };
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("compressPdf.downloadError")); return; }
     const name = file.name.replace(/\.pdf$/i, "") + "_compressed.pdf";
     downloadFile(outputBlob, name, "application/pdf");
   };

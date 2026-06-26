@@ -102,7 +102,7 @@ export function ImageUpscaler() {
   );
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("imageUpscaler.downloadError")); return; }
     const ext = format === "image/png" ? "png" : format === "image/webp" ? "webp" : "jpg";
     const name = file.name.replace(/\.[^.]+$/, `_${scale}x.${ext}`);
     downloadFile(outputBlob, name, format);

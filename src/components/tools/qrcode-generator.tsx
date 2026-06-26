@@ -29,7 +29,7 @@ export function QrCodeGenerator() {
   }, [text]);
 
   const handleDownload = () => {
-    if (!qrDataUrl) return;
+    if (!qrDataUrl) { setError(t("qrCodeGenerator.downloadError")); return; }
     fetch(qrDataUrl).then(r => r.blob()).then(b => downloadFile(b, "qrcode.png", "image/png"));
   };
 

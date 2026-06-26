@@ -5,6 +5,7 @@ import { useState, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { markdownToHtmlDocument, markdownToPdfHtmlBlob } from "@/lib/tools/markdown/md-to-pdf";
 import { downloadFile } from "@/lib/utils/file";
+import { DropTarget } from "./file-upload-zone";
 import { FileDown, Printer, Eye, Trash2 } from "lucide-react";
 
 export function MarkdownToPdf() {
@@ -61,23 +62,36 @@ export function MarkdownToPdf() {
     }
   };
 
+  const handleFileDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const name = file.name.toLowerCase();
+    if (!name.endsWith(".md") && !name.endsWith(".txt") && !name.endsWith(".markdown") && !file.type.startsWith("text/")) return;
+    const reader = new FileReader();
+    reader.onload = () => { setInput(reader.result as string); setPreviewHtml(null); };
+    reader.readAsText(file);
+  }, []);
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="border rounded-lg p-4 min-h-[350px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            {t("markdownToPdf.markdownLabel")}
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[350px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span>{t("markdownToPdf.markdownLabel")}</span>
+              <span className="font-normal tracking-normal text-zinc-300 text-[11px]">{t("markdownToPdf.dropHint")}</span>
+            </div>
+            <textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (previewHtml) setPreviewHtml(null);
+              }}
+              placeholder={t("markdownToPdf.placeholder")}
+              className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
+            />
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-              if (previewHtml) setPreviewHtml(null);
-            }}
-            placeholder={t("markdownToPdf.placeholder")}
-            className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
-          />
-        </div>
+        </DropTarget>
 
         <div className="border rounded-lg p-4 min-h-[350px] flex flex-col">
           <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">

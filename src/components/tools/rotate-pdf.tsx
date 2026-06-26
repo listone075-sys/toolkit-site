@@ -42,7 +42,7 @@ export function RotatePdf() {
   };
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("rotatePdf.downloadError")); return; }
     const name = file.name.replace(/\.pdf$/i, "_rotated.pdf");
     downloadFile(outputBlob, name, "application/pdf");
   };

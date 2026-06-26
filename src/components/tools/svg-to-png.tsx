@@ -53,7 +53,7 @@ export function SvgToPng() {
   };
 
   const handleDownload = () => {
-    if (!outputBlob) return;
+    if (!outputBlob) { setError(t("svgToPng.downloadError")); return; }
     const name = file ? file.name.replace(/\.svg$/i, ".png") : "converted.png";
     downloadFile(outputBlob, name, "image/png");
   };

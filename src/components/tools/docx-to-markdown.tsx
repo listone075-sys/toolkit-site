@@ -38,7 +38,7 @@ export function DocxToMarkdown() {
   }, []);
 
   const handleDownload = () => {
-    if (!output) return;
+    if (!output) { setError(t("docxToMarkdown.downloadError")); return; }
     const fileName = file?.name.replace(/\.docx$/i, "") ?? "document";
     downloadFile(output, `${fileName}.md`, "text/markdown");
   };

@@ -134,7 +134,7 @@ export function BackgroundRemoval() {
   );
 
   const handleDownload = () => {
-    if (!outputBlob || !file) return;
+    if (!outputBlob || !file) { setError(t("backgroundRemoval.downloadError")); return; }
     const ext = format === "image/png" ? "png" : format === "image/webp" ? "webp" : "jpg";
     const name = file.name.replace(/\.[^.]+$/, `_nobg.${ext}`);
     downloadFile(outputBlob, name, format);

@@ -34,7 +34,9 @@ export function downloadFile(data: Blob | string, fileName: string, mimeType?: s
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  // Delay revoke to avoid race condition with download initiation
+  // (especially critical under Cross-Origin-Embedder-Policy)
+  setTimeout(() => URL.revokeObjectURL(url), 100);
 }
 
 /**

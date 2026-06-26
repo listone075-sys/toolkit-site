@@ -1,10 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { encodeHtmlEntities, decodeHtmlEntities } from "@/lib/tools/dev/html-entities";
 import { copyToClipboard } from "@/lib/utils/clipboard";
+import { DropTarget } from "./file-upload-zone";
 import { ArrowLeftRight, Copy, Check, X } from "lucide-react";
 
 export function HtmlEntities() {
@@ -43,6 +44,16 @@ export function HtmlEntities() {
     setCopied(false);
   };
 
+  const handleFileDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const name = file.name.toLowerCase();
+    if (!name.endsWith(".html") && !name.endsWith(".htm") && !name.endsWith(".txt") && !file.type.startsWith("text/")) return;
+    const reader = new FileReader();
+    reader.onload = () => setInput(reader.result as string);
+    reader.readAsText(file);
+  }, []);
+
   return (
     <div className="space-y-3">
       {/* Toolbar */}
@@ -65,15 +76,20 @@ export function HtmlEntities() {
 
       {/* Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div>
-          <p className="text-sm font-medium text-zinc-600 mb-2">{mode === "encode" ? t("htmlEntities.plainText") : t("htmlEntities.encodedString")}</p>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={mode === "encode" ? t("htmlEntities.encodePlaceholder") : t("htmlEntities.decodePlaceholder")}
-            className="w-full h-48 p-3 text-sm font-mono border rounded-lg resize-y"
-          />
-        </div>
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col">
+          <div>
+            <p className="text-sm font-medium text-zinc-600 mb-2 flex items-center justify-between">
+              <span>{mode === "encode" ? t("htmlEntities.plainText") : t("htmlEntities.encodedString")}</span>
+              <span className="font-normal text-zinc-300 text-[11px]">{t("htmlEntities.dropHint")}</span>
+            </p>
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder={mode === "encode" ? t("htmlEntities.encodePlaceholder") : t("htmlEntities.decodePlaceholder")}
+              className="w-full h-48 p-3 text-sm font-mono border rounded-lg resize-y"
+            />
+          </div>
+        </DropTarget>
         <div>
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm font-medium text-zinc-600">{mode === "encode" ? t("htmlEntities.encodedOutput") : t("htmlEntities.decodedText")}</p>

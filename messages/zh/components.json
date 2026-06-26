@@ -14,6 +14,7 @@
     "download": "下载",
     "seeResult": "上传图片以查看结果",
     "uploadError": "请上传图片文件。",
+    "downloadError": "下载不可用 — 请重新转换",
     "uploadHeicImage": "上传 HEIC 图片",
     "uploadPngImage": "上传 PNG 图片",
     "uploadWebpImage": "上传 WebP 图片"
@@ -31,7 +32,8 @@
     "download": "下载",
     "smaller": "减小 {percent}%",
     "uploadPrompt": "上传图片以压缩",
-    "uploadError": "请上传图片文件。"
+    "uploadError": "请上传图片文件。",
+    "downloadError": "下载不可用 — 请重新压缩"
   },
   "imageResizer": {
     "uploadImage": "上传图片",
@@ -97,7 +99,8 @@
     "placeholder": "# 标题\n\n在这里输入 **Markdown**...\n\n- 列表项\n- 另一个\n\n> 引用块\n\n```js\nconsole.log('代码');\n```",
     "htmlPlaceholder": "HTML 将显示在这里...",
     "converting": "转换中...",
-    "documentTitle": "文档"
+    "documentTitle": "文档",
+    "dropHint": "拖拽 .md 文件到这里"
   },
   "jsonFormatter": {
     "format": "格式化",
@@ -108,7 +111,8 @@
     "copied": "已复制！",
     "download": "下载",
     "emptyResult": "点击格式化或压缩查看结果",
-    "placeholder": "{\n  \"key\": \"value\"\n}"
+    "placeholder": "{\n  \"key\": \"value\"\n}",
+    "dropHint": "拖拽 .json 文件到这里"
   },
   "base64": {
     "encode": "编码",
@@ -124,7 +128,8 @@
     "encodePlaceholder": "输入要编码的文本...",
     "decodePlaceholder": "输入要解码的 Base64 字符串...",
     "clickToProcess": "点击编码或解码查看结果",
-    "swapTitle": "交换输入/输出"
+    "swapTitle": "交换输入/输出",
+    "dropHint": "拖拽文件到这里"
   },
   "uuidGenerator": {
     "count": "数量：",
@@ -140,7 +145,8 @@
     "generate": "生成",
     "download": "下载 PNG",
     "emptyState": "输入文本或 URL 并点击生成",
-    "errorEmpty": "请输入文本或 URL"
+    "errorEmpty": "请输入文本或 URL",
+    "downloadError": "下载不可用 — 请重新生成"
   },
   "passwordGenerator": {
     "emptyState": "点击生成创建密码",
@@ -180,7 +186,9 @@
     "clear": "清除",
     "added": "新增 {count}",
     "removed": "删除 {count}",
-    "unchanged": "未变 {count}"
+    "unchanged": "未变 {count}",
+    "dropLeft": "拖拽文件到左侧",
+    "dropRight": "拖拽文件到右侧"
   },
   "markdownTableGenerator": {
     "columns": "列",
@@ -206,7 +214,8 @@
     "copied": "已复制！",
     "download": "下载 .md",
     "converting": "转换中...",
-    "uploadError": "请上传 .docx 文件。"
+    "uploadError": "请上传 .docx 文件。",
+    "downloadError": "下载不可用 — 请重新转换"
   },
   "markdownToDocx": {
     "pasteMarkdown": "粘贴您的 Markdown 文本...",
@@ -293,7 +302,8 @@
     "clear": "清除",
     "selectArea": "在图片上点击并拖动选择裁剪区域，然后点击裁剪",
     "dragToSelect": "拖动选择裁剪区域",
-    "uploadError": "请上传图片文件。"
+    "uploadError": "请上传图片文件。",
+    "downloadError": "下载不可用 — 请重新裁剪"
   },
   "imageToBase64": {
     "uploadImage": "上传图片",
@@ -331,7 +341,8 @@
     "copied": "已复制！",
     "clear": "清除",
     "inputPlaceholder": "在此粘贴 CSS 代码...",
-    "clickToProcess": "点击美化或压缩进行处理"
+    "clickToProcess": "点击美化或压缩进行处理",
+    "dropHint": "拖拽 .css 文件到这里"
   },
   "bmiCalculator": {
     "height": "身高（厘米）",
@@ -364,7 +375,8 @@
     "originalSize": "原始",
     "compressedSize": "压缩后",
     "compressed": "已压缩",
-    "uploadError": "请上传 PDF 文件。"
+    "uploadError": "请上传 PDF 文件。",
+    "downloadError": "下载不可用 — 请重新压缩"
   },
   "splitPdf": {
     "uploadPdf": "上传 PDF 文件",
@@ -391,7 +403,8 @@
     "uploadError": "请上传 PDF 文件。",
     "c90": "顺时针 90°",
     "c180": "180°",
-    "c270": "270°（逆时针 90°）"
+    "c270": "270°（逆时针 90°）",
+    "downloadError": "下载不可用 — 请重新旋转"
   },
   "pdfReorder": {
     "uploadPdf": "上传 PDF 文件",
@@ -406,7 +419,8 @@
     "dragHint": "拖动调整页面顺序。当前顺序如下所示。",
     "pageLabel": "第 {n} 页",
     "uploadError": "请上传 PDF 文件。",
-    "readError": "无法读取 PDF。文件可能已损坏或受密码保护。"
+    "readError": "无法读取 PDF。文件可能已损坏或受密码保护。",
+    "downloadError": "下载不可用 — 请重新排序"
   },
   "gifMaker": {
     "uploadImages": "上传图片制作 GIF",
@@ -423,7 +437,8 @@
     "uploadError": "请上传图片文件。",
     "moveLeft": "左移",
     "remove": "移除",
-    "loadError": "加载图片失败"
+    "loadError": "加载图片失败",
+    "downloadError": "下载不可用 — 请重新创建 GIF"
   },
   "svgToPng": {
     "uploadSvg": "上传 SVG 文件",
@@ -435,7 +450,8 @@
     "download": "下载 PNG",
     "placeholder": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\">...",
     "uploadError": "请上传 SVG 文件。",
-    "provideInput": "请提供 SVG 文件或粘贴 SVG 代码。"
+    "provideInput": "请提供 SVG 文件或粘贴 SVG 代码。",
+    "downloadError": "下载不可用 — 请重新转换"
   },
   "htmlEntities": {
     "encode": "编码",
@@ -453,7 +469,8 @@
     "decodePlaceholder": "输入要解码的 HTML 编码字符串...",
     "clickToProcess": "点击编码或解码查看结果",
     "encodeOutputPlaceholder": "编码后的文本将显示在这里...",
-    "decodeOutputPlaceholder": "解码后的文本将显示在这里..."
+    "decodeOutputPlaceholder": "解码后的文本将显示在这里...",
+    "dropHint": "拖拽文件到这里"
   },
   "jwtDecoder": {
     "tokenLabel": "JWT 令牌",
@@ -519,7 +536,8 @@
     "upscaling": "放大中...",
     "download": "下载",
     "clear": "清除",
-    "readyPrompt": "上传图片以放大"
+    "readyPrompt": "上传图片以放大",
+    "downloadError": "下载不可用 — 请重新放大"
   },
   "htmlToMarkdown": {
     "placeholder": "<h1>Hello World</h1>\n<p>在这里粘贴您的 <strong>HTML</strong>...</p>",
@@ -527,7 +545,8 @@
     "convert": "转换为 Markdown",
     "copy": "复制",
     "copied": "已复制！",
-    "clear": "清除"
+    "clear": "清除",
+    "dropHint": "拖拽 .html 文件到这里"
   },
   "markdownFormatter": {
     "input": "原始 Markdown",
@@ -538,7 +557,8 @@
     "copyMd": "复制 MD",
     "copy": "复制",
     "copied": "已复制！",
-    "clear": "清除"
+    "clear": "清除",
+    "dropHint": "拖拽 .md 文件到这里"
   },
   "markdownToPdf": {
     "placeholder": "# 我的文档\n\n在这里编写您的 **Markdown**...\n\n## 章节\n\n- 项目 1\n- 项目 2\n\n[点击预览查看结果]",
@@ -550,7 +570,8 @@
     "clear": "清除",
     "printHint": "提示：在打印对话框中，选择「另存为 PDF」作为目标来创建 PDF 文件。",
     "popupBlocked": "弹窗被拦截。请允许本站弹窗以使用打印为 PDF 功能。",
-    "markdownLabel": "Markdown"
+    "markdownLabel": "Markdown",
+    "dropHint": "拖拽 .md 文件到这里"
   },
   "urlToMarkdown": {
     "urlPlaceholder": "https://example.com/article",
@@ -580,6 +601,7 @@
     "tryAgain": "重试",
     "loadingModel": "正在加载 AI 模型...",
     "readyPrompt": "上传图片以移除背景",
-    "preloadFailed": "模型预加载失败——将在首次使用时下载"
+    "preloadFailed": "模型预加载失败——将在首次使用时下载",
+    "downloadError": "下载不可用 — 请重新处理"
   }
 }

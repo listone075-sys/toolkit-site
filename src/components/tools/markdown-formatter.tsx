@@ -5,6 +5,7 @@ import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { formatMarkdown } from "@/lib/tools/markdown/format";
 import { useClipboard } from "@/hooks/use-clipboard";
+import { DropTarget } from "./file-upload-zone";
 import { Copy, Sparkles, Trash2 } from "lucide-react";
 
 export function MarkdownFormatter() {
@@ -25,29 +26,42 @@ export function MarkdownFormatter() {
     setOutput("");
   };
 
+  const handleFileDrop = useCallback((files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    const name = file.name.toLowerCase();
+    if (!name.endsWith(".md") && !name.endsWith(".txt") && !name.endsWith(".markdown") && !file.type.startsWith("text/")) return;
+    const reader = new FileReader();
+    reader.onload = () => { setInput(reader.result as string); setOutput(""); };
+    reader.readAsText(file);
+  }, []);
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Input */}
-        <div className="border rounded-lg p-4 min-h-[350px] flex flex-col">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
-              {t("markdownFormatter.input")}
-            </span>
-            <Button variant="ghost" size="sm" onClick={() => copyMd(input)} disabled={!input}>
-              <Copy className="h-3 w-3 mr-1" /> {copyMdCopied ? t("markdownFormatter.copied") : t("markdownFormatter.copyMd")}
-            </Button>
+        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[350px]">
+          <div className="border rounded-lg p-4 flex-1 flex flex-col">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+                {t("markdownFormatter.input")}
+              </span>
+              <span className="text-[11px] text-zinc-300 mr-2">{t("markdownFormatter.dropHint")}</span>
+              <Button variant="ghost" size="sm" onClick={() => copyMd(input)} disabled={!input}>
+                <Copy className="h-3 w-3 mr-1" /> {copyMdCopied ? t("markdownFormatter.copied") : t("markdownFormatter.copyMd")}
+              </Button>
+            </div>
+            <textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (output) setOutput("");
+              }}
+              placeholder={t("markdownFormatter.placeholder")}
+              className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
+            />
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-              if (output) setOutput("");
-            }}
-            placeholder={t("markdownFormatter.placeholder")}
-            className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
-          />
-        </div>
+        </DropTarget>
 
         {/* Output */}
         <div className="border rounded-lg p-4 min-h-[350px] flex flex-col">
