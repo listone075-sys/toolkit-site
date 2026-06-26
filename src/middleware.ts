@@ -45,6 +45,10 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Include .txt files for IndexNow key verification
-  matcher: ["/((?!_next|api|offline|favicon.ico).*)"],
+  matcher: [
+    // All non-file paths (no extension) — intl routing
+    "/((?!_next|api|offline|favicon\\.ico|.*\\.[a-z0-9]{2,6}$).*)",
+    // IndexNow key files at /{key}.txt
+    "/:key([a-zA-Z0-9]+).txt",
+  ],
 };
