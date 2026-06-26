@@ -41,13 +41,30 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-
-  return {
+const BLOG_META: Record<string, { title: string; description: string; heading: string; subtitle: string }> = {
+  en: {
     title: "Blog — Free Online Tools Guides & Tips",
     description:
       "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
+    heading: "Blog",
+    subtitle: "Guides, tips, and tutorials for our free online tools.",
+  },
+  zh: {
+    title: "博客 — 免费在线工具指南与教程",
+    description:
+      "学习如何转换图片、编辑PDF、编写Markdown以及使用开发者工具。分步骤的指南和教程。",
+    heading: "博客",
+    subtitle: "免费在线工具的指南、技巧和教程。",
+  },
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const meta = BLOG_META[locale] ?? BLOG_META.en;
+
+  return {
+    title: meta.title,
+    description: meta.description,
     alternates: {
       canonical: `${SITE_URL}/${locale}/blog`,
       languages: {
@@ -56,9 +73,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Blog — Free Online Tools Guides & Tips",
-      description:
-        "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
+      title: meta.title,
+      description: meta.description,
       url: `${SITE_URL}/${locale}/blog`,
       type: "website",
       siteName: "ToolCraft",
@@ -66,9 +82,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Blog — Free Online Tools Guides & Tips",
-      description:
-        "Learn how to convert images, edit PDFs, write Markdown, and use developer tools.",
+      title: meta.title,
+      description: meta.description,
       images: [`${SITE_URL}/og-default.png`],
     },
   };
@@ -77,6 +92,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const meta = BLOG_META[locale] ?? BLOG_META.en;
 
   // Try locale-specific directory first, fall back to root blog dir
   let posts = getBlogPosts(locale);
@@ -86,8 +102,8 @@ export default async function BlogPage({ params }: Props) {
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold text-zinc-900 mb-2">Blog</h1>
-      <p className="text-zinc-600 mb-8">Guides, tips, and tutorials for our free online tools.</p>
+      <h1 className="text-4xl font-bold text-zinc-900 mb-2">{meta.heading}</h1>
+      <p className="text-zinc-600 mb-8">{meta.subtitle}</p>
 
       {posts.length === 0 ? (
         <div className="text-center py-16 border-2 border-dashed border-zinc-200 rounded-xl">

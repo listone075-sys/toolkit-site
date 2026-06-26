@@ -101,12 +101,53 @@ export default async function BlogPost({ params }: Props) {
   const { default: Post } = await import(importPath);
   const { AdUnit } = await import("@/components/layout/ad-unit");
 
+  // Extract metadata for JSON-LD
+  let postMeta: { title?: string; description?: string; date?: string; category?: string } = {};
+  try {
+    const raw = readFileSync(filePath, "utf-8");
+    const match = raw.match(/export const meta = ({[\s\S]*?});/);
+    if (match) {
+      postMeta = eval(`(${match[1]})`);
+    }
+  } catch { /* ignore */ }
+
+  const blogPostSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: postMeta.title ?? slug,
+    description: postMeta.description ?? "",
+    datePublished: postMeta.date ?? "",
+    url: `${SITE_URL}/${locale}/blog/${slug}`,
+    author: {
+      "@type": "Organization",
+      name: "ToolCraft",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ToolCraft",
+      url: SITE_URL,
+    },
+    image: `${SITE_URL}/og-default.png`,
+    inLanguage: locale,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/${locale}/blog/${slug}`,
+    },
+  };
+
   return (
-    <article className="container mx-auto px-4 py-12 max-w-3xl">
-      <Post />
-      <div className="mt-12 flex justify-center">
-        <AdUnit format="horizontal" />
-      </div>
-    </article>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
+      <article className="container mx-auto px-4 py-12 max-w-3xl">
+        <Post />
+        <div className="mt-12 flex justify-center">
+          <AdUnit format="horizontal" />
+        </div>
+      </article>
+    </>
   );
 }

@@ -6,13 +6,15 @@
       "pdf": "PDF",
       "markdown": "Markdown",
       "dev": "开发者",
+      "blog": "博客",
       "favorites": "收藏夹"
     },
     "mobile": {
       "imageTools": "图片工具",
       "pdfTools": "PDF 工具",
       "markdownTools": "Markdown 工具",
-      "devTools": "开发者工具"
+      "devTools": "开发者工具",
+      "blog": "博客"
     }
   },
   "footer": {
@@ -37,7 +39,8 @@
     "copyright": "© {year} ToolCraft. 为所有人提供的免费在线工具。",
     "privacyPolicy": "隐私政策",
     "termsOfService": "服务条款",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "blog": "博客"
   },
   "cookieBanner": {
     "text": "我们使用 Cookie 进行分析并通过 Google AdSense 提供相关广告。",
@@ -52,7 +55,14 @@
     "removeTooltip": "取消收藏"
   },
   "recent": {
-    "title": "最近使用"
+    "title": "最近使用",
+    "lastUsed": "{time}前使用"
+  },
+  "continueWorking": {
+    "title": "继续上次",
+    "lastUsed": "{time}前使用",
+    "usedCount": "已使用 {count} 次",
+    "continue": "继续"
   },
   "recommendations": {
     "similarTools": "相似工具推荐",
@@ -69,6 +79,12 @@
   "toolCard": {
     "freeBadge": "免费 · 基于浏览器"
   },
+  "auth": {
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "signInWithGoogle": "使用 Google 登录",
+    "signInWithGitHub": "使用 GitHub 登录"
+  },
   "newsletter": {
     "title": "保持关注",
     "description": "获取新工具和功能的通知。无垃圾邮件，随时可退订。",
@@ -78,6 +94,19 @@
     "error": "出错了，请稍后重试。",
     "tryAgain": "再试一次",
     "privacy": "我们尊重您的隐私。随时可退订。"
+  },
+  "share": {
+    "title": "分享",
+    "copyLink": "复制链接",
+    "copied": "链接已复制！",
+    "twitter": "分享到 X",
+    "pinterest": "保存到 Pinterest"
+  },
+  "search": {
+    "searchTools": "搜索工具...",
+    "placeholder": "搜索工具... (Ctrl+K)",
+    "noResults": "未找到相关工具",
+    "startTyping": "输入至少2个字符开始搜索"
   },
   "dismiss": "关闭",
   "languageSwitcher": {

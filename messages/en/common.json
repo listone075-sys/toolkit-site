@@ -6,13 +6,15 @@
       "pdf": "PDF",
       "markdown": "Markdown",
       "dev": "Dev Tools",
+      "blog": "Blog",
       "favorites": "Favorites"
     },
     "mobile": {
       "imageTools": "Image Tools",
       "pdfTools": "PDF Tools",
       "markdownTools": "Markdown Tools",
-      "devTools": "Dev Tools"
+      "devTools": "Dev Tools",
+      "blog": "Blog"
     }
   },
   "footer": {
@@ -37,7 +39,8 @@
     "copyright": "© {year} ToolCraft. Free online tools for everyone.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "cookieBanner": {
     "text": "We use cookies for analytics and to serve relevant ads via Google AdSense.",
@@ -52,7 +55,14 @@
     "removeTooltip": "Remove from favorites"
   },
   "recent": {
-    "title": "Recently Used"
+    "title": "Recently Used",
+    "lastUsed": "Last used {time}"
+  },
+  "continueWorking": {
+    "title": "Continue Working",
+    "lastUsed": "Last used {time}",
+    "usedCount": "Used {count} times",
+    "continue": "Continue"
   },
   "recommendations": {
     "similarTools": "Similar Tools",
@@ -69,6 +79,12 @@
   "toolCard": {
     "freeBadge": "Free & Browser-based"
   },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signInWithGoogle": "Continue with Google",
+    "signInWithGitHub": "Continue with GitHub"
+  },
   "newsletter": {
     "title": "Stay Updated",
     "description": "Get notified about new tools and features. No spam, unsubscribe anytime.",
@@ -78,6 +94,19 @@
     "error": "Something went wrong. Please try again.",
     "tryAgain": "Try Again",
     "privacy": "We respect your privacy. Unsubscribe anytime."
+  },
+  "share": {
+    "title": "Share",
+    "copyLink": "Copy Link",
+    "copied": "Link copied!",
+    "twitter": "Share on X",
+    "pinterest": "Save to Pinterest"
+  },
+  "search": {
+    "searchTools": "Search tools...",
+    "placeholder": "Search tools... (Ctrl+K)",
+    "noResults": "No tools found",
+    "startTyping": "Type at least 2 characters to search"
   },
   "dismiss": "Dismiss",
   "languageSwitcher": {

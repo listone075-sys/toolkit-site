@@ -47,6 +47,7 @@ export function Footer() {
           <p>{t("footer.privacyBrowserTagline")}</p>
           <p className="mt-1">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
           <div className="mt-2 flex justify-center gap-4">
+            <Link href="/blog" className="text-xs text-zinc-400 hover:text-zinc-600">{t("footer.blog")}</Link>
             <Link href="/privacy" className="text-xs text-zinc-400 hover:text-zinc-600">{t("footer.privacyPolicy")}</Link>
             <Link href="/terms" className="text-xs text-zinc-400 hover:text-zinc-600">{t("footer.termsOfService")}</Link>
             <a href="mailto:hello@toolcraftbox.com" className="text-xs text-zinc-400 hover:text-zinc-600">{t("footer.contact")}</a>
