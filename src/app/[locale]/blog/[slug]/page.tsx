@@ -3,7 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { getBaseUrlFromHeaders } from "@/lib/seo/metadata";
+import { SITE_URL } from "@/lib/seo/metadata";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -29,7 +29,6 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const base = await getBaseUrlFromHeaders();
 
   // Try locale-specific file first, fall back to en
   let filePath = path.join(process.cwd(), "src/content/blog", locale, `${slug}.mdx`);
@@ -43,15 +42,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const match = raw.match(/export const meta = ({[\s\S]*?});/);
     if (match) {
       const meta = eval(`(${match[1]})`);
-      const url = `${base}/${locale}/blog/${slug}`;
+      const url = `${SITE_URL}/${locale}/blog/${slug}`;
       return {
         title: meta.title,
         description: meta.description,
         alternates: {
           canonical: url,
           languages: {
-            en: `${base}/en/blog/${slug}`,
-            zh: `${base}/zh/blog/${slug}`,
+            en: `${SITE_URL}/en/blog/${slug}`,
+            zh: `${SITE_URL}/zh/blog/${slug}`,
           },
         },
         openGraph: {
@@ -60,13 +59,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url,
           type: "article",
           siteName: "ToolCraft",
-          images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
+          images: [{ url: `${SITE_URL}/og-default.png`, width: 1200, height: 630 }],
         },
         twitter: {
           card: "summary_large_image",
           title: meta.title,
           description: meta.description,
-          images: [`${base}/og-default.png`],
+          images: [`${SITE_URL}/og-default.png`],
         },
         robots: {
           index: true,

@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
-import { headers } from "next/headers";
 import { setRequestLocale } from "next-intl/server";
 import { getToolBySlug } from "@/lib/tools";
-import { generateToolMetadata, getBaseUrl } from "@/lib/seo/metadata";
+import { generateToolMetadata, SITE_URL } from "@/lib/seo/metadata";
 import { ToolRenderer } from "@/components/tools/tool-renderer";
 import { Breadcrumb } from "@/components/seo/breadcrumb";
 import { AdUnit } from "@/components/layout/ad-unit";
@@ -20,8 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!tool) {
     return { title: "Tool Not Found" };
   }
-  const host = (await headers()).get("host") ?? undefined;
-  return generateToolMetadata(tool, locale, host);
+  return generateToolMetadata(tool, locale);
 }
 
 export default async function ToolPage({ params }: Props) {
@@ -34,15 +32,11 @@ export default async function ToolPage({ params }: Props) {
     notFound();
   }
 
-  // Compute host-aware base URL for breadcrumb (consistent with canonical metadata)
-  const hostHeader = (await headers()).get("host") ?? undefined;
-  const baseUrl = getBaseUrl(hostHeader);
-
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <Breadcrumb
         category={tool.category}
-        items={[{ name: tool.title, url: `${baseUrl}/${locale}/tools/${tool.slug}` }]}
+        items={[{ name: tool.title, url: `${SITE_URL}/${locale}/tools/${tool.slug}` }]}
       />
 
       {/* Tool Header */}

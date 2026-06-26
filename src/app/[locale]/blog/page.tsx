@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { readFileSync, readdirSync } from "fs";
 import path from "path";
 import { Card } from "@/components/ui/card";
-import { getBaseUrlFromHeaders } from "@/lib/seo/metadata";
+import { SITE_URL } from "@/lib/seo/metadata";
 
 interface BlogMeta {
   slug: string;
@@ -43,34 +43,33 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const base = await getBaseUrlFromHeaders();
 
   return {
     title: "Blog — Free Online Tools Guides & Tips",
     description:
       "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
     alternates: {
-      canonical: `${base}/${locale}/blog`,
+      canonical: `${SITE_URL}/${locale}/blog`,
       languages: {
-        en: `${base}/en/blog`,
-        zh: `${base}/zh/blog`,
+        en: `${SITE_URL}/en/blog`,
+        zh: `${SITE_URL}/zh/blog`,
       },
     },
     openGraph: {
       title: "Blog — Free Online Tools Guides & Tips",
       description:
         "Learn how to convert images, edit PDFs, write Markdown, and use developer tools. Step-by-step guides and tutorials.",
-      url: `${base}/${locale}/blog`,
+      url: `${SITE_URL}/${locale}/blog`,
       type: "website",
       siteName: "ToolCraft",
-      images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-default.png`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: "Blog — Free Online Tools Guides & Tips",
       description:
         "Learn how to convert images, edit PDFs, write Markdown, and use developer tools.",
-      images: [`${base}/og-default.png`],
+      images: [`${SITE_URL}/og-default.png`],
     },
   };
 }

@@ -3,6 +3,8 @@
 import type { ToolCategory } from "@/lib/tools/types";
 import { useTranslations, useLocale } from "next-intl";
 
+const SITE_URL = "https://toolcraftbox.com";
+
 interface BreadcrumbItem {
   name: string;
   url: string;
@@ -14,19 +16,12 @@ interface BreadcrumbProps {
 }
 
 /**
- * Renders breadcrumb navigation with JSON-LD structured data
+ * Renders breadcrumb navigation with JSON-LD structured data.
+ * All links use the main domain (single-domain architecture).
  */
 export function Breadcrumb({ items, category }: BreadcrumbProps) {
   const t = useTranslations("common");
   const locale = useLocale();
-
-  const categoryUrls: Record<ToolCategory, string> = {
-    image: `https://image.toolcraftbox.com/${locale}`,
-    pdf: `https://pdf.toolcraftbox.com/${locale}`,
-    markdown: `https://markdown.toolcraftbox.com/${locale}`,
-    dev: `https://dev.toolcraftbox.com/${locale}`,
-    calculator: `https://toolcraftbox.com/${locale}`,
-  };
 
   const categoryLabels: Record<ToolCategory, string> = {
     image: t("breadcrumb.imageTools"),
@@ -37,13 +32,13 @@ export function Breadcrumb({ items, category }: BreadcrumbProps) {
   };
 
   const fullItems: BreadcrumbItem[] = [
-    { name: t("breadcrumb.home"), url: `https://toolcraftbox.com/${locale}` },
+    { name: t("breadcrumb.home"), url: `${SITE_URL}/${locale}` },
   ];
 
   if (category) {
     fullItems.push({
       name: categoryLabels[category],
-      url: categoryUrls[category],
+      url: `${SITE_URL}/${locale}`, // Link to homepage (category tabs are there)
     });
   }
 

@@ -1,7 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -12,7 +11,7 @@ import { PwaRegister } from "@/components/layout/pwa-register";
 import { SiteSchema } from "@/components/seo/site-schema";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { getBaseUrl, SITE_URL } from "@/lib/seo/metadata";
+import { SITE_URL } from "@/lib/seo/metadata";
 import type { Metadata } from "next";
 
 const geistSans = Geist({
@@ -35,10 +34,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const host = (await headers()).get("host") ?? undefined;
-  const base = getBaseUrl(host);
-
+export function generateMetadata(): Metadata {
   return {
     title: {
       default: "ToolCraft — Free Online Tools",
@@ -54,8 +50,14 @@ export async function generateMetadata(): Promise<Metadata> {
       "markdown editor",
       "json formatter",
     ],
-    metadataBase: new URL(base),
-    alternates: { canonical: "/" },
+    metadataBase: new URL(SITE_URL),
+    alternates: {
+      canonical: "/",
+      languages: {
+        en: "/en",
+        zh: "/zh",
+      },
+    },
     openGraph: {
       url: "/",
       type: "website",
@@ -63,14 +65,14 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "ToolCraft — Free Online Tools",
       description:
         "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
-      images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/og-default.png`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: "ToolCraft — Free Online Tools",
       description:
         "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
-      images: [`${base}/og-default.png`],
+      images: [`${SITE_URL}/og-default.png`],
     },
   };
 }
@@ -93,17 +95,13 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
 
-  // hreflang base: use request host for subdomain support (image.toolcraftbox.com etc.)
-  const host = (await headers()).get("host") ?? undefined;
-  const hreflangBase = getBaseUrl(host);
-
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
         {/* hreflang tags for SEO */}
-        <link rel="alternate" hrefLang="en" href={`${hreflangBase}/en`} />
-        <link rel="alternate" hrefLang="zh" href={`${hreflangBase}/zh`} />
-        <link rel="alternate" hrefLang="x-default" href={`${hreflangBase}/en`} />
+        <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en`} />
+        <link rel="alternate" hrefLang="zh" href={`${SITE_URL}/zh`} />
+        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/en`} />
         {/* PWA */}
         <meta name="theme-color" content="#2563eb" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

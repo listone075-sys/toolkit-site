@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { getBaseUrlFromHeaders } from "@/lib/seo/metadata";
+import { SITE_URL } from "@/lib/seo/metadata";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -9,7 +9,6 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "legal.privacy" });
-  const base = await getBaseUrlFromHeaders();
   return {
     title: `${t("title")} | ToolCraft`,
     description:
@@ -18,10 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : "ToolCraft Privacy Policy — how we handle your data and protect your privacy.",
     robots: { index: true, follow: true },
     alternates: {
-      canonical: `${base}/${locale}/privacy`,
+      canonical: `${SITE_URL}/${locale}/privacy`,
       languages: {
-        en: `${base}/en/privacy`,
-        zh: `${base}/zh/privacy`,
+        en: `${SITE_URL}/en/privacy`,
+        zh: `${SITE_URL}/zh/privacy`,
       },
     },
   };
