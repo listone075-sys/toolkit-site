@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Search, ArrowRight } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { searchTools } from "@/lib/search";
 import type { ToolConfig } from "@/lib/tools/types";
 import { categoryIcons, categoryColors } from "@/components/layout/tool-card";
@@ -23,6 +23,7 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
   const listRef = useRef<HTMLUListElement>(null);
   const t = useTranslations("common");
   const locale = useLocale();
+  const router = useRouter();
 
   // Keyboard shortcut: Cmd+K / Ctrl+K to toggle
   useEffect(() => {
@@ -78,7 +79,9 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
         e.preventDefault();
         setSelectedIndex((i) => Math.max(i - 1, 0));
       } else if (e.key === "Enter" && results[selectedIndex]) {
+        const tool = results[selectedIndex];
         onOpenChange(false);
+        router.push(`/tools/${tool.slug}`);
       } else if (e.key === "Escape") {
         onOpenChange(false);
       }

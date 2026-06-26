@@ -23,7 +23,9 @@ export function ContinueWorking({ locale }: ContinueWorkingProps) {
   const t = useTranslations("common");
   const [history] = useLocalStorage<UsageHistory>(
     "toolcraft-recent-v2",
-    { records: [], version: 1 },
+    typeof window !== "undefined"
+      ? readHistory()
+      : { records: [], version: 1 },
   );
 
   if (history.records.length === 0) return null;

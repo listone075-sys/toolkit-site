@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { ToolCard } from "./tool-card";
 import { getToolRegistry } from "@/lib/tools";
-import { formatTimeAgo } from "@/lib/history/storage";
+import { formatTimeAgo, readHistory } from "@/lib/history/storage";
 import type { UsageHistory } from "@/lib/history/types";
 import { History } from "lucide-react";
 
@@ -20,10 +20,12 @@ interface RecentSectionProps {
  */
 export function RecentSection({ locale }: RecentSectionProps) {
   const t = useTranslations("common");
-  const [recent] = useLocalStorage<UsageHistory>(STORAGE_KEY, {
-    records: [],
-    version: 1,
-  });
+  const [recent] = useLocalStorage<UsageHistory>(
+    STORAGE_KEY,
+    typeof window !== "undefined"
+      ? readHistory()
+      : { records: [], version: 1 },
+  );
   const registry = getToolRegistry(locale);
 
   // Build tool cards with timestamp info

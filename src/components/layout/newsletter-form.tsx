@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLocalStorage } from "@/hooks/use-local-storage";
+import { readHistory } from "@/lib/history/storage";
 import { Mail, CheckCircle, AlertCircle } from "lucide-react";
 
 const DISMISS_KEY = "toolcraft-nl-dismissed";
@@ -138,7 +139,10 @@ export function NewsletterForm({ className }: NewsletterFormProps) {
  * Requires 3+ tool visits OR 2+ tool uses.
  */
 export function NewsletterSection() {
-  const [recent] = useLocalStorage<{ records: { slug: string }[] }>("toolcraft-recent-v2", { records: [] });
+  const [recent] = useLocalStorage<{ records: { slug: string }[] }>(
+    "toolcraft-recent-v2",
+    typeof window !== "undefined" ? readHistory() : { records: [] },
+  );
   const [dismissed] = useLocalStorage<string | null>(DISMISS_KEY, null);
 
   // Don't show if dismissed within 30 days

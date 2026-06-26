@@ -4,8 +4,9 @@ import { NextResponse } from "next/server";
  * Serves the IndexNow key file for Bing/Yandex verification.
  *
  * The key file must be at https://<domain>/<key>.txt and return the key
- * as plain text. This route is reached via a rewrite in next.config.ts
- * that maps `/:key([a-zA-Z0-9]+).txt` → `/api/indexnow-key?key=:key`.
+ * as plain text. Key verification is handled by middleware (src/middleware.ts)
+ * which serves `/{key}.txt` directly. This route is a backup for direct
+ * API access at `/api/indexnow-key?key=<key>`.
  */
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

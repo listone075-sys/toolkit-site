@@ -13,6 +13,7 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/seo/metadata";
 import { auth } from "@/auth";
+import type { Session } from "next-auth";
 import type { Metadata } from "next";
 
 const geistSans = Geist({
@@ -95,7 +96,14 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const messages = await getMessages();
-  const session = await auth();
+
+  let session: Session | null = null;
+  try {
+    session = await auth();
+  } catch {
+    // auth() throws if AUTH_SECRET is missing or OAuth providers are misconfigured.
+    // Degrade gracefully — the site remains functional without authentication.
+  }
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>

@@ -17,7 +17,9 @@ export default function middleware(request: NextRequest) {
         headers: { "Content-Type": "text/plain; charset=utf-8" },
       });
     }
-    return new NextResponse("Not Found", { status: 404 });
+    // Pass through to App Router for non-IndexNow .txt files
+    // (robots.txt, ads.txt, llms.txt, etc.)
+    return NextResponse.next();
   }
 
   const response = intlMiddleware(request) as NextResponse;
