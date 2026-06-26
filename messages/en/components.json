@@ -585,6 +585,17 @@
     "corsError": "Unable to fetch this URL. The site may block cross-origin requests. Try pasting the page's HTML source into our HTML to Markdown converter.",
     "corsNote": "Some websites block external requests due to CORS policy. If a URL fails, paste the page source into HTML → Markdown."
   },
+  "batch": {
+    "pending": "Waiting...",
+    "processing": "Processing...",
+    "done": "Done",
+    "failed": "Failed",
+    "succeeded": "succeeded",
+    "failedCount": "failed",
+    "processingCount": "{current} of {total} processed",
+    "downloadZip": "Download ZIP ({count} files)",
+    "startOver": "Start Over"
+  },
   "backgroundRemoval": {
     "aiPowered": "AI-Powered · Background Removal",
     "privacyNote": "Privacy-first — images never leave your device",

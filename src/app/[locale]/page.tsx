@@ -6,10 +6,12 @@ import type { ToolCategory } from "@/lib/tools/types";
 import { ToolCard } from "@/components/layout/tool-card";
 import { FavoritesSection } from "@/components/layout/favorites-client";
 import { RecentSection } from "@/components/layout/recent-client";
+import { ContinueWorking } from "@/components/layout/continue-working";
 import { NewsletterSection } from "@/components/layout/newsletter-form";
 import { AdUnit } from "@/components/layout/ad-unit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { SearchInput } from "@/components/search/search-input";
 import { Sparkles, Shield, Zap } from "lucide-react";
 import { SITE_URL } from "@/lib/seo/metadata";
 
@@ -87,6 +89,9 @@ export default async function HomePage({ params }: Props) {
             <span className="flex items-center gap-1.5"><Zap className="h-4 w-4 text-amber-500" /> {hp("hero.instant")}</span>
             <span className="flex items-center gap-1.5"><Sparkles className="h-4 w-4 text-blue-500" /> {hp("hero.free")}</span>
           </div>
+
+          {/* Search bar */}
+          <SearchInput variant="hero" />
         </div>
       </section>
 
@@ -114,7 +119,8 @@ export default async function HomePage({ params }: Props) {
         );
       })()}
 
-      {/* Favorites + Recent sections (client-side, only shown when data exists) */}
+      {/* Continue Working + Favorites + Recent sections (client-side) */}
+      <ContinueWorking locale={locale} />
       <FavoritesSection locale={locale} />
       <RecentSection locale={locale} />
 

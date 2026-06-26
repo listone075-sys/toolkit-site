@@ -1,11 +1,26 @@
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const STATIC_CACHE = `toolcraft-static-${CACHE_VERSION}`;
 
-// Precache key pages on install
+// Precache key pages on install — use allSettled so one failure
+// does not prevent the rest from being cached.
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => {
-      return cache.addAll(["/en", "/zh", "/offline"]);
+    caches.open(STATIC_CACHE).then(async (cache) => {
+      const urls = ["/en", "/zh", "/offline"];
+      const results = await Promise.allSettled(
+        urls.map((url) =>
+          cache.add(url).catch((err) => {
+            console.warn(`SW: failed to precache ${url}`, err);
+            throw err;
+          }),
+        ),
+      );
+      const failed = results.filter((r) => r.status === "rejected");
+      if (failed.length) {
+        console.warn(
+          `SW: ${failed.length}/${urls.length} precache urls failed — continuing anyway`,
+        );
+      }
     }),
   );
   self.skipWaiting();
@@ -30,10 +45,22 @@ self.addEventListener("fetch", (event) => {
   // Only handle same-origin requests
   if (url.origin !== self.location.origin) return;
 
-  // Navigation requests: network first, fallback to offline page
+  // Navigation requests: network first, then cached page, then /offline fallback
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request).catch(() => caches.match("/offline")),
+      fetch(request)
+        .then((resp) => {
+          if (resp.ok) {
+            const cloned = resp.clone();
+            caches.open(STATIC_CACHE).then((c) => c.put(request, cloned));
+          }
+          return resp;
+        })
+        .catch(() =>
+          caches
+            .match(request)
+            .then((cached) => cached || caches.match("/offline")),
+        ),
     );
     return;
   }

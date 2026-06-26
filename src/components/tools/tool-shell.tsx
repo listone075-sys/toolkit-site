@@ -4,15 +4,25 @@ import { type ReactNode } from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils/cn";
 import { useTranslations } from "next-intl";
+import type { ShareConfig } from "@/lib/share/types";
+import { ShareButton } from "@/components/share/share-button";
 
 interface ToolShellProps {
   inputPanel: ReactNode;
   outputPanel: ReactNode;
   optionsBar?: ReactNode;
   direction?: "horizontal" | "vertical";
+  /** Optional share configuration — when provided, a share button appears in the output header */
+  shareConfig?: ShareConfig;
 }
 
-export function ToolShell({ inputPanel, outputPanel, optionsBar, direction = "horizontal" }: ToolShellProps) {
+export function ToolShell({
+  inputPanel,
+  outputPanel,
+  optionsBar,
+  direction = "horizontal",
+  shareConfig,
+}: ToolShellProps) {
   const t = useTranslations("components");
   const isHorizontal = direction === "horizontal";
 
@@ -42,8 +52,11 @@ export function ToolShell({ inputPanel, outputPanel, optionsBar, direction = "ho
 
         {/* Output */}
         <Card className="p-4 min-h-[300px] flex flex-col">
-          <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            {t("toolShell.output")}
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+              {t("toolShell.output")}
+            </span>
+            {shareConfig && <ShareButton config={shareConfig} />}
           </div>
           <div className="flex-1 flex flex-col">{outputPanel}</div>
         </Card>

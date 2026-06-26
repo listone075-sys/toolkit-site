@@ -12,6 +12,7 @@ import { SiteSchema } from "@/components/seo/site-schema";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/seo/metadata";
+import { auth } from "@/auth";
 import type { Metadata } from "next";
 
 const geistSans = Geist({
@@ -94,6 +95,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const session = await auth();
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
@@ -108,7 +110,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="ToolCraft" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png" />
+        <link rel="icon" type="image/svg+xml" href="/icons/icon-192.svg" />
         {/* Site verification */}
         <meta name="google-site-verification" content="b9LnPakW02bBFDppFZysgx3q6V89qDkmD2SkSohVj8Y" />
         <meta name="msvalidate.01" content="00065E437FE00E67C1EB622A839A5166" />
@@ -127,7 +132,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Analytics />
           <AdSense />
           <PwaRegister />
-          <Header />
+          <Header session={session} />
           <main className="flex-1">{children}</main>
           <Footer />
           <CookieBanner />

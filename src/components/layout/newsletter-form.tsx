@@ -138,7 +138,7 @@ export function NewsletterForm({ className }: NewsletterFormProps) {
  * Requires 3+ tool visits OR 2+ tool uses.
  */
 export function NewsletterSection() {
-  const [recent] = useLocalStorage<string[]>("toolcraft-recent", []);
+  const [recent] = useLocalStorage<{ records: { slug: string }[] }>("toolcraft-recent-v2", { records: [] });
   const [dismissed] = useLocalStorage<string | null>(DISMISS_KEY, null);
 
   // Don't show if dismissed within 30 days
@@ -149,7 +149,7 @@ export function NewsletterSection() {
   }
 
   // Show after 3+ tool visits
-  if (recent.length < 3) return null;
+  if (recent.records.length < 3) return null;
 
   return <NewsletterForm className="container mx-auto px-4 mb-12" />;
 }

@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { FavoritesButton } from "./favorites-button";
 
-const categoryIcons: Record<string, React.ReactNode> = {
+export const categoryIcons: Record<string, React.ReactNode> = {
   image: <Image className="h-4 w-4" />,
   pdf: <FileText className="h-4 w-4" />,
   markdown: <FileCode className="h-4 w-4" />,
@@ -16,7 +16,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   calculator: <Calculator className="h-4 w-4" />,
 };
 
-const categoryColors: Record<string, string> = {
+export const categoryColors: Record<string, string> = {
   image: "bg-green-100 text-green-800",
   pdf: "bg-red-100 text-red-800",
   markdown: "bg-blue-100 text-blue-800",

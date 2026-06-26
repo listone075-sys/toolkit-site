@@ -4,9 +4,11 @@ import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { ToolCard } from "./tool-card";
 import { getToolRegistry } from "@/lib/tools";
+import { formatTimeAgo } from "@/lib/history/storage";
+import type { UsageHistory } from "@/lib/history/types";
 import { History } from "lucide-react";
 
-const STORAGE_KEY = "toolcraft-recent";
+const STORAGE_KEY = "toolcraft-recent-v2";
 
 interface RecentSectionProps {
   locale: string;
@@ -14,15 +16,23 @@ interface RecentSectionProps {
 
 /**
  * Client component that reads recently used tools from localStorage and renders a ToolCard grid.
+ * Now supports the enhanced UsageHistory format with timestamps and use counts.
  */
 export function RecentSection({ locale }: RecentSectionProps) {
   const t = useTranslations("common");
-  const [recent] = useLocalStorage<string[]>(STORAGE_KEY, []);
+  const [recent] = useLocalStorage<UsageHistory>(STORAGE_KEY, {
+    records: [],
+    version: 1,
+  });
   const registry = getToolRegistry(locale);
 
-  const recentTools = recent
-    .map((slug) => registry.find((t) => t.slug === slug))
-    .filter(Boolean);
+  // Build tool cards with timestamp info
+  const recentTools = recent.records
+    .map((record) => {
+      const tool = registry.find((t) => t.slug === record.slug);
+      return tool ? { tool, lastUsedAt: record.lastUsedAt } : null;
+    })
+    .filter(Boolean) as { tool: (typeof registry)[number]; lastUsedAt: number }[];
 
   if (recentTools.length === 0) return null;
 
@@ -35,8 +45,15 @@ export function RecentSection({ locale }: RecentSectionProps) {
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {recentTools.map((tool) => (
-          <ToolCard key={tool!.slug} tool={tool!} />
+        {recentTools.map(({ tool, lastUsedAt }) => (
+          <div key={tool.slug} className="relative">
+            <ToolCard tool={tool} />
+            <p className="mt-1 text-xs text-zinc-400 text-center">
+              {t("recent.lastUsed", {
+                time: formatTimeAgo(lastUsedAt, locale),
+              })}
+            </p>
+          </div>
         ))}
       </div>
     </section>
