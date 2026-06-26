@@ -3,8 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
+import { getBaseUrlFromHeaders } from "@/lib/seo/metadata";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -30,11 +29,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  // Use request host for subdomain-aware canonical/hreflang
-  const { headers } = await import("next/headers");
-  const hostHeader = (await headers()).get("host") ?? "";
-  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
-  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+  const base = await getBaseUrlFromHeaders();
 
   // Try locale-specific file first, fall back to en
   let filePath = path.join(process.cwd(), "src/content/blog", locale, `${slug}.mdx`);
@@ -65,13 +60,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url,
           type: "article",
           siteName: "ToolCraft",
-          images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+          images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
         },
         twitter: {
           card: "summary_large_image",
           title: meta.title,
           description: meta.description,
-          images: [`${base}/og-default.svg`],
+          images: [`${base}/og-default.png`],
         },
         robots: {
           index: true,

@@ -12,8 +12,7 @@ import { AdUnit } from "@/components/layout/ad-unit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Shield, Zap, ArrowRight } from "lucide-react";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
+import { getBaseUrl, SITE_URL } from "@/lib/seo/metadata";
 
 type CategoryValue = "all" | ToolCategory;
 
@@ -35,17 +34,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "homepage.hero" });
 
-  // Use request host for subdomain-aware canonical/hreflang
-  const hostHeader = (await headers()).get("host") ?? "";
-  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
-  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+  const hostHeader = (await headers()).get("host") ?? undefined;
+  const base = getBaseUrl(hostHeader);
+
+  const description =
+    locale === "zh"
+      ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
+      : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.";
+
+  const titleText = t("title");
 
   return {
-    title: t("title"),
-    description:
-      locale === "zh"
-        ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
-        : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.",
+    title: titleText,
+    description,
     alternates: {
       canonical: `${base}/${locale}`,
       languages: {
@@ -54,24 +55,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: t("title"),
-      description:
-        locale === "zh"
-          ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
-          : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.",
+      title: titleText,
+      description,
       url: `${base}/${locale}`,
       type: "website",
       siteName: "ToolCraft",
-      images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+      images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title"),
-      description:
-        locale === "zh"
-          ? "免费的在线图片、PDF、Markdown 和开发者工具。所有处理均在浏览器中完成。"
-          : "Free online tools for images, PDFs, Markdown, and developers. All processing happens in your browser.",
-      images: [`${base}/og-default.svg`],
+      title: titleText,
+      description,
+      images: [`${base}/og-default.png`],
     },
   };
 }

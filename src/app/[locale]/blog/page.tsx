@@ -4,8 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { readFileSync, readdirSync } from "fs";
 import path from "path";
 import { Card } from "@/components/ui/card";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
+import { getBaseUrlFromHeaders } from "@/lib/seo/metadata";
 
 interface BlogMeta {
   slug: string;
@@ -44,10 +43,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const { headers } = await import("next/headers");
-  const hostHeader = (await headers()).get("host") ?? "";
-  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
-  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+  const base = await getBaseUrlFromHeaders();
 
   return {
     title: "Blog — Free Online Tools Guides & Tips",
@@ -67,14 +63,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${base}/${locale}/blog`,
       type: "website",
       siteName: "ToolCraft",
-      images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+      images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: "Blog — Free Online Tools Guides & Tips",
       description:
         "Learn how to convert images, edit PDFs, write Markdown, and use developer tools.",
-      images: [`${base}/og-default.svg`],
+      images: [`${base}/og-default.png`],
     },
   };
 }

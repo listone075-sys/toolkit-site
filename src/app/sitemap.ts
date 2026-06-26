@@ -7,12 +7,24 @@ import type { ToolCategory } from "@/lib/tools/types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 
-/** Category → subdomain mapping */
+/** Derive a subdomain URL from BASE_URL, e.g. https://image.toolcraftbox.com */
+function getSubdomainUrl(sub: string): string {
+  // If BASE_URL is a custom env value, substitute the subdomain portion
+  // e.g. https://staging.example.com → https://image.staging.example.com
+  const url = new URL(BASE_URL);
+  if (url.hostname === "toolcraftbox.com" || url.hostname.endsWith(".toolcraftbox.com")) {
+    return `${url.protocol}//${sub}.${url.hostname.replace(/^[^.]+\./, "")}`;
+  }
+  // For custom domains, keep tools on the main domain (can't guess subdomain structure)
+  return BASE_URL;
+}
+
+/** Category → subdomain mapping (derived from BASE_URL for staging/preview support) */
 const CATEGORY_SUBDOMAINS: Record<ToolCategory, string> = {
-  image: `https://image.toolcraftbox.com`,
-  pdf: `https://pdf.toolcraftbox.com`,
-  markdown: `https://markdown.toolcraftbox.com`,
-  dev: `https://dev.toolcraftbox.com`,
+  image: getSubdomainUrl("image"),
+  pdf: getSubdomainUrl("pdf"),
+  markdown: getSubdomainUrl("markdown"),
+  dev: getSubdomainUrl("dev"),
   calculator: BASE_URL,
 };
 

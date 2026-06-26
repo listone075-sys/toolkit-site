@@ -53,7 +53,7 @@ export function HtmlEntities() {
         <Button onClick={() => { setMode("decode"); setOutput(""); }} variant={mode === "decode" ? "default" : "outline"} size="sm">
           {t("htmlEntities.decode")}
         </Button>
-        <Button onClick={handleSwap} variant="ghost" size="sm" title={t("htmlEntities.swap")}>
+        <Button onClick={handleSwap} variant="ghost" size="sm" title={t("htmlEntities.swapTitle")}>
           <ArrowLeftRight className="h-4 w-4" />
         </Button>
         <div className="flex-1" />

@@ -441,6 +441,7 @@
     "encode": "Encode",
     "decode": "Decode",
     "swap": "Swap",
+    "swapTitle": "Swap input/output",
     "copy": "Copy",
     "copied": "Copied!",
     "clear": "Clear",

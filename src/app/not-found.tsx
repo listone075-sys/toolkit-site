@@ -1,13 +1,38 @@
 import { headers } from "next/headers";
 
 /**
+ * Detect the requested locale from available headers.
+ * Tries multiple sources in priority order:
+ * 1. x-invoke-path (Vercel) or referer — parse /zh or /en prefix from path
+ * 2. accept-language — check for zh-* preference
+ * Falls back to "en".
+ */
+function detectLocale(pathHeader: string | null, referer: string | null, acceptLang: string | null): "zh" | "en" {
+  // Try path-based detection first (most reliable)
+  const pathSource = pathHeader ?? referer ?? "";
+  if (pathSource.startsWith("/zh") || pathSource.includes("/zh/") || pathSource.includes("/zh?")) {
+    return "zh";
+  }
+  if (pathSource.startsWith("/en") || pathSource.includes("/en/") || pathSource.includes("/en?")) {
+    return "en";
+  }
+  // Fall back to accept-language header
+  if (acceptLang && acceptLang.toLowerCase().startsWith("zh")) {
+    return "zh";
+  }
+  return "en";
+}
+
+/**
  * Global 404 page — rendered outside locale context.
- * Detects locale from URL path for basic i18n.
+ * Detects locale from request headers for basic i18n.
  */
 export default async function NotFound() {
   const h = await headers();
-  const pathname = h.get("x-invoke-path") ?? h.get("x-pathname") ?? "";
-  const isZh = pathname.startsWith("/zh");
+  const pathHeader = h.get("x-invoke-path") ?? h.get("x-pathname") ?? null;
+  const referer = h.get("referer") ?? null;
+  const acceptLang = h.get("accept-language") ?? null;
+  const isZh = detectLocale(pathHeader, referer, acceptLang) === "zh";
 
   const title = isZh ? "页面未找到" : "Page Not Found";
   const description = isZh

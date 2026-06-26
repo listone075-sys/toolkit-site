@@ -12,6 +12,7 @@ import { PwaRegister } from "@/components/layout/pwa-register";
 import { SiteSchema } from "@/components/seo/site-schema";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { getBaseUrl, SITE_URL } from "@/lib/seo/metadata";
 import type { Metadata } from "next";
 
 const geistSans = Geist({
@@ -24,16 +25,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
+/** Map locale to ISO 3166-1 region code for geo.region meta tag */
+const LOCALE_REGION: Record<string, string> = {
+  en: "US",
+  zh: "CN",
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const host = (await headers()).get("host") ?? "";
-  const protocol = host.startsWith("localhost") ? "http" : "https";
-  const base = host ? `${protocol}://${host}` : SITE_URL;
+  const host = (await headers()).get("host") ?? undefined;
+  const base = getBaseUrl(host);
 
   return {
     title: {
@@ -59,14 +63,14 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "ToolCraft — Free Online Tools",
       description:
         "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
-      images: [{ url: `${base}/og-default.svg`, width: 1200, height: 630 }],
+      images: [{ url: `${base}/og-default.png`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: "ToolCraft — Free Online Tools",
       description:
         "Free online tools for images, PDFs, Markdown, and developers. All browser-based, no file uploads.",
-      images: [`${base}/og-default.svg`],
+      images: [`${base}/og-default.png`],
     },
   };
 }
@@ -90,9 +94,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   // hreflang base: use request host for subdomain support (image.toolcraftbox.com etc.)
-  const host = (await headers()).get("host") ?? "";
-  const protocol = host.startsWith("localhost") ? "http" : "https";
-  const hreflangBase = host ? `${protocol}://${host}` : SITE_URL;
+  const host = (await headers()).get("host") ?? undefined;
+  const hreflangBase = getBaseUrl(host);
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
@@ -115,11 +118,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         {/* AdSense account verification */}
         <meta name="google-adsense-account" content="ca-pub-5142105226310650" />
         {/* Geo-targeting signals (supplementary to hreflang) */}
-        <meta name="geo.region" content={locale === "zh" ? "CN" : "US"} />
+        <meta name="geo.region" content={LOCALE_REGION[locale] ?? "US"} />
         <meta name="geo.placename" content="Global" />
         {/* Dublin Core metadata */}
         <meta name="dc.language" content={locale} />
-        <meta name="dc.title" content="ToolCraft — Free Online Tools" />
       </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>

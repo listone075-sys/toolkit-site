@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
+import { getBaseUrlFromHeaders } from "@/lib/seo/metadata";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -10,10 +9,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "legal.privacy" });
-  const { headers } = await import("next/headers");
-  const hostHeader = (await headers()).get("host") ?? "";
-  const protocol = hostHeader.startsWith("localhost") ? "http" : "https";
-  const base = hostHeader ? `${protocol}://${hostHeader}` : SITE_URL;
+  const base = await getBaseUrlFromHeaders();
   return {
     title: `${t("title")} | ToolCraft`,
     description:

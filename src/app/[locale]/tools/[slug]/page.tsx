@@ -1,17 +1,14 @@
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { setRequestLocale } from "next-intl/server";
-import { use } from "react";
 import { getToolBySlug } from "@/lib/tools";
-import { generateToolMetadata } from "@/lib/seo/metadata";
+import { generateToolMetadata, getBaseUrl } from "@/lib/seo/metadata";
 import { ToolRenderer } from "@/components/tools/tool-renderer";
 import { Breadcrumb } from "@/components/seo/breadcrumb";
 import { AdUnit } from "@/components/layout/ad-unit";
 import { FavoritesButton } from "@/components/layout/favorites-button";
 import { SimilarTools } from "@/components/layout/similar-tools";
 import type { Metadata } from "next";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -27,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generateToolMetadata(tool, locale, host);
 }
 
-export default function ToolPage({ params }: Props) {
-  const { locale, slug } = use(params);
+export default async function ToolPage({ params }: Props) {
+  const { locale, slug } = await params;
   setRequestLocale(locale);
 
   const tool = getToolBySlug(slug, locale);
@@ -37,11 +34,15 @@ export default function ToolPage({ params }: Props) {
     notFound();
   }
 
+  // Compute host-aware base URL for breadcrumb (consistent with canonical metadata)
+  const hostHeader = (await headers()).get("host") ?? undefined;
+  const baseUrl = getBaseUrl(hostHeader);
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <Breadcrumb
         category={tool.category}
-        items={[{ name: tool.title, url: `${SITE_URL}/${locale}/tools/${tool.slug}` }]}
+        items={[{ name: tool.title, url: `${baseUrl}/${locale}/tools/${tool.slug}` }]}
       />
 
       {/* Tool Header */}
