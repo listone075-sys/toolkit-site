@@ -1,0 +1,231 @@
+export const meta = {
+  title: "Complete Guide to Image Compression for Website Performance (2026)",
+  description: "Learn how to compress images for the web without killing quality. Covers JPEG, PNG, WebP, AVIF, responsive images, lazy loading, and Core Web Vitals optimization.",
+  date: "2026-07-01",
+  category: "Image",
+};
+
+# Complete Guide to Image Compression for Website Performance (2026)
+
+Images make up **~50% of the average webpage's weight**. Compressing them properly is the single highest-impact thing you can do for page speed. This guide covers everything: formats, tools, responsive images, lazy loading, and how to move your Core Web Vitals into the green.
+
+## Why Image Compression Matters
+
+| Metric | Without compression | With compression |
+|--------|-------------------|-----------------|
+| Page weight | 3.5 MB | 1.2 MB |
+| LCP (Largest Contentful Paint) | 4.8s (poor) | 1.9s (good) |
+| Bounce rate | 45%+ | Under 30% |
+| Mobile data cost | 35¢ per visit | 12¢ per visit |
+
+Google uses Core Web Vitals as a ranking signal. LCP — how fast the largest visible element loads — is often a hero image. If it's 2MB, you're losing rankings.
+
+## Lossy vs Lossless: What's Actually Happening
+
+**Lossless compression** finds patterns and removes redundancy. The decompressed image is *identical* to the original. Think ZIP for images. PNG uses lossless.
+
+**Lossy compression** discards data the human eye won't miss. Quality drops slightly, file size drops dramatically. JPEG and WebP use lossy.
+
+Here's what matters: at 85% JPEG quality, most people can't tell the difference from 100%. The file is 60-70% smaller. For web use, lossy compression is almost always the right choice.
+
+### When lossless makes sense:
+- Screenshots with text (compression artifacts blur letters)
+- Logos with sharp edges and flat colors
+- Images that will be edited repeatedly (each lossy save degrades quality)
+
+### When lossy is fine:
+- Photographs
+- Hero images and banners
+- Any image where the user isn't pixel-peeping
+
+## Choosing the Right Format in 2026
+
+| Format | Best for | Compression | Transparency | Browser support |
+|--------|----------|-------------|--------------|-----------------|
+| **AVIF** | Photos, hero images | Best (50% smaller than JPEG) | ✅ | 96% |
+| **WebP** | General purpose | Excellent (30% smaller than JPEG) | ✅ | 98% |
+| **JPEG** | Max compatibility | Good | ❌ | 100% |
+| **PNG** | Logos, screenshots | Fair (lossless) | ✅ | 100% |
+
+### The 2026 recommendation:
+
+```
+AVIF > WebP > JPEG (for photos)
+PNG (for logos and screenshots — but compress them too)
+```
+
+Provide fallbacks. Don't serve AVIF-only — some older devices still need WebP or JPEG. Use `<picture>`:
+
+```html
+<picture>
+  <source srcset="hero.avif" type="image/avif">
+  <source srcset="hero.webp" type="image/webp">
+  <img src="hero.jpg" alt="Hero" width="1200" height="630">
+</picture>
+```
+
+## How Much Should You Compress?
+
+| Image type | Target quality | Expected savings |
+|------------|---------------|-----------------|
+| Hero image (JPEG) | 75–85% | 60–75% |
+| Blog illustration | 70–80% | 65–80% |
+| Product photo | 80–90% | 50–65% |
+| Logo (PNG) | Lossless + optimizer | 30–50% |
+| Thumbnail | 60–75% | 75–90% |
+
+ToolCraft's [Image Compressor](/tools/image-compressor) lets you preview results at each quality level in real time — useful for finding your image's sweet spot.
+
+## Resize Before You Compress
+
+Compression alone isn't enough. Serving a 4000×3000px photo in a 400×300px slot wastes 99% of the pixels.
+
+| Display context | Max width needed |
+|----------------|:---------------:|
+| Full-width hero | 2400px |
+| Blog content | 800px |
+| Thumbnail grid | 400px |
+| Product card | 600px |
+
+Resize to 2× the display width (for Retina/HiDPI screens). A 400px-wide thumbnail should be 800px wide at most — not 4000px.
+
+## Responsive Images: srcset and sizes
+
+Let the browser pick the right resolution:
+
+```html
+<img
+  src="image-800w.jpg"
+  srcset="
+    image-400w.jpg   400w,
+    image-800w.jpg   800w,
+    image-1200w.jpg 1200w
+  "
+  sizes="(max-width: 600px) 100vw, 800px"
+  alt="Description"
+  loading="lazy"
+  width="800"
+  height="600"
+/>
+```
+
+- `srcset` lists available image widths
+- `sizes` tells the browser how wide the image will display at different viewports
+- `loading="lazy"` defers loading until the image is near the viewport
+- Always include `width` and `height` — prevents layout shift (CLS)
+
+## Lazy Loading: Don't Load What Isn't Seen
+
+Below-the-fold images shouldn't block page rendering. Two approaches:
+
+### Native lazy loading (simplest):
+```html
+<img src="photo.jpg" loading="lazy" alt="" width="800" height="600">
+```
+97% browser support. Zero JavaScript. Just add `loading="lazy"`.
+
+### JavaScript lazy loading (more control):
+Use when you need fade-in animations, placeholder blur-ups, or dynamic thresholds. Libraries like `lazySizes` or framework-specific solutions (Next.js `next/image`, Nuxt `nuxt-image`) handle this automatically.
+
+### What NOT to lazy-load:
+- The hero image (above the fold) — it's your LCP element. Load it eagerly.
+
+## Automating Compression
+
+Compressing images manually before every deploy doesn't scale. Automate it:
+
+**Build-time (recommended for static sites):**
+```bash
+# Sharp (Node.js) — resize + compress in one pass
+npx sharp-cli -i ./src/images/*.jpg -o ./dist/images/ --quality 80 --format webp
+```
+
+**CMS plugins (WordPress):**
+- Imagify, ShortPixel, or Smush — auto-compress on upload
+
+**CI/CD pipeline:**
+Add image optimization to your build step. Next.js does this automatically with `next/image` and the built-in image optimizer.
+
+## Tools: Online vs Local vs CI
+
+| Approach | Best for | Trade-off |
+|----------|----------|-----------|
+| **Online client-side** (ToolCraft) | Small batches, quick edits | No automation |
+| **Desktop software** (ImageOptim, Squoosh) | Medium batches, maximum control | Manual, per-machine |
+| **Build-time** (Sharp, imagemin) | Automated deployment pipeline | Setup required |
+| **CDN/Image service** (Cloudinary, imgix) | Large sites, dynamic resizing | Paid, adds dependency |
+
+For most small-to-medium sites, a combination works best: resize and compress hero images manually with an [online compressor](/tools/image-compressor), then let the build pipeline handle blog post images automatically.
+
+## Core Web Vitals: The Numbers That Matter
+
+Google judges your page on three metrics:
+
+| Metric | What it measures | Good | Poor |
+|--------|-----------------|------|------|
+| **LCP** | Loading speed (largest element) | ≤ 2.5s | > 4.0s |
+| **CLS** | Visual stability (layout shift) | ≤ 0.1 | > 0.25 |
+| **INP** | Interactivity (response to input) | ≤ 200ms | > 500ms |
+
+Images affect all three:
+- **LCP**: A bloated hero image pushes this into "poor" territory. Compress and preload.
+- **CLS**: Loading images without dimensions causes content to jump. Always set `width` and `height`.
+- **INP**: Too many large images competing for bandwidth can delay interactivity. Lazy-load.
+
+### Quick LCP fix checklist:
+1. Compress the hero image to ≤ 200KB
+2. Set explicit `width`/`height` to prevent CLS
+3. Use `<link rel="preload">` for the LCP image
+4. Serve modern format (WebP/AVIF)
+5. Host images on the same domain (no extra DNS lookup)
+
+## Next-Gen Formats: AVIF and JPEG XL
+
+**AVIF** is the current leader:
+- 50% smaller than JPEG at equivalent quality
+- Supports HDR, wide color gamut, transparency, and animation
+- 96% browser support as of 2026
+
+**JPEG XL** (the dark horse):
+- Lossless JPEG-to-JPEG XL conversion (no generation loss)
+- Progressive decoding (image gets sharper as it loads)
+- Currently ~10% browser support — keep an eye on it, but don't use in production yet
+
+For now: **AVIF with WebP fallback**.
+
+## The Complete Workflow
+
+Here's a step-by-step process you can apply today:
+
+1. **Audit**: Run your site through [PageSpeed Insights](https://pagespeed.web.dev/). Note which images it flags as oversized.
+2. **Resize**: Determine the maximum display width for each image. Resize to 2× that width.
+3. **Choose format**: Convert photos to AVIF/WebP. Keep logos as compressed PNG.
+4. **Compress**: Use an [online compressor](/tools/image-compressor) for manual work, or Sharp/imagemin for automation.
+5. **Generate variants**: Create 3–4 width variants for each image (400w, 800w, 1200w, 2400w).
+6. **Markup**: Add `srcset`, `sizes`, `loading="lazy"`, `width`, and `height`.
+7. **Verify**: Re-run PageSpeed Insights. Confirm LCP is in the green.
+8. **Automate**: Set up a build step so you never have to think about this again.
+
+## One Image, Real Numbers
+
+Here's what happens when you apply this to a real hero image:
+
+```
+Original:  hero.jpg, 4032×3024px, 4.2 MB
+Step 1 — Resize (2400px wide):  2400×1800px, 1.8 MB
+Step 2 — Compress (80% quality): JPEG 420 KB
+Step 3 — Convert to AVIF:        98 KB
+Step 4 — Add WebP fallback:      180 KB
+
+Result: 4.2 MB → 98 KB (97.7% smaller)
+PageSpeed LCP: 6.2s → 1.4s
+```
+
+That's the difference between a visitor bouncing and a visitor staying.
+
+---
+
+**You might also like:**
+- [Online vs Desktop Image Compression: Which is Better?](/blog/online-image-compression-vs-desktop) — Choose your tool
+- [WebP vs PNG vs JPEG: Which Format Should You Use?](/blog/best-image-format-webp-png-jpeg) — Format deep-dive
+- [How to Compress Images Without Losing Quality](/blog/how-to-compress-images) — Quick-start guide
