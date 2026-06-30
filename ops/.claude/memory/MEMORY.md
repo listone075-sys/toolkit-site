@@ -1,0 +1,4 @@
+- [外链建设](link-building.md) — 工具目录提交进度：SaaSHub ✅、AlternativeTo ⏳2026-07-07、ProductHunt 待定
+- [内容日历](content-calendar.md) — 博客发布进度追踪，12篇/12周目标
+- [社交媒体状态](social-accounts.md) — Twitter/Pinterest/TikTok 账号创建与运营状态
+- [部署信息](deploy-info.md) — 服务器 SSH、nginx、部署命令
