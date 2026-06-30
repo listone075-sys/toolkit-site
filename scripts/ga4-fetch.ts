@@ -54,7 +54,7 @@ async function fetchMetrics(days: number = 7) {
   const client = getClient();
   const property = `properties/${PROPERTY_ID}`;
 
-  const [response] = await client.runReport({
+  const resp = await client.runReport({
     property,
     dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
     metrics: [
@@ -67,22 +67,23 @@ async function fetchMetrics(days: number = 7) {
     dimensions: [{ name: "date" }],
     orderBy: [{ dimension: { dimensionName: "date" }, desc: false }],
   });
+  const rows = resp?.[0]?.rows ?? [];
 
-  return response.rows?.map((row) => ({
+  return rows.map((row) => ({
     date: row.dimensionValues?.[0]?.value ?? "unknown",
     activeUsers: parseInt(row.metricValues?.[0]?.value ?? "0"),
     pageViews: parseInt(row.metricValues?.[1]?.value ?? "0"),
     avgSessionDuration: parseFloat(row.metricValues?.[2]?.value ?? "0"),
     bounceRate: parseFloat(row.metricValues?.[3]?.value ?? "0"),
     newUsers: parseInt(row.metricValues?.[4]?.value ?? "0"),
-  })) ?? [];
+  }));
 }
 
 async function fetchTopPages(days: number = 7, limit: number = 10) {
   const client = getClient();
   const property = `properties/${PROPERTY_ID}`;
 
-  const [response] = await client.runReport({
+  const resp = await client.runReport({
     property,
     dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
     metrics: [{ name: "screenPageViews" }, { name: "activeUsers" }],
@@ -90,31 +91,33 @@ async function fetchTopPages(days: number = 7, limit: number = 10) {
     orderBy: [{ metric: { metricName: "screenPageViews" }, desc: true }],
     limit,
   });
+  const rows = resp?.[0]?.rows ?? [];
 
-  return response.rows?.map((row) => ({
+  return rows.map((row) => ({
     path: row.dimensionValues?.[0]?.value ?? "",
     title: row.dimensionValues?.[1]?.value ?? "",
     pageViews: parseInt(row.metricValues?.[0]?.value ?? "0"),
     users: parseInt(row.metricValues?.[1]?.value ?? "0"),
-  })) ?? [];
+  }));
 }
 
 async function fetchTrafficSources(days: number = 7) {
   const client = getClient();
   const property = `properties/${PROPERTY_ID}`;
 
-  const [response] = await client.runReport({
+  const resp = await client.runReport({
     property,
     dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
     metrics: [{ name: "activeUsers" }, { name: "screenPageViews" }],
     dimensions: [{ name: "sessionDefaultChannelGroup" }],
   });
+  const rows = resp?.[0]?.rows ?? [];
 
-  return response.rows?.map((row) => ({
+  return rows.map((row) => ({
     channel: row.dimensionValues?.[0]?.value ?? "unknown",
     users: parseInt(row.metricValues?.[0]?.value ?? "0"),
     pageViews: parseInt(row.metricValues?.[1]?.value ?? "0"),
-  })) ?? [];
+  }));
 }
 
 // ---- Output helpers ----

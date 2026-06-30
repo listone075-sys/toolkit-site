@@ -1,0 +1,18 @@
+{
+  "name": "ToolCraft Publisher",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Allows ToolCraft scripts to post content via your browser",
+  "permissions": ["tabs", "scripting", "storage"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://www.pinterest.com/*",
+    "http://localhost:19876/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "ToolCraft Publisher"
+  }
+}

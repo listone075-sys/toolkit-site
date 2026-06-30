@@ -1,0 +1,57 @@
+{
+  "date": "2026-06-30",
+  "totalPV_7d": 198,
+  "totalUV_7d": 85,
+  "avgDailyPV": 25,
+  "avgDailyUV": 11,
+  "yesterdayPV": 5,
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 76,
+      "pageViews": 165
+    },
+    {
+      "channel": "Unassigned",
+      "users": 9,
+      "pageViews": 28
+    },
+    {
+      "channel": "Organic Search",
+      "users": 2,
+      "pageViews": 2
+    },
+    {
+      "channel": "Referral",
+      "users": 1,
+      "pageViews": 3
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "pageViews": 114,
+      "users": 79
+    },
+    {
+      "path": "/events.html",
+      "pageViews": 54,
+      "users": 25
+    },
+    {
+      "path": "/backtest.html",
+      "pageViews": 19,
+      "users": 15
+    },
+    {
+      "path": "/knowledge.html",
+      "pageViews": 10,
+      "users": 9
+    },
+    {
+      "path": "/en/",
+      "pageViews": 1,
+      "users": 1
+    }
+  ]
+}
