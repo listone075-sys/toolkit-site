@@ -1,0 +1,132 @@
+export const meta = {
+  title: "如何将 Markdown 转换为 HTML、DOCX 和 PDF — 免费在线指南",
+  description: "需要将 Markdown 导出为 HTML、Word 或纯文本？学习 4 种免费浏览器端转换方法，无需注册，无需上传。",
+  date: "2026-07-01",
+  category: "Markdown",
+};
+
+# 如何将 Markdown 转换为 HTML、DOCX 和 PDF — 免费在线指南
+
+你用 Markdown 写了内容。现在你需要 HTML 来发布网站，需要 DOCX 发给客户，或者需要纯文本提交表单。格式转换应该几秒钟完成，不需要下载任何软件。方法如下。
+
+## 4 种最常见的 Markdown 转换
+
+| 从 | 到 | 使用场景 |
+|----|----|---------|
+| Markdown | **HTML** | 发布到网站、CMS 或邮件模板 |
+| Markdown | **DOCX** | 发给使用 Word 的客户 |
+| Markdown | **纯文本** | 去除格式，提交纯文本内容 |
+| HTML | **Markdown** | 将网页内容转回 Markdown 便于编辑 |
+
+每种转换方式不同，我们逐一来看。
+
+## 1. Markdown → HTML
+
+最常用的转换。Markdown 的初衷就是编译为 HTML，所以大多数工具都处理得很好。
+
+### 使用 ToolCraft Markdown 转 HTML 转换器：
+
+1. 打开 [Markdown 转 HTML](/tools/markdown-to-html)
+2. 粘贴你的 Markdown 内容
+3. HTML 输出即时显示 — 一键复制或下载为 `.html` 文件
+
+特别适合这些场景：
+- **AI 输出**：ChatGPT、Claude、Kimi 等大模型默认返回 Markdown。转为 HTML 后再粘贴到 CMS。
+- **README 文件**：你的 `README.md` 可以变身为落地页。
+- **文档编写**：用 Markdown 写作，用 HTML 发布。
+
+### 转换过程中发生了什么
+
+每个 Markdown 元素都对应一个确定的 HTML 标签：
+
+| Markdown | HTML 输出 |
+|----------|----------|
+| `# 标题` | `<h1>标题</h1>` |
+| `**加粗**` | `<strong>加粗</strong>` |
+| `[链接](url)` | `<a href="url">链接</a>` |
+| `![图片](img)` | `<img src="img" alt="图片">` |
+| `` `代码` `` | `<code>代码</code>` |
+| `- 列表项` | `<li>列表项</li>` 在 `<ul>` 中 |
+
+好的转换器还能处理边缘情况：嵌套列表、带语言标注的代码块、带对齐的表格，以及 Markdown 中嵌入的 HTML。
+
+## 2. Markdown → DOCX（Word 文档）
+
+客户、导师和出版社通常需要 `.docx` 文件。过去把 Markdown 转 Word 得用 Pandoc（命令行工具）。现在浏览器里就能搞定。
+
+### 使用 ToolCraft Markdown 转 DOCX 转换器：
+
+1. 打开 [Markdown 转 DOCX](/tools/markdown-to-docx)
+2. 粘贴 Markdown 或上传 `.md` 文件
+3. 点击转换 — 自动下载 `.docx` 文件，直接用 Word 打开
+
+**哪些格式会被保留：**
+- 标题变成 Word 标题样式（标题 1、标题 2 等）
+- 加粗和斜体完整保留
+- 表格渲染为原生 Word 表格
+- 代码块变成等宽字体段落
+- 链接保持可点击
+
+**专业提示**：如果 Word 文档需要打印，导出前先用预览检查分页和表格宽度。
+
+## 3. Markdown → 纯文本
+
+有时候你需要去除所有格式——纯文本邮件、表单提交、短信等。最简单的办法：先把 Markdown 转 HTML，再剥离 HTML 标签。
+
+[Markdown 编辑器](/tools/markdown-editor) 让你在渲染预览和纯 Markdown 源码之间一键切换。从预览侧复制是格式化输出，从编辑侧复制是纯文本。
+
+## 4. HTML → Markdown（逆向转换）
+
+想把网页内容转成 Markdown 来编辑？用逆向转换器：
+
+1. 打开 [HTML 转 Markdown](/tools/html-to-markdown)
+2. 粘贴 HTML 内容
+3. 得到干净的 Markdown 输出 — 标题、列表、链接和格式完整保留
+
+适合这些场景：
+- **迁移博客文章**：从富文本编辑器迁移到 Markdown
+- **归档网页**：用干净可读的格式保存网页
+- **准备 AI 提示词**：包含带格式的参考资料
+
+## 你的场景该用哪个工具？
+
+| 你的情况 | 最佳工具 |
+|---------|---------|
+| AI（ChatGPT/Claude/Kimi）给了 Markdown，我需要 HTML | [Markdown → HTML](/tools/markdown-to-html) |
+| 写了文档，客户要 Word 文件 | [Markdown → DOCX](/tools/markdown-to-docx) |
+| 抓取了网页，想要干净的 Markdown | [HTML → Markdown](/tools/html-to-markdown) |
+| 想在一个地方边写边预览 | [Markdown 编辑器](/tools/markdown-editor) |
+
+## 为什么选浏览器端转换？
+
+你可以装 Pandoc。你可以用在线服务把内容上传到服务器。但浏览器端工具有两个独特优势：
+
+**隐私。** 客户端转换器在本地处理一切。你的内容永远不会离开你的设备。这对保密文件、公司内部文档和任何受 NDA 保护的内容至关重要。
+
+**速度。** 无需上传、无需服务器处理、无需下载链接。粘贴 → 转换 → 完成。全程不到 5 秒。
+
+## 需要注意的格式坑
+
+并非所有 Markdown 变体都一样。GitHub Flavored Markdown（GFM）增加了表格、任务列表和删除线。CommonMark 更严格。不同解析器对嵌套格式的处理也可能不同。
+
+如果输出看起来有问题，检查这几点：
+1. **表格**：GFM 风格表格（`| 列 | 列 |`）通常都支持。老旧的解析器可能不行。
+2. **混合格式**：`**加粗 _加斜体_**` — 有些解析器支持，有些不支持。
+3. **Markdown 中的 HTML**：Markdown 里嵌入的原始 HTML 可能被原样保留或被剥离，取决于转换器。
+4. **换行**：单个换行在大多数 Markdown 变体中被忽略。需要行末加两个空格，或者空一行来产生新段落。
+
+ToolCraft 的转换器支持 GFM 语法，覆盖了绝大多数实际使用的 Markdown。
+
+## 快速上手：你的第一次转换
+
+1. 复制一段 Markdown（试试 ChatGPT 的输出、README 文件、或任何带格式的文字）
+2. 打开 [Markdown 转 HTML](/tools/markdown-to-html)
+3. 粘贴 → 下载或复制 HTML
+4. 完成。无需注册。全程几秒钟。
+
+---
+
+**你可能也喜欢：**
+- [Markdown 速查表](/blog/markdown-cheat-sheet) — 所有你需要的语法
+- [什么是 Markdown？初学者指南](/blog/what-is-markdown) — 新手从这里开始
+- [如何在 Markdown 中创建表格](/blog/how-to-create-tables-in-markdown) — 表格轻松上手

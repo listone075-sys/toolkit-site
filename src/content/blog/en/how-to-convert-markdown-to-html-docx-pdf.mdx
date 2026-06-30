@@ -1,0 +1,132 @@
+export const meta = {
+  title: "How to Convert Markdown to HTML, DOCX, and PDF — Free Online Guide",
+  description: "Need to export Markdown to HTML, Word, or PDF? Learn 5 conversion methods using free browser-based tools. No sign-up, no upload required.",
+  date: "2026-07-01",
+  category: "Markdown",
+};
+
+# How to Convert Markdown to HTML, DOCX, and PDF — Free Online Guide
+
+You wrote something in Markdown. Now you need it in HTML for a website, DOCX for a client, or PDF to share. Converting between formats should take seconds, not require downloading software. Here's how.
+
+## The 4 Most Common Markdown Conversions
+
+| From | To | When you need this |
+|------|----|--------------------|
+| Markdown | **HTML** | Publishing to a website, CMS, or email template |
+| Markdown | **DOCX** | Sending to a client who works in Word |
+| Markdown | **Plain Text** | Stripping formatting for a plain-text submission |
+| HTML | **Markdown** | Converting web content back to Markdown for editing |
+
+Each direction has a different approach. Let's go through them.
+
+## 1. Markdown → HTML
+
+The most common conversion. Markdown was designed to compile to HTML, and most tools handle this well.
+
+### Using the ToolCraft Markdown to HTML converter:
+
+1. Open the [Markdown to HTML converter](/tools/markdown-to-html)
+2. Paste your Markdown content
+3. The HTML output appears instantly — copy it or download as `.html`
+
+This is especially useful for:
+- **AI outputs**: ChatGPT, Claude, and other LLMs return Markdown by default. Convert to HTML before pasting into a CMS.
+- **README files**: Your `README.md` can become a landing page.
+- **Documentation**: Author in Markdown, publish in HTML.
+
+### What happens during conversion
+
+Every Markdown element maps to a predictable HTML tag:
+
+| Markdown | HTML output |
+|----------|------------|
+| `# Heading` | `<h1>Heading</h1>` |
+| `**bold**` | `<strong>bold</strong>` |
+| `[link](url)` | `<a href="url">link</a>` |
+| `![alt](img)` | `<img src="img" alt="alt">` |
+| `` `code` `` | `<code>code</code>` |
+| `- item` | `<li>item</li>` inside `<ul>` |
+
+A good converter also handles edge cases: nested lists, code blocks with language labels, tables with alignment, and inline HTML within Markdown.
+
+## 2. Markdown → DOCX (Word)
+
+Clients, professors, and publishers often want `.docx` files. Converting Markdown to Word used to involve Pandoc (a command-line tool). Now you can do it in the browser.
+
+### Using the ToolCraft Markdown to DOCX converter:
+
+1. Open the [Markdown to DOCX converter](/tools/markdown-to-docx)
+2. Paste your Markdown or upload a `.md` file
+3. Click convert — downloads a `.docx` file ready to open in Word
+
+**What gets preserved:**
+- Headings become Word heading styles (Heading 1, Heading 2, etc.)
+- Bold and italic carry over
+- Tables render as native Word tables
+- Code blocks become monospaced paragraphs
+- Links remain clickable
+
+**Pro tip**: If the Word document will be printed, use the converter's preview to check page breaks and table widths before exporting.
+
+## 3. Markdown → Plain Text
+
+Sometimes you need to strip all formatting — for a plain-text email, a form submission, or a text message. The simplest approach: convert Markdown to HTML, then strip the HTML tags.
+
+The [Markdown Editor](/tools/markdown-editor) lets you toggle between rendered preview and raw Markdown. Copy from the preview side for formatted output, or the editor side for raw Markdown/plain text.
+
+## 4. HTML → Markdown (Reverse)
+
+Have web content you want to edit in Markdown? Use the reverse converter:
+
+1. Open the [HTML to Markdown converter](/tools/html-to-markdown)
+2. Paste HTML content
+3. Get clean Markdown output — headings, lists, links, and formatting preserved
+
+This is useful for:
+- **Migrating blog posts** from a WYSIWYG editor to Markdown
+- **Archiving web pages** in a clean, readable format
+- **Preparing AI prompts** that include formatted reference content
+
+## Which Direction Should You Choose?
+
+| Your situation | Best tool |
+|---------------|-----------|
+| AI (ChatGPT/Claude) gave me Markdown, I need HTML | [Markdown → HTML](/tools/markdown-to-html) |
+| I wrote docs, client wants a Word file | [Markdown → DOCX](/tools/markdown-to-docx) |
+| I scraped a webpage, want clean Markdown | [HTML → Markdown](/tools/html-to-markdown) |
+| I want to write and preview in one place | [Markdown Editor](/tools/markdown-editor) |
+
+## Why Browser-Based Conversion?
+
+You could install Pandoc. You could use an online service that uploads your content to a server. But browser-based tools offer two advantages:
+
+**Privacy.** Client-side converters process everything locally. Your content never leaves your device. This matters for confidential documents, internal company docs, and anything under NDA.
+
+**Speed.** No upload, no server processing, no download link. Paste → convert → done. Total time: under 5 seconds.
+
+## Format Quirks to Watch Out For
+
+Not all Markdown flavors are identical. GitHub Flavored Markdown (GFM) adds tables, task lists, and strikethrough. CommonMark is stricter. Some parsers handle nested formatting differently.
+
+If your output looks wrong, check:
+1. **Tables**: GFM-style tables (`| col | col |`) should work. Some older parsers don't support them.
+2. **Mixed formatting**: `**bold _and italic_**` — some parsers handle this, some don't.
+3. **HTML inside Markdown**: Raw HTML in your Markdown may be passed through or stripped, depending on the converter.
+4. **Line breaks**: A single line break is ignored in most Markdown flavors. Use two spaces at end of line, or a blank line for a new paragraph.
+
+ToolCraft's converters support GFM syntax, which covers the vast majority of real-world Markdown use.
+
+## Quick Start: Your First Conversion
+
+1. Copy some Markdown (try a ChatGPT output, a README, or any formatted text)
+2. Go to the [Markdown to HTML](/tools/markdown-to-html) converter
+3. Paste → download or copy the HTML
+4. Done. No sign-up. The entire process takes seconds.
+
+---
+
+**You might also like:**
+- [Markdown Cheat Sheet](/blog/markdown-cheat-sheet) — Every syntax you'll ever need
+- [What Is Markdown? A Beginner's Guide](/blog/what-is-markdown) — Start here if you're new
+- [How to Create Tables in Markdown](/blog/how-to-create-tables-in-markdown) — Tables made easy
