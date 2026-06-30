@@ -26,14 +26,16 @@ metadata:
 ## 流量分析
 
 ### Google Analytics 4
-- **Measurement ID**: `G-0EHKDP008P`（前端）
+- **Measurement ID**: `G-JRNJX5CQ1F`（前端，toolcraftbox.com 专用）
 - **Property ID**: `541266486`（API 查询用）
+- **Data Stream**: TOOLCRAFT (https://www.toolcraftbox.com)
 - **API 模式**: ✅ 服务账号已配置
 - **服务账号**: `openclaw-read-ga4@website-statistics-query.iam.gserviceaccount.com`
 - **Key 文件**: `cankao/website-statistics-query-c026cb5646a9.json`（已加入 `.gitignore`）
 - **API**: Google Analytics Data API v1
 - **获取命令**: `npx tsx scripts/ga4-fetch.ts`
 - **输出路径**: `ops/tracking/daily-stats/`
+- **注意**: 2026-06-30 从旧 ID G-0EHKDP008P 迁移到 G-JRNJX5CQ1F，旧 ID 的数据有其他项目污染。G-JRNJX5CQ1F 只给 toolcraftbox.com 用，数据从 7/1 开始干净
 
 ### Google Search Console
 - 已验证 ✅

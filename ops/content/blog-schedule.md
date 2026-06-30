@@ -13,6 +13,7 @@
 | 3 | 7/1 | Complete Guide to Image Compression for Website Performance (2026) | 网站图片压缩完全指南 | Image | 深度 | ~1800 |
 | 4 | 7/1 | How to Convert Markdown to HTML, DOCX, and PDF | Markdown 格式转换指南 | Markdown | How-to | ~1000 |
 | 5 | 7/2 | How to Convert PDF to JPG or PNG — High Quality, Free | PDF 转 JPG/PNG 转换指南 | PDF | How-to | ~900 |
+| 6 | 7/3 | Best Image Format for Social Media 2026 (Instagram, Twitter, Pinterest) | 2026年社交媒体最佳图片格式指南 | Image | 指南 | ~1000 |
 
 ## 本周计划（第3周）
 

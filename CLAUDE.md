@@ -124,7 +124,7 @@ This project uses shadcn/ui v4 with `@base-ui/react` (not Radix). Import compone
 
 ### Environment variables
 
-No `.env` file is tracked in git. Google Analytics and AdSense IDs are currently hardcoded in `src/app/layout.tsx` (GA: `G-0EHKDP008P`, AdSense: `ca-pub-5142105226310650`). The `Analytics` and `AdSense` components support `NEXT_PUBLIC_GA_ID` / `NEXT_PUBLIC_ADSENSE_ID` env vars but are not currently rendered — the hardcoded scripts in layout.tsx take precedence.
+No `.env` file is tracked in git. Google Analytics GA4 uses `NEXT_PUBLIC_GA_ID` env var (current: `G-JRNJX5CQ1F`) via the `Analytics` component in `src/components/layout/analytics.tsx`. AdSense ID `ca-pub-5142105226310650` is set via `<meta name="google-adsense-account">` in locale layout.
 
 ### Utility modules
 
