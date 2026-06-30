@@ -10,9 +10,10 @@
 | 2 | 6/27 | 项目介绍 | Built ToolCraft — 48 free online tools | ✅ |
 | 3 | 6/28 | 开发故事 | "I got tired of sketchy tool sites..." | ⚠️ 待确认 |
 | 4 | 6/29 | 工具推荐 | Image Compressor 5MB→50KB demo | ⚠️ 待确认 |
-| 5 | 6/30 | 数据分享 | #buildinpublic Week 1 numbers | ❌ 未发布 |
-| 6 | 7/1 | 问题式 | Markdown conversion guide | ❌ 待发布 |
-| 7 | 7/2 | - | 待写 | 📝 |
+| 5 | 6/30 | 数据式 | #buildinpublic Week 1 numbers | ✅ |
+| 6 | 6/30 | 问题式 | Markdown conversion guide (Blog #4) | ✅ |
+| 7 | 6/30 | CTA式 | PDF→JPG/PNG guide (Blog #5) | ✅ |
+| 8 | 7/1 | - | 待写 | 📝 |
 
 ## Pinterest Pin 记录
 
@@ -20,7 +21,8 @@
 |:--:|------|------|------|:--:|
 | 1 | 6/26 | Image Tools & Tips | Compress Images 前后对比 | ✅ |
 | 2 | 6/26 | PDF Hacks & Tutorials | Merge PDF Files Online | ✅ |
-| 3 | - | - | 待发 | 📝 |
+| 3 | 7/2 | PDF Hacks & Tutorials | Convert PDF to JPG/PNG — Free Guide | 📝 待发布 |
+| 4 | 7/3 | - | 待发 | 📝 |
 
 ## 发布模板
 

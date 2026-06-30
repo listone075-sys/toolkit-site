@@ -12,14 +12,15 @@
 | 2 | 6/30 | Online Image Compression vs Desktop Software — Which is Better? | 在线图片压缩 vs 桌面软件：哪个更好？ | Image | 对比 | ~1100 |
 | 3 | 7/1 | Complete Guide to Image Compression for Website Performance (2026) | 网站图片压缩完全指南 | Image | 深度 | ~1800 |
 | 4 | 7/1 | How to Convert Markdown to HTML, DOCX, and PDF | Markdown 格式转换指南 | Markdown | How-to | ~1000 |
+| 5 | 7/2 | How to Convert PDF to JPG or PNG — High Quality, Free | PDF 转 JPG/PNG 转换指南 | PDF | How-to | ~900 |
 
 ## 本周计划（第3周）
 
 | # | 日期 | 品类 | 类型 | 选题 |
 |:--:|------|------|------|------|
-| 5 | 7/2 | PDF | How-to | 待定（PDF 合并/压缩/转换教程） |
-| 6 | 7/3 | Image | 对比/列表 | 待定 |
-| 7 | 7/4 | Markdown | 深度/对比 | 待定 |
+| 5 | 7/2 | PDF | How-to | ✅ How to Convert PDF to JPG or PNG — High Quality, Free |
+| 6 | 7/3 | Image | 对比/列表 | Best Image Format for Social Media 2026 |
+| 7 | 7/4 | Markdown | 深度/对比 | Markdown vs WYSIWYG: Which Should You Use in 2026? |
 
 ## 选题池
 
