@@ -1,0 +1,13 @@
+{
+  "date": "2026-07-04",
+  "totalPV_7d": 217,
+  "totalUV_7d": 90,
+  "avgDailyPV": 31,
+  "avgDailyUV": 13,
+  "latestDailyPV": 27,
+  "latestDailyUV": 11,
+  "note": "数据来自第2周（6/30-7/4），仍含部分非ToolCraft路径（/events.html等）",
+  "blogsPublished": 7,
+  "twitterTweets": 7,
+  "blocker": "站点 'Something went wrong' 错误仍未从用户端解决 — SW v3 已部署，可能涉及 nginx 缓存"
+}
