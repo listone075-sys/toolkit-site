@@ -41,6 +41,12 @@ metadata:
 - 已验证 ✅
 - GSC 数据目前需手动查看
 
+## 认证
+
+### NextAuth.js (Auth.js)
+- **AUTH_SECRET**: `c94558e178bbd85cc87fc9585f3c6e12822f7f458b8a09a49994377cff89914e`
+- 配置位置: `/opt/toolkit_site/.env.local` + systemd service
+
 ## 广告
 
 ### Google AdSense
