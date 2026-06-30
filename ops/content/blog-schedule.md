@@ -14,6 +14,7 @@
 | 4 | 7/1 | How to Convert Markdown to HTML, DOCX, and PDF | Markdown 格式转换指南 | Markdown | How-to | ~1000 |
 | 5 | 7/2 | How to Convert PDF to JPG or PNG — High Quality, Free | PDF 转 JPG/PNG 转换指南 | PDF | How-to | ~900 |
 | 6 | 7/3 | Best Image Format for Social Media 2026 (Instagram, Twitter, Pinterest) | 2026年社交媒体最佳图片格式指南 | Image | 指南 | ~1000 |
+| 7 | 7/4 | Markdown vs WYSIWYG: Which Should You Use in 2026? | Markdown vs WYSIWYG：2026年你该用哪个？ | Markdown | 对比 | ~900 |
 
 ## 本周计划（第3周）
 
