@@ -96,6 +96,7 @@
     "downloadHtml": "下载 HTML",
     "docx": "DOCX",
     "pptx": "PPTX",
+    "pdf": "PDF",
     "placeholder": "# 标题\n\n在这里输入 **Markdown**...\n\n- 列表项\n- 另一个\n\n> 引用块\n\n```js\nconsole.log('代码');\n```",
     "htmlPlaceholder": "HTML 将显示在这里...",
     "converting": "转换中...",

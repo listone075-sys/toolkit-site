@@ -8,11 +8,12 @@ import { ToolShell } from "./tool-shell";
 import { markdownToHtml, markdownToHtmlDocument } from "@/lib/tools/markdown/md-to-html";
 import { markdownToDocxBlob } from "@/lib/tools/markdown/md-to-docx";
 import { markdownToPptxBlob } from "@/lib/tools/markdown/md-to-pptx";
+import { markdownToPdfBlob } from "@/lib/tools/markdown/md-to-pdf";
 import { downloadFile } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { useDebounce } from "@/hooks/use-debounce";
 import { DropTarget } from "./file-upload-zone";
-import { Copy, Download, Eye, FileCode, FileText } from "lucide-react";
+import { Copy, Download, Eye, FileCode, FileText, FileDown } from "lucide-react";
 
 interface MarkdownEditorProps {
   showHtmlExport?: boolean;
@@ -26,6 +27,7 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
   const { copied, copy } = useClipboard();
 
   const htmlOutput = debouncedInput ? markdownToHtml(debouncedInput) : "";
+  const [pdfConverting, setPdfConverting] = useState(false);
 
   const handleCopyHtml = () => {
     copy(htmlOutput);
@@ -58,6 +60,18 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
       "presentation.pptx",
       "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     );
+  };
+
+  const handleDownloadPdf = async () => {
+    if (pdfConverting) return;
+    setPdfConverting(true);
+    try {
+      const md = input.trim() || t("markdownEditor.placeholder");
+      const blob = await markdownToPdfBlob(md, t("markdownEditor.documentTitle"));
+      downloadFile(blob, "document.pdf", "application/pdf");
+    } finally {
+      setPdfConverting(false);
+    }
   };
 
   const handleFileDrop = useCallback(
@@ -124,6 +138,9 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
               </Button>
               <Button variant="outline" size="sm" onClick={handleDownloadPptx}>
                 <Download className="h-4 w-4 mr-1" /> {t("markdownEditor.pptx")}
+              </Button>
+              <Button variant="outline" size="sm" onClick={handleDownloadPdf} disabled={pdfConverting}>
+                <FileDown className="h-4 w-4 mr-1" /> {pdfConverting ? t("markdownEditor.converting") : t("markdownEditor.pdf")}
               </Button>
             </>
           )}

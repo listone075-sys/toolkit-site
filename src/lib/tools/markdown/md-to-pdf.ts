@@ -86,6 +86,48 @@ export function markdownToPdfHtmlBlob(markdown: string, title?: string): Blob {
   return new Blob([html], { type: "text/html" });
 }
 
+/**
+ * Convert Markdown to a downloadable PDF Blob using html2pdf.js.
+ * Creates a styled HTML document, renders it off-screen, and captures it as PDF.
+ *
+ * @param markdown - Raw markdown string
+ * @param title - Document title
+ * @returns PDF Blob ready for download
+ */
+export async function markdownToPdfBlob(markdown: string, title = "Document"): Promise<Blob> {
+  // Dynamic import — html2pdf.js references browser-only APIs (self, window, document)
+  // and must never be evaluated during SSR / static generation.
+  const html2pdf = (await import("html2pdf.js")).default;
+
+  const html = markdownToHtmlDocument(markdown, title);
+
+  // Create a temporary container to render the HTML
+  const container = document.createElement("div");
+  container.style.position = "absolute";
+  container.style.left = "-9999px";
+  container.style.top = "0";
+  container.style.width = "800px";
+  container.innerHTML = html;
+  document.body.appendChild(container);
+
+  try {
+    const pdfBlob = await html2pdf()
+      .set({
+        margin: [10, 10, 10, 10],
+        filename: `${title}.pdf`,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      })
+      .from(container)
+      .outputPdf("blob");
+
+    return pdfBlob as Blob;
+  } finally {
+    document.body.removeChild(container);
+  }
+}
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, "&amp;")

@@ -96,6 +96,7 @@
     "downloadHtml": "Download HTML",
     "docx": "DOCX",
     "pptx": "PPTX",
+    "pdf": "PDF",
     "placeholder": "# Heading\n\nType **Markdown** here...\n\n- List item\n- Another\n\n> Blockquote\n\n```js\nconsole.log('code');\n```",
     "htmlPlaceholder": "HTML will appear here...",
     "converting": "Converting...",

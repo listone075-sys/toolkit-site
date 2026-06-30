@@ -31,6 +31,7 @@
     "docx": "^9.7.1",
     "fuse.js": "^7.4.2",
     "heic2any": "^0.0.4",
+    "html2pdf.js": "^0.14.0",
     "jszip": "^3.10.1",
     "lucide-react": "^1.18.0",
     "mammoth": "^1.12.0",
