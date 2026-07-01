@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,4 +128,110 @@
   html {
     @apply font-sans;
   }
+}
+
+/* ── Markdown preview styles ──────────────────────────────── */
+/* Explicit overrides to guarantee typography regardless of prose plugin state */
+.prose h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0.67em 0;
+  color: #101828;
+}
+.prose h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 1em 0 0.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #e5e7eb;
+  color: #101828;
+}
+.prose h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 1em 0 0.4em;
+  color: #101828;
+}
+.prose h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  color: #101828;
+}
+.prose h5,
+.prose h6 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0.6em 0 0.2em;
+  color: #364153;
+}
+.prose p {
+  margin: 0.8em 0;
+  line-height: 1.7;
+}
+.prose ul,
+.prose ol {
+  margin: 0.6em 0;
+  padding-left: 1.8em;
+}
+.prose li {
+  margin: 0.3em 0;
+}
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+.prose th,
+.prose td {
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  text-align: left;
+}
+.prose th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+.prose tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+.prose blockquote {
+  border-left: 4px solid #3b82f6;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  color: #64748b;
+  background: #f8fafc;
+}
+.prose code {
+  background: #f1f5f9;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.prose pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 16px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2em 0;
 }

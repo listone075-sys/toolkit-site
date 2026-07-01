@@ -101,7 +101,9 @@
     "htmlPlaceholder": "HTML 将显示在这里...",
     "converting": "转换中...",
     "documentTitle": "文档",
-    "dropHint": "拖拽 .md 文件到这里"
+    "dropHint": "拖拽 .md 文件到这里",
+    "fullscreenPreview": "全屏预览",
+    "closeFullscreen": "关闭"
   },
   "jsonFormatter": {
     "format": "格式化",

@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ToolShell } from "./tool-shell";
@@ -13,7 +13,7 @@ import { downloadFile } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { useDebounce } from "@/hooks/use-debounce";
 import { DropTarget } from "./file-upload-zone";
-import { Copy, Download, Eye, FileCode, FileText, FileDown } from "lucide-react";
+import { Copy, Download, Eye, FileCode, FileText, FileDown, Maximize2, X } from "lucide-react";
 
 interface MarkdownEditorProps {
   showHtmlExport?: boolean;
@@ -28,6 +28,30 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
 
   const htmlOutput = debouncedInput ? markdownToHtml(debouncedInput) : "";
   const [pdfConverting, setPdfConverting] = useState(false);
+  const [fullscreenOpen, setFullscreenOpen] = useState(false);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+
+  // Close fullscreen on Escape key
+  useEffect(() => {
+    if (!fullscreenOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setFullscreenOpen(false);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [fullscreenOpen]);
+
+  // Prevent body scroll when fullscreen is open
+  useEffect(() => {
+    if (fullscreenOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [fullscreenOpen]);
 
   const handleCopyHtml = () => {
     copy(htmlOutput);
@@ -102,9 +126,10 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
   );
 
   return (
-    <div className="space-y-4">
-      {/* Toolbar */}
-      <div className="flex items-center gap-2 flex-wrap p-3 bg-zinc-50 rounded-lg border">
+    <DropTarget onFiles={handleFileDrop}>
+      <div className="space-y-4">
+        {/* Toolbar */}
+        <div className="flex items-center gap-2 flex-wrap p-3 bg-zinc-50 rounded-lg border">
         <div className="flex items-center gap-1 mr-4">
           <Button
             variant={viewMode === "preview" ? "default" : "outline"}
@@ -119,6 +144,14 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
             onClick={() => setViewMode("html")}
           >
             <FileCode className="h-4 w-4 mr-1" /> {t("markdownEditor.htmlOutput")}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setFullscreenOpen(true)}
+            title={t("markdownEditor.fullscreenPreview")}
+          >
+            <Maximize2 className="h-4 w-4" />
           </Button>
         </div>
         <div className="flex items-center gap-1 ml-auto">
@@ -150,7 +183,7 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
       {/* Editor + Output */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Editor */}
-        <DropTarget onFiles={handleFileDrop} className="flex flex-col min-h-[400px]">
+        <div className="flex flex-col min-h-[400px]">
           <div className="border rounded-lg p-4 flex-1 flex flex-col">
             <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 flex items-center justify-between">
               <span>{t("markdownEditor.markdown")}</span>
@@ -165,7 +198,7 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
               onChange={(e) => setInput(e.target.value)}
             />
           </div>
-        </DropTarget>
+        </div>
 
         {/* Output */}
         <div className="border rounded-lg p-4 min-h-[400px] flex flex-col">
@@ -184,6 +217,45 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
           )}
         </div>
       </div>
+
+      {/* Fullscreen preview overlay */}
+      {fullscreenOpen && (
+        <div
+          ref={overlayRef}
+          className="fixed inset-0 z-[100] flex flex-col"
+          onClick={(e) => {
+            if (e.target === overlayRef.current) setFullscreenOpen(false);
+          }}
+        >
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+
+          {/* Toolbar */}
+          <div className="relative z-10 flex items-center justify-between px-6 py-3 bg-white border-b border-zinc-200 shadow-sm">
+            <h2 className="text-sm font-semibold text-zinc-700">
+              {t("markdownEditor.fullscreenPreview")}
+            </h2>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setFullscreenOpen(false)}
+            >
+              <X className="h-4 w-4 mr-1" /> {t("markdownEditor.closeFullscreen")}
+            </Button>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 flex-1 overflow-y-auto">
+            <div className="max-w-3xl mx-auto px-6 py-8">
+              <div
+                className="prose prose-zinc max-w-none"
+                dangerouslySetInnerHTML={{ __html: htmlOutput }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+    </DropTarget>
   );
 }

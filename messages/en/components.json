@@ -101,7 +101,9 @@
     "htmlPlaceholder": "HTML will appear here...",
     "converting": "Converting...",
     "documentTitle": "Document",
-    "dropHint": "Drop .md file here"
+    "dropHint": "Drop .md file here",
+    "fullscreenPreview": "Fullscreen Preview",
+    "closeFullscreen": "Close"
   },
   "jsonFormatter": {
     "format": "Format",
