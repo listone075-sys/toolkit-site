@@ -13,7 +13,7 @@ import { downloadFile } from "@/lib/utils/file";
 import { useClipboard } from "@/hooks/use-clipboard";
 import { useDebounce } from "@/hooks/use-debounce";
 import { DropTarget } from "./file-upload-zone";
-import { Copy, Download, Eye, FileCode, FileText, FileDown, Maximize2, X } from "lucide-react";
+import { Copy, Download, Eye, FileCode, FileText, FileDown, Maximize2, X, Upload } from "lucide-react";
 
 interface MarkdownEditorProps {
   showHtmlExport?: boolean;
@@ -29,7 +29,9 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
   const htmlOutput = debouncedInput ? markdownToHtml(debouncedInput) : "";
   const [pdfConverting, setPdfConverting] = useState(false);
   const [fullscreenOpen, setFullscreenOpen] = useState(false);
+  const [pageDragOver, setPageDragOver] = useState(false);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const dragCounterRef = useRef(0);
 
   // Close fullscreen on Escape key
   useEffect(() => {
@@ -52,6 +54,80 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
       document.body.style.overflow = "";
     };
   }, [fullscreenOpen]);
+
+  // Global page-level drop target — intercept file drops ANYWHERE on the page
+  useEffect(() => {
+    const hasFiles = (dt: DataTransfer | null) => {
+      if (!dt) return false;
+      try {
+        return Array.from(dt.types).includes("Files");
+      } catch {
+        // DOMStringList or other edge case — check via length
+        return dt.files.length > 0;
+      }
+    };
+
+    const handleDragOver = (e: globalThis.DragEvent) => {
+      if (hasFiles(e.dataTransfer)) {
+        e.preventDefault();
+        e.dataTransfer!.dropEffect = "copy";
+      }
+    };
+
+    const handleDragEnter = (e: globalThis.DragEvent) => {
+      if (hasFiles(e.dataTransfer)) {
+        e.preventDefault();
+        dragCounterRef.current += 1;
+        setPageDragOver(true);
+      }
+    };
+
+    const handleDragLeave = (e: globalThis.DragEvent) => {
+      if (hasFiles(e.dataTransfer)) {
+        dragCounterRef.current -= 1;
+        if (dragCounterRef.current <= 0) {
+          dragCounterRef.current = 0;
+          setPageDragOver(false);
+        }
+      }
+    };
+
+    const handleDrop = (e: globalThis.DragEvent) => {
+      if (hasFiles(e.dataTransfer)) {
+        e.preventDefault();
+        dragCounterRef.current = 0;
+        setPageDragOver(false);
+        const files = Array.from(e.dataTransfer?.files ?? []);
+        if (files.length > 0) {
+          const file = files[0];
+          const name = file.name.toLowerCase();
+          if (
+            name.endsWith(".md") ||
+            name.endsWith(".txt") ||
+            name.endsWith(".markdown") ||
+            file.type.startsWith("text/")
+          ) {
+            const reader = new FileReader();
+            reader.onload = () => setInput(reader.result as string);
+            reader.onerror = () => {};
+            reader.readAsText(file);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("dragover", handleDragOver);
+    document.addEventListener("dragenter", handleDragEnter);
+    document.addEventListener("dragleave", handleDragLeave);
+    document.addEventListener("drop", handleDrop);
+
+    return () => {
+      document.removeEventListener("dragover", handleDragOver);
+      document.removeEventListener("dragenter", handleDragEnter);
+      document.removeEventListener("dragleave", handleDragLeave);
+      document.removeEventListener("drop", handleDrop);
+    };
+  }, []);
 
   const handleCopyHtml = () => {
     copy(htmlOutput);
@@ -128,6 +204,17 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
   return (
     <DropTarget onFiles={handleFileDrop}>
       <div className="space-y-4">
+        {/* Page-level drag overlay — intercepts file drops ANYWHERE on the page */}
+        {pageDragOver && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-blue-50/80 backdrop-blur-sm border-[3px] border-blue-500 border-dashed rounded-none pointer-events-none">
+            <div className="text-center">
+              <Upload className="h-16 w-16 text-blue-500 mx-auto mb-4" />
+              <p className="text-xl font-bold text-blue-700 mb-1">{t("markdownEditor.dropHereTitle")}</p>
+              <p className="text-sm text-blue-500">{t("markdownEditor.dropHereHint")}</p>
+            </div>
+          </div>
+        )}
+
         {/* Toolbar */}
         <div className="flex items-center gap-2 flex-wrap p-3 bg-zinc-50 rounded-lg border">
         <div className="flex items-center gap-1 mr-4">
@@ -151,7 +238,7 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
             onClick={() => setFullscreenOpen(true)}
             title={t("markdownEditor.fullscreenPreview")}
           >
-            <Maximize2 className="h-4 w-4" />
+            <Maximize2 className="h-4 w-4 mr-1" /> {t("markdownEditor.fullscreenPreview")}
           </Button>
         </div>
         <div className="flex items-center gap-1 ml-auto">
@@ -222,16 +309,10 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
       {fullscreenOpen && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 z-[100] flex flex-col"
-          onClick={(e) => {
-            if (e.target === overlayRef.current) setFullscreenOpen(false);
-          }}
+          className="fixed inset-0 z-[100] flex flex-col bg-white"
         >
-          {/* Backdrop */}
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-
           {/* Toolbar */}
-          <div className="relative z-10 flex items-center justify-between px-6 py-3 bg-white border-b border-zinc-200 shadow-sm">
+          <div className="flex items-center justify-between px-6 py-3 bg-zinc-50 border-b border-zinc-200">
             <h2 className="text-sm font-semibold text-zinc-700">
               {t("markdownEditor.fullscreenPreview")}
             </h2>
@@ -245,7 +326,7 @@ export function MarkdownEditor({ showHtmlExport = true }: MarkdownEditorProps) {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto">
             <div className="max-w-3xl mx-auto px-6 py-8">
               <div
                 className="prose prose-zinc max-w-none"

@@ -103,7 +103,9 @@
     "documentTitle": "Document",
     "dropHint": "Drop .md file here",
     "fullscreenPreview": "Fullscreen Preview",
-    "closeFullscreen": "Close"
+    "closeFullscreen": "Close",
+    "dropHereTitle": "Drop your Markdown file",
+    "dropHereHint": "Anywhere on the page — .md / .txt / .markdown"
   },
   "jsonFormatter": {
     "format": "Format",
