@@ -13,13 +13,15 @@
 | 5 | 6/30 | 数据式 | #buildinpublic Week 1 numbers | ✅ |
 | 6 | 6/30 | 问题式 | Markdown conversion guide (Blog #4) | ✅ |
 | 7 | 6/30 | CTA式 | PDF→JPG/PNG guide (Blog #5) | ✅ |
-| 8 | 7/1 | - | 待写 | 📝 |
+| 8 | 7/1 | 工具推荐 | "48 free online tools. Zero sign-ups..." | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
 | # | 日期 | 问题 | 状态 |
 |:--:|------|------|:---:|
 | 1 | 6/30 | 有哪些好用的免费在线工具？ | ✅ 已回答 |
+| 2 | 7/1 | 在线图片压缩工具推荐 | ✅ 已回答 |
+| 3 | 7/1 | 免费在线 PDF 工具推荐 | ✅ 已回答 |
 
 ## Pinterest Pin 记录
 

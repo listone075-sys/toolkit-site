@@ -1,19 +1,22 @@
 {
   "date": "2026-07-01",
-  "totalPV_7d": 214,
-  "totalUV_7d": 86,
+  "totalPV_7d": 219,
+  "totalUV_7d": 88,
   "avgDailyPV": 27,
   "avgDailyUV": 11,
-  "yesterdayPV": 2,
+  "yesterdayPV": 5,
+  "twitterTweets": 8,
+  "zhihuAnswers": 3,
+  "note": "用户已发布 Twitter #8 + 知乎2篇新回答。真实ToolCraft流量仍极低(~2-5 PV/天)，非ToolCraft旧页面占大部分",
   "sources": [
     {
       "channel": "Direct",
-      "users": 78,
-      "pageViews": 191
+      "users": 80,
+      "pageViews": 196
     },
     {
       "channel": "Unassigned",
-      "users": 7,
+      "users": 9,
       "pageViews": 18
     },
     {
@@ -30,13 +33,13 @@
   "topPages": [
     {
       "path": "/",
-      "pageViews": 121,
-      "users": 81
+      "pageViews": 124,
+      "users": 83
     },
     {
       "path": "/events.html",
-      "pageViews": 62,
-      "users": 26
+      "pageViews": 64,
+      "users": 27
     },
     {
       "path": "/backtest.html",
