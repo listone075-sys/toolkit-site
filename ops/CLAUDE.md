@@ -1,8 +1,16 @@
 # ToolCraft 运营工作台
 
 > 当前阶段：12周运营推广计划 · 第3周
-> 上次更新：2026-06-30
+> 上次更新：2026-07-02
 > 主项目路径：`D:\ai\toolkit-site`
+> 
+> ## 🎯 战略方向更新（2026-07-02）
+> 
+> **决策：Markdown 优先策略已确认**
+> - 主推 Markdown 品类（10 个工具 + 7 篇博客），PDF 辅助
+> - 核心差异化：纯客户端处理隐私 + AI 推荐流量（ChatGPT/Claude 输出 Markdown）
+> - 研发已安排：Markdown 统一工作台 + 首页设计强化
+> - 博客方向：AI+Markdown 场景化内容（ChatGPT 转文档、技术写作、研究笔记）
 
 ## 运营目录说明
 
@@ -52,11 +60,12 @@
 
 - [x] 周一：QR Code 博客发布 + 社交媒体分发 ✅
 - [x] 周二：Markdown 多格式转换博客发布 ✅
-- [ ] 周三：PDF 品类博客（下一篇）
-- [ ] 周四：Image 品类博客 或 工具对比类
+- [x] 周三：Blog #8 ChatGPT/Claude 转 Word/PDF 发布（Markdown 方向）✅
+- [ ] 周四：待定（继续 Markdown 方向 或 其他品类）
 - [ ] 周五：本周复盘 + 下周规划
-- [ ] 每日：Twitter 推文发布
+- [ ] 每日：Twitter 推文发布（#10 待发）
 - [ ] 持续：Pinterest 账号养号（商业账号转换重试）
+- [ ] 持续：Markdown 优先内容策略执行
 
 ---
 
@@ -70,12 +79,16 @@
 | 2 | 6/30 | Online vs Desktop Image Compression | Image 对比 | ✅ 已发布 |
 | 3 | 7/1 | Complete Guide to Image Compression for Website Performance | Image 深度 | ✅ 已发布 |
 | 4 | 7/1 | How to Convert Markdown to HTML, DOCX, and PDF | Markdown How-to | ✅ 已发布 |
-| 5 | 7/2 | 待定（PDF 品类） | PDF | 📝 待写 |
-| 6 | 7/3 | 待定（Image 或工具对比） | - | 📝 待写 |
-| 7 | 7/5 | 待定（Markdown 深度/列表） | - | 📝 待规划 |
+| 5 | 7/2 | How to Convert PDF to JPG or PNG | PDF How-to | ✅ 已发布 |
+| 6 | 7/3 | Best Image Format for Social Media 2026 | Image | ✅ 已发布 |
+| 7 | 7/4 | Markdown vs WYSIWYG: Which Should You Use in 2026? | Markdown | ✅ 已发布 |
+| 8 | 7/2 | How to Convert ChatGPT & Claude Responses to Word or PDF | Markdown AI | ✅ 已发布 |
+| 9 | 待定 | 下一篇（Technical Writing 或 ChatGPT 中文版） | Markdown | 📝 待写 |
 
-### 内容轮换规则
-Image → Image → Markdown → **PDF** → Image → Markdown（避免同品类扎堆）
+### 内容轮换规则（2026-07-02 更新：Markdown 优先策略）
+**新策略：Markdown 品类优先（每周至少2篇），搭配 Image/PDF**
+- 内容方向以 AI+Markdown 场景化为核心
+- ChatGPT/Claude 转 Word/PDF → 技术写作 → 研究笔记 → PPT制作等
 
 ### 每篇博客发布后必做
 1. ✅ 写 Twitter 推文（3个版本：问题式 / 数据式 / CTA式）
