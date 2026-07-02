@@ -14,13 +14,10 @@ const COMPLEMENTARY: Record<string, string[]> = {
   "split-pdf": ["merge-pdf", "compress-pdf"],
   "compress-pdf": ["merge-pdf", "split-pdf"],
   "rotate-pdf": ["merge-pdf", "split-pdf"],
-  "markdown-editor": ["markdown-to-html", "markdown-to-docx", "markdown-to-pdf"],
-  "markdown-to-html": ["markdown-editor", "html-to-markdown"],
-  "html-to-markdown": ["markdown-editor", "markdown-formatter"],
-  "markdown-formatter": ["markdown-editor", "markdown-to-html"],
-  "json-formatter": ["css-formatter", "text-diff-checker"],
+  "markdown": ["json-formatter", "text-diff-checker", "html-to-markdown"],
+  "json-formatter": ["css-formatter", "text-diff-checker", "markdown"],
   "css-formatter": ["json-formatter", "text-diff-checker"],
-  "text-diff-checker": ["json-formatter", "css-formatter"],
+  "text-diff-checker": ["json-formatter", "css-formatter", "markdown"],
 };
 
 // Search volume tiers for similarity grouping

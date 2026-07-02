@@ -496,7 +496,74 @@ export const toolRegistry: ToolConfig[] = [
 
   // ── Markdown Tools ───────────────────────────────────────
   {
+    slug: "markdown",
+    title: "Markdown Workbench — Online Editor & Converter",
+    description:
+      "All-in-one Markdown tool: edit with live preview, export to HTML/DOCX/PPTX/PDF, beautify formatting, and import from URL/HTML/DOCX. Free, browser-based, no uploads required.",
+    category: "markdown",
+    keywords: [
+      "markdown editor",
+      "markdown converter",
+      "markdown to html",
+      "markdown to pdf",
+      "markdown to docx",
+      "markdown formatter",
+      "html to markdown",
+      "online markdown editor",
+      "free markdown editor",
+      "markdown to pptx",
+      "url to markdown",
+    ],
+    searchVolume: "~400K/mo",
+    isClientSide: true,
+    icon: "Edit3",
+    howToUse: [
+      "Write or paste Markdown in the Edit tab for live preview",
+      "Switch to Export to download as HTML, DOCX, PPTX, or PDF",
+      "Use Beautify to clean up and normalize Markdown formatting",
+      "Import content from URLs, HTML code, or Word documents in the Import tab",
+    ],
+    faqs: [
+      {
+        question: "What Markdown flavors are supported?",
+        answer:
+          "We support GitHub Flavored Markdown (GFM) including tables, task lists, strikethrough, code blocks, and auto-links.",
+      },
+      {
+        question: "Can I export my Markdown to Word or PowerPoint?",
+        answer:
+          "Yes! The Export tab has one-click download buttons for DOCX (Word), PPTX (PowerPoint), PDF, and self-contained HTML. All conversion happens in your browser.",
+      },
+      {
+        question: "Can I convert AI chat outputs to formatted documents?",
+        answer:
+          "Yes! ChatGPT, Claude, Gemini, and other AI tools output Markdown by default. Paste it directly into the workbench to preview, beautify, and export to any format you need.",
+      },
+      {
+        question: "Can I import from web pages?",
+        answer:
+          "Yes, the Import tab lets you fetch any URL and convert the page content to clean Markdown. You can also paste HTML directly or upload a Word document (.docx).",
+      },
+      {
+        question: "Does the formatter change my content?",
+        answer:
+          "No content is changed — only formatting and spacing. The Beautify tab normalizes heading spacing, fixes list indentation, removes trailing whitespace, and standardizes code fences.",
+      },
+      {
+        question: "Is my data secure?",
+        answer:
+          "Yes. All processing happens entirely in your browser. Nothing is ever uploaded to any server. Your files and text stay on your device.",
+      },
+      {
+        question: "Can I use it offline?",
+        answer:
+          "Yes, once loaded the workbench works fully in your browser. You can write, preview, format, and export Markdown without an internet connection.",
+      },
+    ],
+  },
+  {
     slug: "markdown-to-html",
+    hidden: true,
     title: "Markdown to HTML Converter",
     description:
       "Convert Markdown to HTML instantly. Perfect for turning AI chat outputs, README files, and documentation into clean HTML.",
@@ -541,6 +608,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-editor",
+    hidden: true,
     title: "Online Markdown Editor",
     description:
       "Free online Markdown editor with live preview. Write, preview, and export Markdown with syntax highlighting and GitHub Flavored Markdown support.",
@@ -575,6 +643,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-table-generator",
+    hidden: true,
     title: "Markdown Table Generator",
     description:
       "Generate Markdown tables visually. Build tables with a spreadsheet-like interface and copy the Markdown output instantly.",
@@ -608,6 +677,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-to-docx",
+    hidden: true,
     title: "Markdown to DOCX Converter",
     description:
       "Convert Markdown to Word documents (DOCX) online for free. Preserves headings, tables, code blocks, and formatting. All browser-based.",
@@ -648,6 +718,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-to-pptx",
+    hidden: true,
     title: "Markdown to PPTX Converter",
     description:
       "Convert Markdown to PowerPoint presentations (PPTX) online for free. Each heading becomes a new slide. Browser-based, no uploads.",
@@ -688,6 +759,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "docx-to-markdown",
+    hidden: true,
     title: "DOCX to Markdown Converter",
     description:
       "Convert Word documents (DOCX) to Markdown online for free. Extract text, headings, and formatting from Word files into clean Markdown.",
@@ -723,6 +795,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "html-to-markdown",
+    hidden: true,
     title: "HTML to Markdown Converter",
     description:
       "Convert HTML code to clean Markdown instantly. Paste any HTML and get well-formatted Markdown output. Free, fast, browser-based.",
@@ -751,6 +824,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-formatter",
+    hidden: true,
     title: "Markdown Formatter & Beautifier",
     description:
       "Format and beautify messy Markdown. Fix spacing, normalize headings, clean up lists, and make your Markdown readable in one click.",
@@ -780,6 +854,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-to-pdf",
+    hidden: true,
     title: "Markdown to PDF Converter",
     description:
       "Convert Markdown to PDF with professional styling. Live preview, print-to-PDF, and HTML download. Free, instant, browser-based.",
@@ -809,6 +884,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "url-to-markdown",
+    hidden: true,
     title: "URL to Markdown Converter",
     description:
       "Convert any webpage to clean Markdown. Paste a URL and get the main content as well-formatted Markdown. Perfect for research and note-taking.",

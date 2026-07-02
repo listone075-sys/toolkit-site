@@ -23,6 +23,8 @@ export interface ToolConfig {
   howToUse: string[];
   /** FAQ items for structured data */
   faqs: { question: string; answer: string }[];
+  /** If true, hide this tool from the homepage grid (e.g. deprecated/redirected tools) */
+  hidden?: boolean;
 }
 
 export interface ToolResult {

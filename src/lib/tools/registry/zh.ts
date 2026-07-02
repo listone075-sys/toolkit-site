@@ -496,7 +496,67 @@ export const toolRegistry: ToolConfig[] = [
 
   // ── Markdown 工具 ───────────────────────────────────────
   {
+    slug: "markdown",
+    title: "Markdown 工作台 — 在线编辑器与转换器",
+    description:
+      "一体化 Markdown 工具：实时预览编辑、导出为 HTML/DOCX/PPTX/PDF、格式化美化、从 URL/HTML/DOCX 导入。免费、基于浏览器、无需上传。",
+    category: "markdown",
+    keywords: [
+      "markdown编辑器",
+      "markdown转换器",
+      "markdown转html",
+      "markdown转pdf",
+      "markdown格式化",
+      "html转markdown",
+      "在线markdown编辑器",
+      "免费markdown编辑器",
+      "markdown转word",
+    ],
+    searchVolume: "~400K/mo",
+    isClientSide: true,
+    icon: "Edit3",
+    howToUse: [
+      "在编辑标签中编写或粘贴 Markdown，实时预览",
+      "切换到导出标签，下载为 HTML、DOCX、PPTX 或 PDF",
+      "使用美化标签清理和规范化 Markdown 格式",
+      "在导入标签中从 URL、HTML 代码或 Word 文档导入内容",
+    ],
+    faqs: [
+      {
+        question: "支持哪些 Markdown 风格？",
+        answer:
+          "我们支持 GitHub 风格的 Markdown（GFM），包括表格、任务列表、删除线、代码块和自动链接。",
+      },
+      {
+        question: "可以将 Markdown 导出为 Word 或 PowerPoint 吗？",
+        answer:
+          "可以！导出标签提供一键下载 DOCX（Word）、PPTX（PowerPoint）、PDF 和自包含 HTML 的按钮。所有转换均在浏览器中完成。",
+      },
+      {
+        question: "可以将 AI 聊天输出转换为格式化文档吗？",
+        answer:
+          "是的！ChatGPT、Claude、Gemini 和其他 AI 工具默认输出 Markdown。直接粘贴到工作台即可预览、美化并导出为任何格式。",
+      },
+      {
+        question: "可以从网页导入吗？",
+        answer:
+          "可以，导入标签支持输入任意 URL 并将页面内容转换为干净的 Markdown。也可以直接粘贴 HTML 或上传 Word 文档（.docx）。",
+      },
+      {
+        question: "格式化功能会改变我的内容吗？",
+        answer:
+          "不会改变内容——只调整格式和间距。美化标签会规范化标题间距、修复列表缩进、删除尾部空格并统一代码块标记。",
+      },
+      {
+        question: "我的数据安全吗？",
+        answer:
+          "安全。所有处理完全在您的浏览器中进行。任何内容都不会上传到服务器。您的文件仅保留在您的设备上。",
+      },
+    ],
+  },
+  {
     slug: "markdown-to-html",
+    hidden: true,
     title: "Markdown 转 HTML 转换器",
     description:
       "即时将 Markdown 转换为 HTML。非常适合将 AI 聊天输出、README 文件和文档转换为干净的 HTML。",
@@ -542,6 +602,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-editor",
+    hidden: true,
     title: "在线 Markdown 编辑器",
     description:
       "免费的在线 Markdown 编辑器，支持实时预览。编写、预览和导出 Markdown，支持语法高亮和 GitHub Flavored Markdown。",
@@ -577,6 +638,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-table-generator",
+    hidden: true,
     title: "Markdown 表格生成器",
     description:
       "可视化生成 Markdown 表格。通过类似电子表格的界面构建表格，并即时复制 Markdown 输出。",
@@ -611,6 +673,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-to-docx",
+    hidden: true,
     title: "Markdown 转 DOCX 转换器",
     description:
       "在线免费将 Markdown 转换为 Word 文档（DOCX）。保留标题、表格、代码块和格式。完全基于浏览器。",
@@ -651,6 +714,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-to-pptx",
+    hidden: true,
     title: "Markdown 转 PPTX 转换器",
     description:
       "在线免费将 Markdown 转换为 PowerPoint 演示文稿（PPTX）。每个标题成为一张新幻灯片。基于浏览器，无需上传。",
@@ -691,6 +755,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "docx-to-markdown",
+    hidden: true,
     title: "DOCX 转 Markdown 转换器",
     description:
       "在线免费将 Word 文档（DOCX）转换为 Markdown。从 Word 文件中提取文本、标题和格式，生成干净的 Markdown。",
@@ -726,6 +791,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "html-to-markdown",
+    hidden: true,
     title: "HTML 转 Markdown 转换器",
     description:
       "将 HTML 代码即时转换为干净的 Markdown。粘贴任意 HTML 即可获取格式良好的 Markdown 输出。免费、快速、浏览器端处理。",
@@ -754,6 +820,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-formatter",
+    hidden: true,
     title: "Markdown 格式化与美化器",
     description:
       "格式化和美化凌乱的 Markdown。一键修复间距、规范化标题、清理列表，让 Markdown 变得整洁易读。",
@@ -783,6 +850,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-to-pdf",
+    hidden: true,
     title: "Markdown 转 PDF 转换器",
     description:
       "将 Markdown 转换为专业排版的 PDF。实时预览、打印为 PDF 和 HTML 下载。免费、即时、浏览器端处理。",
@@ -812,6 +880,7 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "url-to-markdown",
+    hidden: true,
     title: "URL 转 Markdown 转换器",
     description:
       "将任何网页转换为干净的 Markdown。粘贴 URL，即可将主要内容提取为格式良好的 Markdown。非常适合研究和笔记。",

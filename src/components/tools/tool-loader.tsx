@@ -326,6 +326,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
       default: m.UrlToMarkdown,
     })),
   ),
+
+  markdown: dynamic(() =>
+    import("./markdown-workbench").then((m) => ({
+      default: m.MarkdownWorkbench,
+    })),
+  ),
 };
 
 /**

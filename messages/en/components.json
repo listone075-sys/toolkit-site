@@ -619,5 +619,85 @@
     "readyPrompt": "Upload an image to remove its background",
     "preloadFailed": "Model preload failed — will download on first use",
     "downloadError": "Download not available — please process again"
+  },
+  "markdownWorkbench": {
+    "tabs": {
+      "edit": "Edit",
+      "export": "Export",
+      "beautify": "Beautify",
+      "import": "Import"
+    },
+    "edit": {
+      "preview": "Preview",
+      "htmlSource": "HTML Source",
+      "fullscreenPreview": "Fullscreen Preview",
+      "closeFullscreen": "Close",
+      "copyMarkdown": "Copy MD",
+      "copyHtml": "Copy HTML",
+      "downloadMd": "Download .md",
+      "copied": "Copied!",
+      "clear": "Clear",
+      "converting": "Converting...",
+      "insertTable": "Insert Table",
+      "insertTableBtn": "Insert Table",
+      "addRow": "Add Row",
+      "tablePreview": "Table Preview",
+      "cancel": "Cancel",
+      "dropHint": "Drop .md file here",
+      "dropHereTitle": "Drop your Markdown file",
+      "dropHereHint": "Anywhere on the page — .md / .txt / .markdown",
+      "emptyPreview": "Start typing Markdown to see the preview",
+      "placeholder": "# Heading\n\nType **Markdown** here...\n\n- List item\n- Another\n\n> Blockquote\n\n```js\nconsole.log('code');\n```"
+    },
+    "export": {
+      "heading": "Markdown Preview",
+      "emptyContent": "Switch to the Edit tab and start writing Markdown to export",
+      "chooseFormat": "Choose Export Format",
+      "download": "Download",
+      "defaultTitle": "Document",
+      "htmlCard": { "title": "HTML", "desc": "Self-contained .html file with embedded CSS" },
+      "docxCard": { "title": "DOCX", "desc": "Word document, {headings} headings" },
+      "pptxCard": { "title": "PPTX", "desc": "PowerPoint presentation, ~{slides} slides" },
+      "pdfCard": { "title": "PDF", "desc": "Print-to-PDF with professional styling" }
+    },
+    "beautify": {
+      "input": "Raw Markdown",
+      "output": "Formatted Markdown",
+      "format": "Format Markdown",
+      "applyToEditor": "Apply to Editor",
+      "options": "Format Options",
+      "changes": "{count} changes made",
+      "clickToFormat": "Click Format to beautify your Markdown",
+      "optionsLabels": {
+        "headingSpacing": "Heading spacing",
+        "fixListIndent": "Fix list indent",
+        "listSpacing": "List spacing",
+        "trimTrailing": "Trim trailing spaces",
+        "normalizeCodeFences": "Normalize code fences"
+      }
+    },
+    "import": {
+      "sourceUrl": "From URL",
+      "sourceHtml": "From HTML",
+      "sourceDocx": "From DOCX",
+      "urlPlaceholder": "https://example.com/article",
+      "htmlPlaceholder": "<h1>Hello</h1>\n<p>Paste HTML here...</p>",
+      "fetch": "Fetch & Convert",
+      "fetching": "Fetching...",
+      "convert": "Convert to Markdown",
+      "importAndEdit": "Import & Switch to Edit",
+      "copy": "Copy",
+      "downloadMd": "Download .md",
+      "corsError": "Unable to fetch this URL. The site may block cross-origin requests. Try the HTML import method instead.",
+      "corsNote": "Some websites block external requests due to CORS policy.",
+      "uploadDocx": "Upload Word Document",
+      "orDragDrop": "or drag & drop your .docx file here",
+      "browse": "Browse files"
+    },
+    "actions": {
+      "clear": "Clear All",
+      "downloadMd": "Download .md",
+      "copyMd": "Copy Markdown"
+    }
   }
 }

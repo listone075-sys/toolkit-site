@@ -10,6 +10,37 @@ const withAnalyzer = withBundleAnalyzer({
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
 
+  async redirects() {
+    const markdownSlugs = [
+      "markdown-to-html",
+      "markdown-editor",
+      "markdown-table-generator",
+      "markdown-to-docx",
+      "markdown-to-pptx",
+      "docx-to-markdown",
+      "html-to-markdown",
+      "markdown-formatter",
+      "markdown-to-pdf",
+      "url-to-markdown",
+    ];
+    const tabMap: Record<string, string> = {
+      "markdown-to-html": "edit",
+      "markdown-editor": "edit",
+      "markdown-table-generator": "edit",
+      "markdown-to-docx": "export",
+      "markdown-to-pptx": "export",
+      "markdown-to-pdf": "export",
+      "markdown-formatter": "beautify",
+      "docx-to-markdown": "import",
+      "html-to-markdown": "import",
+      "url-to-markdown": "import",
+    };
+    return markdownSlugs.flatMap((slug) => [
+      { source: `/en/tools/${slug}`, destination: `/en/tools/markdown?tab=${tabMap[slug]}`, permanent: true },
+      { source: `/zh/tools/${slug}`, destination: `/zh/tools/markdown?tab=${tabMap[slug]}`, permanent: true },
+    ]);
+  },
+
   async headers() {
     return [
       // Tool pages: security + caching (with locale prefix)

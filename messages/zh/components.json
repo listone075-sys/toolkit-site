@@ -619,5 +619,85 @@
     "readyPrompt": "上传图片以移除背景",
     "preloadFailed": "模型预加载失败——将在首次使用时下载",
     "downloadError": "下载不可用 — 请重新处理"
+  },
+  "markdownWorkbench": {
+    "tabs": {
+      "edit": "编辑",
+      "export": "导出",
+      "beautify": "美化",
+      "import": "导入"
+    },
+    "edit": {
+      "preview": "预览",
+      "htmlSource": "HTML 源码",
+      "fullscreenPreview": "全屏预览",
+      "closeFullscreen": "关闭",
+      "copyMarkdown": "复制 MD",
+      "copyHtml": "复制 HTML",
+      "downloadMd": "下载 .md",
+      "copied": "已复制！",
+      "clear": "清除",
+      "converting": "转换中...",
+      "insertTable": "插入表格",
+      "insertTableBtn": "插入表格",
+      "addRow": "添加行",
+      "tablePreview": "表格预览",
+      "cancel": "取消",
+      "dropHint": "拖放 .md 文件到此处",
+      "dropHereTitle": "拖放您的 Markdown 文件",
+      "dropHereHint": "页面任意位置 — .md / .txt / .markdown",
+      "emptyPreview": "开始输入 Markdown 以查看预览",
+      "placeholder": "# 标题\n\n在这里输入 **Markdown**...\n\n- 列表项\n- 另一个\n\n> 引用\n\n```js\nconsole.log('代码');\n```"
+    },
+    "export": {
+      "heading": "Markdown 预览",
+      "emptyContent": "切换到编辑标签并开始编写 Markdown 以导出",
+      "chooseFormat": "选择导出格式",
+      "download": "下载",
+      "defaultTitle": "文档",
+      "htmlCard": { "title": "HTML", "desc": "自包含 .html 文件，内嵌 CSS 样式" },
+      "docxCard": { "title": "DOCX", "desc": "Word 文档，{headings} 个标题" },
+      "pptxCard": { "title": "PPTX", "desc": "PowerPoint 演示文稿，~{slides} 张幻灯片" },
+      "pdfCard": { "title": "PDF", "desc": "专业排版的打印输出 PDF" }
+    },
+    "beautify": {
+      "input": "原始 Markdown",
+      "output": "格式化后 Markdown",
+      "format": "格式化 Markdown",
+      "applyToEditor": "应用到编辑器",
+      "options": "格式化选项",
+      "changes": "已修改 {count} 处",
+      "clickToFormat": "点击格式化按钮美化您的 Markdown",
+      "optionsLabels": {
+        "headingSpacing": "标题间距",
+        "fixListIndent": "修复列表缩进",
+        "listSpacing": "列表间距",
+        "trimTrailing": "删除尾部空格",
+        "normalizeCodeFences": "规范代码块标记"
+      }
+    },
+    "import": {
+      "sourceUrl": "从 URL",
+      "sourceHtml": "从 HTML",
+      "sourceDocx": "从 DOCX",
+      "urlPlaceholder": "https://example.com/article",
+      "htmlPlaceholder": "<h1>你好</h1>\n<p>在这里粘贴 HTML...</p>",
+      "fetch": "获取并转换",
+      "fetching": "获取中...",
+      "convert": "转换为 Markdown",
+      "importAndEdit": "导入并切换到编辑",
+      "copy": "复制",
+      "downloadMd": "下载 .md",
+      "corsError": "无法获取此 URL。该网站可能阻止了跨域请求。请尝试使用 HTML 导入方式。",
+      "corsNote": "部分网站因 CORS 策略阻止外部请求。",
+      "uploadDocx": "上传 Word 文档",
+      "orDragDrop": "或拖放 .docx 文件到此处",
+      "browse": "浏览文件"
+    },
+    "actions": {
+      "clear": "全部清除",
+      "downloadMd": "下载 .md",
+      "copyMd": "复制 Markdown"
+    }
   }
 }

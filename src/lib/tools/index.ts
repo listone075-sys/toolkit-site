@@ -15,24 +15,27 @@ export function getToolBySlug(slug: string, locale = "en"): ToolConfig | undefin
 }
 
 /**
- * Get all tool slugs (language-agnostic — slugs are the same across locales)
+ * Get all tool slugs (language-agnostic — slugs are the same across locales).
+ * Hidden tools (deprecated/redirected) are excluded.
  */
 export function getAllToolSlugs(): string[] {
-  return registries.en.map((tool) => tool.slug);
+  return registries.en.filter((tool) => !tool.hidden).map((tool) => tool.slug);
 }
 
 /**
- * Get tools filtered by category (locale-aware)
+ * Get tools filtered by category (locale-aware).
+ * Hidden tools (deprecated/redirected) are excluded.
  */
 export function getToolsByCategory(category: ToolConfig["category"], locale = "en"): ToolConfig[] {
-  return (registries[locale] ?? registries.en).filter((tool) => tool.category === category);
+  return (registries[locale] ?? registries.en).filter((tool) => tool.category === category && !tool.hidden);
 }
 
 /**
- * Get the full tool registry for a locale
+ * Get the full tool registry for a locale.
+ * Hidden tools (deprecated/redirected) are excluded.
  */
 export function getToolRegistry(locale = "en"): ToolConfig[] {
-  return registries[locale] ?? registries.en;
+  return (registries[locale] ?? registries.en).filter((tool) => !tool.hidden);
 }
 
 // Default English registry for backward compatibility
