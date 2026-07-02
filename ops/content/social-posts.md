@@ -15,7 +15,8 @@
 | 7 | 6/30 | CTA式 | PDF→JPG/PNG guide (Blog #5) | ✅ |
 | 8 | 7/1 | 工具推荐 | "48 free online tools. Zero sign-ups..." | ✅ |
 | 9 | 7/2 | 问题式 | Image format guide for social media 2026 | ✅ |
-| 10 | 7/2 | 问题式 | Convert ChatGPT/Claude responses to Word/PDF (Blog #8) | 📝 待发布 |
+| 10 | 7/2 | 问题式 | Convert ChatGPT/Claude responses to Word/PDF (Blog #8) | ✅ |
+| 11 | 7/3 | 问题式 | Blog #9 + Blog #8 推广 | 📝 待发布 |
 
 ## 知乎/Zhihu 问答记录
 
@@ -32,59 +33,58 @@
 | 1 | 6/26 | Image Tools & Tips | Compress Images 前后对比 | ✅ |
 | 2 | 6/26 | PDF Hacks & Tutorials | Merge PDF Files Online | ✅ |
 | 3 | 7/2 | PDF Hacks & Tutorials | Convert PDF to JPG/PNG — Free Guide | 📝 待发布 |
-| 4 | 7/2 | Markdown for Beginners | Convert ChatGPT/Claude to Word or PDF | 📝 待发布 |
+| 4 | 7/2 | Markdown for Beginners | Convert ChatGPT/Claude to Word or PDF | ✅ |
+| 5 | 7/3 | Markdown for Beginners | ChatGPT 回答保存攻略（中文） | 📝 待发布 |
 
 ---
 
-## Blog #8 社交分发素材（2026-07-02）
+## Blog #9 社交分发素材（2026-07-03）
 
 ### 博客信息
-- **标题 (EN):** How to Convert ChatGPT & Claude Responses to Word or PDF — Free Guide
-- **标题 (ZH):** 如何将 ChatGPT / Claude 的回答保存为 Word 或 PDF
-- **Slug:** how-to-save-chatgpt-claude-responses-as-word-pdf
-- **品类:** Markdown
+- **标题 (ZH):** ChatGPT 的回答怎么保存？转 Word/PDF 完整攻略（免费在线）
+- **Slug:** how-to-save-chatgpt-response-to-word-pdf-zh
+- **品类:** Markdown（中文原创）
 
-### Twitter 推文（3 个版本）
+### Twitter 推文（推 Blog #8 EN 版本）
 
-**版本 A — 问题式：**
+**版本 A — 问题式（推荐）：**
 ```
-ChatGPT gave you a great answer. Now what?
+ChatGPT gave you the perfect answer. Then you copy-paste it and… formatting chaos.
 
-Copy-paste loses formatting. Screenshots look unprofessional.
+There's a better way.
 
-Convert AI responses to Word or PDF in seconds — free, no upload, no sign-up.
+Turn any AI response into a clean Word doc or PDF in seconds. Free. No upload.
 
 🔗 https://toolcraftbox.com/en/blog/how-to-save-chatgpt-claude-responses-as-word-pdf
 ```
 
 **版本 B — 数据式：**
 ```
-AI chatbots output Markdown. Your clients want Word docs.
+97% of ChatGPT responses use Markdown formatting. 
 
-97% of ChatGPT responses use Markdown formatting. Our converter preserves every heading, table, and code block as a proper .docx file.
+But Word docs don't speak Markdown.
 
-Free. Browser-based. No upload.
+Our free converter bridges the gap — headings, tables, code blocks all translate perfectly to .docx.
 
+Try it:
 🔗 https://toolcraftbox.com/en/blog/how-to-save-chatgpt-claude-responses-as-word-pdf
 ```
 
-**版本 C — CTA 式：**
+**版本 C — 简短式：**
 ```
-Stop screenshotting AI responses.
+Stop screenshotting AI chats.
 
-Turn ChatGPT & Claude outputs into polished Word documents and PDFs. Takes 30 seconds. Works entirely in your browser.
+ChatGPT/Claude → Markdown → Word or PDF. 30 seconds. All in your browser.
 
-Try it free:
+Free tool:
 🔗 https://toolcraftbox.com/en/blog/how-to-save-chatgpt-claude-responses-as-word-pdf
 ```
 
 ### Pinterest Pin
 
-**标题：** How to Convert ChatGPT & Claude Responses to Word or PDF — Free Guide
+**标题：** Save ChatGPT & Claude Responses as Word or PDF — Free Tutorial
 
-**描述：** Save your AI chat conversations as professional Word documents or PDFs. ChatGPT and Claude output Markdown by default — learn how to convert them to .docx or .pdf in seconds. No sign-up needed, no file uploads, 100% browser-based. Perfect for content creators, researchers, and professionals who need to share AI outputs. Save for later!
-
-**链接：** `https://toolcraftbox.com/en/blog/how-to-save-chatgpt-claude-responses-as-word-pdf`
+**描述：** Stop losing formatting when you copy AI responses! Learn how to convert ChatGPT and Claude answers into professional Word documents and PDFs. All processing happens in your browser — no upload, no sign-up. Perfect for professionals, students, and content creators. Save for later!
 
 **Board：** Markdown for Beginners
 
