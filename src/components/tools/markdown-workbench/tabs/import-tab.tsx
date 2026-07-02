@@ -46,11 +46,11 @@ export function ImportTab() {
       setOutput(result.markdown);
       setPageTitle(result.title);
     } catch (e) {
-      const msg = (e as Error).message;
-      if (msg.includes("fetch") || msg.includes("NetworkError")) {
+      const msg = e instanceof Error ? e.message : String(e ?? "");
+      if (msg.toLowerCase().includes("fetch") || msg.includes("NetworkError")) {
         setError(t("markdownWorkbench.import.corsError"));
       } else {
-        setError(msg);
+        setError(msg || t("markdownWorkbench.import.corsError"));
       }
     } finally {
       setLoading(false);
@@ -60,9 +60,14 @@ export function ImportTab() {
   const handleHtmlConvert = useCallback(() => {
     if (!htmlInput.trim()) return;
     setError(null);
-    const md = htmlToMarkdown(htmlInput);
-    setOutput(md);
-  }, [htmlInput]);
+    try {
+      const md = htmlToMarkdown(htmlInput);
+      setOutput(md);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e ?? "");
+      setError(msg || t("markdownWorkbench.import.corsError"));
+    }
+  }, [htmlInput, t]);
 
   const handleDocxUpload = useCallback(async (files: File[]) => {
     const f = files[0];
@@ -75,7 +80,7 @@ export function ImportTab() {
       const md = await docxToMarkdown(f);
       setOutput(md);
     } catch (e) {
-      setError((e as Error).message);
+      setError(e instanceof Error ? e.message : String(e ?? ""));
     } finally {
       setLoading(false);
     }

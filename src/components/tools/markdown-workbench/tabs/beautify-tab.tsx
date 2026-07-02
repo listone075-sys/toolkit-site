@@ -24,8 +24,14 @@ export function BeautifyTab() {
 
   const handleFormat = useCallback(() => {
     if (!markdown.trim()) return;
-    const formatted = formatMarkdown(markdown, options);
-    setOutput(formatted);
+    try {
+      const formatted = formatMarkdown(markdown, options);
+      setOutput(formatted);
+    } catch {
+      // If formatting fails (e.g., regex backtracking on pathological input),
+      // fall back to the original markdown as the "formatted" output
+      setOutput(markdown);
+    }
   }, [markdown, options]);
 
   const handleApply = () => {

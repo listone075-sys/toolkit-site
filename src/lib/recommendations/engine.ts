@@ -14,7 +14,7 @@ const COMPLEMENTARY: Record<string, string[]> = {
   "split-pdf": ["merge-pdf", "compress-pdf"],
   "compress-pdf": ["merge-pdf", "split-pdf"],
   "rotate-pdf": ["merge-pdf", "split-pdf"],
-  "markdown": ["json-formatter", "text-diff-checker", "html-to-markdown"],
+  "markdown": ["json-formatter", "text-diff-checker"],
   "json-formatter": ["css-formatter", "text-diff-checker", "markdown"],
   "css-formatter": ["json-formatter", "text-diff-checker"],
   "text-diff-checker": ["json-formatter", "css-formatter", "markdown"],

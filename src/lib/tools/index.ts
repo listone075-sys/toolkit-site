@@ -8,10 +8,39 @@ const registries: Record<string, ToolConfig[]> = {
 };
 
 /**
- * Get a tool config by slug (locale-aware)
+ * Get a tool config by slug (locale-aware).
+ * Unlike the list-oriented getters, this does NOT filter hidden tools —
+ * it's used by the dynamic tool page route which may need to resolve
+ * deprecated slugs before the Next.js redirect kicks in.
  */
 export function getToolBySlug(slug: string, locale = "en"): ToolConfig | undefined {
   return (registries[locale] ?? registries.en).find((tool) => tool.slug === slug);
+}
+
+/**
+ * Map of deprecated/redirected tool slugs to their replacement.
+ * Used by favorites, recent, and continue-working sections to migrate
+ * user bookmarks and history from old standalone tools to the new workbench.
+ */
+const DEPRECATED_SLUG_MAP: Record<string, string> = {
+  "markdown-to-html": "markdown",
+  "markdown-editor": "markdown",
+  "markdown-table-generator": "markdown",
+  "markdown-to-docx": "markdown",
+  "markdown-to-pptx": "markdown",
+  "docx-to-markdown": "markdown",
+  "html-to-markdown": "markdown",
+  "markdown-formatter": "markdown",
+  "markdown-to-pdf": "markdown",
+  "url-to-markdown": "markdown",
+};
+
+/**
+ * Resolve a slug that may be deprecated into its current replacement.
+ * Non-deprecated slugs are returned unchanged.
+ */
+export function resolveDeprecatedSlug(slug: string): string {
+  return DEPRECATED_SLUG_MAP[slug] ?? slug;
 }
 
 /**

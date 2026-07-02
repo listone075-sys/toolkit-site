@@ -124,6 +124,7 @@ export function DropTarget({
       onDragLeave={() => setDragOver(false)}
       onDrop={(e) => {
         e.preventDefault();
+        e.stopPropagation();
         setDragOver(false);
         const files = Array.from(e.dataTransfer.files);
         if (files.length > 0) onFiles(files);

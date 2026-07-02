@@ -21,9 +21,9 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-sm text-zinc-900 mb-3">{t("footer.markdownTools")}</h3>
             <ul className="space-y-2">
-              <li><Link href="/tools/markdown-editor" className="text-sm text-zinc-600 hover:text-zinc-900">{t("footer.markdownEditor")}</Link></li>
-              <li><Link href="/tools/markdown-to-html" className="text-sm text-zinc-600 hover:text-zinc-900">{t("footer.mdToHtml")}</Link></li>
-              <li><Link href="/tools/markdown-table-generator" className="text-sm text-zinc-600 hover:text-zinc-900">{t("footer.tableGenerator")}</Link></li>
+              <li><Link href="/tools/markdown" className="text-sm text-zinc-600 hover:text-zinc-900">{t("footer.markdownEditor")}</Link></li>
+              <li><Link href="/tools/markdown" className="text-sm text-zinc-600 hover:text-zinc-900">{t("footer.mdToHtml")}</Link></li>
+              <li><Link href="/tools/markdown" className="text-sm text-zinc-600 hover:text-zinc-900">{t("footer.tableGenerator")}</Link></li>
             </ul>
           </div>
           <div>

@@ -27,13 +27,11 @@ export function FullscreenOverlay({ htmlContent, open, onClose }: FullscreenOver
 
   // Prevent body scroll when fullscreen is open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = prev;
     };
   }, [open]);
 

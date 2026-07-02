@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/use-local-storage";
-import { getToolRegistry } from "@/lib/tools";
+import { getToolRegistry, resolveDeprecatedSlug } from "@/lib/tools";
 import { readHistory, formatTimeAgo } from "@/lib/history/storage";
 import type { UsageHistory } from "@/lib/history/types";
 import { Card } from "@/components/ui/card";
@@ -30,12 +30,20 @@ export function ContinueWorking({ locale }: ContinueWorkingProps) {
 
   if (history.records.length === 0) return null;
 
-  const latest = history.records[0];
   const registry = getToolRegistry(locale);
-  const tool = registry.find((t) => t.slug === latest.slug);
+
+  // Walk through records until we find one that resolves to a valid (non-hidden) tool.
+  // This prevents the section from vanishing when the most-recent tool was deprecated.
+  let latest = history.records[0];
+  let tool = registry.find((t) => t.slug === resolveDeprecatedSlug(latest.slug));
+  for (let i = 1; i < history.records.length && !tool; i++) {
+    latest = history.records[i];
+    tool = registry.find((t) => t.slug === resolveDeprecatedSlug(latest.slug));
+  }
   if (!tool) return null;
 
   const timeAgo = formatTimeAgo(latest.lastUsedAt, locale);
+  const resolvedSlug = resolveDeprecatedSlug(latest.slug);
 
   return (
     <section className="container mx-auto px-4 pt-10">
@@ -45,7 +53,7 @@ export function ContinueWorking({ locale }: ContinueWorkingProps) {
           {t("continueWorking.title")}
         </h2>
       </div>
-      <Link href={`/tools/${latest.slug}`}>
+      <Link href={`/tools/${resolvedSlug}`}>
         <Card className="p-4 flex items-center justify-between hover:shadow-md hover:border-blue-200 transition-all duration-200 cursor-pointer">
           <div className="flex-1 min-w-0">
             <h3 className="font-semibold text-zinc-900">{tool.title}</h3>

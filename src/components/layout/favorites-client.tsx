@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { FAVORITES_KEY } from "./favorites-button";
 import { ToolCard } from "./tool-card";
-import { getToolRegistry } from "@/lib/tools";
+import { getToolRegistry, resolveDeprecatedSlug } from "@/lib/tools";
 import { Heart } from "lucide-react";
 
 interface FavoritesSectionProps {
@@ -21,7 +21,7 @@ export function FavoritesSection({ locale }: FavoritesSectionProps) {
   const registry = getToolRegistry(locale);
 
   const favoriteTools = favorites
-    .map((slug) => registry.find((t) => t.slug === slug))
+    .map((slug) => registry.find((t) => t.slug === resolveDeprecatedSlug(slug)))
     .filter(Boolean);
 
   if (favoriteTools.length === 0) return null;

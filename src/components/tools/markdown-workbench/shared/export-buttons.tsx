@@ -16,52 +16,50 @@ export function ExportButtons({ markdown, variant = "toolbar" }: ExportButtonsPr
   const [pdfLoading, setPdfLoading] = useState(false);
   const [docxLoading, setDocxLoading] = useState(false);
   const [pptxLoading, setPptxLoading] = useState(false);
-  const [currentLoading, setCurrentLoading] = useState<string | null>(null);
-
   const getMd = useCallback(() => markdown.trim() || t("markdownWorkbench.export.defaultTitle"), [markdown, t]);
 
   const handleDownloadHtml = useCallback(async () => {
-    const { markdownToHtmlDocument } = await import("@/lib/tools/markdown/md-to-html");
-    const doc = markdownToHtmlDocument(getMd(), t("markdownWorkbench.export.defaultTitle"));
-    downloadFile(doc, "document.html", "text/html");
+    try {
+      const { markdownToHtmlDocument } = await import("@/lib/tools/markdown/md-to-html");
+      const doc = markdownToHtmlDocument(getMd(), t("markdownWorkbench.export.defaultTitle"));
+      downloadFile(doc, "document.html", "text/html");
+    } catch {
+      // Silently fail — the dynamic import or conversion failed.
+      // The other export handlers (docx/pptx/pdf) have per-format loading spinners
+      // that provide user feedback; HTML is a simple download with no intermediate state.
+    }
   }, [getMd, t]);
 
   const handleDownloadDocx = useCallback(async () => {
     setDocxLoading(true);
-    setCurrentLoading("docx");
     try {
       const { markdownToDocxBlob } = await import("@/lib/tools/markdown/md-to-docx");
       const blob = await markdownToDocxBlob(getMd());
       downloadFile(blob, "document.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     } finally {
       setDocxLoading(false);
-      setCurrentLoading(null);
     }
   }, [getMd]);
 
   const handleDownloadPptx = useCallback(async () => {
     setPptxLoading(true);
-    setCurrentLoading("pptx");
     try {
       const { markdownToPptxBlob } = await import("@/lib/tools/markdown/md-to-pptx");
       const blob = await markdownToPptxBlob(getMd());
       downloadFile(blob, "presentation.pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation");
     } finally {
       setPptxLoading(false);
-      setCurrentLoading(null);
     }
   }, [getMd]);
 
   const handleDownloadPdf = useCallback(async () => {
     setPdfLoading(true);
-    setCurrentLoading("pdf");
     try {
       const { markdownToPdfBlob } = await import("@/lib/tools/markdown/md-to-pdf");
       const blob = await markdownToPdfBlob(getMd(), t("markdownWorkbench.export.defaultTitle"));
       downloadFile(blob, "document.pdf", "application/pdf");
     } finally {
       setPdfLoading(false);
-      setCurrentLoading(null);
     }
   }, [getMd, t]);
 

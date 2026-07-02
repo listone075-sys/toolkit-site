@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { ToolCard } from "./tool-card";
-import { getToolRegistry } from "@/lib/tools";
+import { getToolRegistry, resolveDeprecatedSlug } from "@/lib/tools";
 import { formatTimeAgo, readHistory } from "@/lib/history/storage";
 import type { UsageHistory } from "@/lib/history/types";
 import { History } from "lucide-react";
@@ -31,7 +31,7 @@ export function RecentSection({ locale }: RecentSectionProps) {
   // Build tool cards with timestamp info
   const recentTools = recent.records
     .map((record) => {
-      const tool = registry.find((t) => t.slug === record.slug);
+      const tool = registry.find((t) => t.slug === resolveDeprecatedSlug(record.slug));
       return tool ? { tool, lastUsedAt: record.lastUsedAt } : null;
     })
     .filter(Boolean) as { tool: (typeof registry)[number]; lastUsedAt: number }[];

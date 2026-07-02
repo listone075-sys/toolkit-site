@@ -40,7 +40,7 @@ export function Header({ session }: HeaderProps) {
             <Link href="/tools/pdf-to-jpg" className="text-sm text-zinc-600 hover:text-zinc-900">
               {t("header.nav.pdf")}
             </Link>
-            <Link href="/tools/markdown-editor" className="text-sm text-zinc-600 hover:text-zinc-900">
+            <Link href="/tools/markdown" className="text-sm text-zinc-600 hover:text-zinc-900">
               {t("header.nav.markdown")}
             </Link>
             <Link href="/tools/json-formatter" className="text-sm text-zinc-600 hover:text-zinc-900">
@@ -116,7 +116,7 @@ export function Header({ session }: HeaderProps) {
             <Link href="/tools/pdf-to-jpg" className="text-sm text-zinc-600" onClick={() => setMobileOpen(false)}>
               {t("header.mobile.pdfTools")}
             </Link>
-            <Link href="/tools/markdown-editor" className="text-sm text-zinc-600" onClick={() => setMobileOpen(false)}>
+            <Link href="/tools/markdown" className="text-sm text-zinc-600" onClick={() => setMobileOpen(false)}>
               {t("header.mobile.markdownTools")}
             </Link>
             <Link href="/tools/json-formatter" className="text-sm text-zinc-600" onClick={() => setMobileOpen(false)}>
