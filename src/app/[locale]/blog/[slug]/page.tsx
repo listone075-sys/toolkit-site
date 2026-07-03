@@ -60,6 +60,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           type: "article",
           siteName: "ToolCraft",
           images: [{ url: `${SITE_URL}/og-default.png`, width: 1200, height: 630 }],
+          publishedTime: meta.date ? new Date(meta.date).toISOString() : undefined,
+          authors: ["ToolCraftBox"],
         },
         twitter: {
           card: "summary_large_image",

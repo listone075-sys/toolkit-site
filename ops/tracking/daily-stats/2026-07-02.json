@@ -1,0 +1,60 @@
+{
+  "date": "2026-07-02",
+  "totalPV_7d": 209,
+  "totalUV_7d": 79,
+  "avgDailyPV": 26,
+  "avgDailyUV": 10,
+  "yesterdayPV": 2,
+  "blogsPublished": 8,
+  "twitterTweets": 9,
+  "note": "Blog #8 published: 'Convert ChatGPT/Claude responses to Word or PDF'. Strategy shift to Markdown priority confirmed. User had development team arranged for design changes.",
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 72,
+      "pageViews": 201
+    },
+    {
+      "channel": "Unassigned",
+      "users": 4,
+      "pageViews": 4
+    },
+    {
+      "channel": "Organic Search",
+      "users": 1,
+      "pageViews": 1
+    },
+    {
+      "channel": "Referral",
+      "users": 1,
+      "pageViews": 3
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "pageViews": 110,
+      "users": 74
+    },
+    {
+      "path": "/events.html",
+      "pageViews": 64,
+      "users": 27
+    },
+    {
+      "path": "/backtest.html",
+      "pageViews": 24,
+      "users": 18
+    },
+    {
+      "path": "/knowledge.html",
+      "pageViews": 10,
+      "users": 9
+    },
+    {
+      "path": "/en/",
+      "pageViews": 1,
+      "users": 1
+    }
+  ]
+}

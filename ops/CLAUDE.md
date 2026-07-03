@@ -61,7 +61,7 @@
 - [x] 周一：QR Code 博客发布 + 社交媒体分发 ✅
 - [x] 周二：Markdown 多格式转换博客发布 ✅
 - [x] 周三：Blog #8 ChatGPT/Claude 转 Word/PDF 发布（Markdown 方向）✅
-- [ ] 周四：待定（继续 Markdown 方向 或 其他品类）
+- [x] 周四：Blog #9 ChatGPT 保存攻略（中文原创）发布 ✅
 - [ ] 周五：本周复盘 + 下周规划
 - [ ] 每日：Twitter 推文发布（#10 待发）
 - [ ] 持续：Pinterest 账号养号（商业账号转换重试）
@@ -83,7 +83,8 @@
 | 6 | 7/3 | Best Image Format for Social Media 2026 | Image | ✅ 已发布 |
 | 7 | 7/4 | Markdown vs WYSIWYG: Which Should You Use in 2026? | Markdown | ✅ 已发布 |
 | 8 | 7/2 | How to Convert ChatGPT & Claude Responses to Word or PDF | Markdown AI | ✅ 已发布 |
-| 9 | 待定 | 下一篇（Technical Writing 或 ChatGPT 中文版） | Markdown | 📝 待写 |
+| 9 | 7/3 | ChatGPT 的回答怎么保存？转 Word/PDF 完整攻略 | Markdown ZH | ✅ 已发布 |
+| 10 | 待定 | 下一篇 | Markdown | 📝 待写 |
 
 ### 内容轮换规则（2026-07-02 更新：Markdown 优先策略）
 **新策略：Markdown 品类优先（每周至少2篇），搭配 Image/PDF**
