@@ -30,8 +30,8 @@ const DEPRECATED_SLUG_MAP: Record<string, string> = {
   "markdown-to-pptx": "markdown",
   "docx-to-markdown": "markdown",
   "html-to-markdown": "markdown",
-  "markdown-formatter": "markdown",
-  "markdown-to-pdf": "markdown",
+  // "markdown-formatter" — now a visible standalone AI cleanup tool
+  // "markdown-to-pdf" — now a visible standalone tool
   "url-to-markdown": "markdown",
 };
 

@@ -494,6 +494,55 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
 
+  // ── PDF to Markdown ──────────────────────────────────────
+  {
+    slug: "pdf-to-markdown",
+    title: "PDF to Markdown Converter",
+    description:
+      "Convert PDF files to Markdown text online for free. Extract text, headings, and structure from PDFs for use in AI workflows, note-taking, and documentation. All processing in your browser.",
+    category: "pdf",
+    keywords: [
+      "pdf to markdown",
+      "convert pdf to markdown",
+      "pdf to md",
+      "extract text from pdf",
+      "pdf text extractor",
+      "pdf to text",
+      "pdf to markdown ai",
+    ],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "Upload your PDF file by clicking or dragging",
+      "Click Convert to Markdown to extract the text",
+      "Preview the extracted Markdown with headings and structure preserved",
+      "Download as .md file or copy individual pages",
+    ],
+    faqs: [
+      {
+        question: "How does PDF to Markdown conversion work?",
+        answer:
+          "We use PDF.js to extract text content from each page of your PDF. Font size and position heuristics detect headings and paragraphs, which are then formatted as clean Markdown.",
+      },
+      {
+        question: "Will the formatting be preserved?",
+        answer:
+          "Headings are detected by font size, and paragraphs are grouped by position. Complex layouts like multi-column text, tables, and images are not preserved — the tool focuses on extracting readable, structured text for AI and editing workflows.",
+      },
+      {
+        question: "Is my PDF secure?",
+        answer:
+          "Yes. All processing happens entirely in your browser. Your PDF is never uploaded to any server.",
+      },
+      {
+        question: "Can I use this for AI/LLM workflows?",
+        answer:
+          "Absolutely! This tool is designed for AI workflows. Extract clean Markdown from PDFs to use as context for ChatGPT, Claude, Gemini, and other AI tools.",
+      },
+    ],
+  },
+
   // ── Markdown Tools ───────────────────────────────────────
   {
     slug: "markdown",
@@ -824,61 +873,99 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-formatter",
-    hidden: true,
-    title: "Markdown Formatter & Beautifier",
+    title: "AI Content Cleaner — Markdown Formatter",
     description:
-      "Format and beautify messy Markdown. Fix spacing, normalize headings, clean up lists, and make your Markdown readable in one click.",
+      "Clean up AI-generated Markdown from ChatGPT, Claude, and Gemini. Fix messy formatting, normalize spacing, and polish AI outputs in one click. Free, instant, browser-based.",
     category: "markdown",
-    keywords: ["markdown formatter", "markdown beautifier", "format markdown", "prettify markdown", "markdown tidy"],
+    keywords: [
+      "ai content cleaner",
+      "chatgpt markdown cleaner",
+      "claude response formatter",
+      "ai output cleanup",
+      "markdown formatter",
+      "markdown beautifier",
+      "clean ai text",
+      "format markdown",
+      "ai text formatter",
+    ],
     searchVolume: "~40K/mo",
     isClientSide: true,
+    isAi: true,
     icon: "Sparkles",
     howToUse: [
-      "Paste your Markdown text in the input panel",
-      "Click Format to normalize spacing and structure",
+      "Paste your AI-generated Markdown (from ChatGPT, Claude, Gemini, etc.)",
+      "Click Format to normalize spacing, headings, lists, and code fences",
       "Review the cleaned-up Markdown output",
-      "Copy the result or paste it back into your editor",
+      "Copy the polished result back to your editor or document",
     ],
     faqs: [
       {
+        question: "What AI tools does this work with?",
+        answer:
+          "It works with outputs from any AI tool that generates Markdown: ChatGPT, Claude, Gemini, DeepSeek, Copilot, and more. AI outputs often have inconsistent spacing, messy lists, and mixed code fence styles — our formatter fixes all of these in one click.",
+      },
+      {
         question: "What does the formatter fix?",
         answer:
-          "It normalizes heading spacing, fixes list indentation, ensures blank lines between sections, removes trailing whitespace, and standardizes code fences (~~~ → ```).",
+          "It normalizes heading spacing, fixes list indentation, ensures blank lines between sections, removes trailing whitespace, and standardizes code fences (~~~ → ```). Your content stays the same — only the formatting improves.",
       },
       {
         question: "Will it change my Markdown content?",
         answer:
-          "No content is changed — only formatting and spacing. Your headings, lists, links, and text remain exactly the same, just better organized.",
+          "No content is changed — only formatting and spacing. Your headings, lists, links, and text remain exactly the same, just better organized and ready to use.",
+      },
+      {
+        question: "Can I use it for non-AI Markdown too?",
+        answer:
+          "Absolutely! It works great on any Markdown text — README files, documentation, blog posts, note-taking exports, and more.",
       },
     ],
   },
   {
     slug: "markdown-to-pdf",
-    hidden: true,
-    title: "Markdown to PDF Converter",
+    title: "Markdown to PDF — Free Online Converter",
     description:
-      "Convert Markdown to PDF with professional styling. Live preview, print-to-PDF, and HTML download. Free, instant, browser-based.",
+      "Convert Markdown to beautifully styled PDF documents online for free. Live preview, professional typography, and instant download. Perfect for reports, docs, and AI-generated content.",
     category: "markdown",
-    keywords: ["markdown to pdf", "md to pdf", "convert markdown to pdf", "markdown pdf export"],
+    keywords: [
+      "markdown to pdf",
+      "convert markdown to pdf",
+      "md to pdf free",
+      "markdown pdf converter",
+      "markdown to pdf online",
+      "export markdown as pdf",
+      "free markdown to pdf",
+      "md to pdf converter",
+    ],
     searchVolume: "~100K/mo",
     isClientSide: true,
     icon: "FileText",
     howToUse: [
       "Paste or write your Markdown in the editor",
-      "Click Preview to see the rendered document",
-      "Click Print to PDF to save as a PDF file",
-      "Or download as a styled HTML file",
+      "Click Preview to see the professionally styled document",
+      "Click Print to PDF to save as a PDF file via your browser",
+      "Or download as a self-contained HTML file for sharing",
     ],
     faqs: [
       {
-        question: "How does Markdown to PDF work?",
+        question: "How do I convert Markdown to PDF?",
         answer:
-          "Your Markdown is rendered to a professionally styled HTML document. You can preview it, then use your browser's Print → Save as PDF feature to create the final PDF file.",
+          "Paste your Markdown, click Preview to see the styled document, then click Print to PDF. Your browser's Print dialog opens — select 'Save as PDF' as the destination and click Save. It's that simple and completely free.",
+      },
+      {
+        question: "Does it support code blocks and tables?",
+        answer:
+          "Yes! Our PDF export includes professionally styled code blocks with dark background, syntax-friendly formatting, tables with clean borders, blockquotes, and all standard Markdown elements.",
       },
       {
         question: "Can I customize the PDF styling?",
         answer:
-          "The default styling includes clean typography, code highlighting, and print-friendly formatting. For advanced customization, you can download the HTML file and modify the CSS.",
+          "The default styling includes clean typography with proper heading hierarchy, code highlighting, and print-friendly formatting. For advanced customization, download the HTML file and modify the CSS before printing.",
+      },
+      {
+        question: "Is it really free?",
+        answer:
+          "Yes, 100% free with no limits. All conversion happens in your browser — your Markdown content never leaves your device. No sign-up, no watermark, no hidden costs.",
       },
     ],
   },

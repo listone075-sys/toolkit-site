@@ -111,6 +111,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "pdf-to-markdown": dynamic(() =>
+    import("./pdf-to-markdown").then((m) => ({
+      default: m.PdfToMarkdown,
+    })),
+  ),
+
   "pdf-to-jpg": dynamic(() =>
     import("./pdf-to-jpg").then((m) => ({
       default: m.PdfToJpg,
