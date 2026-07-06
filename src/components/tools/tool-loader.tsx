@@ -117,6 +117,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "resume-builder": dynamic(() =>
+    import("./resume-builder").then((m) => ({
+      default: m.ResumeBuilder,
+    })),
+  ),
+
   "pdf-to-jpg": dynamic(() =>
     import("./pdf-to-jpg").then((m) => ({
       default: m.PdfToJpg,

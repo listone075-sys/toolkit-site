@@ -603,6 +603,53 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "resume-builder",
+    title: "Markdown 简历生成器",
+    description:
+      "用 Markdown 构建专业简历并导出为 PDF。填写结构化字段——姓名、工作经历、教育背景、技能——即可获得排版精美的简历。免费、基于浏览器、无需注册。",
+    category: "markdown",
+    keywords: [
+      "简历生成器",
+      "markdown 简历",
+      "在线简历制作",
+      "免费简历生成",
+      "简历转pdf",
+      "markdown 简历模板",
+      "求职简历",
+    ],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "填写个人信息：姓名、职位、联系方式",
+      "添加工作经历及要点描述",
+      "添加教育背景、技能、语言和证书",
+      "实时预览简历，下载为 PDF 或 Markdown 文件",
+    ],
+    faqs: [
+      {
+        question: "简历生成器是如何工作的？",
+        answer:
+          "为简历的每个部分填写结构化表单字段。我们会生成一份干净、专业的 Markdown 文档，您可以实时预览，然后下载为 PDF（带专业排版）或 Markdown 文件。",
+      },
+      {
+        question: "可以自定义简历样式吗？",
+        answer:
+          "简历采用简洁专业的格式，针对 ATS（求职追踪系统）和可读性进行了优化。生成的 Markdown 可根据需要进一步编辑。PDF 导出使用专业排版模板。",
+      },
+      {
+        question: "我的个人数据安全吗？",
+        answer:
+          "安全。所有处理完全在您的浏览器中进行。您的个人信息不会离开您的设备——不会上传到任何服务器。",
+      },
+      {
+        question: "与其他简历生成器有什么不同？",
+        answer:
+          "与复杂的拖拽式生成器不同，我们基于 Markdown 的方法生成干净、ATS 友好的简历，没有格式混乱的问题。Markdown 源码归您所有，可进行版本控制和重复使用。特别适合开发者和技术专业人士。",
+      },
+    ],
+  },
+  {
     slug: "markdown-to-html",
     hidden: true,
     title: "Markdown 转 HTML 转换器",

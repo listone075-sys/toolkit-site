@@ -611,6 +611,54 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
   {
+    slug: "resume-builder",
+    title: "Markdown Resume Builder",
+    description:
+      "Build a professional resume in Markdown and export to PDF. Fill in structured fields — name, experience, education, skills — and get a beautifully formatted resume. Free, browser-based, no sign-up required.",
+    category: "markdown",
+    keywords: [
+      "resume builder",
+      "markdown resume",
+      "cv builder",
+      "resume maker",
+      "free resume builder",
+      "markdown cv",
+      "resume generator",
+      "resume to pdf",
+    ],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "Fill in your personal info: name, title, contact details",
+      "Add your work experience with bullet points",
+      "Add education, skills, languages, and certifications",
+      "Preview your resume in real time and download as PDF or Markdown",
+    ],
+    faqs: [
+      {
+        question: "How does the resume builder work?",
+        answer:
+          "Fill in structured form fields for each section of your resume. We generate a clean, professional Markdown document that you can preview live, then download as a PDF (with professional styling) or as a Markdown file.",
+      },
+      {
+        question: "Can I customize the resume design?",
+        answer:
+          "The resume follows a clean, professional format optimized for ATS (Applicant Tracking Systems) and readability. The Markdown output can be further edited if needed. The PDF export uses a professionally styled template.",
+      },
+      {
+        question: "Is my personal data safe?",
+        answer:
+          "Yes. All processing happens entirely in your browser. Your personal information never leaves your device — nothing is ever uploaded to any server.",
+      },
+      {
+        question: "What makes this different from other resume builders?",
+        answer:
+          "Unlike complex drag-and-drop builders, our Markdown-based approach produces clean, ATS-friendly resumes without the formatting quirks. The Markdown source is yours to keep, version control, and reuse. Perfect for developers and tech professionals.",
+      },
+    ],
+  },
+  {
     slug: "markdown-to-html",
     hidden: true,
     title: "Markdown to HTML Converter",
