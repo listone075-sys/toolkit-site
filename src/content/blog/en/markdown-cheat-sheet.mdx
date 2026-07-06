@@ -1,56 +1,176 @@
 export const meta = {
-  title: "Markdown Cheat Sheet — Quick Reference Guide (2026)",
-  description: "Complete Markdown syntax reference. Headings, lists, links, images, tables, code blocks — everything you need in one page.",
-  date: "2026-06-14",
+  title: "Markdown Cheat Sheet — Complete Quick Reference Guide (2026)",
+  description: "The ultimate Markdown syntax reference. Headings, bold, italic, lists, tables, code blocks, links, images, footnotes, emoji — every command with examples. Printable PDF included.",
+  date: "2026-07-07",
   category: "Markdown",
 };
 
-# Markdown Cheat Sheet — Quick Reference Guide
+# Markdown Cheat Sheet — Complete Quick Reference Guide
 
-Bookmark this page. Every Markdown syntax you'll ever need, with examples.
+Markdown is everywhere in 2026. **ChatGPT and Claude output Markdown.** GitHub renders it. Slack, Notion, and Discord all support it. If you work with text online, you use Markdown — whether you realize it or not.
+
+This cheat sheet covers **every Markdown syntax** you'll ever need: basic formatting, extended GFM (GitHub Flavored Markdown), tables, code blocks, footnotes, emoji, and escape characters.
+
+Bookmark this page. Or use our [Markdown Editor](https://toolcraftbox.com/en/tools/markdown-editor) to practice live.
+
+---
 
 ## Basic Syntax
 
-```markdown
-# H1 Heading
-## H2 Heading
-### H3 Heading
+### Headings
 
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+```
+
+### Text Formatting
+
+```markdown
 **bold text**
 *italic text*
+***bold italic text***
 ~~strikethrough~~
-
-[link text](https://example.com)
-![image alt](image-url.jpg)
-
-> blockquote
+==highlighted text== (mark)
+<ins>underlined</ins> (HTML)
 ```
+
+### Links
+
+```markdown
+[Basic link](https://example.com)
+[Link with title](https://example.com "Click me")
+<https://automatic-link.com>
+[Reference-style][ref]
+
+[ref]: https://example.com
+```
+
+### Images
+
+```markdown
+![Alt text](image.jpg)
+![Alt text with title](image.jpg "Photo caption")
+
+![Reference image][img-ref]
+[img-ref]: image.jpg
+```
+
+### Blockquotes
+
+```markdown
+> Single line quote
+
+> Multi-line
+> paragraph quote
+>
+> — Author
+
+> Nested
+>> blockquote
+```
+
+### Horizontal Rules
+
+```markdown
+---
+***
+___
+```
+
+---
 
 ## Lists
 
+### Unordered Lists
+
 ```markdown
-- Unordered item 1
-- Unordered item 2
-  - Nested item
-
-1. Ordered item 1
-2. Ordered item 2
-
-- [ ] Todo item
-- [x] Completed item
+- Item one
+- Item two
+  - Nested item (2 spaces indent)
+  - Another nested
+- Item three
 ```
+
+You can also use `*` or `+` interchangeably:
+
+```markdown
+* First level
+  + Second level
+    - Third level
+```
+
+### Ordered Lists
+
+```markdown
+1. First item
+2. Second item
+   1. Nested ordered
+   2. Another nested
+3. Third item
+```
+
+Start at any number:
+
+```markdown
+57. Start from 57
+58. Continues from here
+```
+
+### Task Lists (GFM)
+
+```markdown
+- [ ] Not started
+- [x] Completed
+- [ ] ~~Cancelled task~~
+```
+
+Result:
+
+- [ ] Not started
+- [x] Completed
+- [ ] ~~Cancelled task~~
+
+---
 
 ## Code
 
-````markdown
-`inline code`
+### Inline Code
 
+```markdown
+Use the `console.log()` function.
+```
+
+### Fenced Code Blocks
+
+````
 ```javascript
-// Code block with syntax highlighting
 const greeting = "Hello, world!";
 console.log(greeting);
 ```
 ````
+
+### Supported Language Tags
+
+```
+javascript  python  typescript  bash  html  css  json
+sql  rust  go  java  php  ruby  yaml  markdown  diff
+```
+
+### Diff Highlighting
+
+```diff
+function add(a, b) {
++  return a + b;
+-  return a - b;
+}
+```
+
+---
 
 ## Tables
 
@@ -68,47 +188,158 @@ Result:
 | Left     | Center   | Right    |
 | Data     | Data     | Data     |
 
-## Links & References
+**Alignment syntax:**
+- `:---` — left-aligned
+- `:---:` — center-aligned
+- `---:` — right-aligned
 
-```markdown
-[Basic link](https://example.com)
-[Link with title](https://example.com "Title")
+Need to build a complex table quickly? Use our [Markdown Table Generator](https://toolcraftbox.com/en/tools/markdown-table-generator) — it's visual and instant.
 
-[Reference-style link][ref]
-
-[ref]: https://example.com
-```
-
-## Images
-
-```markdown
-![Alt text](image.jpg)
-![Alt text](image.jpg "Title")
-```
-
-## Horizontal Rule
-
-```markdown
 ---
+
+## Extended Syntax
+
+### Footnotes (GFM)
+
+```markdown
+Here's a sentence with a footnote.[^1]
+
+[^1]: This is the footnote content.
 ```
+
+### Strikethrough (GFM)
+
+```markdown
+~~This text is crossed out.~~
+```
+
+### Emoji Shortcodes
+
+```markdown
+:rocket: → 🚀
+:fire: → 🔥
+:warning: → ⚠️
+:white_check_mark: → ✅
+:bookmark: → 🔖
+```
+
+### Automatic URLs
+
+```markdown
+<https://toolcraftbox.com>
+<email@example.com>
+```
+
+### Heading IDs
+
+```markdown
+## My Section {#custom-id}
+```
+
+Link to it:
+
+```markdown
+[Jump to section](#custom-id)
+```
+
+### Definition Lists
+
+```markdown
+Term
+: Definition line 1
+: Definition line 2
+```
+
+### Superscript & Subscript
+
+```markdown
+X^2^ (superscript)
+H~2~O (subscript)
+```
+
+### Escape Characters
+
+Use backslash to display literal markdown characters:
+
+```
+\* Not italic \*
+\# Not a heading
+\- Not a list
+\` Not code
+\[ Not a link
+```
+
+---
 
 ## HTML in Markdown
 
-Markdown supports raw HTML:
+Markdown supports raw HTML for extended formatting:
 
 ```html
 <details>
 <summary>Click to expand</summary>
 Hidden content here.
 </details>
+
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
+
+<p style="color: red;">Red text</p>
 ```
 
-## Try It Live
+---
 
-Use our [Markdown Editor](https://toolcraftbox.com/tools/markdown-editor) to practice. Left panel = write, right panel = instant preview.
+## ChatGPT & AI Output: Markdown Is the Bridge
 
-## Related Tools
+Every major AI tool — ChatGPT, Claude, Gemini — outputs in Markdown by default. That means:
 
-- [Markdown Editor](https://toolcraftbox.com/tools/markdown-editor) — write and preview
-- [Markdown to HTML](https://toolcraftbox.com/tools/markdown-to-html) — convert MD to HTML
-- [Markdown Table Generator](https://toolcraftbox.com/tools/markdown-table-generator) — build tables visually
+- **AI → Markdown → DOCX**: Use [Markdown to DOCX](https://toolcraftbox.com/en/tools/markdown-to-docx) to turn AI responses into editable Word documents
+- **AI → Markdown → PDF**: Use our [Markdown Editor](https://toolcraftbox.com/en/tools/markdown-editor) to preview, then print as PDF
+- **AI → Markdown → HTML**: Use [Markdown to HTML](https://toolcraftbox.com/en/tools/markdown-to-html) for publishing to websites
+- **Clean up AI formatting**: If the output is messy, run it through [Markdown Formatter](https://toolcraftbox.com/en/tools/markdown-formatter) first
+
+### Quick Reference: AI to Document Workflow
+
+| Step | Tool | What Happens |
+|------|------|-------------|
+| 1 | Copy AI output | ChatGPT/Claude gives you Markdown |
+| 2 | [Format it](https://toolcraftbox.com/en/tools/markdown-formatter) | Clean up messy spacing |
+| 3 | [Preview it](https://toolcraftbox.com/en/tools/markdown-editor) | See how it renders |
+| 4 | [Export it](https://toolcraftbox.com/en/tools/markdown-to-docx) | Download as DOCX or PDF |
+
+---
+
+## Common Questions
+
+### Is Markdown the same everywhere?
+
+Mostly, but there are flavors. **Standard Markdown** works everywhere. **GFM (GitHub Flavored Markdown)** adds tables, task lists, strikethrough, and footnotes. Our [Markdown Editor](https://toolcraftbox.com/en/tools/markdown-editor) supports GFM.
+
+### Can I convert Markdown to other formats?
+
+Yes. Our tools let you convert Markdown to:
+- [HTML](https://toolcraftbox.com/en/tools/markdown-to-html) — for web publishing
+- [DOCX (Word)](https://toolcraftbox.com/en/tools/markdown-to-docx) — for editing and sharing
+- [PPTX (PowerPoint)](https://toolcraftbox.com/en/tools/markdown-to-pptx) — for presentations
+- [PDF](https://toolcraftbox.com/en/tools/markdown-editor) — for print and archiving
+
+### Is Markdown good for documentation?
+
+Absolutely. It's the standard for README files, technical docs, API references, and knowledge bases. GitHub, GitLab, and most static site generators use Markdown natively.
+
+---
+
+## Master Markdown in Minutes
+
+1. **Bookmark this page** — quick reference anytime
+2. **Open our [Markdown Editor](https://toolcraftbox.com/en/tools/markdown-editor)** — write on the left, see the result on the right
+3. **Practice the 5 essentials**: headings, lists, links, code blocks, and tables
+4. **Convert AI output to real documents** — use [Markdown to DOCX](https://toolcraftbox.com/en/tools/markdown-to-docx) for Word or [Markdown Editor](https://toolcraftbox.com/en/tools/markdown-editor) for PDF
+
+All free. All in your browser. No sign-up. No upload.
+
+---
+
+**You may also like:**
+- [How to Convert ChatGPT & Claude Responses to Word or PDF](https://toolcraftbox.com/en/blog/how-to-save-chatgpt-claude-responses-as-word-pdf)
+- [Markdown vs WYSIWYG: Which Should You Use in 2026?](https://toolcraftbox.com/en/blog/markdown-vs-wysiwyg-comparison-2026)
+- [How to Convert Markdown to HTML, DOCX, and PDF](https://toolcraftbox.com/en/blog/how-to-convert-markdown-to-html-docx-pdf)

@@ -1,56 +1,176 @@
 export const meta = {
-  title: "Markdown 速查表 — 快速参考指南（2026）",
-  description: "完整的 Markdown 语法参考。标题、列表、链接、图片、表格、代码块——你需要的所有内容，一页搞定。",
-  date: "2026-06-14",
+  title: "Markdown 速查表 — 完整语法参考指南（2026）",
+  description: "最完整的 Markdown 语法速查表。标题、粗体、斜体、列表、表格、代码块、链接、图片、脚注、表情符号——每个语法都带示例。含 AI 转文档工作流。",
+  date: "2026-07-07",
   category: "Markdown",
 };
 
-# Markdown 速查表 — 快速参考指南
+# Markdown 速查表 — 完整语法参考指南
 
-收藏本页。你需要的所有 Markdown 语法，附带示例。
+2026 年，Markdown 已经无处不在。**ChatGPT 和 Claude 默认输出 Markdown**。GitHub 用它渲染文档，Slack、Notion、飞书、Discord 全都支持。如果你在网上处理文字，你就在使用 Markdown——无论你是否意识到。
+
+这份速查表涵盖了你需要的 **所有 Markdown 语法**：基础格式、GFM（GitHub Flavored Markdown）扩展语法、表格、代码块、脚注、表情符号和转义字符。
+
+收藏本页。或使用我们的 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 在线练习。
+
+---
 
 ## 基础语法
+
+### 标题
 
 ```markdown
 # 一级标题
 ## 二级标题
 ### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+```
 
+### 文本格式
+
+```markdown
 **加粗文本**
 *斜体文本*
+***加粗斜体文本***
 ~~删除线~~
-
-[链接文本](https://example.com)
-![图片替代文本](image-url.jpg)
-
-> 引用
+==高亮文本==（mark 标记）
+<ins>下划线</ins>（HTML）
 ```
+
+### 链接
+
+```markdown
+[基础链接](https://example.com)
+[带标题的链接](https://example.com "鼠标悬停提示")
+<https://自动链接.com>
+[引用式链接][ref]
+
+[ref]: https://example.com
+```
+
+### 图片
+
+```markdown
+![替代文本](image.jpg)
+![带标题的图片](image.jpg "图片说明")
+
+![引用式图片][img-ref]
+[img-ref]: image.jpg
+```
+
+### 引用
+
+```markdown
+> 单行引用
+
+> 多行
+> 段落引用
+>
+> —— 作者
+
+> 嵌套
+>> 引用
+```
+
+### 水平分隔线
+
+```markdown
+---
+***
+___
+```
+
+---
 
 ## 列表
 
+### 无序列表
+
 ```markdown
-- 无序列表项 1
-- 无序列表项 2
-  - 嵌套列表项
-
-1. 有序列表项 1
-2. 有序列表项 2
-
-- [ ] 待办事项
-- [x] 已完成事项
+- 项目一
+- 项目二
+  - 嵌套项目（缩进 2 空格）
+  - 另一个嵌套
+- 项目三
 ```
+
+也可以混用 `*` 和 `+`：
+
+```markdown
+* 第一层
+  + 第二层
+    - 第三层
+```
+
+### 有序列表
+
+```markdown
+1. 第一项
+2. 第二项
+   1. 嵌套有序列表
+   2. 另一个嵌套
+3. 第三项
+```
+
+可以从任意数字开始：
+
+```markdown
+57. 从 57 开始
+58. 自动续号
+```
+
+### 任务列表（GFM）
+
+```markdown
+- [ ] 未完成
+- [x] 已完成
+- [ ] ~~已取消的任务~~
+```
+
+效果：
+
+- [ ] 未完成
+- [x] 已完成
+- [ ] ~~已取消的任务~~
+
+---
 
 ## 代码
 
-````markdown
-`行内代码`
+### 行内代码
 
+```markdown
+使用 `console.log()` 函数。
+```
+
+### 围栏代码块
+
+````
 ```javascript
-// 带语法高亮的代码块
 const greeting = "Hello, world!";
 console.log(greeting);
 ```
 ````
+
+### 支持的编程语言标签
+
+```
+javascript  python  typescript  bash  html  css  json
+sql  rust  go  java  php  ruby  yaml  markdown  diff
+```
+
+### 差异高亮
+
+```diff
+function add(a, b) {
++  return a + b;
+-  return a - b;
+}
+```
+
+---
 
 ## 表格
 
@@ -68,47 +188,158 @@ console.log(greeting);
 | 左对齐   | 居中对齐  | 右对齐   |
 | 数据     | 数据     | 数据     |
 
-## 链接与引用
+**对齐方式：**
+- `:---` — 左对齐
+- `:---:` — 居中对齐
+- `---:` — 右对齐
 
-```markdown
-[基础链接](https://example.com)
-[带标题的链接](https://example.com "标题")
+需要快速构建复杂表格？使用我们的 [Markdown 表格生成器](https://toolcraftbox.com/zh/tools/markdown-table-generator)，可视化操作，即时生成。
 
-[引用式链接][ref]
-
-[ref]: https://example.com
-```
-
-## 图片
-
-```markdown
-![替代文本](image.jpg)
-![替代文本](image.jpg "标题")
-```
-
-## 水平分隔线
-
-```markdown
 ---
+
+## 扩展语法
+
+### 脚注（GFM）
+
+```markdown
+这里是一句带脚注的文字。[^1]
+
+[^1]: 这是脚注的内容。
 ```
+
+### 删除线（GFM）
+
+```markdown
+~~这段文字被划掉了。~~
+```
+
+### 表情符号简码
+
+```markdown
+:rocket: → 🚀
+:fire: → 🔥
+:warning: → ⚠️
+:white_check_mark: → ✅
+:bookmark: → 🔖
+```
+
+### 自动链接
+
+```markdown
+<https://toolcraftbox.com>
+<email@example.com>
+```
+
+### 标题锚点 ID
+
+```markdown
+## 我的章节 {#custom-id}
+```
+
+链接到它：
+
+```markdown
+[跳转到章节](#custom-id)
+```
+
+### 定义列表
+
+```markdown
+术语
+: 定义第一行
+: 定义第二行
+```
+
+### 上标与下标
+
+```markdown
+X^2^（上标）
+H~2~O（下标）
+```
+
+### 转义字符
+
+用反斜杠显示原始 Markdown 字符：
+
+```
+\* 不会变成斜体 \*
+\# 不是标题
+\- 不是列表
+\` 不是代码
+\[ 不是链接
+```
+
+---
 
 ## Markdown 中使用 HTML
 
-Markdown 支持原生 HTML：
+Markdown 支持原生 HTML 实现扩展格式：
 
 ```html
 <details>
 <summary>点击展开</summary>
 隐藏内容在此。
 </details>
+
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
+
+<p style="color: red;">红色文字</p>
 ```
 
-## 在线体验
+---
 
-使用我们的 [Markdown 编辑器](https://toolcraftbox.com/tools/markdown-editor) 进行练习。左侧编写，右侧即时预览。
+## ChatGPT & AI 输出：Markdown 是桥梁
 
-## 相关工具
+2026 年，所有主流 AI 工具——ChatGPT、Claude、Gemini——都默认输出 Markdown。这意味着：
 
-- [Markdown 编辑器](https://toolcraftbox.com/tools/markdown-editor) — 编写与预览
-- [Markdown 转 HTML](https://toolcraftbox.com/tools/markdown-to-html) — 将 MD 转换为 HTML
-- [Markdown 表格生成器](https://toolcraftbox.com/tools/markdown-table-generator) — 可视化构建表格
+- **AI → Markdown → Word**：用 [Markdown 转 DOCX](https://toolcraftbox.com/zh/tools/markdown-to-docx) 把 AI 回答变成可编辑的 Word 文档
+- **AI → Markdown → PDF**：用 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 预览，然后打印为 PDF
+- **AI → Markdown → HTML**：用 [Markdown 转 HTML](https://toolcraftbox.com/zh/tools/markdown-to-html) 发布到网站
+- **清理 AI 格式**：如果输出格式混乱，先用 [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter) 整理
+
+### AI 转文档工作流
+
+| 步骤 | 工具 | 作用 |
+|:---:|:---|:---|
+| 1 | 复制 AI 输出 | ChatGPT/Claude 生成 Markdown |
+| 2 | [格式化](https://toolcraftbox.com/zh/tools/markdown-formatter) | 清理多余空格和缩进 |
+| 3 | [预览](https://toolcraftbox.com/zh/tools/markdown-editor) | 查看渲染效果 |
+| 4 | [导出](https://toolcraftbox.com/zh/tools/markdown-to-docx) | 下载为 DOCX 或 PDF |
+
+---
+
+## 常见问题
+
+### Markdown 各平台一样吗？
+
+大体相同，但存在不同**变体**。标准 Markdown 通用。**GFM（GitHub 风格 Markdown）** 增加了表格、任务列表、删除线和脚注。我们的 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 支持 GFM。
+
+### 可以把 Markdown 转成其他格式吗？
+
+可以。我们的工具支持 Markdown 转为：
+- [HTML](https://toolcraftbox.com/zh/tools/markdown-to-html) — 用于网页发布
+- [DOCX (Word)](https://toolcraftbox.com/zh/tools/markdown-to-docx) — 用于编辑和分享
+- [PPTX (PowerPoint)](https://toolcraftbox.com/zh/tools/markdown-to-pptx) — 用于演示
+- [PDF](https://toolcraftbox.com/zh/tools/markdown-editor) — 用于打印和存档
+
+### Markdown 适合写文档吗？
+
+非常适合。它是 README、技术文档、API 参考和知识库的标准格式。GitHub、GitLab 和大多数静态站点生成器都原生支持 Markdown。
+
+---
+
+## 几分钟掌握 Markdown
+
+1. **收藏本页** — 随时快速参考
+2. **打开 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor)** — 左侧编写，右侧实时预览
+3. **练习 5 个核心语法**：标题、列表、链接、代码块、表格
+4. **把 AI 输出变成真正的文档** — 用 [Markdown 转 DOCX](https://toolcraftbox.com/zh/tools/markdown-to-docx) 转 Word，或 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 转 PDF
+
+全部免费。纯浏览器处理。无需注册。不上传文件。
+
+---
+
+**你可能还喜欢：**
+- [如何将 ChatGPT / Claude 的回答保存为 Word 或 PDF](https://toolcraftbox.com/zh/blog/how-to-save-chatgpt-claude-responses-as-word-pdf)
+- [Markdown 与 WYSIWYG：2026年你该用哪个？](https://toolcraftbox.com/zh/blog/markdown-vs-wysiwyg-comparison-2026)
+- [如何将 Markdown 转换为 HTML、DOCX 和 PDF](https://toolcraftbox.com/zh/blog/how-to-convert-markdown-to-html-docx-pdf)
