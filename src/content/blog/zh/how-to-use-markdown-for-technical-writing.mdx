@@ -1,0 +1,406 @@
+export const meta = {
+  title: "如何用 Markdown 写技术文档（含 AI 辅助）— 2026 指南",
+  description: "学会用 Markdown 编写技术文档：README、API 文档、知识库等。含 AI 工作流——用 ChatGPT/Claude 生成内容，然后导出为 HTML、PDF 或 Word。",
+  date: "2026-07-07",
+  category: "Markdown",
+};
+
+# 如何用 Markdown 写技术文档（含 AI 辅助）— 2026 指南
+
+技术写作是软件开发的基石。每个项目都需要文档——README、API 参考、架构指南、新手上路文档。
+
+而写技术文档的最佳格式是什么？**Markdown。**
+
+它轻量、易于版本控制，并且可以零阻力地转换为 HTML、PDF 和 Word。更关键的是，在 2026 年，**ChatGPT 和 Claude 原生输出 Markdown**——让 AI 辅助的技术写作比以往任何时候都快。
+
+本文涵盖所有内容：从文档结构到 AI 使用技巧，从代码示例到多格式发布。全部使用免费的浏览器端工具。
+
+---
+
+## 为什么技术写作要用 Markdown？
+
+### 1. 开发者原生支持
+
+Markdown 已内置于每个主流开发者平台：
+
+- **GitHub/GitLab** — README、Wiki、讨论
+- **GitBook / ReadTheDocs** — 文档站点
+- **Notion / 飞书** — 内部文档和规范
+- **知乎/掘金/CSDN** — 技术文章和回答
+
+### 2. 版本控制友好
+
+与 Word 文档或 Google Docs 不同，Markdown 是纯文本：
+
+- **有意义的 git diff** — 每一行改动清清楚楚
+- **可审查的 PR** — 团队成员可以在特定代码行上评论
+- **无二进制膨胀** — 仓库保持轻量
+
+### 3. 一处编写，随处发布
+
+```markdown
+# 文档源文件（一个 .md 文件）
+  ├── → HTML（文档站点）
+  ├── → PDF（可下载指南）
+  ├── → DOCX（可编辑交稿）
+  └── → PPTX（演示文稿）
+```
+
+### 4. AI 说 Markdown
+
+所有主流 AI 工具——ChatGPT、Claude、Gemini——默认输出 Markdown。这意味着你可以：
+
+- **生成草稿**："为一个 Python CLI 工具写一个 README"
+- **扩展章节**："添加一个包含 5 个常见错误的故障排除章节"
+- **翻译文档**："把这个 API 文档翻译成英文，保留代码块"
+- **统一格式**："清理这个 Markdown 文件的格式"
+
+然后用我们的 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 预览、润色和导出。
+
+---
+
+## 技术文档的结构
+
+### 文档大纲
+
+好的技术写作遵循可预测的结构。这是一个通用模板：
+
+```markdown
+# 项目名称
+
+> 一段描述这个项目功能的说明。
+
+## 安装
+
+```bash
+npm install project-name
+```
+
+## 快速开始
+
+一个最小可行示例（3-5 行代码）。
+
+## API 参考
+
+### `functionName(param1, param2)`
+
+描述这个函数的功能。
+
+**参数：**
+- `param1` (string) — 参数说明
+- `param2` (number, 可选) — 参数说明
+
+**返回值：**
+- (boolean) — 返回值说明
+
+**示例：**
+```javascript
+const result = functionName("hello", 42);
+```
+
+## 配置项
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `timeout` | number | 5000 | 请求超时时间（毫秒） |
+| `retries` | number | 3 | 重试次数 |
+| `debug` | boolean | false | 开启调试日志 |
+
+## 故障排除
+
+### 常见错误："连接被拒绝"
+
+**原因：** 服务未运行。
+
+**解决方法：** 启动服务后重试。
+
+## 参与贡献
+
+欢迎 PR！详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+## 许可证
+
+MIT
+```
+
+### 关键结构元素
+
+| 元素 | Markdown | 为什么适合文档 |
+|:---|:---|:---|
+| **标题** | `#` 到 `######` | 清晰的层级，自动生成目录 |
+| **代码块** | ` ```语言 ` | 语法高亮，可复制 |
+| **表格** | `\| 表头 \| 表头 \|` | 规范、配置、参数 |
+| **列表** | `-` / `1.` | 步骤、功能、前提条件 |
+| **引用** | `> ` | 注释、警告、提示 |
+| **任务列表** | `- [ ]` | 路线图、检查清单 |
+
+---
+
+## 写出色的 README
+
+README 是用户看到的第一印象。
+
+### 必备章节
+
+1. **项目名称 + 一句话说明** — 做什么的？（3-5 个字）
+2. **徽章** — 构建状态、版本、许可证（可选但专业）
+3. **快速开始** — 一条命令即可运行
+4. **功能特性** — 要点列表，3-6 项
+5. **API / 使用方法** — 文档的主体
+6. **示例** — 真实代码，真实输出
+7. **参与贡献** — 如何帮助
+8. **许可证** — MIT、Apache 等
+
+### README 改造前后
+
+**改造前**（将就能用）：
+```markdown
+# my-tool
+
+一个工具。
+
+## 安装
+npm install my-tool
+
+## 使用
+my-tool --input file.txt
+```
+
+**改造后**（专业且有用）：
+```markdown
+# my-tool
+
+> 批量调整图片尺寸的 CLI 工具——比手动操作快 10 倍。
+
+![Build](https://img.shields.io/badge/build-passing-green)
+
+## 功能特性
+
+- 一键批量调整数百张图片
+- 支持 JPEG、PNG、WebP 和 AVIF
+- 转换时保留 EXIF 数据
+- 预览模式可提前查看改动
+```
+
+---
+
+## 代码块最佳实践
+
+### 始终指定语言
+
+````markdown
+```javascript
+// 好——语法高亮生效
+const app = express();
+```
+
+```bad
+// 不好——无高亮
+const app = express();
+```
+````
+
+### 用 Diff 显示变更
+
+在迁移指南中展示前后对比：
+
+```diff
+-function oldApi(x, y) {
+-  return x + y;
++function newApi(options) {
++  return options.x + options.y;
+}
+```
+
+### 显示终端输出
+
+````markdown
+```bash
+$ npm run build
+
+> project@1.0.0 build
+> next build
+
+✓ 编译成功
+```
+````
+
+---
+
+## 表格用于技术规范
+
+表格是 API 文档、配置参考和对比指南的必备元素。
+
+### 参数表格
+
+```markdown
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|:------:|------|
+| `url` | string | 是 | — | 目标 URL |
+| `method` | string | 否 | GET | HTTP 方法 |
+| `headers` | object | 否 | {} | 请求头 |
+```
+
+用我们的 [Markdown 表格生成器](https://toolcraftbox.com/zh/tools/markdown-table-generator) 可视化构建复杂表格。
+
+### 版本兼容性表格
+
+```markdown
+| 框架 | v1.0 | v2.0 | v3.0 |
+|------|:----:|:----:|:----:|
+| React | ✅ | ✅ | ✅ |
+| Vue | ❌ | ✅ | ✅ |
+| Angular | ❌ | ❌ | ✅ |
+```
+
+---
+
+## AI 辅助技术写作工作流
+
+在 2026 年，写技术文档最快的方式是 **AI + Markdown + 转换工具**。
+
+### 分步工作流
+
+| 步骤 | 操作 | 工具 |
+|:---:|:---|:---|
+| 1 | 让 AI 起草文档 | ChatGPT / Claude |
+| 2 | 复制 Markdown 输出 | 全选 → 复制 |
+| 3 | 预览和润色 | [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) |
+| 4 | 清理格式 | [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter) |
+| 5 | 根据需求导出 | 见下表 |
+
+### 导出选项
+
+| 你需要 | 使用这个工具 | 为什么 |
+|:---|:---|:---|
+| 文档站点 | [Markdown 转 HTML](https://toolcraftbox.com/zh/tools/markdown-to-html) | 适合任何静态站点的干净 HTML |
+| 可编辑文档 | [Markdown 转 DOCX](https://toolcraftbox.com/zh/tools/markdown-to-docx) | 与非技术团队成员共享 |
+| 可下载 PDF | [Markdown 编辑器 → PDF](https://toolcraftbox.com/zh/tools/markdown-editor) | 适合打印的文档 |
+| 演示文稿 | [Markdown 转 PPTX](https://toolcraftbox.com/zh/tools/markdown-to-pptx) | 每个标题成为一张幻灯片 |
+
+### AI 提示词示例
+
+```
+为一个 REST API 端点写一篇技术文档。
+
+包含：
+- 端点 URL 和方法
+- 请求参数表格
+- 请求示例（curl）
+- 响应示例（JSON）
+- 错误码表格
+
+使用 Markdown 格式，包含代码块和表格。
+```
+
+把 AI 输出粘贴到我们的 [Markdown 转 HTML 工具](https://toolcraftbox.com/zh/tools/markdown-to-html)，几秒钟就能生成一个文档页面。
+
+---
+
+## 常用技术写作模式
+
+### 注释与警告
+
+```markdown
+> **注意：** 此功能在 v2.0+ 版本中可用。
+
+> **警告：** 运行此命令前请备份数据。
+
+> **提示：** 使用 `--dry-run` 参数可以预览更改。
+```
+
+### 折叠内容（使用 HTML details）
+
+```markdown
+<details>
+<summary>点击查看完整配置</summary>
+
+```yaml
+server:
+  port: 8080
+  debug: true
+```
+
+</details>
+```
+
+### 文件目录结构
+
+```markdown
+project/
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   └── Footer.tsx
+│   ├── pages/
+│   └── utils/
+├── public/
+├── package.json
+└── README.md
+```
+
+---
+
+## 发布你的文档
+
+### 方式一：静态站点（HTML）
+
+使用 [Markdown 转 HTML](https://toolcraftbox.com/zh/tools/markdown-to-html) 生成自包含的 HTML 文件。部署到 GitHub Pages、Netlify 或任何静态托管平台。
+
+### 方式二：PDF 分发
+
+在 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 中预览，然后用浏览器的 **打印 → 另存为 PDF** 获得专业外观的文档。
+
+### 方式三：Word 文档供团队审阅
+
+当非技术同事需要审阅或编辑文档时，使用 [Markdown 转 DOCX](https://toolcraftbox.com/zh/tools/markdown-to-docx)。
+
+### 方式四：PPT 演示
+
+使用 [Markdown 转 PPTX](https://toolcraftbox.com/zh/tools/markdown-to-pptx) 将文档结构转变为演示文稿。
+
+---
+
+## 快速开始：30 秒写出你的第一篇技术文档
+
+1. **打开** [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor)
+2. **写入**以下内容：
+
+```markdown
+# 我的 API 文档
+
+## 认证
+
+在所有请求中传递 `API-Key` 请求头。
+
+## 接口
+
+### GET /users
+
+返回用户列表。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `page` | number | 页码（默认：1） |
+| `limit` | number | 每页条数（默认：20） |
+
+**响应：**
+```json
+{
+  "users": [],
+  "total": 100
+}
+```
+```
+
+3. **预览** — 右侧面板实时渲染
+4. **导出** — HTML 用于文档站点，或 PDF 用于分享
+
+全部免费。纯浏览器处理。无需注册。
+
+---
+
+**你可能还喜欢：**
+- [Markdown 速查表 — 完整语法参考指南](https://toolcraftbox.com/zh/blog/markdown-cheat-sheet)
+- [如何将 ChatGPT / Claude 的回答保存为 Word 或 PDF](https://toolcraftbox.com/zh/blog/how-to-save-chatgpt-claude-responses-as-word-pdf)
+- [Markdown 与 WYSIWYG：2026年你该用哪个？](https://toolcraftbox.com/zh/blog/markdown-vs-wysiwyg-comparison-2026)
