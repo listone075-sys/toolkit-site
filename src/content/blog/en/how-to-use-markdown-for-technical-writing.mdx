@@ -312,15 +312,15 @@ Paste the AI output into our [Markdown to HTML tool](https://toolcraftbox.com/en
 
 ### Tabs or Sections (using HTML details)
 
-```markdown
-<details>
-<summary>Click to see the full configuration</summary>
+Use HTML `<details>` and `<summary>` tags to create collapsible sections — great for long config examples:
 
-```yaml
+```html
+<details>
+<summary>Click to see the full configuration (yaml)</summary>
+
 server:
   port: 8080
   debug: true
-```
 
 </details>
 ```
