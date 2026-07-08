@@ -1,0 +1,293 @@
+export const meta = {
+  title: "ChatGPT 输出格式太乱怎么清理？一键修复 Markdown 排版",
+  description: "ChatGPT 的回答很完美，复制出来格式全乱？教你如何修复乱掉的标题、散落的代码块、歪歪扭扭的表格和多余的空行。免费在线工具，一键搞定。",
+  date: "2026-07-08",
+  category: "Markdown",
+};
+
+# ChatGPT 输出格式太乱怎么清理？一键修复 Markdown 排版
+
+你问 ChatGPT 一个问题。它给了你一个完美的回答——结构清晰、信息量大、代码示例和表格都有。
+
+但当你复制出来的时候？**格式全乱了。**
+
+标题层级不对齐。代码块有随机换行。表格歪歪扭扭。到处是多余的空行。
+
+这不是你的错——这是 AI 生成 Markdown 的天然特性。而手动修复非常痛苦。
+
+本文教你如何**一键清理** ChatGPT 输出格式，以及为什么会乱、怎么从源头预防。
+
+---
+
+## 为什么 ChatGPT 输出会乱？
+
+AI 模型是一个 token 一个 token 生成文本的。它不能"一眼看到"整个文档。这导致：
+
+| 问题 | 原因 |
+|------|------|
+| 多余空行 | AI 在不同段落间加的间距不一致 |
+| 代码块断裂 | 缺少或多出反引号 |
+| 表格错位 | 列没有对齐 |
+| 标题层级跳跃 | 从 `#` 跳到 `###`，没有 `##` |
+| 行尾多余空格 | 随机空白字符 |
+| 列表间距不一致 | 有的有空格有的没有 |
+
+### 修复前：一团糟的 AI 输出
+
+```markdown
+# 简介
+
+本指南介绍安装方法。
+
+## 安装
+
+
+npm install my-package
+
+
+### 使用方法
+
+
+```javascript
+const app = require('my-package');
+
+app.start()
+```
+
+
+## API
+
+|参数|类型|说明|
+|--- |--- |--- |
+|name|string|名称
+
+
+|debug|boolean|调试模式|
+```
+
+在 ChatGPT 界面里看着还行。但粘贴到文档或代码编辑器？**完全不能看。**
+
+### 修复后：整洁干净
+
+```markdown
+# 简介
+
+本指南介绍安装方法。
+
+## 安装
+
+```bash
+npm install my-package
+```
+
+## API
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| name | string | 名称 |
+| debug | boolean | 调试模式 |
+```
+
+用我们的 [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter) 点一下就好了。
+
+---
+
+## 一键修复：Markdown 格式化工具
+
+清理 ChatGPT 输出最快的方法：
+
+1. **复制** AI 的回答
+2. **打开** [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter)
+3. **粘贴** 乱糟糟的文本
+4. **点击** 美化
+
+就这么简单。格式化工具会自动：
+
+- ✅ 规范化标题间距
+- ✅ 修复列表缩进
+- ✅ 删除行尾多余空格
+- ✅ 标准化代码块间距
+- ✅ 清理多余空行
+- ✅ 对齐表格列
+
+全部在浏览器中处理。不上传任何数据到服务器。
+
+---
+
+## 分步操作：从混乱 AI 到整洁文档
+
+### 第1步：获取 AI 输出
+
+向 ChatGPT 或 Claude 提问。复制完整回答（Ctrl+A → Ctrl+C）。
+
+### 第2步：清理格式
+
+粘贴到 [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter)，点击美化。
+
+### 第3步：预览效果
+
+打开 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 查看渲染效果。左边写，右边实时预览。
+
+### 第4步：导出
+
+把清理好的 Markdown 转成你需要的格式：
+
+| 你需要 | 用这个工具 |
+|:---|:---|
+| Word 文档 (.docx) | [Markdown 转 DOCX](https://toolcraftbox.com/zh/tools/markdown-to-docx) |
+| PDF 分享 | [Markdown 编辑器 → 打印为 PDF](https://toolcraftbox.com/zh/tools/markdown-editor) |
+| HTML 网页 | [Markdown 转 HTML](https://toolcraftbox.com/zh/tools/markdown-to-html) |
+| PPT 演示 | [Markdown 转 PPTX](https://toolcraftbox.com/zh/tools/markdown-to-pptx) |
+
+---
+
+## 常见格式问题及修复
+
+### 问题1：多余空行
+
+**乱：**
+```markdown
+# 第一节
+
+
+上面空白太多了。
+
+
+## 第二节
+```
+
+**修复后：**
+```markdown
+# 第一节
+
+合适的段落间距。
+
+## 第二节
+```
+
+**方法：** 用 [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter) — 自动规范化所有间距。
+
+### 问题2：代码块断裂
+
+**乱：**
+````markdown
+代码如下：
+
+```javascript
+const x = 1;
+
+const y = 2;
+ ``
+
+少了一个反引号？
+````
+
+**修复后：**
+````markdown
+代码如下：
+
+```javascript
+const x = 1;
+const y = 2;
+```
+````
+
+**方法：** 格式化工具会自动检测并修复不完整的代码围栏。
+
+### 问题3：表格错位
+
+**乱：**
+```markdown
+|名称|类型|默认值|
+|--- |--- |--- |
+|port|number|3000
+|host|string|localhost|
+```
+
+**修复后：**
+```markdown
+| 名称 | 类型 | 默认值 |
+|------|------|--------|
+| port | number | 3000 |
+| host | string | localhost |
+```
+
+**方法：** 自动对齐列宽和竖线。
+
+### 问题4：混合列表标记
+
+**乱：**
+```markdown
+* 项目一
+* 项目二
+  - 用了不同标记
+    + 又换了一种
+```
+
+**修复后：**
+```markdown
+- 项目一
+- 项目二
+  - 统一的标记
+    - 统一缩进
+```
+
+**方法：** 统一为 `-` 标记并规范缩进。
+
+---
+
+## 从源头预防：优化 AI 提示词
+
+也可以让 AI 一开始就输出整洁的格式。在 prompt 末尾加上：
+
+> "请用干净的 Markdown 格式回答。标题层级保持一致。每个代码块单独一行并标注语言。表格列对齐。"
+
+或者更简单：
+
+> "Clean Markdown only. No extra blank lines."
+
+AI 模型很擅长遵循格式要求——只要你明确告诉它。
+
+---
+
+## 完整工作流：从 AI 到最终文档
+
+从原始 AI 输出到精美文档，不到 60 秒：
+
+```
+ChatGPT/Claude 输出（混乱的 Markdown）
+  │
+  ▼
+[Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter)
+  │ 清理间距、代码块、表格
+  ▼
+整洁的 Markdown
+  │
+  ├──→ [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor)
+  │     预览和微调
+  │
+  └──→ 导出为：
+        • [DOCX](https://toolcraftbox.com/zh/tools/markdown-to-docx) — Word 文档
+        • [PDF](https://toolcraftbox.com/zh/tools/markdown-editor) — 打印为 PDF
+        • [HTML](https://toolcraftbox.com/zh/tools/markdown-to-html) — 网页
+        • [PPTX](https://toolcraftbox.com/zh/tools/markdown-to-pptx) — 演示文稿
+```
+
+---
+
+## 快速开始
+
+1. 复制 ChatGPT 或 Claude 的回答
+2. 打开 [Markdown 格式化工具](https://toolcraftbox.com/zh/tools/markdown-formatter)
+3. 粘贴并点击美化
+4. 在 [Markdown 编辑器](https://toolcraftbox.com/zh/tools/markdown-editor) 中预览
+5. 导出为 DOCX、PDF 或 HTML
+
+30 秒搞定。全部免费。纯浏览器处理。
+
+---
+
+**你可能还喜欢：**
+- [ChatGPT 的回答怎么保存？转 Word/PDF 完整攻略](https://toolcraftbox.com/zh/blog/how-to-save-chatgpt-response-to-word-pdf-zh)
+- [Markdown 速查表 — 完整语法参考指南](https://toolcraftbox.com/zh/blog/markdown-cheat-sheet)
+- [如何用 Markdown 写技术文档（含 AI 辅助）](https://toolcraftbox.com/zh/blog/how-to-use-markdown-for-technical-writing)
