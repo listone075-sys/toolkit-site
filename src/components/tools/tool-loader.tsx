@@ -297,6 +297,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "session-viewer": dynamic(() =>
+    import("./session-viewer").then((m) => ({
+      default: m.SessionViewer,
+    })),
+  ),
+
   "image-upscaler": dynamic(() =>
     import("./image-upscaler").then((m) => ({
       default: m.ImageUpscaler,

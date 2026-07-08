@@ -1290,6 +1290,57 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
 
+  // ── Developer Tools (continued) ────────────────────────────
+  {
+    slug: "session-viewer",
+    title: "Claude Code Session Viewer",
+    description:
+      "Parse, browse, and export Claude Code session files (.jsonl) online. Privacy-first — all processing happens in your browser. Export to Markdown, Word, or PDF.",
+    category: "dev",
+    keywords: [
+      "claude code session viewer",
+      "jsonl viewer",
+      "claude session parser",
+      "claude code log viewer",
+      "jsonl to markdown",
+      "anthropic session viewer",
+      "claude chat history viewer",
+    ],
+    searchVolume: "~5K/mo",
+    isClientSide: true,
+    isAi: true,
+    icon: "MessageSquare",
+    howToUse: [
+      "Export your Claude Code session as a .jsonl file",
+      "Upload or drag & drop the file into the viewer",
+      "Browse messages with role filters (User/Assistant/System)",
+      "Expand messages to view tool calls, tool results, and full content",
+      "Export the session as Markdown, Word (DOCX), or PDF with one click",
+    ],
+    faqs: [
+      {
+        question: "How do I export my Claude Code session?",
+        answer:
+          "In Claude Code, use the /export command or find your session .jsonl files in the Claude Code data directory. Each session is stored as a .jsonl file that you can upload to this viewer.",
+      },
+      {
+        question: "Is my session data secure?",
+        answer:
+          "Yes — all parsing and processing happens entirely in your browser. Your .jsonl file never leaves your device. This is a core privacy feature of our tool.",
+      },
+      {
+        question: "What export formats are supported?",
+        answer:
+          "You can export your parsed session as Markdown (.md), Word document (.docx), or PDF. Markdown is ideal for documentation, DOCX for sharing with non-technical users, and PDF for archiving.",
+      },
+      {
+        question: "What information does the viewer extract?",
+        answer:
+          "The viewer parses all messages (user, assistant, system), identifies tool calls and their parameters, captures tool results, extracts timestamps, and provides a summary with message counts, role distribution, and tools used.",
+      },
+    ],
+  },
+
   // ── Calculator Tools ──────────────────────────────────────
   {
     slug: "percentage-calculator",

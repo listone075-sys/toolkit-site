@@ -1286,6 +1286,55 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
 
+  // ── 开发者工具（续）──────────────────────────────────────
+  {
+    slug: "session-viewer",
+    title: "Claude Code 会话查看器",
+    description:
+      "在线解析、浏览和导出 Claude Code 会话文件（.jsonl）。隐私优先——所有处理均在浏览器中完成。支持导出为 Markdown、Word 或 PDF。",
+    category: "dev",
+    keywords: [
+      "claude code 会话查看器",
+      "jsonl 查看器",
+      "claude 会话解析",
+      "jsonl 转 markdown",
+      "claude 聊天历史查看器",
+    ],
+    searchVolume: "~5K/mo",
+    isClientSide: true,
+    isAi: true,
+    icon: "MessageSquare",
+    howToUse: [
+      "将您的 Claude Code 会话导出为 .jsonl 文件",
+      "上传或拖放文件到查看器中",
+      "使用角色筛选器浏览消息（用户/助手/系统）",
+      "展开消息查看工具调用、工具结果和完整内容",
+      "一键导出会话为 Markdown、Word (DOCX) 或 PDF",
+    ],
+    faqs: [
+      {
+        question: "如何导出我的 Claude Code 会话？",
+        answer:
+          "在 Claude Code 中，使用 /export 命令或在 Claude Code 数据目录中找到您的会话 .jsonl 文件。每个会话都存储为 .jsonl 文件，您可以将其上传到此查看器。",
+      },
+      {
+        question: "我的会话数据安全吗？",
+        answer:
+          "安全——所有解析和处理完全在您的浏览器中进行。您的 .jsonl 文件不会离开您的设备。这是我们工具的核心隐私特性。",
+      },
+      {
+        question: "支持哪些导出格式？",
+        answer:
+          "您可以将解析后的会话导出为 Markdown (.md)、Word 文档 (.docx) 或 PDF。Markdown 适合文档编写，DOCX 适合与非技术人员分享，PDF 适合归档。",
+      },
+      {
+        question: "查看器能提取哪些信息？",
+        answer:
+          "查看器解析所有消息（用户、助手、系统），识别工具调用及其参数，捕获工具结果，提取时间戳，并提供包含消息数量、角色分布和使用工具统计的摘要。",
+      },
+    ],
+  },
+
   // ── 计算器工具 ──────────────────────────────────────
   {
     slug: "percentage-calculator",
