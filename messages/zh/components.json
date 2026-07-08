@@ -1,4 +1,30 @@
 {
+  "claudeSessionViewer": {
+    "uploadTitle": "上传 Claude Code 会话文件",
+    "uploadHint": "或将 .jsonl 文件拖放到此处",
+    "browse": "选择文件",
+    "privacyNote": "文件完全在您的浏览器中解析——不会上传任何内容。",
+    "invalidFile": "请选择 Claude Code 的 .jsonl 会话文件。",
+    "emptyFile": "此文件中未找到对话消息。",
+    "untitled": "未命名会话",
+    "reset": "加载其他文件",
+    "project": "项目",
+    "branch": "分支",
+    "model": "模型",
+    "messages": "消息数",
+    "toolCalls": "工具调用",
+    "tokens": "Token（输入/输出）",
+    "showThinking": "思考",
+    "showTools": "工具调用",
+    "copyMd": "复制 MD",
+    "copied": "已复制！",
+    "exporting": "导出中…",
+    "skipped": "已跳过 {count} 行格式错误的内容。",
+    "thinking": "思考",
+    "toolCall": "工具调用",
+    "toolResult": "工具结果",
+    "toolError": "工具错误"
+  },
   "toolShell": {
     "input": "输入",
     "output": "输出"

@@ -1,4 +1,30 @@
 {
+  "claudeSessionViewer": {
+    "uploadTitle": "Upload a Claude Code session file",
+    "uploadHint": "or drag & drop your .jsonl file here",
+    "browse": "Browse Files",
+    "privacyNote": "Your file is parsed entirely in your browser — nothing is uploaded.",
+    "invalidFile": "Please select a Claude Code .jsonl session file.",
+    "emptyFile": "No conversation messages were found in this file.",
+    "untitled": "Untitled session",
+    "reset": "Load another file",
+    "project": "Project",
+    "branch": "Branch",
+    "model": "Model",
+    "messages": "Messages",
+    "toolCalls": "Tool calls",
+    "tokens": "Tokens (in/out)",
+    "showThinking": "Thinking",
+    "showTools": "Tool calls",
+    "copyMd": "Copy MD",
+    "copied": "Copied!",
+    "exporting": "Exporting…",
+    "skipped": "{count} malformed line(s) were skipped.",
+    "thinking": "Thinking",
+    "toolCall": "Tool call",
+    "toolResult": "Tool result",
+    "toolError": "Tool error"
+  },
   "toolShell": {
     "input": "Input",
     "output": "Output"

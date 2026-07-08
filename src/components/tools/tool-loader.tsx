@@ -332,6 +332,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
       default: m.MarkdownWorkbench,
     })),
   ),
+
+  "claude-session-viewer": dynamic(() =>
+    import("./claude-session-viewer").then((m) => ({
+      default: m.ClaudeSessionViewer,
+    })),
+  ),
 };
 
 /**

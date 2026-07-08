@@ -1563,4 +1563,50 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "claude-session-viewer",
+    title: "Claude Code Session Viewer",
+    description:
+      "View and export Claude Code session transcripts (.jsonl) online. Parse in your browser, browse the conversation, and export to Markdown, Word, or PDF. No upload — 100% private.",
+    category: "dev",
+    keywords: [
+      "claude code session viewer",
+      "claude code jsonl",
+      "claude code transcript",
+      "claude code export markdown",
+      "view claude code session",
+      "claude code conversation export",
+    ],
+    searchVolume: "~10K/mo",
+    isClientSide: true,
+    icon: "FileJson",
+    howToUse: [
+      "Find your session file in ~/.claude/projects/<project>/<session-id>.jsonl",
+      "Drag and drop the .jsonl file onto the upload area",
+      "Browse the parsed conversation — toggle thinking blocks and tool calls",
+      "Export to Markdown, Word (.docx), or PDF with one click",
+    ],
+    faqs: [
+      {
+        question: "Where do I find my Claude Code session file?",
+        answer:
+          "Claude Code stores each session as a .jsonl file under ~/.claude/projects/. Each project gets its own folder, and every session is a separate .jsonl file named with its session id.",
+      },
+      {
+        question: "Is my session data uploaded anywhere?",
+        answer:
+          "No. The .jsonl file is parsed entirely in your browser using JavaScript. Your conversation, code, and any secrets in it never leave your device — nothing is sent to a server.",
+      },
+      {
+        question: "What can I export to?",
+        answer:
+          "You can export the transcript to Markdown (.md), Word (.docx), or PDF. You choose whether to include the assistant's thinking blocks and tool calls before exporting.",
+      },
+      {
+        question: "Does it show tool calls and thinking?",
+        answer:
+          "Yes. The viewer renders text, extended thinking, tool calls (with their inputs), and tool results as collapsible blocks, so you can read or hide any part of the session.",
+      },
+    ],
+  },
 ];

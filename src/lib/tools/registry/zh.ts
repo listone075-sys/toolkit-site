@@ -1559,4 +1559,50 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+  {
+    slug: "claude-session-viewer",
+    title: "Claude Code 会话查看器",
+    description:
+      "在线查看并导出 Claude Code 会话记录（.jsonl）。在浏览器中解析、浏览对话，一键导出为 Markdown、Word 或 PDF。无需上传——100% 隐私。",
+    category: "dev",
+    keywords: [
+      "claude code 会话查看器",
+      "claude code jsonl",
+      "claude code 记录",
+      "claude code 导出 markdown",
+      "查看 claude code 会话",
+      "claude code 对话导出",
+    ],
+    searchVolume: "~10K/mo",
+    isClientSide: true,
+    icon: "FileJson",
+    howToUse: [
+      "在 ~/.claude/projects/<项目>/<会话id>.jsonl 找到会话文件",
+      "将 .jsonl 文件拖放到上传区域",
+      "浏览解析后的对话——可切换显示思考块与工具调用",
+      "一键导出为 Markdown、Word（.docx）或 PDF",
+    ],
+    faqs: [
+      {
+        question: "在哪里找到我的 Claude Code 会话文件？",
+        answer:
+          "Claude Code 将每个会话保存为 ~/.claude/projects/ 下的 .jsonl 文件。每个项目有独立文件夹，每个会话是以其会话 id 命名的单独 .jsonl 文件。",
+      },
+      {
+        question: "我的会话数据会被上传吗？",
+        answer:
+          "不会。.jsonl 文件完全通过 JavaScript 在您的浏览器中解析。对话、代码及其中的任何敏感信息都不会离开您的设备——不会发送到任何服务器。",
+      },
+      {
+        question: "可以导出为哪些格式？",
+        answer:
+          "可导出为 Markdown（.md）、Word（.docx）或 PDF。导出前您可以选择是否包含助手的思考块和工具调用。",
+      },
+      {
+        question: "会显示工具调用和思考吗？",
+        answer:
+          "会。查看器将文本、扩展思考、工具调用（含输入）和工具结果渲染为可折叠块，您可以随意查看或隐藏会话的任意部分。",
+      },
+    ],
+  },
 ];
