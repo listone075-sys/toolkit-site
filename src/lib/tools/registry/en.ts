@@ -1563,4 +1563,59 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+
+  // ── Dev Tools (continued) ─────────────────────────────────
+  {
+    slug: "claude-session-viewer",
+    title: "Claude Code Session Viewer",
+    description:
+      "View, search, and export Claude Code session transcripts (.jsonl) online. Parse messages, filter by role, and export to Markdown, Word, or PDF — all in your browser.",
+    category: "dev",
+    keywords: [
+      "claude code session viewer",
+      "claude session parser",
+      "jsonl viewer",
+      "claude transcript viewer",
+      "claude code export",
+      "claude session to markdown",
+      "ai conversation viewer",
+    ],
+    searchVolume: "~5K/mo",
+    isClientSide: true,
+    icon: "MessageSquare",
+    howToUse: [
+      "Upload your Claude Code .jsonl session file (drag & drop or click to browse)",
+      "The file is parsed instantly in your browser — no data is ever uploaded",
+      "Browse messages with role badges (User, Assistant, System, Tool)",
+      "Filter by role to focus on specific parts of the conversation",
+      "Export the full session as Markdown (.md), HTML, Word (.docx), or PDF",
+    ],
+    faqs: [
+      {
+        question: "What is a Claude Code .jsonl session file?",
+        answer:
+          "Claude Code stores conversation transcripts as JSONL files (one JSON object per line) in your project's .claude/sessions/ directory. Each line represents a message, tool call, or system event from your coding session.",
+      },
+      {
+        question: "Is my session data secure?",
+        answer:
+          "Absolutely. All parsing and processing happens in your browser using JavaScript. Your session files are never uploaded to any server — they stay entirely on your device.",
+      },
+      {
+        question: "What export formats are supported?",
+        answer:
+          "You can export your session as: Markdown (.md) for documentation, HTML for web viewing, Word (.docx) for reports, or PDF via your browser's print dialog. All exports preserve the conversation structure with role labels and timestamps.",
+      },
+      {
+        question: "Can I view tool calls and results?",
+        answer:
+          "Yes! The viewer automatically detects tool_use and tool_result blocks in Claude's Messages API format. Tool inputs and outputs are displayed in expandable sections for easy inspection.",
+      },
+      {
+        question: "What if my file can't be parsed?",
+        answer:
+          "Make sure your file is valid JSONL — each line should be a complete JSON object. Claude Code's native session format and the Anthropic Messages API format are both supported. If you see an error, check that the file isn't corrupted or truncated.",
+      },
+    ],
+  },
 ];

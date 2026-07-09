@@ -291,6 +291,12 @@ const toolComponentMap: Record<string, ComponentType<any>> = {
     })),
   ),
 
+  "claude-session-viewer": dynamic(() =>
+    import("./claude-session-viewer").then((m) => ({
+      default: m.ClaudeSessionViewer,
+    })),
+  ),
+
   "remove-background": dynamic(() =>
     import("./background-removal").then((m) => ({
       default: m.BackgroundRemoval,

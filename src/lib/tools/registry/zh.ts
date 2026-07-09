@@ -1559,4 +1559,58 @@ export const toolRegistry: ToolConfig[] = [
       },
     ],
   },
+
+  // ── 开发者工具（续） ─────────────────────────────────
+  {
+    slug: "claude-session-viewer",
+    title: "Claude Code 会话查看器",
+    description:
+      "在线查看、搜索和导出 Claude Code 会话记录（.jsonl）。解析消息、按角色筛选、导出为 Markdown、Word 或 PDF——全部在浏览器中完成。",
+    category: "dev",
+    keywords: [
+      "claude code 会话查看器",
+      "claude 会话解析",
+      "jsonl 查看器",
+      "claude 对话导出",
+      "ai 对话查看器",
+      "claude 会话转 markdown",
+    ],
+    searchVolume: "~5K/mo",
+    isClientSide: true,
+    icon: "MessageSquare",
+    howToUse: [
+      "上传您的 Claude Code .jsonl 会话文件（拖放或点击浏览）",
+      "文件在浏览器中即时解析——数据不会上传至任何服务器",
+      "通过角色标签浏览消息（用户、助手、系统、工具）",
+      "按角色筛选，聚焦对话中的特定部分",
+      "将会话导出为 Markdown (.md)、HTML、Word (.docx) 或 PDF",
+    ],
+    faqs: [
+      {
+        question: "什么是 Claude Code .jsonl 会话文件？",
+        answer:
+          "Claude Code 将会话记录存储为 JSONL 文件（每行一个 JSON 对象），保存在项目的 .claude/sessions/ 目录中。每行代表编码会话中的一条消息、工具调用或系统事件。",
+      },
+      {
+        question: "我的会话数据安全吗？",
+        answer:
+          "绝对安全。所有解析和处理均在您的浏览器中使用 JavaScript 完成。您的会话文件永远不会上传至任何服务器——完全保留在您的设备上。",
+      },
+      {
+        question: "支持哪些导出格式？",
+        answer:
+          "您可以将会话导出为：Markdown (.md) 用于文档记录，HTML 用于网页查看，Word (.docx) 用于报告，或通过浏览器的打印对话框导出 PDF。所有导出均保留对话结构、角色标签和时间戳。",
+      },
+      {
+        question: "可以查看工具调用和结果吗？",
+        answer:
+          "可以！查看器会自动检测 Anthropic Messages API 格式中的 tool_use 和 tool_result 代码块。工具输入和输出均可展开查看，便于检查。",
+      },
+      {
+        question: "如果文件无法解析怎么办？",
+        answer:
+          "请确保您的文件是有效的 JSONL 格式——每行应是一个完整的 JSON 对象。Claude Code 原生会话格式和 Anthropic Messages API 格式均受支持。如果仍然报错，请检查文件是否已损坏或被截断。",
+      },
+    ],
+  },
 ];
