@@ -42,8 +42,8 @@
 |:---|:---:|:---|
 | IndexNow | ✅ 已配置 | 7/10 手动提交 17 个 URL 成功 |
 | SaaSHub | ⏳ 审核中 | 无变化 |
-| AlternativeTo | ⚠️ 待确认 | 素材已准备（7/7），需确认是否实际提交 |
-| Ahrefs Webmaster | ⬜ 未注册 | 原计划 7/10 注册，未完成 |
+| AlternativeTo | ✅ 已提交 | 素材已准备，已实际提交 |
+| Ahrefs Webmaster | ✅ 已注册 | 验证脚本已部署 + 已验证 |
 | ProductHunt | ⬜ 未开始 | - |
 
 ## 流量数据

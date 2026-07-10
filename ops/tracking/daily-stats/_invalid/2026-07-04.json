@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-04",
+  "totalPV_7d": 108,
+  "totalUV_7d": 50,
+  "avgDailyPV": 14,
+  "avgDailyUV": 6,
+  "yesterdayPV": 3,
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 50,
+      "pageViews": 108
+    },
+    {
+      "channel": "Unassigned",
+      "users": 1,
+      "pageViews": 0
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "pageViews": 63,
+      "users": 48
+    },
+    {
+      "path": "/events.html",
+      "pageViews": 31,
+      "users": 11
+    },
+    {
+      "path": "/backtest.html",
+      "pageViews": 8,
+      "users": 7
+    },
+    {
+      "path": "/knowledge.html",
+      "pageViews": 5,
+      "users": 5
+    },
+    {
+      "path": "/en/",
+      "pageViews": 1,
+      "users": 1
+    }
+  ]
+}

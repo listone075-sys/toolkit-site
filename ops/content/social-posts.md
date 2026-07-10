@@ -16,7 +16,9 @@
 | 8 | 7/1 | 工具推荐 | "48 free online tools. Zero sign-ups..." | ✅ |
 | 9 | 7/2 | 问题式 | Image format guide for social media 2026 | ✅ |
 | 10 | 7/2 | 问题式 | Convert ChatGPT/Claude responses to Word/PDF (Blog #8) | ✅ |
-| 11 | 7/3 | 问题式 | Blog #9 + Blog #8 推广 | 📝 待发布 |
+| 11 | 7/3 | 问题式 | Blog #9 + Blog #8 推广 | ✅ |
+| 12 | 7/6 | 速查表 | Markdown Cheat Sheet (Blog #10) 预热 | ✅ |
+| 13 | 7/7 | 技巧式 | Markdown technical writing tips | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
@@ -32,9 +34,12 @@
 |:--:|------|------|------|:--:|
 | 1 | 6/26 | Image Tools & Tips | Compress Images 前后对比 | ✅ |
 | 2 | 6/26 | PDF Hacks & Tutorials | Merge PDF Files Online | ✅ |
-| 3 | 7/2 | PDF Hacks & Tutorials | Convert PDF to JPG/PNG — Free Guide | 📝 待发布 |
+| 3 | 7/3 | PDF Hacks & Tutorials | Convert PDF to JPG/PNG — Free Guide | ✅ |
 | 4 | 7/2 | Markdown for Beginners | Convert ChatGPT/Claude to Word or PDF | ✅ |
-| 5 | 7/3 | Markdown for Beginners | ChatGPT 回答保存攻略（中文） | 📝 待发布 |
+| 5 | 7/3 | Markdown for Beginners | ChatGPT 回答保存攻略（中文） | ✅ |
+| 6 | 7/6 | Markdown for Beginners | Complete Markdown Cheat Sheet | ✅ |
+| 7 | 7/7 | Markdown for Beginners | Markdown Syntax Guide — supplementary | ✅ |
+| 8 | 7/10 | Markdown for Beginners | Clean Up ChatGPT Output Formatting (Blog #12) | ✅ |
 
 ---
 

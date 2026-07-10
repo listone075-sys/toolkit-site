@@ -25,7 +25,7 @@
 | 邮件订阅 | - | - | 500 |
 | 外链域名 | 1 (SaaSHub) | 2 | 20 |
 | SaaSHub | ⏳审核中 | ⏳ | ✅ Listed |
-| AlternativeTo | ⚠️待确认 | ✅ | ✅ 已注册 |
+| AlternativeTo | ✅ 已提交 (7/7) | ✅ | ✅ 已注册 |
 | Ahrefs Webmaster | ✅ 已验证 (7/10) | ✅ | ✅ |
 
 ## 流量来源

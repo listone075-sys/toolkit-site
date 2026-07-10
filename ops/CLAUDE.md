@@ -157,7 +157,7 @@
 | 平台 | 状态 | 日期 |
 |------|:---:|------|
 | SaaSHub | ✅ 已提交，等待审核 | 6/30 |
-| AlternativeTo | ⚠️ 素材已准备，待确认是否提交 | 7/7 |
+| AlternativeTo | ✅ 已提交 | 7/7 |
 | ProductHunt | ⏳ 待准备素材 | - |
 | Bing Webmaster | ✅ 已验证 + IndexNow 已配置 | 7/6 |
 | Ahrefs Webmaster | ✅ 已验证（脚本部署） | 7/10 |
