@@ -12,6 +12,31 @@
  * See: https://www.indexnow.org/documentation
  */
 
+// Load .env.local for standalone execution (Next.js autoloads it, npx tsx does not)
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+function loadEnvLocal() {
+  try {
+    const envPath = resolve(process.cwd(), ".env.local");
+    const content = readFileSync(envPath, "utf-8");
+    for (const line of content.split("\n")) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const eqIdx = trimmed.indexOf("=");
+      if (eqIdx === -1) continue;
+      const key = trimmed.slice(0, eqIdx).trim();
+      const val = trimmed.slice(eqIdx + 1).trim();
+      if (!process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  } catch {
+    // .env.local not found — proceed with existing env
+  }
+}
+loadEnvLocal();
+
 const SITE_URL = process.env.SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolcraftbox.com";
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY ?? "";
 
