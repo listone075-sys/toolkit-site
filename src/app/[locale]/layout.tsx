@@ -128,6 +128,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         <meta name="google-site-verification" content="mx7ab6UFuWD0OuKTdl7ai0kqoMJ1Dad7kIL7FivkrX8" />
         {/* AdSense account verification */}
         <meta name="google-adsense-account" content="ca-pub-5142105226310650" />
+        {/* Ahrefs Webmaster Analytics */}
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="cldQ8sBIP8vOfvnAi80A2A" async />
         {/* Geo-targeting signals (supplementary to hreflang) */}
         <meta name="geo.region" content={LOCALE_REGION[locale] ?? "US"} />
         <meta name="geo.placename" content="Global" />
