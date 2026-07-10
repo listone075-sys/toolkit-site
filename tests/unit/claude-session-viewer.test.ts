@@ -84,6 +84,17 @@ describe("parseLine", () => {
     expect(msg!.role).toBe("system");
     expect(msg!.content).toBe("System message here");
   });
+
+  it("keeps tool_result blocks that carry text as plain strings", () => {
+    const line = JSON.stringify({
+      role: "assistant",
+      content: [{ type: "tool_result", content: ["first line", "second line"] }],
+    });
+    const msg = parseLine(line);
+    expect(msg).not.toBeNull();
+    expect(msg!.toolResult).toBe("first line\nsecond line");
+    expect(msg!.content).toContain("first line");
+  });
 });
 
 describe("parseSession", () => {
@@ -138,6 +149,23 @@ describe("sessionToMarkdown", () => {
     expect(md).toContain("### 👤 User");
     expect(md).toContain("### 🤖 Assistant");
     expect(md).toContain("2 messages");
+  });
+
+  it("uses a longer fence when tool output contains triple backticks", () => {
+    const toolOutput = "here is code:\n```js\nconst a = 1;\n```\ndone";
+    const jsonl = JSON.stringify({
+      role: "assistant",
+      content: [{ type: "tool_result", content: toolOutput }],
+    });
+
+    const session = parseSession(jsonl);
+    const md = sessionToMarkdown(session);
+
+    // The opening fence must be at least 4 backticks so the inner ``` doesn't close it,
+    // and the full tool output must survive intact.
+    expect(md).toContain("````");
+    expect(md).toContain("const a = 1;");
+    expect(md).toContain(toolOutput);
   });
 });
 

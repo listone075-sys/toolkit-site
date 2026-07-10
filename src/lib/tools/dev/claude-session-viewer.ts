@@ -10,6 +10,8 @@
  * 3. Claude Code transcript: lines with various metadata fields
  */
 
+import { escapeHtml } from "@/lib/utils/html";
+
 // ── Types ──────────────────────────────────────────────────────
 
 export interface SessionMessage {
@@ -25,8 +27,6 @@ export interface SessionMessage {
   toolInput?: string;
   /** Tool result content if this is a tool_result */
   toolResult?: string;
-  /** Original raw JSON for debugging */
-  raw?: string;
 }
 
 export interface SessionStats {
@@ -47,6 +47,38 @@ export interface ParsedSession {
   model?: string;
   /** Session title derived from first user message */
   title?: string;
+}
+
+// ── Tool-block serialization (single source of truth) ──────────
+
+/** Serialize a tool_use `input` value to a display string. */
+function stringifyToolInput(input: unknown): string {
+  return typeof input === "object" && input !== null
+    ? JSON.stringify(input, null, 2)
+    : String(input ?? "");
+}
+
+/**
+ * Serialize a tool_result `content` value to a display string.
+ * Handles string content, and arrays whose entries may be plain strings
+ * or blocks carrying text under `text`/`content` (not just `.text`).
+ */
+function stringifyToolResult(content: unknown): string {
+  if (typeof content === "string") return content;
+  if (Array.isArray(content)) {
+    return content
+      .map((b) => {
+        if (typeof b === "string") return b;
+        if (b && typeof b === "object") {
+          const obj = b as Record<string, unknown>;
+          if (typeof obj.text === "string") return obj.text;
+          if (typeof obj.content === "string") return obj.content;
+        }
+        return "";
+      })
+      .join("\n");
+  }
+  return content == null ? "" : JSON.stringify(content);
 }
 
 // ── Content extraction helpers ─────────────────────────────────
@@ -71,21 +103,10 @@ function extractContent(content: unknown): string {
         }
         if (block.type === "tool_use") {
           const name = block.name ?? "unknown";
-          const input =
-            typeof block.input === "object"
-              ? JSON.stringify(block.input, null, 2)
-              : String(block.input ?? "");
-          return `[Tool: ${name}]\n${input}`;
+          return `[Tool: ${name}]\n${stringifyToolInput(block.input)}`;
         }
         if (block.type === "tool_result") {
-          const resultContent = block.content;
-          if (typeof resultContent === "string") {
-            return `[Tool Result]\n${resultContent}`;
-          }
-          if (Array.isArray(resultContent)) {
-            return `[Tool Result]\n${resultContent.map((b: any) => b.text ?? "").join("\n")}`;
-          }
-          return "[Tool Result]";
+          return `[Tool Result]\n${stringifyToolResult(block.content)}`;
         }
         return "";
       })
@@ -107,20 +128,11 @@ function extractContent(content: unknown): string {
 // ── Message parsing ────────────────────────────────────────────
 
 /**
- * Parse a single JSONL line into a SessionMessage, or null if unparseable.
+ * Parse an already-decoded JSONL object into a SessionMessage, or null.
+ * Kept separate from parseLine so callers that already have the parsed
+ * object (e.g. parseSession) don't pay for a second JSON.parse.
  */
-export function parseLine(raw: string): SessionMessage | null {
-  if (!raw.trim()) return null;
-
-  let obj: Record<string, unknown>;
-  try {
-    obj = JSON.parse(raw);
-  } catch {
-    // Try to recover: some lines may have extra content after JSON
-    // or be wrapped differently
-    return null;
-  }
-
+function parseObject(obj: Record<string, unknown>): SessionMessage | null {
   if (!obj || typeof obj !== "object") return null;
 
   // Check if this is a wrapped format: { type: "...", message: { ... } }
@@ -140,7 +152,6 @@ export function parseLine(raw: string): SessionMessage | null {
         role: "system",
         content: typeof obj.content === "string" ? obj.content : JSON.stringify(obj),
         timestamp: obj.timestamp as string | undefined,
-        raw,
       };
     }
     return null;
@@ -154,33 +165,19 @@ export function parseLine(raw: string): SessionMessage | null {
     (obj.created_at as string) ??
     undefined;
 
-  // Detect tool messages
+  // Detect tool metadata from content blocks
   let toolName: string | undefined;
   let toolInput: string | undefined;
   let toolResult: string | undefined;
 
   if (Array.isArray(message.content)) {
-    const blocks = message.content as Array<Record<string, unknown>>;
-    for (const block of blocks) {
+    for (const block of message.content as Array<Record<string, unknown>>) {
       if (block.type === "tool_use") {
         toolName = block.name as string;
-        toolInput =
-          typeof block.input === "object"
-            ? JSON.stringify(block.input, null, 2)
-            : String(block.input ?? "");
-        // A tool_use in content makes this a tool-calling assistant message
-        if (role === "assistant") {
-          // Keep as assistant — the tool call is embedded in content
-        }
+        toolInput = stringifyToolInput(block.input);
       }
       if (block.type === "tool_result") {
-        const rc = block.content;
-        toolResult =
-          typeof rc === "string"
-            ? rc
-            : Array.isArray(rc)
-              ? rc.map((b: any) => b.text ?? "").join("\n")
-              : JSON.stringify(rc);
+        toolResult = stringifyToolResult(block.content);
       }
     }
   }
@@ -189,15 +186,21 @@ export function parseLine(raw: string): SessionMessage | null {
   const effectiveRole: SessionMessage["role"] =
     obj.type === "tool_result" || obj.tool_result ? "tool" : role;
 
-  return {
-    role: effectiveRole,
-    content,
-    timestamp,
-    toolName,
-    toolInput,
-    toolResult,
-    raw,
-  };
+  return { role: effectiveRole, content, timestamp, toolName, toolInput, toolResult };
+}
+
+/**
+ * Parse a single JSONL line into a SessionMessage, or null if unparseable.
+ */
+export function parseLine(raw: string): SessionMessage | null {
+  if (!raw.trim()) return null;
+  let obj: Record<string, unknown>;
+  try {
+    obj = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+  return parseObject(obj);
 }
 
 function normalizeRole(role?: string): SessionMessage["role"] {
@@ -213,6 +216,8 @@ function normalizeRole(role?: string): SessionMessage["role"] {
 
 /**
  * Parse an entire .jsonl session file content into a ParsedSession.
+ * Each line is decoded with a single JSON.parse; both model detection and
+ * message extraction reuse that one decode.
  */
 export function parseSession(content: string): ParsedSession {
   const lines = content.split("\n");
@@ -221,23 +226,26 @@ export function parseSession(content: string): ParsedSession {
   let title: string | undefined;
 
   for (const line of lines) {
-    // Try to extract model from metadata lines
+    if (!line.trim()) continue;
+
+    let obj: Record<string, unknown>;
+    try {
+      obj = JSON.parse(line);
+    } catch {
+      continue;
+    }
+
+    // Extract model from metadata (from the same decoded object)
     if (!model) {
-      try {
-        const obj = JSON.parse(line);
-        if (obj.model && typeof obj.model === "string") {
-          model = obj.model;
-        }
-        // Also check inside message
-        if (!model && obj.message?.model && typeof obj.message.model === "string") {
-          model = obj.message.model;
-        }
-      } catch {
-        // ignore
+      if (typeof obj.model === "string") {
+        model = obj.model;
+      } else {
+        const inner = obj.message as Record<string, unknown> | undefined;
+        if (inner && typeof inner.model === "string") model = inner.model;
       }
     }
 
-    const msg = parseLine(line);
+    const msg = parseObject(obj);
     if (msg) {
       messages.push(msg);
       // Derive title from first user message
@@ -291,6 +299,24 @@ function computeStats(messages: SessionMessage[], totalLines: number): SessionSt
   };
 }
 
+// ── Fenced-code helpers ────────────────────────────────────────
+
+const TOOL_RESULT_MAX = 5000;
+
+/**
+ * Build a code-fence delimiter guaranteed to be longer than any backtick run
+ * inside `content`, so embedded ``` sequences can't terminate the block early.
+ */
+function fenceFor(content: string): string {
+  const runs = content.match(/`+/g);
+  const longest = runs ? Math.max(...runs.map((r) => r.length)) : 0;
+  return "`".repeat(Math.max(3, longest + 1));
+}
+
+function truncateResult(result: string, suffix: string): string {
+  return result.length > TOOL_RESULT_MAX ? result.slice(0, TOOL_RESULT_MAX) + suffix : result;
+}
+
 // ── Export: Markdown ───────────────────────────────────────────
 
 /**
@@ -311,7 +337,9 @@ export function sessionToMarkdown(session: ParsedSession): string {
 
   // Stats summary
   const s = session.stats;
-  lines.push(`> ${s.parsedMessages} messages · ${s.totalChars.toLocaleString()} chars · ~${s.estimatedTokens.toLocaleString()} tokens`);
+  lines.push(
+    `> ${s.parsedMessages} messages · ${s.totalChars.toLocaleString()} chars · ~${s.estimatedTokens.toLocaleString()} tokens`,
+  );
   lines.push("");
   lines.push("---");
   lines.push("");
@@ -333,12 +361,13 @@ export function sessionToMarkdown(session: ParsedSession): string {
       lines.push(`**🔧 Tool:** \`${msg.toolName}\``);
       lines.push("");
       if (msg.toolInput) {
+        const fence = fenceFor(msg.toolInput);
         lines.push("<details>");
         lines.push("<summary>Tool Input</summary>");
         lines.push("");
-        lines.push("```json");
+        lines.push(`${fence}json`);
         lines.push(msg.toolInput);
-        lines.push("```");
+        lines.push(fence);
         lines.push("");
         lines.push("</details>");
         lines.push("");
@@ -346,17 +375,14 @@ export function sessionToMarkdown(session: ParsedSession): string {
     }
 
     if (msg.toolResult) {
+      const truncated = truncateResult(msg.toolResult, "\n\n*(result truncated)*");
+      const fence = fenceFor(truncated);
       lines.push("<details>");
       lines.push("<summary>Tool Result</summary>");
       lines.push("");
-      // Truncate very long tool results in export
-      const truncated =
-        msg.toolResult.length > 5000
-          ? msg.toolResult.slice(0, 5000) + "\n\n*(result truncated)*"
-          : msg.toolResult;
-      lines.push("```");
+      lines.push(fence);
       lines.push(truncated);
-      lines.push("```");
+      lines.push(fence);
       lines.push("");
       lines.push("</details>");
       lines.push("");
@@ -364,12 +390,8 @@ export function sessionToMarkdown(session: ParsedSession): string {
 
     // Content
     if (msg.content) {
-      // For system messages, wrap in blockquote
       if (msg.role === "system") {
         lines.push("> " + msg.content.replace(/\n/g, "\n> "));
-      } else if (msg.content.length > 500) {
-        // Long messages: use code fence for readability
-        lines.push(msg.content);
       } else {
         lines.push(msg.content);
       }
@@ -399,7 +421,7 @@ export function sessionToHtml(session: ParsedSession): string {
       const roleLabel = roleDisplayLabel(msg.role);
       const emoji = roleEmoji(msg.role);
       const ts = msg.timestamp
-        ? `<span class="timestamp">${formatTimestamp(msg.timestamp)}</span>`
+        ? `<span class="timestamp">${escapeHtml(formatTimestamp(msg.timestamp))}</span>`
         : "";
 
       const contentEscaped = escapeHtml(msg.content);
@@ -412,10 +434,7 @@ export function sessionToHtml(session: ParsedSession): string {
         }
       }
       if (msg.toolResult) {
-        const truncated =
-          msg.toolResult.length > 5000
-            ? msg.toolResult.slice(0, 5000) + "\n\n(result truncated)"
-            : msg.toolResult;
+        const truncated = truncateResult(msg.toolResult, "\n\n(result truncated)");
         toolSection += `<details><summary>Tool Result</summary><pre><code>${escapeHtml(truncated)}</code></pre></details>`;
       }
 
@@ -529,46 +548,27 @@ export function sessionToHtml(session: ParsedSession): string {
 
 // ── Display helpers ────────────────────────────────────────────
 
+const ROLE_META: Record<SessionMessage["role"], { label: string; emoji: string }> = {
+  user: { label: "User", emoji: "👤" },
+  assistant: { label: "Assistant", emoji: "🤖" },
+  system: { label: "System", emoji: "⚙️" },
+  tool: { label: "Tool", emoji: "🔧" },
+};
+
 export function roleDisplayLabel(role: SessionMessage["role"]): string {
-  switch (role) {
-    case "user":
-      return "User";
-    case "assistant":
-      return "Assistant";
-    case "system":
-      return "System";
-    case "tool":
-      return "Tool";
-  }
+  return ROLE_META[role].label;
 }
 
 export function roleEmoji(role: SessionMessage["role"]): string {
-  switch (role) {
-    case "user":
-      return "👤";
-    case "assistant":
-      return "🤖";
-    case "system":
-      return "⚙️";
-    case "tool":
-      return "🔧";
-  }
+  return ROLE_META[role].emoji;
 }
 
-function formatTimestamp(ts: string): string {
-  try {
-    const d = new Date(ts);
-    if (isNaN(d.getTime())) return ts;
-    return d.toLocaleString();
-  } catch {
-    return ts;
-  }
-}
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+/**
+ * Format an ISO/date-like timestamp for display, falling back to the raw
+ * string when it isn't a valid date (so users never see "Invalid Date").
+ */
+export function formatTimestamp(ts: string): string {
+  const d = new Date(ts);
+  if (isNaN(d.getTime())) return ts;
+  return d.toLocaleString();
 }
