@@ -1,8 +1,16 @@
 # ToolCraft 运营工作台
 
-> 当前阶段：12周运营推广计划 · 第3周
-> 上次更新：2026-07-02
+> 当前阶段：12周运营推广计划 · 第5周
+> 上次更新：2026-07-10
 > 主项目路径：`D:\ai\toolkit-site`
+> 
+> ## ⚠️ 数据更正（2026-07-08）
+> 
+> **GA4 此前从未正常工作！** `NEXT_PUBLIC_GA_ID` 未在构建环境配置，Analytics 组件返回 null。已于 7/8 修复：
+> - 本地 `.env.local` + 服务器 `.env.local` 均已补上 `NEXT_PUBLIC_GA_ID=G-JRNJX5CQ1F`
+> - 服务器已重新构建部署（`npm run build` 时正确读取 env var）
+> - 所有旧 daily-stats 已归档至 `tracking/daily-stats/_invalid/`（数据来自其他项目污染）
+> - KPI 仪表盘已重置，从零开始积累
 > 
 > ## 🎯 战略方向更新（2026-07-02）
 > 
@@ -37,7 +45,7 @@
 
 ---
 
-## 当前阶段：12周运营推广计划（第3周）
+## 当前阶段：12周运营推广计划（第5周）
 
 ### 12周路线图总览
 
@@ -45,9 +53,9 @@
 |:--:|------|---------|
 | 1 | 基础搭建 | GSC/GA4/Bing 验证、社交媒体账号、第一篇博客 |
 | 2 | 内容启动 | 社交媒体矩阵、目录提交、2-3篇博客 |
-| **3** | **内容加速** | **4篇博客、外链建设、社交媒体日常运营** ← 当前 |
-| 4 | 工具优化 | 批量上传、搜索功能、PWA修复 |
-| 5 | 内容深化 | 3-4篇博客、工具页面内容增强 |
+| 3 | 内容加速 | 4篇博客、外链建设、社交媒体日常运营 |
+| 4 | 工具优化 | 3篇博客、IndexNow、GA4修复、Claude Session Viewer |
+| **5** | **内容深化** | **3-4篇博客、工具页面内容增强** ← 当前 |
 | 6 | 扩展分发 | TikTok视频、邮件序列、ProductHunt准备 |
 | 7 | 外链突破 | 大规模外链建设、竞品对比博客 |
 | 8 | 数据优化 | SEO审计、Core Web Vitals、转化率优化 |
@@ -56,16 +64,32 @@
 | 11 | 变现测试 | 广告位优化、Pro计划调研 |
 | 12 | 复盘规划 | 12周复盘、下半年规划 |
 
-### 本周（第3周）任务清单
+### 第4周复盘
 
-- [x] 周一：QR Code 博客发布 + 社交媒体分发 ✅
-- [x] 周二：Markdown 多格式转换博客发布 ✅
-- [x] 周三：Blog #8 ChatGPT/Claude 转 Word/PDF 发布（Markdown 方向）✅
-- [x] 周四：Blog #9 ChatGPT 保存攻略（中文原创）发布 ✅
-- [ ] 周五：本周复盘 + 下周规划
-- [ ] 每日：Twitter 推文发布（#10 待发）
-- [ ] 持续：Pinterest 账号养号（商业账号转换重试）
-- [ ] 持续：Markdown 优先内容策略执行
+**第4周（7/6-7/10）完成情况：**
+- ✅ IndexNow KEY 配置完成 + postbuild 自动提交修复
+- ✅ 新增博客 3 篇：Blog #10 Markdown Cheat Sheet + #11 Technical Writing + #12 Clean Up ChatGPT Output
+- ✅ GA4 修复（`NEXT_PUBLIC_GA_ID` 配置）并重新部署
+- ✅ 新工具：Claude Code Session Viewer
+- ✅ Twitter 推文 #12, #13
+- ✅ Pinterest Pin #6, #7, #8（超额：3/2）
+- ✅ Ahrefs Webmaster 注册 + 验证脚本部署
+- ✅ 本周复盘完成 → `ops/tracking/weekly-reports/week-4.md`
+- ⚠️ Blog #12 话题变更：PDF vs Desktop → Clean Up ChatGPT Output（延续 AI+Markdown 方向）
+- ⚠️ Twitter 仅 2 条（目标 5 条），下周需恢复节奏
+- ❓ AlternativeTo 待确认是否实际提交
+
+### 本周（第5周）任务清单 — 内容深化
+
+| 日期 | 核心任务 | 状态 |
+|:---:|---------|:---:|
+| 周一 7/13 | 博客选题 + 工具页面内容增强 | ⬜ |
+| 周二 7/14 | Blog #13 发布 | ⬜ |
+| 周三 7/15 | Blog #14 发布 + 工具 SEO 优化 | ⬜ |
+| 周四 7/16 | Blog #15 发布 | ⬜ |
+| 周五 7/17 | 本周复盘 + GSC/GA4 数据检查 | ⬜ |
+| 每日 | Twitter 推文发布（恢复每日 1 条） | ⬜ |
+| 持续 | Pinterest 每周至少 2 个 Pin | ⬜ |
 
 ---
 
@@ -84,7 +108,12 @@
 | 7 | 7/4 | Markdown vs WYSIWYG: Which Should You Use in 2026? | Markdown | ✅ 已发布 |
 | 8 | 7/2 | How to Convert ChatGPT & Claude Responses to Word or PDF | Markdown AI | ✅ 已发布 |
 | 9 | 7/3 | ChatGPT 的回答怎么保存？转 Word/PDF 完整攻略 | Markdown ZH | ✅ 已发布 |
-| 10 | 待定 | 下一篇 | Markdown | 📝 待写 |
+| 10 | 7/6 | Markdown Cheat Sheet — Complete Quick Reference (EN+ZH) | Markdown | ✅ 已发布 |
+| 11 | 7/7 | How to Use Markdown for Technical Writing with AI (EN+ZH) | Markdown AI | ✅ 已发布 |
+| 12 | 7/8 | How to Clean Up ChatGPT Output Formatting (EN+ZH) | Markdown AI | ✅ 已发布 |
+| 13 | 7/14 | [选题待定] | - | 📝 计划中 |
+| 14 | 7/15 | [选题待定] | - | 📝 计划中 |
+| 15 | 7/16 | [选题待定] | - | 📝 计划中 |
 
 ### 内容轮换规则（2026-07-02 更新：Markdown 优先策略）
 **新策略：Markdown 品类优先（每周至少2篇），搭配 Image/PDF**
@@ -108,12 +137,11 @@
 - 头像/封面：`public/social/twitter-avatar.png` / `public/social/twitter-cover.png`
 
 ### Pinterest — toolcraftbox
-- 状态：⚠️ 个人账号，商业账号转换失败（"not eligible"）
-- 养号中：关注账号、创建 Board、发 Pin
-- 重试：2026-07-03 左右再次尝试商业账号转换
+- 状态：✅ 商业账号转换成功（7/3）
+- 发 Pin 策略：每周至少 2 个，配合新博客发布
+- 策略：AI+Markdown Pin 为主（ChatGPT 转文档、技术写作等）
 - 目标 Board：Image Tools & Tips / PDF Hacks & Tutorials / Markdown for Beginners / Free Online Tools / Developer Resources
-- Rich Pins：OG标签已配置 ✅，需商业账号后验证
-- Pin 素材：`public/social/pin-*.png`
+- Rich Pins：OG标签已配置 ✅，可验证
 
 ### 其他平台
 - TikTok：待创建
@@ -129,10 +157,10 @@
 | 平台 | 状态 | 日期 |
 |------|:---:|------|
 | SaaSHub | ✅ 已提交，等待审核 | 6/30 |
-| AlternativeTo | ⏳ 已注册，等待7天（7/7可提交） | 6/30 |
+| AlternativeTo | ⚠️ 素材已准备，待确认是否提交 | 7/7 |
 | ProductHunt | ⏳ 待准备素材 | - |
-| Bing Webmaster | ✅ 已验证 | 6/26 |
-| Ahrefs Webmaster | ⬜ 待注册 | - |
+| Bing Webmaster | ✅ 已验证 + IndexNow 已配置 | 7/6 |
+| Ahrefs Webmaster | ✅ 已验证（脚本部署） | 7/10 |
 
 ### IndexNow
 - 状态：⚠️ INDEXNOW_KEY 未设置
@@ -223,13 +251,12 @@ https://toolcraftbox.com/en/blog/how-to-convert-markdown-to-html-docx-pdf
 
 ---
 
-## 本周待办（截至 2026-07-04）
+## 本周待办（截至 2026-07-06 周一）
 
-1. [ ] 写第5篇博客（PDF 品类）
-2. [ ] 写第6篇博客（Image 或工具对比）
-3. [ ] 每日 Twitter 推文
-4. [ ] Pinterest 继续养号，7/3 左右重试商业账号
-5. [ ] 注册 Ahrefs Webmaster
-6. [ ] 配置 INDEXNOW_KEY
-7. [ ] 提醒用户：Day 5 推文未发布
-8. [ ] 周五复盘
+1. [ ] **配置 IndexNow KEY** — 生成 key → 设为环境变量
+2. [ ] **写 Blog #10: Markdown Cheat Sheet**（EN + ZH）
+3. [ ] **7/7 提交 AlternativeTo**
+4. [ ] 注册 Ahrefs Webmaster
+5. [ ] 每日 Twitter 推文
+6. [ ] Pinterest 每周至少 2 个 Pin
+7. [ ] 确认 Cloudflare NS 传播状态
