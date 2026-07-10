@@ -20,11 +20,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const PROPERTY_ID = process.env.GA4_PROPERTY_ID ?? "541266486";
+// GA4 was fixed on 2026-07-08 — only fetch data from this date onward
+const START_DATE = process.env.GA4_START_DATE ?? "2026-07-08";
 const OPS_DIR = resolve(__dirname, "..", "ops");
 const TRACKING_DIR = join(OPS_DIR, "tracking");
 const DASHBOARD_PATH = join(TRACKING_DIR, "kpi-dashboard.md");
 const DAILY_LOG_DIR = join(TRACKING_DIR, "daily-stats");
 const CONFIG_MEMO_PATH = join(OPS_DIR, ".claude", "memory", "config-credentials.md");
+
+// Non-ToolCraft pages from other projects sharing the same GA4 property.
+// Exclude these from reports until the data streams are separated.
+const EXCLUDED_PATHS = [
+  "/events.html",
+  "/knowledge.html",
+  "/backtest.html",
+  "/toolbox.html",
+];
 
 // ---- Auth ----
 function getClient() {
@@ -50,13 +61,14 @@ function getClient() {
 }
 
 // ---- Data fetching ----
-async function fetchMetrics(days: number = 7) {
+async function fetchMetrics() {
   const client = getClient();
   const property = `properties/${PROPERTY_ID}`;
 
+  const today = new Date().toISOString().split("T")[0];
   const resp = await client.runReport({
     property,
-    dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
+    dateRanges: [{ startDate: START_DATE, endDate: today }],
     metrics: [
       { name: "activeUsers" },        // UV
       { name: "screenPageViews" },    // PV
@@ -79,35 +91,41 @@ async function fetchMetrics(days: number = 7) {
   }));
 }
 
-async function fetchTopPages(days: number = 7, limit: number = 10) {
+async function fetchTopPages(limit: number = 10) {
   const client = getClient();
   const property = `properties/${PROPERTY_ID}`;
 
+  const today = new Date().toISOString().split("T")[0];
   const resp = await client.runReport({
     property,
-    dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
+    dateRanges: [{ startDate: START_DATE, endDate: today }],
     metrics: [{ name: "screenPageViews" }, { name: "activeUsers" }],
     dimensions: [{ name: "pagePath" }, { name: "pageTitle" }],
     orderBy: [{ metric: { metricName: "screenPageViews" }, desc: true }],
-    limit,
+    // Fetch more than limit to account for excluded paths being filtered out
+    limit: limit + EXCLUDED_PATHS.length,
   });
   const rows = resp?.[0]?.rows ?? [];
 
-  return rows.map((row) => ({
-    path: row.dimensionValues?.[0]?.value ?? "",
-    title: row.dimensionValues?.[1]?.value ?? "",
-    pageViews: parseInt(row.metricValues?.[0]?.value ?? "0"),
-    users: parseInt(row.metricValues?.[1]?.value ?? "0"),
-  }));
+  return rows
+    .map((row) => ({
+      path: row.dimensionValues?.[0]?.value ?? "",
+      title: row.dimensionValues?.[1]?.value ?? "",
+      pageViews: parseInt(row.metricValues?.[0]?.value ?? "0"),
+      users: parseInt(row.metricValues?.[1]?.value ?? "0"),
+    }))
+    .filter((row) => !EXCLUDED_PATHS.includes(row.path))
+    .slice(0, limit);
 }
 
-async function fetchTrafficSources(days: number = 7) {
+async function fetchTrafficSources() {
   const client = getClient();
   const property = `properties/${PROPERTY_ID}`;
 
+  const today = new Date().toISOString().split("T")[0];
   const resp = await client.runReport({
     property,
-    dateRanges: [{ startDate: `${days}daysAgo`, endDate: "today" }],
+    dateRanges: [{ startDate: START_DATE, endDate: today }],
     metrics: [{ name: "activeUsers" }, { name: "screenPageViews" }],
     dimensions: [{ name: "sessionDefaultChannelGroup" }],
   });
@@ -132,22 +150,23 @@ function summaryText(daily: Array<{ date: string; activeUsers: number; pageViews
 
 // ---- Main ----
 async function main() {
-  console.log(`[GA4] Fetching data for property ${PROPERTY_ID}...`);
+  const today = new Date().toISOString().split("T")[0];
+  console.log(`[GA4] Fetching data for property ${PROPERTY_ID} (since ${START_DATE})...`);
 
-  const daily = await fetchMetrics(7);
-  const topPages = await fetchTopPages(7);
-  const sources = await fetchTrafficSources(7);
+  const daily = await fetchMetrics();
+  const topPages = await fetchTopPages(10);
+  const sources = await fetchTrafficSources();
 
   const summary = summaryText(daily);
-  const today = new Date().toISOString().split("T")[0];
 
   console.log(`\n=== GA4 Report — ${today} ===`);
-  console.log(`7-Day Total: ${summary.totalPV} PV / ${summary.totalUV} UV`);
-  console.log(`Daily Avg:   ${summary.avgDailyPV} PV / ${summary.avgDailyUV} UV`);
-  console.log(`Yesterday:   ${summary.lastDay} PV`);
+  console.log(`Date range:  ${START_DATE} → ${today} (${daily.length} days)`);
+  console.log(`Period PV/UV: ${summary.totalPV} PV / ${summary.totalUV} UV`);
+  console.log(`Daily Avg:    ${summary.avgDailyPV} PV / ${summary.avgDailyUV} UV`);
+  console.log(`Yesterday:    ${summary.lastDay} PV`);
   console.log(`\nTraffic Sources:`);
   sources.forEach((s) => console.log(`  ${s.channel}: ${s.users} users / ${s.pageViews} PV`));
-  console.log(`\nTop Pages:`);
+  console.log(`\nTop Pages (non-ToolCraft paths filtered):`);
   topPages.forEach((p, i) => console.log(`  ${i + 1}. ${p.path} (${p.pageViews} PV)`));
 
   // Save daily log
@@ -156,13 +175,17 @@ async function main() {
   }
   const logEntry = {
     date: today,
-    totalPV_7d: summary.totalPV,
-    totalUV_7d: summary.totalUV,
+    startDate: START_DATE,
+    days: daily.length,
+    totalPV: summary.totalPV,
+    totalUV: summary.totalUV,
     avgDailyPV: summary.avgDailyPV,
     avgDailyUV: summary.avgDailyUV,
     yesterdayPV: summary.lastDay,
+    dailyBreakdown: daily,
     sources: sources.map((s) => ({ channel: s.channel, users: s.users, pageViews: s.pageViews })),
     topPages: topPages.map((p) => ({ path: p.path, pageViews: p.pageViews, users: p.users })),
+    note: "Data from 2026-07-08 onwards (GA4 fix date). Non-ToolCraft paths excluded.",
   };
   const logFile = join(DAILY_LOG_DIR, `${today}.json`);
   writeFileSync(logFile, JSON.stringify(logEntry, null, 2));
