@@ -1,0 +1,61 @@
+{
+  "date": "2026-07-10",
+  "startDate": "2026-07-08",
+  "days": 3,
+  "totalPV": 40,
+  "totalUV": 23,
+  "avgDailyPV": 13,
+  "avgDailyUV": 8,
+  "yesterdayPV": 13,
+  "dailyBreakdown": [
+    {
+      "date": "20260708",
+      "activeUsers": 11,
+      "pageViews": 18,
+      "avgSessionDuration": 18.860102692307695,
+      "bounceRate": 0.9230769230769231,
+      "newUsers": 12
+    },
+    {
+      "date": "20260709",
+      "activeUsers": 8,
+      "pageViews": 9,
+      "avgSessionDuration": 0.512889625,
+      "bounceRate": 1,
+      "newUsers": 9
+    },
+    {
+      "date": "20260710",
+      "activeUsers": 4,
+      "pageViews": 13,
+      "avgSessionDuration": 101.5253984,
+      "bounceRate": 1,
+      "newUsers": 4
+    }
+  ],
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 22,
+      "pageViews": 35
+    },
+    {
+      "channel": "Unassigned",
+      "users": 2,
+      "pageViews": 4
+    },
+    {
+      "channel": "Organic Search",
+      "users": 1,
+      "pageViews": 1
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "pageViews": 34,
+      "users": 23
+    }
+  ],
+  "note": "Data from 2026-07-08 onwards (GA4 fix date). Non-ToolCraft paths excluded."
+}
