@@ -1,10 +1,4 @@
-import * as pdfjsLib from "pdfjs-dist";
-
-// Set up the worker — use the bundled worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url,
-).toString();
+import type * as pdfjsLibType from "pdfjs-dist";
 
 export interface PdfToImageOptions {
   /** Page number (1-based) to convert, or all pages */
@@ -25,6 +19,20 @@ export interface PdfPageInfo {
   dataUrl: string;
 }
 
+let pdfjsLib: typeof pdfjsLibType | null = null;
+
+async function getPdfjsLib(): Promise<typeof pdfjsLibType> {
+  if (pdfjsLib) return pdfjsLib;
+  const mod = await import("pdfjs-dist");
+  pdfjsLib = mod;
+  // Set up the worker — use the bundled worker
+  pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+    "pdfjs-dist/build/pdf.worker.min.mjs",
+    import.meta.url,
+  ).toString();
+  return pdfjsLib;
+}
+
 /**
  * Convert PDF pages to images
  */
@@ -33,9 +41,10 @@ export async function pdfToImages(
   options: PdfToImageOptions = {},
 ): Promise<PdfPageInfo[]> {
   const { page: targetPage, format = "image/png", quality = 0.95, scale = 2 } = options;
+  const lib = await getPdfjsLib();
 
   const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  const pdf = await lib.getDocument({ data: arrayBuffer }).promise;
   const totalPages = pdf.numPages;
 
   const pagesToRender = targetPage ? [targetPage] : Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -81,7 +90,8 @@ export async function pdfToImages(
  * Get PDF page count from a file
  */
 export async function getPdfPageCount(file: File): Promise<number> {
+  const lib = await getPdfjsLib();
   const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  const pdf = await lib.getDocument({ data: arrayBuffer }).promise;
   return pdf.numPages;
 }
