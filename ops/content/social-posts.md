@@ -19,6 +19,7 @@
 | 11 | 7/3 | 问题式 | Blog #9 + Blog #8 推广 | ✅ |
 | 12 | 7/6 | 速查表 | Markdown Cheat Sheet (Blog #10) 预热 | ✅ |
 | 13 | 7/7 | 技巧式 | Markdown technical writing tips | ✅ |
+| 14 | 7/13 | 技巧式 | ChatGPT 输出格式清理 + AI→PPTX 预告 | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
@@ -106,7 +107,96 @@ Free tool:
 [CTA + 链接]
 ```
 
-### Pinterest Pin 模板
+
+---
+
+## Tweet #14 — 恢复每日发布（2026-07-13）
+
+### 推 Blog #12：Clean Up ChatGPT Output Formatting
+
+**版本 A — 问题式（推荐）：**
+```
+ChatGPT is amazing. Its formatting? Not always.
+
+Extra spaces. Inconsistent line breaks. Weird Markdown artifacts.
+
+Here's how to clean up any AI output in seconds — no manual editing:
+
+🧹 Fix spacing, headings, and code blocks
+📋 Copy clean, professional text
+🔄 Works with ChatGPT, Claude, Gemini outputs
+
+🔗 https://toolcraftbox.com/en/blog/how-to-clean-up-chatgpt-output-formatting
+```
+
+**版本 B — 简短式：**
+```
+3 things you can clean up in AI outputs with our free formatter:
+• Messy line breaks → clean paragraphs
+• Inconsistent headings → proper hierarchy
+• Broken tables → perfectly aligned
+
+All in your browser. No sign-up.
+
+🔗 https://toolcraftbox.com/en/blog/how-to-clean-up-chatgpt-output-formatting
+```
+
+### 预告 Blog #13：Markdown to PPTX
+
+**简短预告（可明天发）：**
+```
+Stop building slides one by one.
+
+ChatGPT drafts your presentation → Markdown → PPTX. 30 seconds.
+
+New guide dropping tomorrow 🧵
+```
+
+---
+
+## Blog #13 社交分发素材（2026-07-14 发布用）
+
+### 博客信息
+- **标题 (EN):** How to Convert Markdown to PowerPoint — Free & Fast
+- **标题 (ZH):** 如何将 Markdown 转换为 PPT 演示文稿 — 免费快速指南
+- **Slug:** how-to-convert-markdown-to-powerpoint
+- **品类:** Markdown AI
+
+### Twitter 推文（推 EN 版本）
+
+**版本 A — 问题式（推荐）：**
+```
+Your meeting is in an hour. ChatGPT gave you a perfect presentation outline in Markdown.
+
+Now you're rebuilding it in PowerPoint, slide by slide. 😩
+
+Stop. There's a better way:
+
+Markdown → PPTX. 30 seconds. Free. In your browser.
+
+🔗 https://toolcraftbox.com/en/blog/how-to-convert-markdown-to-powerpoint
+```
+
+**版本 B — 数据对比式：**
+```
+Building a 10-slide deck:
+
+PowerPoint from scratch: ~90 minutes
+Markdown → PPTX + polish: ~15 minutes
+
+That's an 83% time saving. Every single presentation.
+
+Here's how:
+🔗 https://toolcraftbox.com/en/blog/how-to-convert-markdown-to-powerpoint
+```
+
+### Pinterest Pin
+
+**标题：** How to Convert Markdown to PowerPoint — Free & Fast Tutorial
+
+**描述：** Stop building slides one by one! Convert Markdown text to professional PowerPoint presentations in seconds. Works with ChatGPT and Claude outputs. All processing happens in your browser — no upload, no sign-up. Perfect for business presentations, lectures, and conference talks. Save for later!
+
+**Board：** Markdown for Beginners
 ```
 标题：[How to / X Best / Complete Guide] + [关键词]
 

@@ -1,6 +1,6 @@
 # 博客发布进度
 
-> 累计：12 篇（EN: 30 文件, ZH: 31 文件）
+> 累计：13 篇（EN: 31 文件, ZH: 32 文件）
 > 策略：Markdown 品类优先，每周至少 2 篇
 
 ## 已发布
@@ -24,7 +24,7 @@
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | 📝 |
+| 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | ✅ |
 | 14 | 7/15 | How to Write a Great README — Tips & Best Practices | Markdown | 📝 |
 | 15 | 7/16 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to | 📝 |
 

@@ -183,17 +183,27 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "Will I lose image quality?",
         answer:
-          "Our smart compression balances quality and file size. Use the quality slider to find the right balance — we recommend 80% for photos.",
+          "Our smart compression balances quality and file size. Use the quality slider to find the right balance — we recommend 80% for photos, which typically reduces file size by 60-80% with minimal visible quality loss.",
       },
       {
         question: "What image formats are supported?",
         answer:
-          "We support JPEG, PNG, WebP, and most common image formats. The output format matches your input by default.",
+          "We support JPEG, PNG, WebP, AVIF, and most common image formats. The output format matches your input by default. You can also convert between formats using our dedicated converter tools.",
       },
       {
         question: "Is my image secure?",
         answer:
-          "Yes. All compression happens in your browser. Your images are never uploaded to any server.",
+          "Yes. All compression happens in your browser. Your images are never uploaded to any server. This is especially important for sensitive photos, business documents, or personal images.",
+      },
+      {
+        question: "How much can I compress an image?",
+        answer:
+          "Typical compression ratios range from 50-90% depending on the image content and format. Photos compress well at 80% quality. PNG images with few colors may compress less than JPEG photos. Use the live preview to see the exact file size reduction before downloading.",
+      },
+      {
+        question: "Can I compress multiple images at once?",
+        answer:
+          "You can compress images one at a time. For batch processing, compress each image individually — since all processing is local, there's no queue or wait time beyond your device's speed.",
       },
     ],
   },
@@ -344,7 +354,22 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "Can I convert only specific pages?",
         answer:
-          "Currently we convert all pages. You can pick which pages to download from the results grid.",
+          "Currently we convert all pages. You can pick which pages to download from the results grid. For extracting specific pages before conversion, use our Split PDF tool first.",
+      },
+      {
+        question: "Is my PDF file secure during conversion?",
+        answer:
+          "Yes. All processing happens locally in your browser using client-side JavaScript. Your PDF is never uploaded to any server — it stays on your device the entire time.",
+      },
+      {
+        question: "What is the output format — PNG or JPG?",
+        answer:
+          "By default we output JPG format, which offers a good balance of quality and file size. If you need lossless quality with transparency support, check our image converter tools for PNG output options.",
+      },
+      {
+        question: "Does it work on mobile devices?",
+        answer:
+          "Yes, the PDF to JPG converter works on any modern browser including Chrome, Safari, and Firefox on both desktop and mobile. Processing speed depends on your device's performance.",
       },
     ],
   },
@@ -368,12 +393,27 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "Is there a limit to how many PDFs I can merge?",
         answer:
-          "No hard limit — all processing is done in your browser. However, very large or numerous PDFs may slow down your device.",
+          "No hard limit — all processing is done in your browser. However, very large or numerous PDFs may slow down your device. For best results, keep the total combined size under 100MB.",
       },
       {
         question: "Will the formatting be preserved?",
         answer:
-          "Yes! We use PDF-lib which preserves all content, fonts, and formatting from your original PDFs.",
+          "Yes! We use PDF-lib which preserves all content, fonts, and formatting from your original PDFs. Page sizes, embedded images, text layout, and links are all maintained in the merged output.",
+      },
+      {
+        question: "Can I merge PDFs with different page sizes?",
+        answer:
+          "Yes, you can merge PDFs with different page sizes (A4, Letter, etc.). Each page retains its original dimensions. If you need uniform page sizes, resize the individual PDFs before merging.",
+      },
+      {
+        question: "Is my data secure when merging PDFs?",
+        answer:
+          "Absolutely. The entire merge process runs in your browser using client-side JavaScript. Your PDF files never leave your device — no upload, no server processing, no data transmission.",
+      },
+      {
+        question: "Can I reorder pages before merging?",
+        answer:
+          "Yes, after uploading your PDFs you can drag to arrange them in the desired merge order. For reordering pages within a single PDF, use our PDF Page Reorder tool first.",
       },
     ],
   },
@@ -404,6 +444,21 @@ export const toolRegistry: ToolConfig[] = [
         answer:
           "Our compression optimizes the PDF structure without altering the visible content. Text, images, and formatting remain identical to the original.",
       },
+      {
+        question: "Is my PDF secure during compression?",
+        answer:
+          "Yes. All compression happens locally in your browser. Your PDF files are never uploaded to any server — complete privacy is guaranteed.",
+      },
+      {
+        question: "Can I compress a scanned PDF?",
+        answer:
+          "Yes, but results vary. Scanned PDFs are essentially images wrapped in a PDF container. Our structural compression helps with the PDF overhead, but the image data itself may need separate image compression for significant size reduction.",
+      },
+      {
+        question: "What if the compressed PDF is still too large?",
+        answer:
+          "If structural compression isn't enough, try splitting the PDF into smaller sections using our Split PDF tool. For image-heavy PDFs, extracting and compressing the images individually can yield further savings.",
+      },
     ],
   },
   {
@@ -426,12 +481,22 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "Can I extract specific pages?",
         answer:
-          "Yes! Use the page range input to extract any range (e.g., 3-7). Each page is also available for individual download after splitting.",
+          "Yes! Use the page range input to extract any range (e.g., 3-7) or split all pages into individual PDFs. Each page is also available for individual download.",
       },
       {
         question: "Is my PDF secure?",
         answer:
           "Yes. All splitting happens in your browser. Your PDF files are never uploaded to any server.",
+      },
+      {
+        question: "What happens to the original page order?",
+        answer:
+          "Each extracted page preserves its original page number as a filename suffix for easy identification. The original PDF file is not modified — it remains on your device exactly as it was.",
+      },
+      {
+        question: "Can I split password-protected PDFs?",
+        answer:
+          "Our client-side splitter works with unprotected PDFs. If your PDF has a password, remove the protection first using a PDF unlock tool, then split the unprotected version.",
       },
     ],
   },
@@ -460,7 +525,17 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "Can I rotate only specific pages?",
         answer:
-          "Currently, rotation applies to all pages. For page-specific rotation, split the PDF first, rotate individual pages, then merge them back.",
+          "Currently, rotation applies to all pages. For page-specific rotation, split the PDF first using our Split PDF tool, rotate individual pages, then merge them back with the Merge PDF tool.",
+      },
+      {
+        question: "Will rotating affect the PDF quality?",
+        answer:
+          "No, rotation is a lossless operation. The PDF content, text, images, and formatting remain identical — only the page orientation changes. No re-encoding or compression is applied.",
+      },
+      {
+        question: "Can I save the rotated PDF with a different filename?",
+        answer:
+          "Yes, you can rename the file when downloading. The rotated PDF downloads as a new file, leaving your original PDF unchanged on your device.",
       },
     ],
   },
@@ -940,11 +1015,21 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "Can it fix invalid JSON?",
         answer:
-          "Our validator will highlight exactly where the error is and what's wrong. You'll need to fix the source, but we make it easy to find the issue.",
+          "Our validator will highlight exactly where the error is and what's wrong — missing commas, unclosed brackets, or invalid syntax. You'll need to fix the source, but we make it easy to find the issue with line-level error messages.",
+      },
+      {
+        question: "What's the difference between formatting and minifying?",
+        answer:
+          "Formatting (beautify) adds indentation, line breaks, and spacing to make JSON human-readable. Minifying removes all unnecessary whitespace to create the smallest possible file — ideal for production or API responses.",
       },
       {
         question: "Is my JSON data safe?",
-        answer: "Yes, all processing happens in your browser. Your data never leaves your device.",
+        answer: "Yes, all processing happens in your browser. Your data never leaves your device — no uploads, no server processing.",
+      },
+      {
+        question: "Can I format large JSON files?",
+        answer:
+          "Yes, there's no file size limit since processing is client-side. For very large JSON files (10MB+), performance depends on your device's memory and CPU.",
       },
     ],
   },
@@ -1059,7 +1144,23 @@ export const toolRegistry: ToolConfig[] = [
       },
       {
         question: "What can I put in a QR code?",
-        answer: "URLs, plain text, phone numbers, email addresses, and more. Most smartphones can scan and open the content automatically.",
+        answer:
+          "URLs, plain text, phone numbers, email addresses, Wi-Fi credentials, and more. Most smartphones can scan and open the content automatically via the built-in camera app.",
+      },
+      {
+        question: "Can I customize the QR code colors?",
+        answer:
+          "Yes, you can customize the foreground and background colors of your QR code. For best scanability, maintain high contrast between the foreground and background.",
+      },
+      {
+        question: "What size should my QR code be?",
+        answer:
+          "For print, aim for at least 2×2 cm (0.8×0.8 inches). For digital screens, 200×200 pixels works well. Larger QR codes are easier to scan from a distance.",
+      },
+      {
+        question: "Will the QR code expire?",
+        answer:
+          "No, QR codes don't expire. They simply encode the data you enter. As long as the encoded URL or information is still valid, the QR code will continue to work.",
       },
     ],
   },
