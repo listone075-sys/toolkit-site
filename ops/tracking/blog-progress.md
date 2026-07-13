@@ -24,9 +24,9 @@
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 13 | 7/14 | [选题待定] | - | 📝 |
-| 14 | 7/15 | [选题待定] | - | 📝 |
-| 15 | 7/16 | [选题待定] | - | 📝 |
+| 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | 📝 |
+| 14 | 7/15 | How to Write a Great README — Tips & Best Practices | Markdown | 📝 |
+| 15 | 7/16 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to | 📝 |
 
 ## 内容轮换规则
 
