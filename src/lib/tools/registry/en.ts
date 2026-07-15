@@ -90,7 +90,22 @@ export const toolRegistry: ToolConfig[] = [
       {
         question: "What output formats are supported?",
         answer:
-          "The cropped image downloads as JPG by default. This provides a good balance of quality and file size.",
+          "The cropped image downloads as JPG by default, providing a good balance of quality and file size.",
+      },
+      {
+        question: "Does cropping reduce image quality?",
+        answer:
+          "No. Cropping simply removes the outer portions of the image — it doesn't re-compress or degrade the remaining area. The cropped portion downloads at the original image's quality level. No pixels are altered in the process.",
+      },
+      {
+        question: "Can I crop to a specific aspect ratio like 1:1 or 16:9?",
+        answer:
+          "You can freely select any crop area by clicking and dragging. For precise aspect ratios (1:1 square, 4:3, 16:9), crop freely first, then use our Image Resizer tool to set exact dimensions while maintaining your preferred ratio.",
+      },
+      {
+        question: "Is there a file size limit?",
+        answer:
+          "Since all processing happens in your browser, there's no hard server limit. Very large images (50MP+) may be slow on lower-end devices. For best performance, images under 20MP process near-instantly on most modern devices.",
       },
       {
         question: "Is my image secure?",
@@ -149,6 +164,21 @@ export const toolRegistry: ToolConfig[] = [
         question: "Why convert WebP to JPG?",
         answer:
           "While WebP offers great compression, JPG is universally supported across all devices, apps, and platforms.",
+      },
+      {
+        question: "How does quality compare to the original WebP?",
+        answer:
+          "We convert at high quality (92%). WebP typically achieves better compression at the same quality level, so the resulting JPG may be larger than the original WebP file. This is normal — you're trading file size for universal compatibility.",
+      },
+      {
+        question: "Can I batch convert multiple WebP files?",
+        answer:
+          "You can convert files one at a time. Since all processing is local, there's no queue or wait time beyond your device's speed. For bulk conversion, process each file individually — most convert in under a second.",
+      },
+      {
+        question: "What about animated WebP files?",
+        answer:
+          "Our converter extracts the first frame of animated WebP files as a still JPG. For preserving animation, use our GIF Maker tool — convert individual WebP frames to JPG first, then assemble them into a GIF.",
       },
       {
         question: "Is my file secure?",
@@ -1506,6 +1536,21 @@ export const toolRegistry: ToolConfig[] = [
         answer:
           "Yes! Change the 'To Date' field to any date to calculate the age/duration between any two dates. Useful for calculating work anniversaries or event countdowns.",
       },
+      {
+        question: "Does the age calculator account for leap years?",
+        answer:
+          "Yes. Our calculator precisely accounts for leap years, including February 29th. If you were born on a leap day (Feb 29), your birthday falls on February 28 or March 1 in non-leap years depending on convention — the calculator handles both correctly.",
+      },
+      {
+        question: "How accurate is the breakdown into months and days?",
+        answer:
+          "The calculation shows completed years first, then remaining months, then remaining days. For example, if born March 15, 1990 and today is July 15, 2026: exactly 36 years, 4 months, 0 days. Each unit only counts when fully completed.",
+      },
+      {
+        question: "Can I use this for work anniversaries or employee tenure?",
+        answer:
+          "Yes! Set the 'From Date' to the employee's start date and 'To Date' to today to calculate exact tenure. HR teams use this for service awards, benefits eligibility, and anniversary tracking. The total days figure is especially useful for payroll and accrual calculations.",
+      },
     ],
   },
   {
@@ -1563,6 +1608,21 @@ export const toolRegistry: ToolConfig[] = [
         answer:
           "Yes! Just use the $ symbol as a placeholder. The math is the same for any currency.",
       },
+      {
+        question: "How do I find the original price from a discounted price?",
+        answer:
+          "If you know the sale price and discount percentage: divide the sale price by (1 − discount%). For example, $80 after 20% off → $80 ÷ 0.80 = $100 original. Enter values into the calculator and work backwards to verify.",
+      },
+      {
+        question: "How is sales tax applied to discounted items?",
+        answer:
+          "In most jurisdictions, sales tax is calculated on the discounted (sale) price, not the original price. Our calculator shows the pre-tax discounted price. To get the final total, multiply the result by (1 + your local tax rate).",
+      },
+      {
+        question: "What about BOGO (Buy One Get One) deals?",
+        answer:
+          "BOGO deals are essentially 50% off when both items are equally priced. With unequal prices, the effective discount = (cheaper item price ÷ total of both). For example: $20 + $10 BOGO = $10 off $30 = 33% discount. Use the calculator with the combined original price and total savings.",
+      },
     ],
   },
   {
@@ -1592,6 +1652,21 @@ export const toolRegistry: ToolConfig[] = [
         answer:
           "No, this calculator shows principal and interest only. For a full monthly housing payment estimate, add property taxes, homeowners insurance, and possibly PMI to the calculated monthly payment.",
       },
+      {
+        question: "How can I pay off my loan faster?",
+        answer:
+          "Making extra payments toward the principal reduces both the total interest paid and the loan term. Our amortization schedule shows how early payments are mostly interest — extra principal payments early in the loan save the most. Try reducing the loan term to see how payments change.",
+      },
+      {
+        question: "What is the difference between a fixed and variable rate loan?",
+        answer:
+          "Our calculator assumes a fixed interest rate for the full loan term — your payment stays the same every month. For variable-rate loans (common with ARMs and HELOCs), you'll need to recalculate whenever the rate changes to see your new payment amount.",
+      },
+      {
+        question: "Why is my first payment mostly interest?",
+        answer:
+          "With amortized loans, interest is calculated on the remaining balance. Early in the loan, when the balance is highest, interest makes up most of each monthly payment. As you pay down principal, the interest portion shrinks and more goes toward reducing the balance — this is called building equity.",
+      },
     ],
   },
   {
@@ -1620,6 +1695,21 @@ export const toolRegistry: ToolConfig[] = [
         question: "How is the per-person split calculated?",
         answer:
           "The tip amount and total bill are divided equally among the number of people you specify. For uneven splits, calculate each person's share individually.",
+      },
+      {
+        question: "Should I tip on the pre-tax or post-tax amount?",
+        answer:
+          "Standard etiquette is to tip on the pre-tax subtotal, not the after-tax total. If your bill shows a subtotal before tax, use that. If only the total is shown, tipping on the total is acceptable — the difference on a typical meal is small.",
+      },
+      {
+        question: "What about automatic gratuity for large groups?",
+        answer:
+          "Many restaurants add an automatic 18-20% gratuity for parties of 6 or more. Always check your bill first — if a 'service charge' or 'gratuity' line is already included, you don't need to add a separate tip unless you want to reward exceptional service.",
+      },
+      {
+        question: "What's the difference between a tip and a service charge?",
+        answer:
+          "A tip is voluntary and goes to the service staff. A mandatory service charge (common for large parties, catering, or certain restaurants) may or may not go to staff — policies vary by establishment. Our calculator helps with voluntary tips; always check your bill for existing charges.",
       },
     ],
   },
