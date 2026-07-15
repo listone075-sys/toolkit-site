@@ -2,11 +2,11 @@
   "date": "2026-07-15",
   "startDate": "2026-07-08",
   "days": 8,
-  "totalPV": 112,
-  "totalUV": 56,
-  "avgDailyPV": 14,
-  "avgDailyUV": 7,
-  "yesterdayPV": 2,
+  "totalPV": 190,
+  "totalUV": 62,
+  "avgDailyPV": 24,
+  "avgDailyUV": 8,
+  "yesterdayPV": 5,
   "dailyBreakdown": [
     {
       "date": "20260708",
@@ -23,6 +23,14 @@
       "avgSessionDuration": 104.48980091666668,
       "bounceRate": 0.6666666666666666,
       "newUsers": 10
+    },
+    {
+      "date": "20260715",
+      "activeUsers": 9,
+      "pageViews": 80,
+      "avgSessionDuration": 3164.359799,
+      "bounceRate": 0.9166666666666666,
+      "newUsers": 7
     },
     {
       "date": "20260709",
@@ -60,29 +68,21 @@
       "date": "20260714",
       "activeUsers": 4,
       "pageViews": 5,
-      "avgSessionDuration": 0,
+      "avgSessionDuration": 2.9418768,
       "bounceRate": 1,
       "newUsers": 4
-    },
-    {
-      "date": "20260715",
-      "activeUsers": 3,
-      "pageViews": 2,
-      "avgSessionDuration": 1.5879706666666669,
-      "bounceRate": 1,
-      "newUsers": 2
     }
   ],
   "sources": [
     {
       "channel": "Direct",
-      "users": 52,
-      "pageViews": 111
+      "users": 57,
+      "pageViews": 183
     },
     {
       "channel": "Unassigned",
-      "users": 6,
-      "pageViews": 0
+      "users": 8,
+      "pageViews": 6
     },
     {
       "channel": "Organic Search",
@@ -98,13 +98,23 @@
     },
     {
       "path": "/",
-      "pageViews": 13,
-      "users": 12
+      "pageViews": 40,
+      "users": 14
+    },
+    {
+      "path": "/reports.html",
+      "pageViews": 21,
+      "users": 3
     },
     {
       "path": "/",
-      "pageViews": 9,
-      "users": 3
+      "pageViews": 19,
+      "users": 5
+    },
+    {
+      "path": "/techlog/",
+      "pageViews": 2,
+      "users": 1
     },
     {
       "path": "/dashboard",
