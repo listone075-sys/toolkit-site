@@ -20,6 +20,7 @@
 | 12 | 7/6 | 速查表 | Markdown Cheat Sheet (Blog #10) 预热 | ✅ |
 | 13 | 7/7 | 技巧式 | Markdown technical writing tips | ✅ |
 | 14 | 7/13 | 技巧式 | ChatGPT 输出格式清理 + AI→PPTX 预告 | ✅ |
+| 15 | 7/15 | 问题式 | README 写作 — "3 seconds to convince someone to stay" | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
@@ -41,6 +42,7 @@
 | 6 | 7/6 | Markdown for Beginners | Complete Markdown Cheat Sheet | ✅ |
 | 7 | 7/7 | Markdown for Beginners | Markdown Syntax Guide — supplementary | ✅ |
 | 8 | 7/10 | Markdown for Beginners | Clean Up ChatGPT Output Formatting (Blog #12) | ✅ |
+| 9 | 7/15 | Markdown for Beginners | How to Write a Great README — Free Template & Checklist (Blog #14) | ✅ |
 
 ---
 
