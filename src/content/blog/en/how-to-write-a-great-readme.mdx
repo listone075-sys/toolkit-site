@@ -1,0 +1,583 @@
+export const meta = {
+  title: "How to Write a Great README — Tips, Templates & Best Practices",
+  description: "Your README is your project's front door. Learn how to write a README that gets your project used and contributed to — with templates, examples, and AI-assisted workflows.",
+  date: "2026-07-15",
+  category: "Markdown",
+};
+
+# How to Write a Great README — Tips, Templates & Best Practices
+
+You find a promising project on GitHub. You open it. The README says:
+
+> "A tool for things."
+
+That's it. No description. No install instructions. No examples.
+
+**Do you stick around?** No. You close the tab and move on.
+
+Your README is your project's front door. It's the difference between someone using your project and someone never knowing it existed. It's the difference between getting contributors and getting silence.
+
+Here's the good news: writing a great README is a skill anyone can learn. And with AI tools like ChatGPT and Claude, you can draft one in minutes.
+
+## The 30-Second README Test
+
+Open your project's README right now. Can a stranger answer these five questions in 30 seconds?
+
+1. **What is this?** — One sentence
+2. **Why should I care?** — What problem does it solve?
+3. **How do I use it?** — Working example, copy-paste ready
+4. **How do I install it?** — One command
+5. **What does it look like?** — Screenshot or code output
+
+If the answer to any of these is "no," keep reading.
+
+## The Anatomy of a Great README
+
+Here's the structure that the best open-source projects follow. You don't need every section — pick what matters for your project.
+
+```markdown
+# Project Name
+
+> One-line description — what it does in 10 words or less
+
+[Badges: build status, version, license]
+
+## ✨ Features
+
+- Feature 1 — what it does
+- Feature 2 — what it does
+- Feature 3 — what it does
+
+## 📸 Screenshot / Demo
+
+[Show, don't just tell]
+
+## 🚀 Quick Start
+
+```bash
+npm install my-project
+my-project --input file.txt --output result.txt
+```
+
+## 📦 Installation
+
+Prerequisites + step-by-step install instructions
+
+## 📖 Usage
+
+Common use cases with code examples
+
+## ⚙️ Configuration
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `port` | number | 3000 | Server port |
+| `debug` | boolean | false | Enable debug logging |
+
+## 🧪 Examples
+
+Real-world examples with input → output
+
+## 🤝 Contributing
+
+How to contribute, development setup, PR guidelines
+
+## 📄 License
+
+MIT
+```
+
+This isn't a rigid template — it's a checklist. The more of these sections you include, the more likely someone is to use your project.
+
+## README Templates for Every Project Type
+
+Different projects need different READMEs. Here are templates for three common types:
+
+### Template 1: Library / Package
+
+Focus on API reference and quick integration:
+
+```markdown
+# library-name
+
+> Fast, lightweight utility for parsing Markdown frontmatter.
+
+![npm](https://img.shields.io/npm/v/library-name)
+
+## Quick Start
+
+```bash
+npm install library-name
+```
+
+```javascript
+import { parseFrontmatter } from 'library-name';
+
+const { data, content } = parseFrontmatter(markdownString);
+console.log(data.title); // "My Post Title"
+```
+
+## API
+
+### `parseFrontmatter(input, options?)`
+
+Parses YAML/TOML frontmatter from a Markdown string.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `input` | string | yes | Markdown string with frontmatter |
+| `options.format` | 'yaml' \| 'toml' | no | Frontmatter format (auto-detect by default) |
+
+**Returns:** `{ data: object, content: string }`
+
+## More Examples
+
+[Link to full documentation]
+```
+
+### Template 2: CLI Tool
+
+Focus on installation and command reference:
+
+```markdown
+# cli-tool-name
+
+> Resize images from the command line — 10x faster than GUI tools.
+
+## Installation
+
+```bash
+npm install -g cli-tool-name
+```
+
+## Usage
+
+```bash
+# Resize a single image to 800px width
+cli-tool resize photo.jpg --width 800
+
+# Batch resize all JPEGs in a folder
+cli-tool resize ./photos/*.jpg --width 1200 --quality 85
+
+# Dry run — preview without writing files
+cli-tool resize ./photos/*.jpg --width 800 --dry-run
+```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `resize` | Resize images |
+| `convert` | Convert between formats |
+| `compress` | Reduce file size |
+
+## Options
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--width` | number | — | Target width in pixels |
+| `--quality` | number | 80 | Output quality (1-100) |
+| `--dry-run` | boolean | false | Preview without saving |
+```
+
+### Template 3: Web App / SaaS
+
+Focus on what it does and why it exists:
+
+```markdown
+# App Name
+
+> Free online tool to convert Markdown to PowerPoint — no sign-up, no upload.
+
+## 🎯 What This Does
+
+Paste Markdown. Get a .pptx file. Each `#` heading becomes a slide. Each `-` bullet becomes talking points.
+
+## ✨ Why Use This?
+
+- **Fast** — convert in seconds, not hours
+- **Private** — everything runs in your browser
+- **Free** — no account, no limits, no watermark
+- **AI-friendly** — ChatGPT and Claude output Markdown natively
+
+## 🖥️ Screenshot
+
+![App screenshot](screenshot.png)
+
+## 🔧 Tech Stack
+
+- Frontend: Next.js + React
+- Processing: Client-side only
+- Styling: Tailwind CSS
+
+## 🚀 Try It
+
+[Visit toolcraftbox.com →](https://toolcraftbox.com)
+```
+
+## README Writing: 10 Rules That Actually Matter
+
+### 1. Start with a one-liner
+
+Before anything else, tell me what this is in one sentence. Under the project name, use a blockquote:
+
+```markdown
+> Convert Markdown files to beautiful PDF documents in one command.
+```
+
+That's it. If someone reads nothing else, they should know what your project does.
+
+### 2. Show before you tell
+
+A screenshot or terminal recording is worth a thousand words. Put it near the top, right after your one-liner:
+
+```markdown
+## 📸 Screenshot
+
+![Demo of the converter in action](demo.gif)
+```
+
+For CLI tools, show actual terminal output rather than a screenshot:
+
+```
+$ my-tool convert input.md --output report.pdf
+✅ Converted: report.pdf (12 pages, 1.2MB)
+```
+
+### 3. Make "Quick Start" actually quick
+
+The worst READMEs bury the install command in a paragraph. The best ones make it impossible to miss:
+
+```markdown
+## 🚀 Quick Start
+
+```bash
+npm install my-project
+npx my-project --help
+```
+```
+
+One code block. Two commands max. If I can't try your project in 30 seconds, I probably won't.
+
+### 4. Every code block should be copy-paste ready
+
+Don't write:
+
+```
+$ my-tool --input <your-file> --output <your-output>
+```
+
+Write a real example with real filenames:
+
+```bash
+my-tool --input photo.jpg --output photo-compressed.jpg
+```
+
+### 5. Use tables for configuration, not prose
+
+**Bad:**
+
+> The timeout option accepts a number in milliseconds and defaults to 5000. The retries option is a number and defaults to 3...
+
+**Good:**
+
+```markdown
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `timeout` | number | 5000 | Request timeout in ms |
+| `retries` | number | 3 | Retry attempts before failing |
+| `debug` | boolean | false | Enable verbose logging |
+```
+
+Tables are scannable. Prose is not.
+
+### 6. Link to more documentation
+
+Your README isn't your entire documentation. Link out:
+
+```markdown
+## 📚 Documentation
+
+- [Full API Reference](https://docs.example.com)
+- [Contributing Guide](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+```
+
+### 7. Add badges — but only useful ones
+
+Badges add credibility, but don't overdo it. The essential four:
+
+```markdown
+![Build](https://img.shields.io/badge/build-passing-green)
+![Version](https://img.shields.io/npm/v/your-package)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Downloads](https://img.shields.io/npm/dm/your-package)
+```
+
+Skip the "made with love" and "coffee-powered" badges. They add noise, not trust.
+
+### 8. Write for the skimmer
+
+Most people will spend 15-30 seconds scanning your README before deciding whether to use your project. Structure for that:
+
+- **First 2 lines** — What it is + one-liner (must hook them)
+- **Next 5 seconds** — Quick Start code block (must be copy-paste ready)
+- **Next 10 seconds** — Feature bullets or screenshot
+- **If interested** — They'll scroll for API, config, examples
+
+### 9. Keep your "Getting Started" current
+
+The #1 README sin: an install command that doesn't work. Every time you release a new version, **run your README's Quick Start from scratch** on a clean machine. If it breaks, fix the README before fixing anything else.
+
+### 10. End with "What's Next"
+
+Give new users a clear path forward:
+
+```markdown
+## 📖 What's Next?
+
+- [Read the full documentation](https://docs.example.com)
+- [See more examples](https://github.com/user/repo/tree/main/examples)
+- [Report a bug](https://github.com/user/repo/issues)
+- [Join the discussion](https://discord.gg/example)
+```
+
+## AI-Assisted README Writing
+
+In 2026, you don't have to write your README from scratch. ChatGPT and Claude are excellent at drafting structured documentation.
+
+### Prompt Template
+
+Use this prompt to generate a README draft:
+
+```
+Write a README for a [project type: CLI tool / npm library / web app].
+
+Project: [name]
+What it does: [one-line description]
+Tech stack: [list technologies]
+Key features:
+- Feature 1
+- Feature 2
+- Feature 3
+
+Include these sections:
+- Project name + one-liner
+- Features (bullet list)
+- Quick Start (one-command install + one-command usage)
+- Usage examples (2-3 real examples with real filenames)
+- Configuration table
+- License (MIT)
+
+Use Markdown format. Keep it concise. Every code block should be copy-paste ready.
+```
+
+### After AI Generates Your Draft
+
+AI gives you a great starting point, but it needs your human touch:
+
+1. **Verify every command** — Run the install and usage commands. Do they actually work?
+2. **Add a real screenshot** — AI can't take screenshots. Add one.
+3. **Replace placeholder values** — AI invents config values. Replace with real defaults.
+4. **Add personality** — AI prose is neutral. Add your project's voice.
+5. **Format and preview** — Paste into the [Markdown Editor](/tools/markdown-editor) to preview how it looks on GitHub
+
+### The AI → Human Handoff Checklist
+
+| Task | AI Can Do | You Should Do |
+|------|:---------:|:-------------:|
+| Structure / outline | ✅ | Review for relevance |
+| Feature descriptions | ✅ | Verify accuracy |
+| Code examples | ⚠️ (may be wrong) | Run and verify |
+| Configuration tables | ✅ | Check defaults |
+| Screenshots | ❌ | Add manually |
+| Tone / voice | ⚠️ (generic) | Add personality |
+
+### Use ToolCraft to Polish Your README
+
+Once you have a draft, use these tools to produce the final version:
+
+| Step | Tool | Why |
+|:----:|------|-----|
+| 1 | [Markdown Editor](/tools/markdown-editor) | Preview how it renders on GitHub |
+| 2 | [Markdown Formatter](/tools/markdown-formatter) | Clean up inconsistent formatting |
+| 3 | [Markdown to HTML](/tools/markdown-to-html) | Publish as a documentation site |
+| 4 | [Markdown to PDF](/tools/markdown-editor) | Share as a downloadable guide |
+
+All free. All browser-based. No sign-up required.
+
+## Common README Mistakes (and How to Fix Them)
+
+### ❌ Mistake 1: No one-liner
+
+```
+# MyProject
+```
+
+**Fix:**
+
+```
+# MyProject
+
+> A CLI tool that converts CSV files to JSON in under a second.
+```
+
+### ❌ Mistake 2: No install instructions
+
+```
+Just clone the repo and figure it out.
+```
+
+**Fix:**
+
+```bash
+git clone https://github.com/user/repo.git
+cd repo
+npm install
+npm start
+```
+
+### ❌ Mistake 3: Sparse usage examples
+
+```
+// Use the API
+const result = doThing(input);
+```
+
+**Fix:**
+
+```javascript
+import { convertCsv } from 'fast-csv-converter';
+
+// Convert a CSV file to JSON
+const json = await convertCsv('data.csv');
+console.log(json);
+// → [{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]
+```
+
+### ❌ Mistake 4: No screenshot for visual tools
+
+If your project has a UI, show it. A README without a screenshot for a visual tool loses 80% of potential users.
+
+### ❌ Mistake 5: Outdated information
+
+The install command references Node 14. The API example uses a function that was renamed. The "Coming Soon" features were "coming soon" two years ago.
+
+**Fix:** Review your README with every major release. Remove stale content. Update versions.
+
+## Real-World READMEs: Before & After
+
+### Before
+
+```markdown
+# image-tools
+
+Some image utilities I made.
+
+npm install image-tools
+
+use it like:
+
+image-tools resize input.jpg
+
+more features coming soon
+```
+
+**Problems:** No one-liner, no feature list, vague usage, missing config, no examples, "coming soon" without specifics.
+
+### After
+
+```markdown
+# image-tools
+
+> CLI toolkit for batch image processing — resize, convert, and compress thousands of images in one command.
+
+![Build](https://img.shields.io/badge/build-passing-green)
+![npm](https://img.shields.io/npm/v/image-tools)
+
+## ✨ Features
+
+- **Batch resize** — process thousands of images at once
+- **Format conversion** — JPEG, PNG, WebP, AVIF, and HEIC
+- **Smart compression** — reduce file size by 60% without visible quality loss
+- **EXIF preservation** — metadata stays intact
+
+## 🚀 Quick Start
+
+```bash
+npm install -g image-tools
+image-tools resize ./photos/*.jpg --width 1200
+```
+
+## 📖 Usage Examples
+
+### Resize all JPEGs to 1200px wide
+
+```bash
+image-tools resize ./vacation/*.jpg --width 1200 --quality 85
+```
+
+Output:
+```
+✅ photo1.jpg → 1200×900 (1.2MB → 340KB)
+✅ photo2.jpg → 1200×800 (980KB → 290KB)
+✅ 42 images processed in 3.2s
+```
+
+### Convert PNG to WebP
+
+```bash
+image-tools convert ./screenshots/*.png --format webp --quality 90
+```
+
+## ⚙️ Global Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `--width` | number | — | Target width (height auto-scaled) |
+| `--quality` | number | 85 | Output quality (1-100) |
+| `--format` | string | jpg | Output format (jpg, png, webp, avif) |
+| `--dry-run` | boolean | false | Preview without writing files |
+
+## 📄 License
+
+MIT
+```
+
+See the difference? The "before" tells you nothing. The "after" makes you want to try it.
+
+## Bonus: The README Checklist
+
+Before you publish, run through this checklist:
+
+- [ ] **One-liner** — Can a stranger understand what this does in 5 seconds?
+- [ ] **Quick Start works** — Did you run the install + usage commands from scratch?
+- [ ] **Real examples** — Are all code examples using real filenames and real output?
+- [ ] **Screenshot** — If your project has a UI, is there a screenshot near the top?
+- [ ] **Configuration documented** — Are all options/parameters in a table?
+- [ ] **Contributing section** — Do contributors know how to set up dev environment?
+- [ ] **License** — Is the license clearly stated?
+- [ ] **No dead links** — Do all links in the README still work?
+- [ ] **No stale content** — Are all version numbers, feature lists, and "coming soon" items current?
+- [ ] **Previewed** — Did you preview the rendered Markdown before committing?
+
+## Summary
+
+A great README is the highest-leverage investment you can make in your project. It works for you 24/7 — answering questions, convincing users, and welcoming contributors.
+
+- 📋 **Follow the structure** — one-liner, features, quick start, usage, config, license
+- 🤖 **Use AI to draft** — ChatGPT and Claude generate Markdown natively, get a draft in seconds
+- 🔧 **Polish with tools** — [Markdown Editor](/tools/markdown-editor) to preview, [Markdown Formatter](/tools/markdown-formatter) to clean up
+- ✅ **Use the checklist** — verify every command, add a real screenshot, remove stale content
+
+Your README is your project's handshake. Make it firm.
+
+**[Try the Markdown Editor now →](/tools/markdown-editor)**
+
+---
+
+**You might also like:**
+- [Markdown Cheat Sheet — Complete Quick Reference](/blog/markdown-cheat-sheet) — Every syntax you'll need
+- [How to Use Markdown for Technical Writing (with AI)](/blog/how-to-use-markdown-for-technical-writing) — Deep dive on technical docs
+- [Markdown vs WYSIWYG: Which Should You Use in 2026?](/blog/markdown-vs-wysiwyg-comparison-2026) — Choosing the right format
+- [How to Convert Markdown to HTML, DOCX, and PDF](/blog/how-to-convert-markdown-to-html-docx-pdf) — Multi-format publishing

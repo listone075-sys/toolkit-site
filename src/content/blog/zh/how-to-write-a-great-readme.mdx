@@ -1,0 +1,573 @@
+export const meta = {
+  title: "如何写一份优秀的 README — 技巧、模板与最佳实践",
+  description: "README 是项目的门面。学会写一份让人愿意使用和贡献的 README——包含完整模板、实例和 AI 辅助工作流。",
+  date: "2026-07-15",
+  category: "Markdown",
+};
+
+# 如何写一份优秀的 README — 技巧、模板与最佳实践
+
+你在 GitHub 上发现了一个看起来不错的项目。点进去，README 写着：
+
+> "一个做事情的工具。"
+
+没了。没有描述，没有安装说明，没有示例。
+
+**你会留下来吗？** 不会。你关掉标签页，继续看下一个项目。
+
+README 就是项目的门面。它决定了有人会用你的项目，还是永远不知道它的存在；决定了有人会来贡献代码，还是只有沉默。
+
+好消息是：写一份优秀的 README 是每个人都能学会的技能。再加上 ChatGPT 和 Claude 这类 AI 工具的帮助，你可以在几分钟内搞定初稿。
+
+## README 的 30 秒测试
+
+现在打开你项目的 README。一个陌生人能在 30 秒内回答这五个问题吗？
+
+1. **这是什么？** — 一句话说清楚
+2. **我为什么要关心？** — 解决什么问题？
+3. **怎么用？** — 复制粘贴就能跑的例子
+4. **怎么安装？** — 一条命令
+5. **长什么样？** — 截图或运行输出
+
+如果任何一个答案是"不能"，继续往下看。
+
+## 优秀 README 的解剖结构
+
+以下是顶级开源项目遵循的结构。你不必包含每个章节 — 选择对你的项目有意义的就行。
+
+```markdown
+# 项目名称
+
+> 一句话描述 — 用 10 个字以内说清楚做什么
+
+[徽章：构建状态、版本、许可证]
+
+## ✨ 功能特性
+
+- 功能 1 — 它能做什么
+- 功能 2 — 它能做什么
+- 功能 3 — 它能做什么
+
+## 📸 截图 / 演示
+
+[展示，而非描述]
+
+## 🚀 快速开始
+
+```bash
+npm install my-project
+my-project --input file.txt --output result.txt
+```
+
+## 📦 安装
+
+前置条件 + 分步骤的安装指南
+
+## 📖 使用说明
+
+常见用例 + 代码示例
+
+## ⚙️ 配置
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `port` | number | 3000 | 服务器端口 |
+| `debug` | boolean | false | 开启调试日志 |
+
+## 🧪 示例
+
+真实场景的输入 → 输出
+
+## 🤝 贡献指南
+
+如何参与贡献，开发环境搭建，PR 规范
+
+## 📄 许可证
+
+MIT
+```
+
+这不是死板的模板 — 这是一份清单。你包含的章节越多，别人使用你项目的可能性就越大。
+
+## 三类项目的 README 模板
+
+不同类型的项目需要不同的 README。以下是三种常见类型的模板：
+
+### 模板一：库 / npm 包
+
+重点在 API 文档和快速集成：
+
+```markdown
+# library-name
+
+> 快速、轻量的 Markdown frontmatter 解析工具。
+
+![npm](https://img.shields.io/npm/v/library-name)
+
+## 快速开始
+
+```bash
+npm install library-name
+```
+
+```javascript
+import { parseFrontmatter } from 'library-name';
+
+const { data, content } = parseFrontmatter(markdownString);
+console.log(data.title); // "我的文章标题"
+```
+
+## API
+
+### `parseFrontmatter(input, options?)`
+
+解析 Markdown 字符串中的 YAML/TOML frontmatter。
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `input` | string | 是 | 包含 frontmatter 的 Markdown 字符串 |
+| `options.format` | 'yaml' \| 'toml' | 否 | Frontmatter 格式（默认自动检测） |
+
+**返回：** `{ data: object, content: string }`
+```
+
+### 模板二：命令行工具
+
+重点在安装和命令参考：
+
+```markdown
+# cli-tool-name
+
+> 命令行批量图片处理 — 比 GUI 工具快 10 倍。
+
+## 安装
+
+```bash
+npm install -g cli-tool-name
+```
+
+## 使用
+
+```bash
+# 将单张图片缩放到 800px 宽
+cli-tool resize photo.jpg --width 800
+
+# 批量处理文件夹中的所有 JPEG
+cli-tool resize ./photos/*.jpg --width 1200 --quality 85
+
+# 预览模式 — 只看结果不写文件
+cli-tool resize ./photos/*.jpg --width 800 --dry-run
+```
+
+## 命令
+
+| 命令 | 说明 |
+|------|------|
+| `resize` | 调整尺寸 |
+| `convert` | 格式转换 |
+| `compress` | 压缩体积 |
+
+## 参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `--width` | number | — | 目标宽度（像素） |
+| `--quality` | number | 80 | 输出质量（1-100） |
+| `--dry-run` | boolean | false | 预览模式，不保存文件 |
+```
+
+### 模板三：Web 应用 / 在线工具
+
+重点在它能做什么、为什么用它：
+
+```markdown
+# App 名称
+
+> 免费在线 Markdown 转 PPT 工具 — 无需注册，无需上传。
+
+## 🎯 它能做什么
+
+粘贴 Markdown，下载 .pptx 文件。每个 `#` 标题变成一页幻灯片，每个 `-` 列表变成演讲要点。
+
+## ✨ 为什么用它？
+
+- **快** — 秒级转换，不用等
+- **安全** — 所有处理都在浏览器中完成
+- **免费** — 无需账号、无限制、无水印
+- **AI 友好** — ChatGPT 和 Claude 原生输出 Markdown
+
+## 🖥️ 截图
+
+![应用截图](screenshot.png)
+
+## 🚀 立即使用
+
+[访问 toolcraftbox.com →](https://toolcraftbox.com)
+```
+
+## README 写作：10 条真正有用的规则
+
+### 1. 从一句话开始
+
+在所有内容之前，用一句话告诉我这是什么。在项目名称下方，使用引用块：
+
+```markdown
+> 一行命令将 Markdown 文件转为精美的 PDF 文档。
+```
+
+就够了。就算别人什么都不读，也该知道你的项目做什么。
+
+### 2. 先展示，再解释
+
+一张截图或终端录屏胜过千言万语。把它放在靠近顶部的位置，紧跟一句话描述：
+
+```markdown
+## 📸 截图
+
+![转换器演示](demo.gif)
+```
+
+对命令行工具，展示实际终端输出比截图更好：
+
+```
+$ my-tool convert input.md --output report.pdf
+✅ 已转换：report.pdf（12 页，1.2MB）
+```
+
+### 3. 让"快速开始"真的很快
+
+最差的 README 把安装命令藏在段落里。最好的 README 让人无法错过：
+
+```markdown
+## 🚀 快速开始
+
+```bash
+npm install my-project
+npx my-project --help
+```
+```
+
+一个代码块。最多两条命令。如果别人 30 秒内试不了你的项目，大概率就不会试了。
+
+### 4. 每个代码示例都要能复制粘贴直接用
+
+不要写：
+
+```
+$ my-tool --input <你的文件> --output <你的输出>
+```
+
+用真实的文件名写真实的例子：
+
+```bash
+my-tool --input photo.jpg --output photo-compressed.jpg
+```
+
+### 5. 用表格写配置，不要用段落
+
+**差：**
+
+> timeout 参数接受毫秒为单位的数字，默认值是 5000。retries 参数是数字，默认值是 3……
+
+**好：**
+
+```markdown
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `timeout` | number | 5000 | 请求超时（毫秒） |
+| `retries` | number | 3 | 失败前重试次数 |
+| `debug` | boolean | false | 开启详细日志 |
+```
+
+表格可快速浏览。段落不行。
+
+### 6. 链接到更多文档
+
+README 不是你的全部文档。链接出去：
+
+```markdown
+## 📚 文档
+
+- [完整 API 参考](https://docs.example.com)
+- [贡献指南](CONTRIBUTING.md)
+- [更新日志](CHANGELOG.md)
+```
+
+### 7. 加徽章 — 但只加有用的
+
+徽章增加可信度，但别过度。四个核心徽章：
+
+```markdown
+![构建状态](https://img.shields.io/badge/build-passing-green)
+![版本](https://img.shields.io/npm/v/your-package)
+![许可证](https://img.shields.io/badge/license-MIT-blue)
+![下载量](https://img.shields.io/npm/dm/your-package)
+```
+
+跳过"用爱发电"和"咖啡驱动"这类徽章。它们增加的不是信任，是噪音。
+
+### 8. 为快速浏览者而写
+
+大多数人在决定是否使用你的项目之前，只会花 15-30 秒扫一眼 README。围绕这个来组织内容：
+
+- **前 2 行** — 是什么 + 一句话描述（必须抓住他们）
+- **接下来 5 秒** — 快速开始的代码块（必须能直接复制粘贴）
+- **接下来 10 秒** — 功能列表或截图
+- **如果感兴趣** — 他们会往下翻看 API、配置、示例
+
+### 9. 保持"快速开始"永远有效
+
+README 的头号罪过：安装命令跑不通。每次发布新版本时，**在干净机器上从头跑一遍 README 的快速开始**。如果跑不通，在修复其他东西之前先修 README。
+
+### 10. 以"接下来"结尾
+
+给新用户一个清晰的下一步路径：
+
+```markdown
+## 📖 接下来？
+
+- [阅读完整文档](https://docs.example.com)
+- [查看更多示例](https://github.com/user/repo/tree/main/examples)
+- [报告问题](https://github.com/user/repo/issues)
+- [加入讨论](https://discord.gg/example)
+```
+
+## AI 辅助 README 写作
+
+到了 2026 年，你不需要从零开始写 README。ChatGPT 和 Claude 非常擅长起草结构化文档。
+
+### Prompt 模板
+
+用这个提示词来生成 README 初稿：
+
+```
+为我的[项目类型：CLI 工具 / npm 库 / Web 应用]写一份 README。
+
+项目名：[名称]
+功能：[一句话描述]
+技术栈：[列出技术]
+核心功能：
+- 功能 1
+- 功能 2
+- 功能 3
+
+包含以下章节：
+- 项目名 + 一句话描述
+- 功能特性（列表）
+- 快速开始（一条安装命令 + 一条使用命令）
+- 使用示例（2-3 个真实示例，用真实文件名）
+- 配置表格
+- 许可证（MIT）
+
+使用 Markdown 格式。保持简洁。每个代码块都要能直接复制粘贴使用。
+```
+
+### AI 生成初稿之后
+
+AI 给你一个很棒的起点，但需要你的人工打磨：
+
+1. **验证每条命令** — 亲自跑一遍安装和使用命令，真的能跑通吗？
+2. **加上真实截图** — AI 不会截图。手动加一张。
+3. **替换占位值** — AI 会编造配置默认值。换成真实的。
+4. **加入个性** — AI 的文风是中性的。加入你项目的调性。
+5. **格式化并预览** — 粘贴到 [Markdown 编辑器](/tools/markdown-editor) 预览渲染效果
+
+### AI → 人工交接清单
+
+| 任务 | AI 能做 | 你需要做 |
+|------|:------:|:------:|
+| 结构 / 大纲 | ✅ | 审核相关性 |
+| 功能描述 | ✅ | 验证准确性 |
+| 代码示例 | ⚠️（可能有误） | 运行并验证 |
+| 配置表格 | ✅ | 检查默认值 |
+| 截图 | ❌ | 手动添加 |
+| 语气 / 风格 | ⚠️（偏通用） | 注入个性 |
+
+### 用 ToolCraft 打磨 README
+
+初稿完成后，用这些工具生成最终版本：
+
+| 步骤 | 工具 | 用途 |
+|:--:|------|------|
+| 1 | [Markdown 编辑器](/tools/markdown-editor) | 预览在 GitHub 上的渲染效果 |
+| 2 | [Markdown 格式化](/tools/markdown-formatter) | 清理不一致的格式 |
+| 3 | [Markdown 转 HTML](/tools/markdown-to-html) | 发布为文档网站 |
+| 4 | [Markdown 编辑器](/tools/markdown-editor) | 导出为 PDF 供下载 |
+
+全部免费。全部在浏览器中运行。无需注册。
+
+## 常见 README 错误（以及如何修复）
+
+### ❌ 错误一：没有一句话描述
+
+```
+# MyProject
+```
+
+**修复：**
+
+```
+# MyProject
+
+> 一个 CLI 工具，一秒内将 CSV 文件转为 JSON。
+```
+
+### ❌ 错误二：没有安装说明
+
+```
+克隆仓库，自己想办法跑起来。
+```
+
+**修复：**
+
+```bash
+git clone https://github.com/user/repo.git
+cd repo
+npm install
+npm start
+```
+
+### ❌ 错误三：使用示例过于简陋
+
+```
+// 调用 API
+const result = doThing(input);
+```
+
+**修复：**
+
+```javascript
+import { convertCsv } from 'fast-csv-converter';
+
+// 将 CSV 文件转为 JSON
+const json = await convertCsv('data.csv');
+console.log(json);
+// → [{ name: "张三", age: 30 }, { name: "李四", age: 25 }]
+```
+
+### ❌ 错误四：有界面的工具没有截图
+
+如果你的项目有 UI，展示它。有界面的工具如果没有截图，会流失 80% 的潜在用户。
+
+### ❌ 错误五：过时的信息
+
+安装命令引用了 Node 14。API 示例用的函数已经被重命名了。"即将推出"的功能两年前就"即将推出"了。
+
+**修复：** 每次大版本发布时审查一遍 README。删除过时内容。更新版本号。
+
+## 真实 README 对比：改造前 vs 改造后
+
+### 改造前
+
+```markdown
+# image-tools
+
+一些我做的图片工具。
+
+npm install image-tools
+
+用法：
+
+image-tools resize input.jpg
+
+更多功能即将推出
+```
+
+**问题：** 没有一句话描述、没有功能列表、用法含糊、缺少配置说明、没有示例、"即将推出"没有具体内容。
+
+### 改造后
+
+```markdown
+# image-tools
+
+> 命令行批量图片处理工具 — 一条命令完成数千张图片的缩放、转换和压缩。
+
+![构建状态](https://img.shields.io/badge/build-passing-green)
+![npm](https://img.shields.io/npm/v/image-tools)
+
+## ✨ 功能特性
+
+- **批量缩放** — 一次处理数千张图片
+- **格式转换** — JPEG、PNG、WebP、AVIF、HEIC
+- **智能压缩** — 体积减少 60% 且无明显质量损失
+- **保留 EXIF** — 元数据完好无损
+
+## 🚀 快速开始
+
+```bash
+npm install -g image-tools
+image-tools resize ./photos/*.jpg --width 1200
+```
+
+## 📖 使用示例
+
+### 将所有 JPEG 缩放到 1200px 宽
+
+```bash
+image-tools resize ./vacation/*.jpg --width 1200 --quality 85
+```
+
+输出：
+```
+✅ photo1.jpg → 1200×900（1.2MB → 340KB）
+✅ photo2.jpg → 1200×800（980KB → 290KB）
+✅ 已处理 42 张图片，耗时 3.2 秒
+```
+
+### 将 PNG 转为 WebP
+
+```bash
+image-tools convert ./screenshots/*.png --format webp --quality 90
+```
+
+## ⚙️ 全局参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `--width` | number | — | 目标宽度（高度自动等比） |
+| `--quality` | number | 85 | 输出质量（1-100） |
+| `--format` | string | jpg | 输出格式（jpg、png、webp、avif） |
+| `--dry-run` | boolean | false | 预览模式，不写文件 |
+
+## 📄 许可证
+
+MIT
+```
+
+看出区别了吗？"改造前"什么都没告诉你。"改造后"让你想试一试。
+
+## 附：README 检查清单
+
+发布前，逐项核对这份清单：
+
+- [ ] **一句话描述** — 陌生人能在 5 秒内理解这个项目做什么吗？
+- [ ] **快速开始能跑通** — 你在干净环境里跑过安装和使用命令了吗？
+- [ ] **真实示例** — 所有代码示例用的是真实文件名和真实输出吗？
+- [ ] **截图** — 如果项目有界面，截图放在靠近顶部了吗？
+- [ ] **配置文档化** — 所有选项/参数都在表格里了吗？
+- [ ] **贡献章节** — 贡献者知道怎么搭建开发环境吗？
+- [ ] **许可证** — 许可证明确标注了吗？
+- [ ] **无死链** — README 里所有链接还能打开吗？
+- [ ] **无过时内容** — 版本号、功能列表、"即将推出"的内容都是最新的吗？
+- [ ] **预览过** — 提交前预览过渲染后的 Markdown 了吗？
+
+## 总结
+
+一份优秀的 README 是你在项目上能做的最具杠杆效应的投资。它 7×24 小时为你工作 — 回答问题、说服用户、欢迎贡献者。
+
+- 📋 **遵循结构** — 一句话描述、功能、快速开始、用法、配置、许可证
+- 🤖 **用 AI 起草** — ChatGPT 和 Claude 原生输出 Markdown，几秒内完成初稿
+- 🔧 **工具打磨** — [Markdown 编辑器](/tools/markdown-editor) 预览，[Markdown 格式化](/tools/markdown-formatter) 清理格式
+- ✅ **对照清单** — 验证每条命令，加上真实截图，删除过时内容
+
+README 是项目的握手。让它扎实有力。
+
+**[立即试用 Markdown 编辑器 →](/tools/markdown-editor)**
+
+---
+
+**你可能也会喜欢：**
+- [Markdown 速查表 — 完整快速参考](/blog/markdown-cheat-sheet) — 所有你需要知道的语法
+- [如何使用 Markdown 进行技术写作（AI 辅助）](/blog/how-to-use-markdown-for-technical-writing) — 技术文档深度指南
+- [Markdown vs WYSIWYG：2026 年该用哪个？](/blog/markdown-vs-wysiwyg-comparison-2026) — 选择正确的格式
+- [如何将 Markdown 转为 HTML、DOCX 和 PDF](/blog/how-to-convert-markdown-to-html-docx-pdf) — 多格式发布工作流
