@@ -1439,10 +1439,6 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "word-counter",
-    ],
-  },
-  {
-    slug: "word-counter",
     title: "字数统计器",
     description:
       "统计文本中的字数、字符数、行数、句子数和段落数。实时统计，随输入更新。",
