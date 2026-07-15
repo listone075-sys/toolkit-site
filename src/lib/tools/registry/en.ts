@@ -1188,6 +1188,18 @@ export const toolRegistry: ToolConfig[] = [
         question: "Are the passwords stored anywhere?",
         answer: "No. Passwords are generated in your browser using cryptographically strong randomness (crypto.getRandomValues). They are never stored or transmitted.",
       },
+      {
+        question: "What makes a password strong?",
+        answer: "A strong password is at least 12 characters long and includes uppercase letters, lowercase letters, numbers, and special symbols. Avoid dictionary words, personal information, and common patterns like '123456' or 'password'. Our generator creates truly random combinations that are resistant to brute-force and dictionary attacks.",
+      },
+      {
+        question: "How many characters should my password be?",
+        answer: "12 characters minimum for general accounts, 16+ for email and financial accounts. Each additional character makes a password exponentially harder to crack — a 16-character random password is billions of times stronger than an 8-character one.",
+      },
+      {
+        question: "Can I generate passwords that are easy to remember?",
+        answer: "You can use the 'passphrase' option if available, which generates random word combinations like 'correct-horse-battery-staple'. These are both strong and memorable. For maximum security with memorability, use a password manager to store the generated passwords.",
+      },
     ],
   },
   {
@@ -1415,6 +1427,18 @@ export const toolRegistry: ToolConfig[] = [
         question: "How do I calculate percentage increase?",
         answer: "Use the % Change tab. Formula: ((New − Old) / Old) × 100. Enter the old and new values to see the change.",
       },
+      {
+        question: "How do I calculate a discount percentage?",
+        answer: "To calculate a discount: multiply the original price by the discount percentage (e.g., 30% off $50 = $50 × 0.30 = $15 off, so you pay $35). Use our Discount Calculator for a dedicated tool with automatic calculation.",
+      },
+      {
+        question: "What's the difference between percentage points and percent?",
+        answer: "A percentage point is the absolute difference between two percentages. For example, if interest rates rise from 4% to 5%, that's a 1 percentage point increase, but a 25% relative increase (since 1/4 = 0.25). This distinction is crucial in finance, statistics, and data reporting.",
+      },
+      {
+        question: "Can I calculate reverse percentages?",
+        answer: "Yes! If you know the final price after a 20% discount was $80, you can find the original: $80 ÷ (1 − 0.20) = $100. Use the '% of' mode and work backwards, or use our percentage increase/decrease mode to find the original value.",
+      },
     ],
   },
   {
@@ -1442,6 +1466,16 @@ export const toolRegistry: ToolConfig[] = [
         question: "Is my text private?",
         answer:
           "Yes. All counting happens in your browser. Your text is never uploaded to any server.",
+      },
+      {
+        question: "How do I count words in a PDF or Word document?",
+        answer:
+          "Copy the text from your PDF or Word document and paste it into the counter. For PDFs, select all text (Ctrl+A) and copy. For Word documents, copy the content and paste. The counter will instantly show word and character counts.",
+      },
+      {
+        question: "What's the difference between characters with and without spaces?",
+        answer:
+          "Characters with spaces includes every character including spaces between words. Characters without spaces counts only letters, numbers, and punctuation. Most social media platforms (Twitter/X, LinkedIn) count characters with spaces when enforcing post limits.",
       },
     ],
   },
