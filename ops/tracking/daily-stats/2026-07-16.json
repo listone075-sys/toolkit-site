@@ -2,11 +2,11 @@
   "date": "2026-07-16",
   "startDate": "2026-07-08",
   "days": 9,
-  "totalPV": 268,
-  "totalUV": 64,
-  "avgDailyPV": 30,
-  "avgDailyUV": 7,
-  "yesterdayPV": 1,
+  "totalPV": 306,
+  "totalUV": 68,
+  "avgDailyPV": 34,
+  "avgDailyUV": 8,
+  "yesterdayPV": 5,
   "dailyBreakdown": [
     {
       "date": "20260708",
@@ -27,9 +27,9 @@
     {
       "date": "20260715",
       "activeUsers": 10,
-      "pageViews": 157,
-      "avgSessionDuration": 6078.216952071429,
-      "bounceRate": 0.9285714285714286,
+      "pageViews": 183,
+      "avgSessionDuration": 965.6935058571428,
+      "bounceRate": 0.42857142857142855,
       "newUsers": 7
     },
     {
@@ -57,6 +57,14 @@
       "newUsers": 6
     },
     {
+      "date": "20260716",
+      "activeUsers": 5,
+      "pageViews": 13,
+      "avgSessionDuration": 2219.9393874,
+      "bounceRate": 1,
+      "newUsers": 3
+    },
+    {
       "date": "20260712",
       "activeUsers": 4,
       "pageViews": 3,
@@ -71,26 +79,18 @@
       "avgSessionDuration": 2.9418768,
       "bounceRate": 1,
       "newUsers": 4
-    },
-    {
-      "date": "20260716",
-      "activeUsers": 1,
-      "pageViews": 1,
-      "avgSessionDuration": 0,
-      "bounceRate": 1,
-      "newUsers": 1
     }
   ],
   "sources": [
     {
       "channel": "Direct",
-      "users": 58,
-      "pageViews": 256
+      "users": 60,
+      "pageViews": 302
     },
     {
       "channel": "Unassigned",
-      "users": 10,
-      "pageViews": 11
+      "users": 6,
+      "pageViews": 3
     },
     {
       "channel": "Organic Search",
@@ -101,37 +101,37 @@
   "topPages": [
     {
       "path": "/",
+      "pageViews": 80,
+      "users": 18
+    },
+    {
+      "path": "/",
       "pageViews": 73,
       "users": 43
     },
     {
-      "path": "/",
-      "pageViews": 67,
-      "users": 15
-    },
-    {
       "path": "/reports.html",
-      "pageViews": 33,
+      "pageViews": 38,
       "users": 4
     },
     {
       "path": "/",
-      "pageViews": 20,
+      "pageViews": 22,
       "users": 6
     },
     {
       "path": "/app/reports",
-      "pageViews": 7,
-      "users": 1
-    },
-    {
-      "path": "/techlog/",
-      "pageViews": 3,
+      "pageViews": 11,
       "users": 2
     },
     {
       "path": "/dashboard",
-      "pageViews": 2,
+      "pageViews": 3,
+      "users": 2
+    },
+    {
+      "path": "/techlog/",
+      "pageViews": 3,
       "users": 2
     },
     {

@@ -27,7 +27,7 @@
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 16 | 7/17 | How to Remove Image Backgrounds with AI — Free, Private, No Upload Required | Image AI | 📝 |
+| 16 | 7/16 | How to Remove Image Backgrounds with AI — Free, Private, No Upload Required | Image AI | ✅ |
 
 ## 内容轮换规则
 
