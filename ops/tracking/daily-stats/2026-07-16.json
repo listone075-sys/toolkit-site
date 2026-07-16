@@ -1,0 +1,144 @@
+{
+  "date": "2026-07-16",
+  "startDate": "2026-07-08",
+  "days": 9,
+  "totalPV": 268,
+  "totalUV": 64,
+  "avgDailyPV": 30,
+  "avgDailyUV": 7,
+  "yesterdayPV": 1,
+  "dailyBreakdown": [
+    {
+      "date": "20260708",
+      "activeUsers": 11,
+      "pageViews": 18,
+      "avgSessionDuration": 18.860102692307695,
+      "bounceRate": 0.9230769230769231,
+      "newUsers": 12
+    },
+    {
+      "date": "20260713",
+      "activeUsers": 11,
+      "pageViews": 30,
+      "avgSessionDuration": 104.48980091666668,
+      "bounceRate": 0.6666666666666666,
+      "newUsers": 10
+    },
+    {
+      "date": "20260715",
+      "activeUsers": 10,
+      "pageViews": 157,
+      "avgSessionDuration": 6078.216952071429,
+      "bounceRate": 0.9285714285714286,
+      "newUsers": 7
+    },
+    {
+      "date": "20260709",
+      "activeUsers": 8,
+      "pageViews": 8,
+      "avgSessionDuration": 3.87051025,
+      "bounceRate": 0.875,
+      "newUsers": 8
+    },
+    {
+      "date": "20260710",
+      "activeUsers": 8,
+      "pageViews": 40,
+      "avgSessionDuration": 74.73968210000001,
+      "bounceRate": 0.6,
+      "newUsers": 8
+    },
+    {
+      "date": "20260711",
+      "activeUsers": 7,
+      "pageViews": 6,
+      "avgSessionDuration": 3.572987285714286,
+      "bounceRate": 0.8571428571428571,
+      "newUsers": 6
+    },
+    {
+      "date": "20260712",
+      "activeUsers": 4,
+      "pageViews": 3,
+      "avgSessionDuration": 0.462485,
+      "bounceRate": 1,
+      "newUsers": 2
+    },
+    {
+      "date": "20260714",
+      "activeUsers": 4,
+      "pageViews": 5,
+      "avgSessionDuration": 2.9418768,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260716",
+      "activeUsers": 1,
+      "pageViews": 1,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 1
+    }
+  ],
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 58,
+      "pageViews": 256
+    },
+    {
+      "channel": "Unassigned",
+      "users": 10,
+      "pageViews": 11
+    },
+    {
+      "channel": "Organic Search",
+      "users": 1,
+      "pageViews": 1
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "pageViews": 73,
+      "users": 43
+    },
+    {
+      "path": "/",
+      "pageViews": 67,
+      "users": 15
+    },
+    {
+      "path": "/reports.html",
+      "pageViews": 33,
+      "users": 4
+    },
+    {
+      "path": "/",
+      "pageViews": 20,
+      "users": 6
+    },
+    {
+      "path": "/app/reports",
+      "pageViews": 7,
+      "users": 1
+    },
+    {
+      "path": "/techlog/",
+      "pageViews": 3,
+      "users": 2
+    },
+    {
+      "path": "/dashboard",
+      "pageViews": 2,
+      "users": 2
+    },
+    {
+      "path": "/en/",
+      "pageViews": 1,
+      "users": 1
+    }
+  ],
+  "note": "Data from 2026-07-08 onwards (GA4 fix date). Non-ToolCraft paths excluded."
+}

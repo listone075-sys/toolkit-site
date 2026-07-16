@@ -27,6 +27,7 @@
 | 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | ✅ |
 | 14 | 7/15 | How to Write a Great README — Tips & Best Practices | Markdown | ✅ |
 | 15 | 7/15 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to | ✅ |
+| 16 | 7/17 | How to Remove Image Backgrounds with AI — Free, Private, No Upload Required | Image AI | 📝 |
 
 ## 内容轮换规则
 
@@ -42,6 +43,7 @@
 | Markdown | 6 |
 | Markdown AI | 3 |
 | Image | 2 |
+| Image AI | 1 |
 | Image 对比 | 1 |
 | Image 深度 | 1 |
 | PDF How-to | 1 |

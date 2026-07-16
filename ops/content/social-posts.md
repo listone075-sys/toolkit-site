@@ -21,6 +21,7 @@
 | 13 | 7/7 | 技巧式 | Markdown technical writing tips | ✅ |
 | 14 | 7/13 | 技巧式 | ChatGPT 输出格式清理 + AI→PPTX 预告 | ✅ |
 | 15 | 7/15 | 问题式 | README 写作 — "3 seconds to convince someone to stay" | ✅ |
+| 16 | 7/16 | 问题式 | PDF 拆分/合并 — "Need just pages 3-7 from a 50-page PDF?" | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
@@ -43,6 +44,7 @@
 | 7 | 7/7 | Markdown for Beginners | Markdown Syntax Guide — supplementary | ✅ |
 | 8 | 7/10 | Markdown for Beginners | Clean Up ChatGPT Output Formatting (Blog #12) | ✅ |
 | 9 | 7/15 | Markdown for Beginners | How to Write a Great README — Free Template & Checklist (Blog #14) | ✅ |
+| 10 | 7/16 | PDF Hacks & Tutorials | How to Split or Merge PDF Pages — Complete Guide (Blog #15) | ✅ |
 
 ---
 
