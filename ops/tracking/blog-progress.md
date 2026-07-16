@@ -1,6 +1,6 @@
 # 博客发布进度
 
-> 累计：14 篇（EN: 32 文件, ZH: 33 文件）
+> 累计：15 篇 · 本周 3 篇已完成 · Blog #16 待发布
 > 策略：Markdown 品类优先，每周至少 2 篇
 
 ## 已发布
@@ -19,14 +19,14 @@
 | 10 | 7/6 | Markdown Cheat Sheet — Complete Quick Reference (EN+ZH) | Markdown | ✅ |
 | 11 | 7/7 | How to Use Markdown for Technical Writing with AI (EN+ZH) | Markdown AI | ✅ |
 | 12 | 7/8 | How to Clean Up ChatGPT Output Formatting (EN+ZH) | Markdown AI | ✅ |
+| 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | ✅ |
+| 14 | 7/15 | How to Write a Great README — Tips & Best Practices | Markdown | ✅ |
+| 15 | 7/15 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to | ✅ |
 
 ## 计划中
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | ✅ |
-| 14 | 7/15 | How to Write a Great README — Tips & Best Practices | Markdown | ✅ |
-| 15 | 7/15 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to | ✅ |
 | 16 | 7/17 | How to Remove Image Backgrounds with AI — Free, Private, No Upload Required | Image AI | 📝 |
 
 ## 内容轮换规则
@@ -41,10 +41,11 @@
 | 品类 | 已发布 |
 |------|:--:|
 | Markdown | 6 |
-| Markdown AI | 3 |
+| Markdown AI | 4 |
+| Markdown ZH | 1 |
 | Image | 2 |
 | Image AI | 1 |
 | Image 对比 | 1 |
 | Image 深度 | 1 |
-| PDF How-to | 1 |
+| PDF How-to | 2 |
 | Dev Tools | 1 |
