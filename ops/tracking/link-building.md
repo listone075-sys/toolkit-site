@@ -17,15 +17,34 @@
 
 ## 第6周外链提交目标（周三+周四执行）
 
-| 优先级 | 平台 | URL | DA | 备注 |
-|:--:|------|------|:--:|------|
-| 1 | **CrozDesk** | crozdesk.com | 高 | B2B 软件目录，需 biz email，48h 审核 |
-| 2 | **All My Faves** | allmyfaves.com | 60 | 5M+ 月活，免费提交，选品类 |
-| 3 | **Dev Hunt** | devhunt.org | 中 | 开发者工具目录，免费 |
-| 4 | **MicroLaunch** | microlaunch.net | 中 | 微型 SaaS 目录，免费 |
-| 5 | **Fazier** | fazier.com | 中 | Indie SaaS 目录，免费 |
+| 优先级 | 平台 | URL | DA | 状态 |
+|:--:|------|------|:--:|:--:|
+| 1 | **CrozDesk** | crozdesk.com/for-vendors | 高 | 📋 素材已备（见下方） |
+| 2 | **All My Faves** | allmyfaves.com | 60 | 📋 素材已备（见下方） |
+| 3 | **Dev Hunt** | devhunt.org | 中 | ⏳ 第7周 |
+| 4 | **MicroLaunch** | microlaunch.net | 中 | ⏳ 第7周 |
+| 5 | **Fazier** | fazier.com | 中 | ⏳ 第7周 |
 
-> 备选：ToolListed、MAQTOOB、Indie Hackers、Peerlist Launchpad、Startup Stash
+## 外链提交素材
+
+### CrozDesk
+- **Product Name:** ToolCraft — Free Online Tools
+- **Website:** https://toolcraftbox.com
+- **Tagline:** 48 free online tools for images, PDFs, Markdown, and development. All processing runs in your browser — no upload, no sign-up.
+- **Category:** Productivity / Developer Tools
+- **Pricing:** Free
+- **Description:** ToolCraft is a collection of 48+ free browser-based tools for everyday digital tasks. Compress images, merge PDFs, convert Markdown to HTML/PDF/DOCX, generate QR codes, format JSON, and more. No sign-up. No upload. Everything runs locally in your browser for maximum privacy.
+
+### All My Faves
+- **URL:** https://toolcraftbox.com
+- **Category:** Technology / Free Online Tools
+- **Description:** ToolCraft — 48 free online tools. Image compression, PDF merge/split, Markdown conversion, QR code generator, JSON formatter, and more. No sign-up. No upload. All processing runs in your browser.
+- **Tags:** free tools, online tools, image compressor, pdf tools, markdown converter, qr code generator
+
+### 需要你手动操作
+1. 打开 CrozDesk vendor 页面 → 填表提交（需 biz email）
+2. 打开 All My Faves → 选品类 → 填 URL + 描述
+3. 两个都提交后告诉我，15-30 分钟搞定
 
 ## 已配置技术渠道
 

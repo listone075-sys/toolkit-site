@@ -28,9 +28,9 @@
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 17 | 7/21 | How to Compress a PDF Without Losing Quality | PDF How-to | ⬜ |
-| 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ⬜ |
-| 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ⬜ |
+| 17 | 7/21 | How to Compress a PDF Without Losing Quality | PDF How-to | ✅ |
+| 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ✅ |
+| 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ✅ |
 
 ## 内容轮换规则
 

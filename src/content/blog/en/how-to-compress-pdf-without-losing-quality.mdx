@@ -1,0 +1,142 @@
+export const meta = {
+  title: "How to Compress a PDF Without Losing Quality — Free & Fast",
+  description: "Learn how to reduce PDF file size without sacrificing quality. Compare lossless vs lossy compression, and use our free browser-based tool — no upload, no sign-up.",
+  date: "2026-07-21",
+  category: "PDF",
+};
+
+# How to Compress a PDF Without Losing Quality — Free & Fast
+
+You just exported a 45-page proposal from Word. It looks perfect. Then you try to email it.
+
+"Attachment too large. Maximum size: 25 MB."
+
+Your PDF is 48 MB.
+
+You don't need to buy Adobe Acrobat. You don't need to upload your confidential document to a random website. And you definitely don't need to compromise on quality.
+
+Here's how to compress a PDF — the right way — for free, in your browser.
+
+## Why PDF Files Get So Large
+
+Before compressing, it helps to know *why* your PDF is bloated:
+
+- **High-resolution images** — a single 300 DPI photo can add 5–10 MB
+- **Embedded fonts** — each font family adds hundreds of kilobytes
+- **Unoptimized metadata** — invisible data like EXIF, document history, and unused objects
+- **Layers and annotations** — every transparent layer and comment adds weight
+- **Repeated content** — the same logo on every page, stored once per page instead of once per document
+
+A typical business PDF is 3–5× larger than it needs to be. Most of that is recoverable.
+
+## Lossless vs Lossy Compression: What's the Difference?
+
+This is the single most important thing to understand about PDF compression.
+
+| | Lossless | Lossy |
+|---|---|---|
+| **How it works** | Removes redundant data, reorganizes objects | Reduces image resolution and quality |
+| **File size reduction** | 20–50% | 50–90% |
+| **Quality impact** | None — pixel-perfect identical | Visible at high compression levels |
+| **Best for** | Contracts, invoices, text-heavy docs | Presentations, portfolios, email attachments |
+| **Reversible?** | Yes — decompress to get the original | No — information is permanently removed |
+
+**Rule of thumb:** Start with lossless. If the file is still too large, switch to lossy and pick a quality level that still looks good.
+
+## Method 1: Lossless Compression (Preserves Quality)
+
+Lossless compression works by cleaning up the internal structure of your PDF without touching any actual content:
+
+1. **Removes duplicate objects** — same image used 5 times? Store it once, reference it 5 times
+2. **Strips unused metadata** — old revision history, deleted annotations, invisible layers
+3. **Recompresses streams** — PDF objects often use outdated or suboptimal compression
+4. **Optimizes cross-reference tables** — the PDF's internal index gets smaller and faster
+
+**How to do it:**
+
+1. Go to the [PDF Compressor](https://toolcraftbox.com/tools/pdf-compress)
+2. Drag and drop your PDF (or click to browse)
+3. Select **Lossless** compression
+4. Click **Compress**
+5. Download the optimized file
+
+The result is byte-for-byte identical in appearance — open both files side by side and you won't see a difference. Only the file size changes.
+
+**Typical results:** A 48 MB proposal drops to ~30 MB. A 10 MB invoice drops to ~6 MB.
+
+## Method 2: Lossy Compression (Maximum Size Reduction)
+
+When lossless isn't enough — you need to get under that 25 MB email limit or 10 MB upload cap — lossy compression takes over:
+
+1. **Downsamples images** — reduces embedded images from 300 DPI to 150 DPI (or lower)
+2. **Applies JPEG compression** — re-encodes images with configurable quality (typically 60–85%)
+3. **Removes redundant color data** — strips color profiles and unused channels
+4. **Flattens layers** — merges annotations, form fields, and transparent objects
+
+**How to do it:**
+
+1. Go to the [PDF Compressor](https://toolcraftbox.com/tools/pdf-compress)
+2. Drag and drop your PDF
+3. Select **Lossy** and choose a quality level:
+   - **High (85%)** — barely visible difference, ~50% smaller
+   - **Medium (70%)** — slight quality loss, ~70% smaller
+   - **Low (50%)** — noticeable compression artifacts, ~85% smaller
+4. Click **Compress**
+5. Preview the result and re-compress at a different level if needed
+
+**Typical results:** A 48 MB presentation compresses to ~15 MB at Medium quality. Still perfectly readable, slides look sharp, file is 69% smaller.
+
+## How Our PDF Compressor Works (Privacy Note)
+
+A quick word on how this tool is different from most online PDF compressors:
+
+- **All processing happens in your browser.** Your PDF never leaves your computer.
+- **No server upload.** We don't have a server to upload it to — the tool runs entirely client-side.
+- **No sign-up. No email collection.** Open the page, compress, download, close the tab.
+- **Works offline.** Once the page loads, you can disconnect from the internet.
+
+We use **pdf-lib** to parse, optimize, and rebuild PDFs directly in your browser. Image recompression uses the Canvas API. Everything stays local.
+
+## When to Use Which Method
+
+| Scenario | Recommendation | Why |
+|---|---|---|
+| Legal contracts | Lossless only | Can't risk any visual change |
+| Email attachments | Lossy (High quality) | Need to get under 25 MB |
+| Web upload (job applications) | Lossy (Medium) | Most portals cap at 5–10 MB |
+| Archiving | Lossless | You may need the original later |
+| Client presentations | Lossy (High) | Looks identical on screen, half the size |
+| Print-ready files | Lossless | Printer needs full resolution |
+
+## Common Questions
+
+### Does compressing a PDF reduce print quality?
+
+**Lossless:** No. The file is bit-for-bit identical in appearance. Print away.
+
+**Lossy:** Maybe. At High quality (85%), most office printers won't show a difference. At Low quality (50%), images will look soft or pixelated — fine for draft prints, not for final output.
+
+### Can I compress a PDF multiple times?
+
+Yes, but with diminishing returns. Lossless compression is idempotent — running it twice gives the same result as running it once. Lossy compression degrades quality each time, like re-saving a JPEG. Always compress from the original if possible.
+
+### What's the smallest a PDF can get?
+
+Depends on the content. A text-only PDF (no images) can compress by 80%+ losslessly. An image-heavy PDF might only shrink 20% losslessly, but 70%+ lossy. The tool shows you the compressed file size before you download, so you can try different settings.
+
+### Will my PDF still be searchable after compression?
+
+Yes. Text remains selectable, searchable, and accessible to screen readers. We don't rasterize text — compression only touches images and internal structure.
+
+### Is this as good as Adobe Acrobat's PDF Optimizer?
+
+For image-heavy PDFs at lossy settings, Adobe Acrobat has a slight edge because it uses proprietary compression algorithms. For text-heavy PDFs and lossless compression, our tool produces nearly identical results. The difference: ours is free and doesn't upload your files anywhere.
+
+## The 10-Second Summary
+
+1. **Open** the [Free PDF Compressor](https://toolcraftbox.com/tools/pdf-compress)
+2. **Drop** your PDF
+3. **Pick** Lossless (quality-safe) or Lossy (smaller file)
+4. **Download** the compressed file — done
+
+No account. No upload. No quality compromise. Just a smaller PDF.

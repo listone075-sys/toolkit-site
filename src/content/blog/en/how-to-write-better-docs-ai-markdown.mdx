@@ -1,0 +1,156 @@
+export const meta = {
+  title: "How to Write Better Docs with AI + Markdown — A Practical Guide",
+  description: "Learn how to combine AI writing tools with Markdown to create clear, maintainable documentation. Faster drafts, cleaner formatting, and docs your team will actually read.",
+  date: "2026-07-22",
+  category: "Markdown",
+};
+
+# How to Write Better Docs with AI + Markdown — A Practical Guide
+
+Documentation is the vegetable of software development. Everyone agrees it's important. Nobody enjoys doing it.
+
+But here's what's changed: **AI writes a solid first draft. Markdown keeps it clean, version-controlled, and publishable anywhere.** Combine them, and documentation goes from a chore to a 15-minute task.
+
+Here's the workflow that's working for thousands of developers in 2026.
+
+## Why Markdown for Documentation?
+
+Before we add AI, let's address the format choice. Markdown has won documentation. Period.
+
+- **Plain text** — lives in git, diffable, reviewable in pull requests
+- **Universal** — GitHub, GitLab, Notion, Obsidian, Confluence, ReadTheDocs all speak Markdown
+- **Portable** — one `.md` file converts to HTML, PDF, DOCX, or a static site
+- **Future-proof** — a text file from 2004 opens perfectly today; a Word doc from 2004… good luck
+
+The question isn't "should I use Markdown for docs?" It's "what's the fastest way to write good Markdown docs?" That's where AI comes in.
+
+## The AI + Markdown Documentation Workflow
+
+### Step 1: Feed AI the Context
+
+AI can't document what it doesn't understand. Give it raw material:
+
+```
+Write documentation for a REST API endpoint that:
+
+POST /api/users/invite
+- Accepts: { email: string, role: "admin" | "member" | "viewer" }
+- Returns: { inviteId: string, expiresAt: ISO8601 }
+- Auth: Bearer token required
+- Rate limit: 10 requests/minute per IP
+- Sends invitation email to the provided address
+- Fails if email already belongs to an active user (409)
+- Fails if role is "admin" and requester is not an admin (403)
+
+Format in Markdown with these sections:
+- Overview (2-3 sentences)
+- Request format (table with field, type, required, description)
+- Response format
+- Error codes
+- Example request/response (curl + JSON)
+```
+
+### Step 2: Get the AI Draft in Markdown
+
+The key insight: **ask for Markdown directly.** Don't ask for a Google Doc and then convert. Don't ask for a Notion page. Ask for raw Markdown.
+
+ChatGPT, Claude, and most AI tools output clean Markdown natively — it's what they were trained on. When you ask for "document this in Markdown," you get exactly what you need: headings, tables, code blocks, all properly formatted.
+
+### Step 3: Clean Up and Enhance
+
+AI gives you an 80% draft. Your job is the final 20%:
+
+1. **Verify accuracy** — AI hallucinates edge cases. Check every claim.
+2. **Add code examples** — AI writes example code, but test it before publishing
+3. **Improve readability** — break long paragraphs, add subheadings
+4. **Link related docs** — AI doesn't know your other documentation pages exist
+
+This step typically takes 5–10 minutes. Compare that to 45+ minutes writing from scratch.
+
+### Step 4: Convert and Publish
+
+The Markdown file is your source of truth. From here, publish anywhere:
+
+- **GitHub/GitLab wiki** — commit the `.md` file directly
+- **Static site (Docusaurus, MkDocs, Next.js)** — drop it into your `docs/` folder
+- **Confluence/Notion** — import Markdown or paste rendered HTML
+- **PDF** — convert with a [free Markdown-to-PDF tool](https://toolcraftbox.com/tools/markdown-to-pdf) for offline distribution
+- **DOCX** — convert to Word for stakeholders who need track changes
+
+## Real-World Examples
+
+### API Documentation
+
+**AI prompt:** "Document the Stripe-style payment intent API in Markdown. Include authentication, idempotency, error codes, and a curl example."
+
+**What you get:** A complete API reference with request/response tables, status codes, and working examples. Add your specific endpoint URLs and it's production-ready.
+
+### README Files
+
+**AI prompt:** "Write a README.md for an open-source Python library called 'fast-validate' that validates JSON against schemas. Include installation, quick start, API reference, and contributing guide."
+
+**What you get:** A structured README with badges, installation instructions, code snippets, and contribution guidelines. We covered this in detail in our [README writing guide](https://toolcraftbox.com/en/blog/how-to-write-a-great-readme).
+
+### Internal Onboarding Docs
+
+**AI prompt:** "Write a Markdown onboarding guide for new backend engineers. Cover: dev environment setup (Docker, Node 20, PostgreSQL 16), our Git workflow (trunk-based, squash merge), code review expectations (24h SLA, 2 approvals for production), and key Slack channels."
+
+**What you get:** A comprehensive onboarding document that would take an afternoon to write manually.
+
+## Pro Tips
+
+### 1. Keep a Prompt Library
+
+Save your best documentation prompts. Here's a starter:
+
+```
+Write clear, concise documentation in Markdown for [TOPIC].
+Target audience: [JUNIOR DEVS / SENIOR ENGINEERS / END USERS / API CONSUMERS].
+Include: overview, prerequisites, step-by-step instructions, common errors and fixes, and a troubleshooting section.
+Use tables for reference information. Use code blocks with language tags for all code.
+Keep sentences under 25 words. Avoid passive voice.
+```
+
+Tweak the audience and sections per document. The prompt quality determines the output quality.
+
+### 2. Use AI for Doc Reviews, Not Just Writing
+
+Paste existing docs into AI and ask:
+
+> "Review this documentation for clarity, completeness, and technical accuracy. What questions would a new team member have after reading this? What's missing?"
+
+AI is an excellent first-pass reviewer. It catches gaps and confusing sections faster than a human reviewer.
+
+### 3. Version Your Docs Alongside Code
+
+Keep `docs/` in the same repo as your code. When a PR changes an API, the same PR updates the docs. AI helps here — feed the code diff to AI and ask: "What documentation needs to change based on this diff?"
+
+### 4. Don't Let AI Write Without Review
+
+The fastest way to lose trust in your docs: publish AI-generated errors. Every stat, every code example, every "guarantee" — verify it. AI accelerates writing, not fact-checking.
+
+## Common Pitfalls
+
+| Mistake | What Happens | Fix |
+|---|---|---|
+| Vague prompts | Generic, useless docs | Be specific: audience, format, sections, examples |
+| No code testing | Broken examples erode trust | Run every code snippet before publishing |
+| Over-relying on AI | Docs lack real-world nuance | Add your team's specific context and gotchas |
+| Skipping structure | Wall of text nobody reads | Use headings, tables, bullet points, callouts |
+| Forgetting the "why" | Docs list features, not purpose | Every section should answer "why would I need this?" |
+
+## The 5-Minute Documentation Sprint
+
+Here's the speedrun for when you need docs *right now*:
+
+1. **Open AI chat** — paste your raw notes, API spec, or code comments
+2. **Use the prompt template** from the Pro Tips section above
+3. **Paste AI output** into our [Markdown Editor](https://toolcraftbox.com/tools/markdown-editor) to preview and polish
+4. **Review for 3 minutes** — fix inaccuracies, add context
+5. **Commit** — push to your repo or publish to your docs site
+
+Five minutes. Clean docs. No excuses.
+
+---
+
+Documentation doesn't have to be the vegetable on your plate. With AI drafting and Markdown formatting, it becomes the fastest part of your development workflow — not the slowest.
