@@ -1,16 +1,16 @@
 # 周计划
 
-> 当前：第5周 · 内容深化 · 2026-07-13 → 2026-07-17
+> 当前：第6周 · 外链建设启动 · 2026-07-20 → 2026-07-24
 
 ## 本周任务
 
 | 日期 | 星期 | 任务 | 优先级 |
 |:--|:--:|------|:--:|
-| 7/13 | 周一 | 博客选题定稿 + 工具页面内容增强 + 恢复 Twitter | 🔴 |
-| 7/14 | 周二 | Blog #13 发布 + 写 Blog #14 | 🔴 |
-| 7/15 | 周三 | Blog #14 发布 + 工具 SEO 优化 + 写 Blog #15 | 🔴 |
-| 7/16 | 周四 | Blog #15 发布 | 🔴 |
-| 7/17 | 周五 | 本周复盘 + GSC/GA4 数据检查 | 🟡 |
+| 7/20 | 周一 | 博客选题 + 外链目录清单整理 + 恢复 Twitter 每日 | 🔴 |
+| 7/21 | 周二 | Blog #17 发布 + 写 Blog #18 | 🔴 |
+| 7/22 | 周三 | Blog #18 发布 + 外链提交 #1 + 写 Blog #19 | 🔴 |
+| 7/23 | 周四 | Blog #19 发布 + 外链提交 #2 | 🔴 |
+| 7/24 | 周五 | 本周复盘 + GSC/GA4 数据检查 + GSC 数据脚本 | 🟡 |
 
 ## 每日例行
 
@@ -24,9 +24,9 @@
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 13 | 7/14 | How to Convert Markdown to PowerPoint — Free & Fast | Markdown AI | 📝 |
-| 14 | 7/15 | How to Write a Great README — Tips, Templates & Best Practices | Markdown |
-| 15 | 7/16 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to |
+| 17 | 7/21 | How to Compress a PDF Without Losing Quality | PDF How-to | ⬜ |
+| 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ⬜ |
+| 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ⬜ |
 
 ## 历史周计划
 
@@ -36,4 +36,5 @@
 | 2 | 6/28-7/4 | 内容启动 | 7 篇 |
 | 3 | 7/6-7/10 | 内容加速 | 4 篇 |
 | 4 | 7/6-7/10 | 内容加速 | 4 篇 |
-| 5 | 7/13-7/17 | 内容深化 | 3 篇（计划） |
+| 5 | 7/13-7/17 | 内容深化 | 4 篇 ✅ |
+| 6 | 7/20-7/24 | 外链建设 | 3 篇（计划） |

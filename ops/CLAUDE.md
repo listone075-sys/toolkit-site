@@ -1,19 +1,19 @@
 # ToolCraft 运营工作台
 
-> 第5周 · 内容深化 · 2026-07-13（周一）
+> 第6周 · 外链建设启动 · 2026-07-22（周三）
 > 主项目：`D:\ai\toolkit-site`
 > 📋 详细周计划：[tracking/weekly-plan.md](tracking/weekly-plan.md)
 
-## 本周任务（第5周：7/13-7/17）
+## 本周任务（第6周：7/20-7/24）
 
 | 日期 | 任务 | 状态 |
 |:--:|------|:--:|
-| 周一 7/13 | 博客选题 + 工具页面内容增强 + 恢复 Twitter | 🔄 |
-| 周二 7/14 | Blog #13 发布 + 写 Blog #14 | ⬜ |
-| 周三 7/15 | Blog #14 发布 + 工具 SEO 优化 + 写 Blog #15 | ⬜ |
-| 周四 7/16 | Blog #15 发布 | ⬜ |
-| 周五 7/17 | 本周复盘 + GSC/GA4 数据检查 | ⬜ |
-| 每日 | Twitter 推文（恢复每日 1 条） | 🔄 |
+| 周一 7/20 | 博客选题 + 外链目录清单整理 + 恢复 Twitter | ✅ |
+| 周二 7/21 | Blog #17 发布 + 写 Blog #18 | ⬜ |
+| 周三 7/22 | Blog #18 发布 + 外链提交 #1 + 写 Blog #19 | ⬜ |
+| 周四 7/23 | Blog #19 发布 + 外链提交 #2 | ⬜ |
+| 周五 7/24 | 本周复盘 + GSC/GA4 数据检查 + GSC 脚本 | ⬜ |
+| 每日 | Twitter 推文（恢复每日 1 条，本周 1/5） | 🔄 |
 | 持续 | Pinterest 每周 ≥2 Pin | ⬜ |
 
 ## 部署
@@ -48,11 +48,11 @@ cd D:\ai\toolkit-site && npx tsx scripts/ga4-fetch.ts   # 拉取 GA4 数据（�
 
 ## 关键状态
 
-- 📝 博客：12 篇已发布，3 篇计划中
-- 🔗 外链：SaaSHub 审核中、AlternativeTo 已提交、Ahrefs 已验证
-- 📊 GA4：7/8 修复，日均 ~13 PV / 8 UV（3天数据）
+- 📝 博客：16 篇已发布，3 篇计划中（#17-19）
+- 🔗 外链：SaaSHub 已放弃、AlternativeTo 已提交、Ahrefs 已验证
+- 📊 GA4：7/8 修复，日均 ~27 PV / 6 UV（⚠️ 数据仍受旧项目污染，使用 property 541266486）
 - 🔍 IndexNow：已配置，每次构建自动提交
-- 🐦 Twitter：13 条推文 / 📌 Pinterest：8 Pin
+- 🐦 Twitter：17 条推文 / 📌 Pinterest：10 Pin
 
 > ⚠️ **数据提示：** GA4 7/8 才修复，此前数据已归档 `tracking/daily-stats/_invalid/`。
-> GA4 property `541266486` 仍混有旧项目数据流，需在后台清理。
+> GA4 property `543635611` 为新属性，数据干净。

@@ -9,7 +9,7 @@
 - 策略：每日 1 条，3 种类型轮换（问题式 → 数据式 → CTA式）
 - 标签：#buildinpublic #webdev #freetools
 - 头像/封面：`public/social/twitter-avatar.png` / `public/social/twitter-cover.png`
-- 累计推文：13 条
+- 累计推文：17 条
 
 ### Pinterest — toolcraftbox
 - 状态：✅ 商业账号转换成功（7/3）
@@ -17,7 +17,7 @@
 - 方向：AI+Markdown Pin 为主（ChatGPT 转文档、技术写作等）
 - Boards：Image Tools & Tips / PDF Hacks & Tutorials / Markdown for Beginners / Free Online Tools / Developer Resources
 - Rich Pins：OG 标签已配置 ✅
-- 累计 Pin：8 个
+- 累计 Pin：10 个
 
 ### 其他平台
 | 平台 | 状态 |

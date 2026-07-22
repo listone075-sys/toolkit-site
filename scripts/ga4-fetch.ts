@@ -28,13 +28,18 @@ const DASHBOARD_PATH = join(TRACKING_DIR, "kpi-dashboard.md");
 const DAILY_LOG_DIR = join(TRACKING_DIR, "daily-stats");
 const CONFIG_MEMO_PATH = join(OPS_DIR, ".claude", "memory", "config-credentials.md");
 
-// Non-ToolCraft pages from other projects sharing the same GA4 property.
+// Non-ToolCraft paths from other data streams sharing this GA4 property.
 // Exclude these from reports until the data streams are separated.
 const EXCLUDED_PATHS = [
   "/events.html",
   "/knowledge.html",
   "/backtest.html",
   "/toolbox.html",
+  "/reports.html",
+  "/app/reports",
+  "/dashboard",
+  "/techlog/",
+  "/en/",
 ];
 
 // ---- Auth ----

@@ -21,13 +21,13 @@ metadata:
 - 已验证 ✅ (6/26)
 
 ### Ahrefs Webmaster
-- ⬜ 待注册
+- ✅ 已验证 (7/10)
 
 ## 流量分析
 
 ### Google Analytics 4
 - **Measurement ID**: `G-JRNJX5CQ1F`（前端，toolcraftbox.com 专用）
-- **Property ID**: `541266486`（API 查询用）
+- **Property ID**: `543635611`（API 查询用）
 - **Data Stream**: TOOLCRAFT (https://www.toolcraftbox.com)
 - **API 模式**: ✅ 服务账号已配置
 - **服务账号**: `openclaw-read-ga4@website-statistics-query.iam.gserviceaccount.com`

@@ -22,6 +22,7 @@
 | 14 | 7/13 | 技巧式 | ChatGPT 输出格式清理 + AI→PPTX 预告 | ✅ |
 | 15 | 7/15 | 问题式 | README 写作 — "3 seconds to convince someone to stay" | ✅ |
 | 16 | 7/16 | 问题式 | PDF 拆分/合并 — "Need just pages 3-7 from a 50-page PDF?" | ✅ |
+| 17 | 7/21 | CTA式 | PDF Split/Merge 工具 — "Split, merge, compress — all free, in your browser" | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
