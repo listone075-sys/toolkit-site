@@ -3,16 +3,17 @@
 import { useTranslations } from "next-intl";
 import { useState, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { markdownToHtmlDocument, markdownToPdfHtmlBlob } from "@/lib/tools/markdown/md-to-pdf";
+import { markdownToHtmlDocument, markdownToPdfHtmlBlob, markdownToPdfBlob } from "@/lib/tools/markdown/md-to-pdf";
 import { downloadFile } from "@/lib/utils/file";
 import { DropTarget } from "./file-upload-zone";
-import { FileDown, Printer, Eye, Trash2 } from "lucide-react";
+import { FileDown, Printer, Eye, Trash2, Loader2 } from "lucide-react";
 
 export function MarkdownToPdf() {
   const t = useTranslations("components");
   const [input, setInput] = useState("");
   const [previewHtml, setPreviewHtml] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [pdfLoading, setPdfLoading] = useState(false);
   const previewRef = useRef<HTMLIFrameElement>(null);
   const printRef = useRef<HTMLIFrameElement>(null);
   const pendingPrint = useRef(false);
@@ -27,6 +28,20 @@ export function MarkdownToPdf() {
     if (!input.trim()) return;
     const blob = markdownToPdfHtmlBlob(input);
     downloadFile(blob, "document.html", "text/html");
+  };
+
+  const handleDownloadPdf = async () => {
+    if (!input.trim() || pdfLoading) return;
+    setPdfLoading(true);
+    setError(null);
+    try {
+      const blob = await markdownToPdfBlob(input);
+      downloadFile(blob, "document.pdf", "application/pdf");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to generate PDF. Try Print to PDF instead.");
+    } finally {
+      setPdfLoading(false);
+    }
   };
 
   const handlePrint = () => {
@@ -119,7 +134,14 @@ export function MarkdownToPdf() {
         <Button onClick={handlePreview} disabled={!input.trim()} variant="outline">
           <Eye className="h-4 w-4 mr-1" /> {t("markdownToPdf.previewBtn")}
         </Button>
-        <Button onClick={handlePrint} disabled={!input.trim()}>
+        <Button onClick={handleDownloadPdf} disabled={!input.trim() || pdfLoading} size="lg">
+          {pdfLoading ? (
+            <><Loader2 className="h-4 w-4 mr-1 animate-spin" /> {t("markdownToPdf.generatingPdf")}</>
+          ) : (
+            <><FileDown className="h-4 w-4 mr-1" /> {t("markdownToPdf.downloadPdf")}</>
+          )}
+        </Button>
+        <Button onClick={handlePrint} disabled={!input.trim()} variant="outline">
           <Printer className="h-4 w-4 mr-1" /> {t("markdownToPdf.printBtn")}
         </Button>
         <Button onClick={handleDownloadHtml} disabled={!input.trim()} variant="outline">
