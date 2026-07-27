@@ -23,6 +23,7 @@
 | 15 | 7/15 | 问题式 | README 写作 — "3 seconds to convince someone to stay" | ✅ |
 | 16 | 7/16 | 问题式 | PDF 拆分/合并 — "Need just pages 3-7 from a 50-page PDF?" | ✅ |
 | 17 | 7/21 | CTA式 | PDF Split/Merge 工具 — "Split, merge, compress — all free, in your browser" | ✅ |
+| 18 | 7/27 | CTA式 | 48 free tools. 0 sign-ups. 0 uploads. Everything runs in your browser. | ✅ |
 
 ## 知乎/Zhihu 问答记录
 

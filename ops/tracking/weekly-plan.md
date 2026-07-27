@@ -1,16 +1,16 @@
 # 周计划
 
-> 当前：第6周 · 外链建设启动 · 2026-07-20 → 2026-07-24
+> 当前：第7周 · 外链突破 · 2026-07-27 → 2026-07-31
 
 ## 本周任务
 
 | 日期 | 星期 | 任务 | 优先级 |
 |:--|:--:|------|:--:|
-| 7/20 | 周一 | 博客选题 + 外链目录清单整理 + 恢复 Twitter 每日 | 🔴 |
-| 7/21 | 周二 | Blog #17 发布 + 写 Blog #18 | 🔴 |
-| 7/22 | 周三 | Blog #18 发布 + 外链提交 #1 + 写 Blog #19 | 🔴 |
-| 7/23 | 周四 | Blog #19 发布 + 外链提交 #2 | 🔴 |
-| 7/24 | 周五 | 本周复盘 + GSC/GA4 数据检查 + GSC 数据脚本 | 🟡 |
+| 7/27 | 周一 | 博客部署 + Week 6 复盘 + Week 7 选题 | 🔴 |
+| 7/28 | 周二 | Blog #20 发布 + 外链提交（CrozDesk + All My Faves） | 🔴 |
+| 7/29 | 周三 | Blog #21 发布 + 外链提交（Dev Hunt + MicroLaunch） | 🔴 |
+| 7/30 | 周四 | Blog #22 发布 + 外链提交（Fazier + 备选） | 🔴 |
+| 7/31 | 周五 | Week 7 复盘 + GSC 数据脚本创建 + GA4 检查 | 🟡 |
 
 ## 每日例行
 
@@ -24,9 +24,21 @@
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 17 | 7/21 | How to Compress a PDF Without Losing Quality | PDF How-to | ✅ |
-| 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ✅ |
-| 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ✅ |
+| 20 | 7/28 | Free PDF Tools vs Adobe Acrobat: What You Actually Need | PDF 对比 | ⬜ |
+| 21 | 7/29 | The Complete Image Optimization Workflow for 2026 | Image 深度 | ⬜ |
+| 22 | 7/30 | JSON, Diff, Base64: The Developer's Swiss Army Knife | Dev Tools | ⬜ |
+
+## 历史周计划
+
+| 周次 | 日期范围 | 主题 | 博客产出 |
+|:--:|------|------|:--:|
+| 1 | 6/23-6/27 | 基础建设 | 1 篇 |
+| 2 | 6/28-7/4 | 内容启动 | 7 篇 |
+| 3 | 7/6-7/10 | 内容加速 | 4 篇 |
+| 4 | 7/6-7/10 | 内容加速 | 4 篇 |
+| 5 | 7/13-7/17 | 内容深化 | 4 篇 ✅ |
+| 6 | 7/20-7/24 | 外链建设 | 3 篇（待部署） |
+| 7 | 7/27-7/31 | 外链突破 | 3 篇（计划） |
 
 ## 历史周计划
 
