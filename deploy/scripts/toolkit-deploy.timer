@@ -1,0 +1,12 @@
+[Unit]
+Description=ToolCraft auto-deploy timer (every 2 minutes)
+Requires=toolkit-deploy.service
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=120
+AccuracySec=10
+Persistent=true
+
+[Install]
+WantedBy=timers.target

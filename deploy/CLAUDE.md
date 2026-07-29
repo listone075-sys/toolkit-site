@@ -4,6 +4,7 @@ ToolCraft 项目运维专用目录。在此目录运行 `claude` 进入运维会
 
 > 主项目：`D:\ai\toolkit-site`
 > 运营：`../ops`（内容、追踪、社交媒体）
+> 自动部署：`systemd timer` 每 2 分钟检查 GitHub，有更新自动拉取构建重启
 
 ## 快速索引
 
