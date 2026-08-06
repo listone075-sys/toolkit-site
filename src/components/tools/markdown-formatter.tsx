@@ -57,7 +57,7 @@ export function MarkdownFormatter() {
                 setInput(e.target.value);
                 if (output) setOutput("");
               }}
-              placeholder={t("markdownFormatter.placeholder")}
+              placeholder={t("markdownFormatter.aiPlaceholder")}
               className="flex-1 text-sm font-mono resize-none bg-zinc-50 p-3 rounded border focus:outline-none focus:ring-2 focus:ring-blue-200"
             />
           </div>

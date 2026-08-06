@@ -55,9 +55,9 @@ Tools are registered in `src/lib/tools/index.ts` as `ToolConfig` objects. This s
 - SEO metadata generation (`src/lib/seo/metadata.ts`)
 - Sitemap generation (`src/app/sitemap.ts`)
 
-**Gotcha:** The sitemap has a hardcoded `toolSlugs` array — when adding a new tool, update both `toolRegistry` AND the sitemap's slug list.
+**Gotcha:** Tools with `hidden: true` are excluded from the homepage grid but are still accessible by direct URL. The sitemap auto-includes all visible tools via `getAllToolSlugs()` — no manual slug list to update.
 
-To add a new tool: (1) add a `ToolConfig` entry to `toolRegistry`, (2) create the UI component, (3) map it in `src/components/tools/tool-loader.tsx`, (4) add the slug to the sitemap array.
+To add a new tool: (1) add a `ToolConfig` entry to `toolRegistry` in both `en.ts` and `zh.ts`, (2) create the UI component, (3) map it in `src/components/tools/tool-loader.tsx`.
 
 ### Tool page rendering
 

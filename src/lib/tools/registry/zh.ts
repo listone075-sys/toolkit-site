@@ -599,6 +599,54 @@ export const toolRegistry: ToolConfig[] = [
     ],
   },
 
+  // ── PDF 转 Markdown ──────────────────────────────────────
+  {
+    slug: "pdf-to-markdown",
+    title: "PDF 转 Markdown 转换器",
+    description:
+      "在线免费将 PDF 文件转换为 Markdown 文本。从 PDF 中提取文本、标题和结构，用于 AI 工作流、笔记和文档编写。所有处理均在浏览器中完成。",
+    category: "pdf",
+    keywords: [
+      "pdf转markdown",
+      "pdf转md",
+      "pdf提取文本",
+      "pdf文字提取",
+      "pdf转文字",
+      "pdf转markdown ai",
+    ],
+    searchVolume: "~80K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "点击或拖放上传您的 PDF 文件",
+      "点击转换为 Markdown 提取文本",
+      "预览提取的 Markdown，标题和结构完整保留",
+      "下载为 .md 文件或复制单个页面",
+    ],
+    faqs: [
+      {
+        question: "PDF 转 Markdown 转换是如何工作的？",
+        answer:
+          "我们使用 PDF.js 提取 PDF 每页的文本内容。通过字体大小和位置推断标题和段落，然后格式化为干净的 Markdown。",
+      },
+      {
+        question: "格式会被保留吗？",
+        answer:
+          "标题通过字体大小检测，段落根据位置分组。复杂的布局（如多栏文本、表格和图片）不会被保留——本工具专注于提取结构化的可读文本，用于 AI 和编辑工作流。",
+      },
+      {
+        question: "我的 PDF 安全吗？",
+        answer:
+          "安全。所有处理完全在您的浏览器中完成。您的 PDF 永远不会上传到任何服务器。",
+      },
+      {
+        question: "可以用于 AI/LLM 工作流吗？",
+        answer:
+          "当然！本工具专为 AI 工作流设计。从 PDF 中提取干净的 Markdown，用作 ChatGPT、Claude、Gemini 等 AI 工具的上下文。",
+      },
+    ],
+  },
+
   // ── Markdown 工具 ───────────────────────────────────────
   {
     slug: "markdown",
@@ -656,6 +704,53 @@ export const toolRegistry: ToolConfig[] = [
         question: "我的数据安全吗？",
         answer:
           "安全。所有处理完全在您的浏览器中进行。任何内容都不会上传到服务器。您的文件仅保留在您的设备上。",
+      },
+    ],
+  },
+  {
+    slug: "resume-builder",
+    title: "Markdown 简历生成器",
+    description:
+      "用 Markdown 构建专业简历并导出为 PDF。填写结构化字段——姓名、工作经历、教育背景、技能——即可获得排版精美的简历。免费、基于浏览器、无需注册。",
+    category: "markdown",
+    keywords: [
+      "简历生成器",
+      "markdown 简历",
+      "在线简历制作",
+      "免费简历生成",
+      "简历转pdf",
+      "markdown 简历模板",
+      "求职简历",
+    ],
+    searchVolume: "~150K/mo",
+    isClientSide: true,
+    icon: "FileText",
+    howToUse: [
+      "填写个人信息：姓名、职位、联系方式",
+      "添加工作经历及要点描述",
+      "添加教育背景、技能、语言和证书",
+      "实时预览简历，下载为 PDF 或 Markdown 文件",
+    ],
+    faqs: [
+      {
+        question: "简历生成器是如何工作的？",
+        answer:
+          "为简历的每个部分填写结构化表单字段。我们会生成一份干净、专业的 Markdown 文档，您可以实时预览，然后下载为 PDF（带专业排版）或 Markdown 文件。",
+      },
+      {
+        question: "可以自定义简历样式吗？",
+        answer:
+          "简历采用简洁专业的格式，针对 ATS（求职追踪系统）和可读性进行了优化。生成的 Markdown 可根据需要进一步编辑。PDF 导出使用专业排版模板。",
+      },
+      {
+        question: "我的个人数据安全吗？",
+        answer:
+          "安全。所有处理完全在您的浏览器中进行。您的个人信息不会离开您的设备——不会上传到任何服务器。",
+      },
+      {
+        question: "与其他简历生成器有什么不同？",
+        answer:
+          "与复杂的拖拽式生成器不同，我们基于 Markdown 的方法生成干净、ATS 友好的简历，没有格式混乱的问题。Markdown 源码归您所有，可进行版本控制和重复使用。特别适合开发者和技术专业人士。",
       },
     ],
   },
@@ -925,61 +1020,97 @@ export const toolRegistry: ToolConfig[] = [
   },
   {
     slug: "markdown-formatter",
-    hidden: true,
-    title: "Markdown 格式化与美化器",
+    title: "AI 内容清理器 — Markdown 格式化工具",
     description:
-      "格式化和美化凌乱的 Markdown。一键修复间距、规范化标题、清理列表，让 Markdown 变得整洁易读。",
+      "一键清理 ChatGPT、Claude、Gemini 等 AI 生成的 Markdown。修复混乱的格式、规范间距、美化 AI 输出。免费、即时、浏览器端处理。",
     category: "markdown",
-    keywords: ["markdown 格式化", "markdown 美化", "格式化 markdown", "markdown 排版"],
+    keywords: [
+      "ai内容清理",
+      "chatgpt markdown 清理",
+      "claude 回复格式化",
+      "ai输出美化",
+      "markdown 格式化",
+      "markdown 美化",
+      "ai文本格式化",
+      "清理ai文本",
+    ],
     searchVolume: "~40K/mo",
     isClientSide: true,
+    isAi: true,
     icon: "Sparkles",
     howToUse: [
-      "在输入面板中粘贴您的 Markdown 文本",
-      "点击格式化以规范间距和结构",
+      "粘贴 AI 生成的 Markdown（来自 ChatGPT、Claude、Gemini 等）",
+      "点击格式化以规范间距、标题、列表和代码块",
       "查看清理后的 Markdown 输出",
-      "复制结果或粘贴回您的编辑器中",
+      "将美化后的结果复制回编辑器或文档",
     ],
     faqs: [
       {
-        question: "格式化器修复什么？",
+        question: "支持哪些 AI 工具的输出？",
         answer:
-          "它规范标题间距、修复列表缩进、确保段落间的空行、移除尾部空格，并将代码围栏标准化（~~~ → ```）。",
+          "适用于任何生成 Markdown 的 AI 工具：ChatGPT、Claude、Gemini、DeepSeek、Copilot 等。AI 输出常有间距不一致、列表混乱、代码块标记混合等问题——我们的格式化器一键修复全部。",
+      },
+      {
+        question: "格式化器能修复什么？",
+        answer:
+          "它会规范化标题间距、修复列表缩进、确保段落之间有合适的空行、删除尾部空格，并将代码围栏标准化（~~~ → ```）。内容不变——只改善排版。",
       },
       {
         question: "会改变我的 Markdown 内容吗？",
         answer:
-          "不会改变内容——仅调整格式和间距。标题、列表、链接和文本保持完全不变，只是更有条理。",
+          "不会改变内容——只调整格式和间距。标题、列表、链接和文本保持完全不变，只是更有条理、更便于使用。",
+      },
+      {
+        question: "可以用于非 AI 生成的 Markdown 吗？",
+        answer:
+          "当然！它对任何 Markdown 文本都很适用——README 文件、文档、博客文章、笔记导出等。",
       },
     ],
   },
   {
     slug: "markdown-to-pdf",
-    hidden: true,
-    title: "Markdown 转 PDF 转换器",
+    title: "Markdown 转 PDF — 免费在线转换器",
     description:
-      "将 Markdown 转换为专业排版的 PDF。实时预览、打印为 PDF 和 HTML 下载。免费、即时、浏览器端处理。",
+      "在线免费将 Markdown 转换为精美排版的 PDF 文档。实时预览、专业排版、即时下载。非常适合报告、文档和 AI 生成内容。",
     category: "markdown",
-    keywords: ["markdown 转 pdf", "md 转 pdf", "markdown pdf 转换", "markdown 导出 pdf"],
+    keywords: [
+      "markdown 转 pdf",
+      "md 转 pdf 免费",
+      "markdown pdf 转换器",
+      "markdown 转 pdf 在线",
+      "导出 markdown 为 pdf",
+      "免费 markdown 转 pdf",
+      "md 转 pdf 转换器",
+    ],
     searchVolume: "~100K/mo",
     isClientSide: true,
     icon: "FileText",
     howToUse: [
       "在编辑器中粘贴或编写 Markdown",
-      "点击预览查看渲染后的文档",
-      "点击打印为 PDF 保存为 PDF 文件",
-      "或下载为带样式的 HTML 文件",
+      "点击预览查看专业排版的文档",
+      "点击打印为 PDF，通过浏览器保存为 PDF 文件",
+      "或下载为自包含的 HTML 文件用于分享",
     ],
     faqs: [
       {
-        question: "Markdown 转 PDF 如何工作？",
+        question: "如何将 Markdown 转换为 PDF？",
         answer:
-          "您的 Markdown 会被渲染为专业排版的 HTML 文档。您可以预览，然后使用浏览器的「打印 → 另存为 PDF」功能生成最终的 PDF 文件。",
+          "粘贴 Markdown，点击预览查看排版效果，然后点击打印为 PDF。浏览器的打印对话框会打开——选择「另存为 PDF」作为目标，点击保存。就这么简单，完全免费。",
+      },
+      {
+        question: "支持代码块和表格吗？",
+        answer:
+          "支持！我们的 PDF 导出包含专业排版的代码块（深色背景，语法友好格式）、带清晰边框的表格、引用块以及所有标准 Markdown 元素。",
       },
       {
         question: "可以自定义 PDF 样式吗？",
         answer:
-          "默认样式包含清晰的排版、代码高亮和友好的打印格式。如需高级自定义，可下载 HTML 文件并修改 CSS。",
+          "默认样式包含清晰的排版、适当的标题层次、代码高亮和打印友好的格式。如需深度自定义，可下载 HTML 文件并在打印前修改 CSS。",
+      },
+      {
+        question: "真的免费吗？",
+        answer:
+          "是的，100% 免费，无任何限制。所有转换在浏览器中完成——您的 Markdown 内容不会离开设备。无需注册、无水印、无隐藏费用。",
       },
     ],
   },
