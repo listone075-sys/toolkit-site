@@ -48,6 +48,7 @@
 | 8 | 7/10 | Markdown for Beginners | Clean Up ChatGPT Output Formatting (Blog #12) | ✅ |
 | 9 | 7/15 | Markdown for Beginners | How to Write a Great README — Free Template & Checklist (Blog #14) | ✅ |
 | 10 | 7/16 | PDF Hacks & Tutorials | How to Split or Merge PDF Pages — Complete Guide (Blog #15) | ✅ |
+| 11 | 9/1 | Markdown for Beginners | How to Convert Markdown to PowerPoint — Free & Fast Tutorial (Blog #13) | ✅ |
 
 ---
 
