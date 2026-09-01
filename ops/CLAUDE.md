@@ -28,6 +28,18 @@ git push && ssh root@124.156.154.129 "cd /opt/toolkit_site && git pull && npm ru
 cd D:\ai\toolkit-site && npx tsx scripts/ga4-fetch.ts   # 拉取 GA4 数据（自 7/8 起）
 ```
 
+## 自动化能力（Playwright + Skill）
+
+> 登录一次后零配合。用 Playwright 控制真实浏览器；首次需重启会话 + 手动登录一次。
+
+| 能力 | 触发语 | Skill | 说明 |
+|------|------|------|------|
+| 外链目录提交 | "提交外链" | `submit-directories` | 自动填表提交 CrozDesk / All My Faves / Dev Hunt / MicroLaunch / Fazier |
+| Twitter 发推 | "发推" / "发条推" | `social-publish` | 短文案：1-2 句 + 链接 |
+| Pinterest 发 Pin | "发Pin" | `social-publish` | 含博客截图生成 Pin 图 |
+
+**首次使用**：重启会话后说"登录社交媒体"，在弹窗里手动登录 Twitter + Pinterest（仅一次），之后发帖零配合。遇到验证码 / 风控会停下等你处理。
+
 ## 文件索引
 
 | 想看什么 | 文件 |
