@@ -14,8 +14,8 @@ description: 自动发布 Twitter/X 推文和 Pinterest Pin。用 Playwright 控
 
 ## 账号
 
-- **Twitter/X**：@ToolCraftBox（18 条历史推文）
-- **Pinterest**：toolcraftbox（商业账号，5 个 Board：Image Tools & Tips / PDF Hacks & Tutorials / Markdown for Beginners / Free Online Tools / Developer Resources）
+- **Twitter/X**：@ToolCraftBox（19 条历史推文）
+- **Pinterest**：toolcraftbox.com 商业账号（底层用户名 @ljs_sjl；4 个 Board：Image Tools & Tips / PDF Hacks & Tutorials / Markdown for Beginners / Free Online Tools）。**「Developer Resources」不存在**，需要时在 pin-builder 里点「创建图板」新建。
 
 ## 关键规则
 
@@ -61,13 +61,14 @@ description: 自动发布 Twitter/X 推文和 Pinterest Pin。用 Playwright 控
 
 1. `browser_navigate` 到 `https://www.pinterest.com/pin-builder/`
 2. 上传图片（Pin 必须有图）：
-   - 优先用 `browser_file_upload` 上传本地图（如 `public/social/` 下素材，或对博客页 `browser_take_screenshot` 生成 2:3 图）
-   - 无现成图时，先 `browser_navigate` 到博客页截图存本地，再上传
+   - 优先用 `browser_file_upload` 上传本地图。⚠️ 素材须先 `cp` 到 `ops/`（`public/social/` 在允许根外）
+   - 无现成图时，先 `browser_navigate` 到博客页 `browser_take_screenshot` 存本地，再上传
 3. 填标题（Title）：`[How to / X Best / Complete Guide] + 关键词`
-4. 填描述（Description）：`2-3句问题+解决方案 + "Save for later!" + 🔗链接`
-5. 选 Board（按品类，见账号节）
-6. 点"发布 / Publish"
-7. 更新 `ops/content/social-posts.md` Pin 表 + git commit
+4. 填描述（Description，**combobox**）：`2-3句问题+解决方案 + "Save for later!"`（链接不放这里）
+5. 填链接：独立字段「添加目标链接」
+6. 选 Board（按品类，见账号节）
+7. 点"发布 / Publish"
+8. 更新 `ops/content/social-posts.md` Pin 表 + git commit
 
 Pin 文案素材在 `ops/content/social-posts.md` 已有 10+ 条历史记录，可直接复用或新写。
 
@@ -76,7 +77,8 @@ Pin 文案素材在 `ops/content/social-posts.md` 已有 10+ 条历史记录，�
 1. 更新 `ops/content/social-posts.md`（对应表加一行，状态 ✅）
 2. 如需同步 `ops/tracking/social-media.md` 的累计数字
 3. git add + commit（message 如 `chore: post tweet #19` / `chore: pin #11`）
-4. 向用户汇报：发了什么、链接、下一步
+4. **关闭浏览器**（`browser_close`）——发完所有内容后必须关掉，别留着窗口占用资源
+5. 向用户汇报：发了什么、链接、下一步
 
 ## 注意事项
 
@@ -84,3 +86,12 @@ Pin 文案素材在 `ops/content/social-posts.md` 已有 10+ 条历史记录，�
 - 若 X 触发风控（要求解锁、验证邮件），停下告诉用户，不硬冲。
 - 不要重复发同一条（先查 social-posts.md 记录）。
 - Pin 图片保持 2:3 比例（Pinterest 标准竖图，推荐 1000×1500）。
+
+## 实操坑（实测，下次照做更快）
+
+- **文件上传路径限制**：`browser_file_upload` 只能访问 `ops/` 和 `.playwright-mcp/`。Pin 图素材在 `public/social/` 下**不在允许根内** → 先 `cp` 到 `ops/` 再上传，用完 `rm`。
+- **上传前先点「上传文件」**触发 file chooser，否则 `browser_file_upload` 报 "can only be used when there is related modal state"。
+- **Pinterest 描述字段是 combobox**（「简要描述你的 Pin 图」），不是 textbox；链接填**独立字段「添加目标链接」**，不放描述里。
+- **Pinterest 弹窗**：pin-builder 会弹两次新手引导 alertdialog → 点「取消」；发布后短暂显示「正在收藏 Pin 图…」→ `wait_for textGone`。
+- **Twitter 首次发推**会弹「You've unlocked more on X」→ 点「Got it」，不影响已发送。成功标志 = alert「Your post was sent.」。
+- 更多细节见 memory `social-publish-gotchas`。
