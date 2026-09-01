@@ -16,7 +16,30 @@ ToolCraft 项目运维专用目录。在此目录运行 `claude` 进入运维会
 | **部署命令** | `commands/deploy.md` |
 | **部署后验证** | `commands/verify.md` |
 
-## 一键部署
+## 自动部署（已启用）
+
+`git push` 后无需手动操作。服务器每 2 分钟检查 GitHub，有更新自动拉取构建重启。
+
+```bash
+# 日常部署只需
+git push origin main
+# → 最多 2 分钟后自动上线
+```
+
+**监控自动部署：**
+
+```bash
+# 查看定时器状态
+ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'systemctl status toolkit-deploy.timer --no-pager'
+
+# 查看部署日志
+ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'tail -f /var/log/toolkit-deploy.log'
+
+# 手动触发一次
+ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'systemctl start toolkit-deploy.service'
+```
+
+## 手动部署（备选）
 
 ```bash
 git push origin main && ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'cd /opt/toolkit_site && git stash && git pull && npm install --legacy-peer-deps && npm run build && systemctl restart toolkit-site'
@@ -31,7 +54,7 @@ ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'systemctl restart toolkit-site'
 # 状态检查
 ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'systemctl status toolkit-site --no-pager --lines=3'
 
-# 查看日志
+# 查看应用日志
 ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'journalctl -u toolkit-site -f --no-pager -n 50'
 
 # 部署后验证

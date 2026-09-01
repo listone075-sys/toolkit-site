@@ -29,7 +29,7 @@ fi
 
 # Fetch latest
 log "Fetching origin main..."
-git fetch origin main 2>&1 | tee -a "$LOG_FILE"
+git fetch origin 2>&1 | tee -a "$LOG_FILE"
 
 LOCAL=$(git rev-parse HEAD)
 REMOTE=$(git rev-parse origin/main)

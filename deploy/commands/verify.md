@@ -1,6 +1,6 @@
 # 部署后验证
 
-> 最后更新：2026-07-10
+> 最后更新：2026-07-29
 
 ## 快速检查（HTTP 状态码）
 
@@ -38,4 +38,14 @@ ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'journalctl -u toolkit-site --no-p
 
 ```bash
 ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'df -h /opt'
+```
+
+## 自动部署状态
+
+```bash
+# 定时器状态
+ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'systemctl status toolkit-deploy.timer --no-pager'
+
+# 最近部署日志
+ssh -i ~/.ssh/id_ed25519 root@124.156.154.129 'tail -20 /var/log/toolkit-deploy.log'
 ```

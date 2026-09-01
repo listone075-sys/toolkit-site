@@ -1,6 +1,6 @@
 # 服务器信息
 
-> 最后更新：2026-07-10
+> 最后更新：2026-07-29
 
 ## 连接
 
@@ -17,6 +17,8 @@
 |----|-----|
 | 项目路径 | `/opt/toolkit_site` |
 | 服务名 | `toolkit-site` (systemd) |
+| 自动部署定时器 | `toolkit-deploy.timer`（每 2 分钟） |
+| 自动部署日志 | `/var/log/toolkit-deploy.log` |
 | 端口 | 8001 (Next.js) |
 | Node 包管理器 | npm（必须加 `--legacy-peer-deps`） |
 
