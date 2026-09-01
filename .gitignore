@@ -45,3 +45,6 @@ homepage.png
 
 # sensitive credentials
 /cankao/
+
+# playwright MCP temp output
+/ops/.playwright-mcp/
