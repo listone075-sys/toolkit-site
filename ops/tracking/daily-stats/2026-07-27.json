@@ -1,0 +1,207 @@
+{
+  "date": "2026-07-27",
+  "startDate": "2026-07-08",
+  "days": 20,
+  "totalPV": 412,
+  "totalUV": 131,
+  "avgDailyPV": 21,
+  "avgDailyUV": 7,
+  "yesterdayPV": 9,
+  "dailyBreakdown": [
+    {
+      "date": "20260708",
+      "activeUsers": 11,
+      "pageViews": 18,
+      "avgSessionDuration": 18.860102692307695,
+      "bounceRate": 0.9230769230769231,
+      "newUsers": 12
+    },
+    {
+      "date": "20260713",
+      "activeUsers": 11,
+      "pageViews": 30,
+      "avgSessionDuration": 104.48980091666668,
+      "bounceRate": 0.6666666666666666,
+      "newUsers": 10
+    },
+    {
+      "date": "20260715",
+      "activeUsers": 10,
+      "pageViews": 183,
+      "avgSessionDuration": 965.6935058571428,
+      "bounceRate": 0.42857142857142855,
+      "newUsers": 7
+    },
+    {
+      "date": "20260709",
+      "activeUsers": 8,
+      "pageViews": 8,
+      "avgSessionDuration": 3.87051025,
+      "bounceRate": 0.875,
+      "newUsers": 8
+    },
+    {
+      "date": "20260710",
+      "activeUsers": 8,
+      "pageViews": 40,
+      "avgSessionDuration": 74.73968210000001,
+      "bounceRate": 0.6,
+      "newUsers": 8
+    },
+    {
+      "date": "20260720",
+      "activeUsers": 8,
+      "pageViews": 43,
+      "avgSessionDuration": 296.8950402,
+      "bounceRate": 0.8,
+      "newUsers": 7
+    },
+    {
+      "date": "20260711",
+      "activeUsers": 7,
+      "pageViews": 6,
+      "avgSessionDuration": 3.572987285714286,
+      "bounceRate": 0.8571428571428571,
+      "newUsers": 6
+    },
+    {
+      "date": "20260721",
+      "activeUsers": 7,
+      "pageViews": 8,
+      "avgSessionDuration": 3.942998,
+      "bounceRate": 0.8571428571428571,
+      "newUsers": 6
+    },
+    {
+      "date": "20260724",
+      "activeUsers": 7,
+      "pageViews": 7,
+      "avgSessionDuration": 3.630807285714286,
+      "bounceRate": 1,
+      "newUsers": 6
+    },
+    {
+      "date": "20260727",
+      "activeUsers": 7,
+      "pageViews": 6,
+      "avgSessionDuration": 0.6774137142857143,
+      "bounceRate": 1,
+      "newUsers": 6
+    },
+    {
+      "date": "20260716",
+      "activeUsers": 6,
+      "pageViews": 14,
+      "avgSessionDuration": 746.8540624999999,
+      "bounceRate": 0.6666666666666666,
+      "newUsers": 4
+    },
+    {
+      "date": "20260719",
+      "activeUsers": 6,
+      "pageViews": 6,
+      "avgSessionDuration": 6.252538,
+      "bounceRate": 0.8333333333333334,
+      "newUsers": 5
+    },
+    {
+      "date": "20260723",
+      "activeUsers": 6,
+      "pageViews": 6,
+      "avgSessionDuration": 3.1969626666666664,
+      "bounceRate": 1,
+      "newUsers": 5
+    },
+    {
+      "date": "20260725",
+      "activeUsers": 6,
+      "pageViews": 6,
+      "avgSessionDuration": 3.9427144999999997,
+      "bounceRate": 1,
+      "newUsers": 6
+    },
+    {
+      "date": "20260722",
+      "activeUsers": 5,
+      "pageViews": 6,
+      "avgSessionDuration": 12.8949398,
+      "bounceRate": 0.8,
+      "newUsers": 4
+    },
+    {
+      "date": "20260712",
+      "activeUsers": 4,
+      "pageViews": 3,
+      "avgSessionDuration": 0.462485,
+      "bounceRate": 1,
+      "newUsers": 2
+    },
+    {
+      "date": "20260714",
+      "activeUsers": 4,
+      "pageViews": 5,
+      "avgSessionDuration": 2.9418768,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260718",
+      "activeUsers": 4,
+      "pageViews": 4,
+      "avgSessionDuration": 2.2656535,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260726",
+      "activeUsers": 4,
+      "pageViews": 4,
+      "avgSessionDuration": 2.38531075,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260717",
+      "activeUsers": 2,
+      "pageViews": 9,
+      "avgSessionDuration": 37.686483,
+      "bounceRate": 0.3333333333333333,
+      "newUsers": 0
+    }
+  ],
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 114,
+      "pageViews": 408
+    },
+    {
+      "channel": "Unassigned",
+      "users": 5,
+      "pageViews": 1
+    },
+    {
+      "channel": "Organic Search",
+      "users": 3,
+      "pageViews": 3
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/",
+      "pageViews": 134,
+      "users": 65
+    },
+    {
+      "path": "/",
+      "pageViews": 73,
+      "users": 43
+    },
+    {
+      "path": "/",
+      "pageViews": 35,
+      "users": 14
+    }
+  ],
+  "note": "Data from 2026-07-08 onwards (GA4 fix date). Non-ToolCraft paths excluded."
+}
