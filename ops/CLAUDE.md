@@ -1,20 +1,21 @@
 # ToolCraft 运营工作台
 
-> 第7周 · 外链突破 · 2026-07-27（周一）
+> 第12周 · 复盘规划 · 2026-09-01（周一）
 > 主项目：`D:\ai\toolkit-site`
 > 📋 详细周计划：[tracking/weekly-plan.md](tracking/weekly-plan.md)
+> 📊 12周路线图：第12周（8/31-9/4）为收官周
 
-## 本周任务（第7周：7/27-7/31）
+## 本周任务（第12周：8/31-9/4）
 
 | 日期 | 任务 | 状态 |
 |:--:|------|:--:|
-| 周一 7/27 | 博客部署 + Week 6 复盘 + Week 7 选题 | 🔄 |
-| 周二 7/28 | Blog #20 发布 + 外链提交（CrozDesk + All My Faves） | ⬜ |
-| 周三 7/29 | Blog #21 发布 + 外链提交（Dev Hunt + MicroLaunch） | ⬜ |
-| 周四 7/30 | Blog #22 发布 + 外链提交（Fazier + 备选） | ⬜ |
-| 周五 7/31 | Week 7 复盘 + GSC 数据脚本 + GA4 检查 | ⬜ |
+| 周一 8/31 | 12 周运营复盘 + 下半年规划 | 🔄 |
+| 周二 9/1 | tracking 数据同步 + 遗留外链提交 | 🔄 |
+| 周三 9/2 | 下半年执行清单 + 博客恢复 | ⬜ |
+| 周四 9/3 | 外链补提（需 VPN，Dev Hunt 等） | ⬜ |
+| 周五 9/4 | 第12周收官 + 路线图更新 | ⬜ |
 | 每日 | Twitter 推文（本周 0/5） | 🔄 |
-| 持续 | Pinterest 每周 ≥2 Pin（补上周） | ⬜ |
+| 持续 | Pinterest 每周 ≥2 Pin | ⬜ |
 
 ## 部署
 
@@ -34,7 +35,7 @@ cd D:\ai\toolkit-site && npx tsx scripts/ga4-fetch.ts   # 拉取 GA4 数据（�
 
 | 能力 | 触发语 | Skill | 说明 |
 |------|------|------|------|
-| 外链目录提交 | "提交外链" | `submit-directories` | 自动填表提交 CrozDesk / All My Faves / Dev Hunt / MicroLaunch / Fazier |
+| 外链目录提交 | "提交外链" | `submit-directories` | 自动填表提交 Dev Hunt / MicroLaunch / Fazier 等（CrozDesk 需企业邮箱、All My Faves 无表单，已弃） |
 | Twitter 发推 | "发推" / "发条推" | `social-publish` | 短文案：1-2 句 + 链接 |
 | Pinterest 发 Pin | "发Pin" | `social-publish` | 含博客截图生成 Pin 图 |
 
@@ -60,11 +61,11 @@ cd D:\ai\toolkit-site && npx tsx scripts/ga4-fetch.ts   # 拉取 GA4 数据（�
 
 ## 关键状态
 
-- 📝 博客：19 篇（16 已部署 + 3 待部署 #17-19），本周计划 3 篇（#20-22）
-- 🔗 外链：CrozDesk + All My Faves 素材已备，本周提交 5 个目录
-- 📊 GA4：property 541266486，日均 ~27 PV / 6 UV（⚠️ 混入旧项目数据）
+- 📝 博客：19 篇全部发布 ✅（#17-19 已部署），第6-12周停更，待恢复
+- 🔗 外链：仅 2 收录（AlternativeTo + LaunchingNext）；CrozDesk/All My Faves 已放弃，Dev Hunt/MicroLaunch/Fazier 待提交（需 VPN）
+- 📊 GA4：日均 PV 12 / UV 4（7/8 起 43 天累计 515/172）⚠️ 8月起流量骤降，Organic 几乎为零
 - 🔍 IndexNow：已配置，每次构建自动提交
-- 🐦 Twitter：17 条推文 / 📌 Pinterest：10 Pin（第6周掉队，第7周恢复）
+- 🐦 Twitter：19 条推文 / 📌 Pinterest：12 Pin
 
 > ⚠️ **数据提示：** GA4 7/8 才修复，此前数据已归档 `tracking/daily-stats/_invalid/`。
-> GA4 property `543635611` 为新属性，数据干净。
+> GA4 property `543635611` 为新属性，数据干净。但 7/29 后流量明显下滑，需重点分析。

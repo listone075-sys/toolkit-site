@@ -1,6 +1,6 @@
 # 博客发布进度
 
-> 累计：16 篇 · 第6周 3 篇计划中
+> 累计：19 篇（全部发布）· 第7-11周停更
 > 策略：Markdown 品类优先，每周至少 2 篇
 
 ## 已发布
@@ -23,14 +23,17 @@
 | 14 | 7/15 | How to Write a Great README — Tips & Best Practices | Markdown | ✅ |
 | 15 | 7/15 | How to Split or Merge PDF Pages — Complete Guide | PDF How-to | ✅ |
 | 16 | 7/16 | How to Remove Image Backgrounds with AI — Free, Private, No Upload Required | Image AI | ✅ |
+| 17 | 7/21 | How to Compress a PDF Without Losing Quality | PDF How-to | ✅ |
+| 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ✅ |
+| 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ✅ |
 
 ## 计划中
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 17 | 7/21 | How to Compress a PDF Without Losing Quality | PDF How-to | ✅ |
-| 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ✅ |
-| 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ✅ |
+| 20 | 9/2 | Free PDF Tools vs Adobe Acrobat: What You Actually Need | PDF 对比 | ⬜ |
+| 21 | 9/3 | The Complete Image Optimization Workflow for 2026 | Image 深度 | ⬜ |
+| 22 | 9/4 | JSON, Diff, Base64: The Developer's Swiss Army Knife | Dev Tools | ⬜ |
 
 ## 内容轮换规则
 
@@ -48,7 +51,8 @@
 | Markdown ZH | 1 |
 | Image | 2 |
 | Image AI | 1 |
-| Image 对比 | 1 |
+| Image 对比 | 2 |
 | Image 深度 | 1 |
-| PDF How-to | 2 |
+| PDF How-to | 3 |
 | Dev Tools | 1 |
+| **合计** | **19** |

@@ -19,11 +19,18 @@
 
 | 优先级 | 平台 | URL | DA | 状态 |
 |:--:|------|------|:--:|:--:|
-| 1 | **CrozDesk** | crozdesk.com/for-vendors | 高 | 📋 素材已备（见下方） |
-| 2 | **All My Faves** | allmyfaves.com | 60 | 📋 素材已备（见下方） |
-| 3 | **Dev Hunt** | devhunt.org | 中 | ⏳ 第7周 |
-| 4 | **MicroLaunch** | microlaunch.net | 中 | ⏳ 第7周 |
-| 5 | **Fazier** | fazier.com | 中 | ⏳ 第7周 |
+| 1 | **CrozDesk** | crozdesk.com/for-vendors | 高 | ❌ 放弃（需企业邮箱，9/1） |
+| 2 | **All My Faves** | allmyfaves.com | 60 | ❌ 放弃（无在线提交，仅 email，9/1） |
+| 3 | **Dev Hunt** | devhunt.org | 中 | ⏳ 需 GitHub/Google 登录 + VPN（9/1 卡在 Google 登录） |
+| 4 | **MicroLaunch** | microlaunch.net | 中 | ⏳ 待提交（需 VPN） |
+| 5 | **Fazier** | fazier.com | 中 | ⏳ 待提交（需 VPN） |
+
+## 提交联系信息（通用，各目录复用）
+
+- **联系人：** jingsai li
+- **邮箱：** ljs_sjl@163.com
+- **电话：** 18610068223
+- **Google 账号：** listone075@gmail.com（OAuth 登录目录用）
 
 ## 外链提交素材
 
