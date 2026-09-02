@@ -21,9 +21,22 @@
 |:--:|------|------|:--:|:--:|
 | 1 | **CrozDesk** | crozdesk.com/for-vendors | 高 | ❌ 放弃（需企业邮箱，9/1） |
 | 2 | **All My Faves** | allmyfaves.com | 60 | ❌ 放弃（无在线提交，仅 email，9/1） |
-| 3 | **Dev Hunt** | devhunt.org | 中 | ⏳ 需 GitHub/Google 登录 + VPN（9/1 卡在 Google 登录） |
-| 4 | **MicroLaunch** | microlaunch.net | 中 | ⏳ 待提交（需 VPN） |
-| 5 | **Fazier** | fazier.com | 中 | ⏳ 待提交（需 VPN） |
+| 3 | **Dev Hunt** | devhunt.org | 中 | ❌ 放弃（Launch Week 必选且 $49 付费，9/2） |
+| 4 | **MicroLaunch** | microlaunch.net | 中 | ❌ 放弃（仅付费 Pro Launch，2026 已改付费，9/2） |
+| 5 | **Fazier** | fazier.com | 中 | 🔄 launch #12690 已创建（免费，评论 3/3 ✅ + badge 已上线），待手动收尾：设发布日期 + 传 logo/截图 + 发布 |
+
+### Fazier 手动收尾清单（已转交用户）
+
+launch 已通过 API 创建，字段全部保存成功（`is_published: false`）。剩下 3 步在 Fazier 后台手动完成：
+
+1. 设置**发布日期**（launch date）
+2. 上传 **logo + 截图**
+3. **确认发布**（publish）
+
+- launch id：`12690`
+- slug：`7cac22d4-c4a9-4395-84ce-8ccdf3f13be0`
+- makers：stone li（id 32880）
+- 已知前端 bug：Topics 下拉报 `topicsList is not an array`（已绕过，直接调 API 提交成功）
 
 ## 提交联系信息（通用，各目录复用）
 
