@@ -1,0 +1,153 @@
+export const meta = {
+  title: "JSON、Diff、Base64：开发者的瑞士军刀",
+  description: "每个开发者每天都在用这三个工具。掌握 JSON 格式化、文本对比和 Base64 编码的高效用法——而且完全不用离开浏览器。",
+  date: "2026-09-02",
+  category: "Dev Tools",
+};
+
+# JSON、Diff、Base64：开发者的瑞士军刀
+
+每个开发者都有同样的小仪式：粘贴一段 JSON、眯着眼对比两份配置文件、或者盯着一个像乱码一样的编码字符串发呆。
+
+三个工具覆盖了这些日常时刻的 90%——而且不需要安装任何东西，也不用把数据上传到任何地方。
+
+## 1. JSON 格式化：从压缩到可读
+
+你复制了一个 API 响应，它是一长串 `{"data":[...]}`。某个地方藏着你要找的字段。
+
+**格式化工具做什么：**
+- 用正确的缩进美化嵌套对象
+- 可选按字母排序 key（对 diff 配置文件特别有用）
+- 校验 JSON——立刻抓出缺少的逗号和多余的括号
+- 折叠长数组/字符串，让大载荷保持可导航
+
+**怎么用：**
+
+1. 把你的 JSON 粘贴进 [JSON 格式化器](https://toolcraftbox.com/tools/json-formatter)
+2. 点击 **Format**
+3. 树展开——可以折叠/展开节点、复制单个值、或复制整个格式化结果
+
+**最常用的场景：**
+- 阅读浏览器控制台里的 API 响应
+- 对比两份配置文件（都格式化后再 diff）
+- 为单元测试构造 fixture
+- 调试 `JSON.parse` 报错——校验器会精确定位到出错的字符
+
+## 2. Diff 对比：找出真正改了什么
+
+当队友说"我改了点什么，你帮我看下"——diff 工具把猜测变成五秒钟的答案。
+
+**diff 工具做什么：**
+- 左右并排对比两份文本
+- 高亮新增行（绿色）和删除行（红色）
+- 对修改行显示行内字符级的改动
+
+**怎么用：**
+
+1. 把原始版本粘贴进 [文本 Diff 对比器](https://toolcraftbox.com/tools/text-diff-checker) 左栏
+2. 把新版本粘贴进右栏
+3. 看彩色高亮——绿是新增，红是删除
+
+**最常用的场景：**
+- 审查配置改动（`package.json`、`.env`、`tsconfig.json`）
+- 对比代码改动前后的 API 响应
+- 验证一次查找替换没有误伤其他内容
+- 检查翻译/文案修改只改到了该改的地方
+
+> 💡 **专业建议：** 大配置文件先过一遍格式化——两份压缩的 JSON diff 毫无意义，但同样内容格式化并排序后 diff 就一目了然。
+
+## 3. Base64 编解码：数据需要文本外衣时
+
+Base64 是二进制数据通过纯文本渠道传输的方式——邮件附件、JSON 载荷、data URI、认证令牌。
+
+**编码工具做什么：**
+- 文本/二进制 → Base64 文本（`hello` → `aGVsbG8=`）
+- Base64 → 原始文本或二进制
+- 正确处理 UTF-8（emoji、中文、任何内容）
+- 可选解码 data URI（`data:image/png;base64,...`）
+
+**怎么用：**
+
+1. 打开 [Base64 编解码](https://toolcraftbox.com/tools/base64-encode-decode)
+2. 粘贴输入 → 选择 **Encode** 或 **Decode**
+3. 复制结果
+
+**最常用的场景：**
+- 解码 JWT 的 payload（它是 Base64url，见下）
+- 把图片转成 `data:` URI，用于一次性内嵌资源
+- 让二进制安全的内容通过 JSON API 传输
+- 调试 API 调用里的 `Basic` 认证头
+
+### 和 JWT 的关系
+
+你粘进 JWT 解码器的东西？JWT 是三个 Base64url 编码段。中间那段就是 payload：
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ...
+└── header └──── payload ────┘ └───── signature ─────┘
+```
+
+如果你只是想偷看里面是什么，用 Base64 解中间那段就行。（正经工作还是用 [JWT 解码器](https://toolcraftbox.com/tools/jwt-decoder)——它处理格式细节。）
+
+## 为什么用浏览器版本？
+
+这三个工具你当然可以装桌面软件。但日常仪式，浏览器工具明显更优：
+
+| | 桌面应用 | 浏览器工具 |
+|---|---|---|
+| 安装 | 3 个应用，要管理更新 | 一个网址 |
+| 配置 | 有时要登录 | 打开即用 |
+| 数据 | 配置文件可能被上传 | **留在你设备上** |
+| 访问 | 绑定一台机器 | 任何设备、任何浏览器 |
+| 费用 | 试用、授权、订阅 | 免费 |
+
+**隐私在这里很重要：** 跑在服务器上的 JSON 格式化器或 diff 工具会存一份你的文件副本。ToolCraft 的工具**全部在浏览器里处理**——你的配置、API 响应、令牌从不出你的设备。
+
+## 60 秒速成课
+
+只有 60 秒？记住这套肌肉记忆：
+
+1. **JSON 看起来坏了** → 粘进 [JSON 格式化器](https://toolcraftbox.com/tools/json-formatter) → Format
+2. **两份文件不一样** → [文本 Diff 对比器](https://toolcraftbox.com/tools/text-diff-checker) → 对比
+3. **那个字符串是乱码** → [Base64 解码](https://toolcraftbox.com/tools/base64-encode-decode) → 可能现在能读了
+4. **还是乱码但带点** → 是 JWT → [JWT 解码器](https://toolcraftbox.com/tools/jwt-decoder)
+
+四个工具，一个浏览器标签页，零安装。
+
+## 常见问题
+
+### JSON 格式化对敏感数据安全吗？
+
+用客户端工具时安全——格式化在本地完成，不传输任何东西。避免把密钥粘进服务端格式化工具。
+
+### diff 工具能处理超大文件吗？
+
+浏览器 diff 工具能轻松处理典型配置和代码文件（几十 KB）。多 MB 文件用终端 `diff` 或 `git diff` 更合适。
+
+### Base64 和 Base64url 有什么区别？
+
+Base64 用 `+`、`/`、`=`。Base64url（JWT 用）把 `+`→`-`、`/`→`_`，并去掉填充。好的工具两者都支持——看输出格式选项。
+
+### 为什么解码 Base64 后是乱码？
+
+你解码的是二进制载荷（如图片或压缩数据），却按文本显示。解码文本编码的值，或用支持下载二进制结果而非显示的工具。
+
+### 能不格式化就校验 JSON 吗？
+
+可以——格式化器边格式化边校验。JSON 无效时会告诉你问题精确位置（字符位置 + 期望的 token）。
+
+### 这些工具离线能用吗？
+
+页面加载后可以。所有处理都是客户端完成，断网也能继续用。
+
+## 总结
+
+JSON 格式化、diff、Base64 编码都不光鲜——但它们是每天都要用的趁手工具，用顺了会改变你的工作流：
+
+- **格式化 JSON** 读懂和调试任何 API 或配置
+- **Diff** 几秒看清到底改了什么
+- **编解码 Base64** 理解任何不透明的字符串
+
+把它们放在一个标签页之遥：[JSON 格式化器](https://toolcraftbox.com/tools/json-formatter) · [文本 Diff 对比器](https://toolcraftbox.com/tools/text-diff-checker) · [Base64 编解码](https://toolcraftbox.com/tools/base64-encode-decode) · [JWT 解码器](https://toolcraftbox.com/tools/jwt-decoder)
+
+不安装、不注册、不上传。只有你的数据，留在你的浏览器里。

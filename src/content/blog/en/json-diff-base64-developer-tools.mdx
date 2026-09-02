@@ -1,0 +1,153 @@
+export const meta = {
+  title: "JSON, Diff, Base64: The Developer's Swiss Army Knife",
+  description: "Every developer reaches for these three tools daily. Here's how to use JSON formatters, diff checkers, and Base64 encoders effectively — and do it all without leaving the browser.",
+  date: "2026-09-02",
+  category: "Dev Tools",
+};
+
+# JSON, Diff, Base64: The Developer's Swiss Army Knife
+
+Every developer has the same small ritual: paste a blob of JSON, squint at two config files, or stare at an encoded string that looks like alphabet soup.
+
+Three tools cover 90% of these daily moments — and you don't need to install anything or upload your data anywhere to use them.
+
+## 1. JSON Formatter: From Minified to Readable
+
+You've copied an API response that's one long line of `{"data":[...]}`. Somewhere in there is the field you're looking for.
+
+**What a formatter does:**
+- Pretty-prints nested objects with proper indentation
+- Sorts keys alphabetically (optional, great for diffing configs)
+- Validates the JSON — catches missing commas and trailing brackets instantly
+- Collapses long arrays/strings to keep big payloads navigable
+
+**How to use it:**
+
+1. Paste your JSON into the [JSON Formatter](https://toolcraftbox.com/tools/json-formatter)
+2. Click **Format**
+3. The tree expands — you can now collapse/expand nodes, copy individual values, or copy the whole thing formatted
+
+**When you'll use it most:**
+- Reading API responses in the browser console
+- Comparing two config files (format both, then diff)
+- Building/test fixtures for unit tests
+- Debugging a `JSON.parse` error — the validator pinpoints the bad character
+
+## 2. Diff Checker: Spot What Actually Changed
+
+When a teammate says "I changed something, can you look?" — a diff tool turns guessing into a five-second answer.
+
+**What a diff checker does:**
+- Compares two texts side by side
+- Highlights added lines (green) and removed lines (red)
+- Shows inline character-level changes on modified lines
+
+**How to use it:**
+
+1. Paste the original into the left pane of the [Text Diff Checker](https://toolcraftbox.com/tools/text-diff-checker)
+2. Paste the new version into the right pane
+3. Read the colored highlights — green is added, red is removed
+
+**When you'll use it most:**
+- Reviewing config changes (`package.json`, `.env`, `tsconfig.json`)
+- Comparing API responses before/after a code change
+- Verifying a Find & Replace didn't touch something it shouldn't
+- Checking that a translation / copy edit only changed what was intended
+
+> 💡 **Pro tip:** Run large configs through the formatter *first* — a diff of two minified JSON blobs is useless, but the same content formatted and sorted diffs cleanly.
+
+## 3. Base64 Encode/Decode: When Data Needs a Text Suit
+
+Base64 is how binary data travels through text-only channels — email attachments, JSON payloads, data URIs, authentication tokens.
+
+**What an encoder does:**
+- Converts text or binary → Base64 text (`hello` → `aGVsbG8=`)
+- Decodes Base64 → original text or binary
+- Handles UTF-8 correctly (emojis, CJK text, everything)
+- Optionally decodes data URIs (`data:image/png;base64,...`)
+
+**How to use it:**
+
+1. Open the [Base64 Encode/Decode](https://toolcraftbox.com/tools/base64-encode-decode)
+2. Paste input → choose **Encode** or **Decode**
+3. Copy the result
+
+**When you'll use it most:**
+- Decoding a JWT's payload (it's Base64url — see below)
+- Converting an image to a `data:` URI for a one-off embedded asset
+- Passing binary-safe content through a JSON API
+- Debugging `Basic` auth headers in API calls
+
+### The JWT connection
+
+That thing you paste into a JWT decoder? A JWT is three Base64url-encoded segments. The middle one is the payload:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ...
+└── header └──── payload ────┘ └───── signature ─────┘
+```
+
+If you ever need to peek at what's inside without a dedicated tool, Base64-decode the middle segment. (Prefer a proper [JWT Decoder](https://toolcraftbox.com/tools/jwt-decoder) for real work — it handles the format details.)
+
+## Why Use Browser-Based Versions?
+
+You could install a desktop app for each of these. Here's why browser tools win for the daily ritual:
+
+| | Desktop app | Browser tool |
+|---|---|---|
+| Install | 3 separate apps, updates to manage | A URL |
+| Setup | Requires sign-in sometimes | Open and use |
+| Data | Config file may get uploaded | **Stays on your device** |
+| Access | Tied to one machine | Any device, any browser |
+| Cost | Trials, licenses, subscriptions | Free |
+
+**Privacy matters here:** a JSON formatter or diff checker on a server stores a copy of your file. ToolCraft's tools process everything **in your browser** — your configs, API responses, and tokens never leave your device.
+
+## The 60-Second Crash Course
+
+Got 60 seconds? Here's the muscle memory:
+
+1. **JSON looks broken** → paste in [JSON Formatter](https://toolcraftbox.com/tools/json-formatter) → Format
+2. **Two files differ** → [Text Diff Checker](https://toolcraftbox.com/tools/text-diff-checker) → compare
+3. **That string is gibberish** → [Base64 Decode](https://toolcraftbox.com/tools/base64-encode-decode) → maybe it's readable now
+4. **Still gibberish but has dots** → it's a JWT → [JWT Decoder](https://toolcraftbox.com/tools/jwt-decoder)
+
+Four tools, one browser tab, zero installs.
+
+## FAQ
+
+### Is JSON formatting safe for sensitive data?
+
+When you use a client-side tool, yes — formatting happens locally, nothing is transmitted. Avoid pasting secrets into server-side formatters.
+
+### Can a diff checker handle very large files?
+
+Browser-based diff tools handle typical configs and code files easily (tens of KB). For multi-MB files, a terminal `diff` or `git diff` is more appropriate.
+
+### What's the difference between Base64 and Base64url?
+
+Base64 uses `+`, `/`, and `=`. Base64url (used in JWTs) swaps `+`→`-` and `/`→`_` and drops padding. Most good tools handle both — check the output format option.
+
+### Why is my decoded Base64 showing odd characters?
+
+You decoded a binary payload (like an image or a compressed blob) as text. Decode a text-encoded value, or use a tool that lets you download the binary result instead of displaying it.
+
+### Can I validate JSON without formatting it?
+
+Yes — the formatter validates as it formats. If the JSON is invalid, it tells you exactly where the problem is (character position + expected token).
+
+### Are these tools available offline?
+
+Once the page loads, yes. All processing is client-side, so you can disconnect from the internet and keep working.
+
+## Bottom Line
+
+JSON formatting, diffing, and Base64 encoding aren't glamorous — but they're the small tools you reach for daily, and having them fast changes your flow:
+
+- **Format JSON** to read and debug any API or config
+- **Diff** to see what actually changed in seconds
+- **Encode/Decode Base64** to understand any opaque string
+
+Keep them one tab away: [JSON Formatter](https://toolcraftbox.com/tools/json-formatter) · [Text Diff Checker](https://toolcraftbox.com/tools/text-diff-checker) · [Base64 Encode/Decode](https://toolcraftbox.com/tools/base64-encode-decode) · [JWT Decoder](https://toolcraftbox.com/tools/jwt-decoder)
+
+No installs. No sign-ups. No uploads. Just your data, in your browser.

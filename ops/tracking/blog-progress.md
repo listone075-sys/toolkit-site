@@ -1,6 +1,6 @@
 # 博客发布进度
 
-> 累计：20 篇（全部发布）· 第7-11周停更，9/2 恢复
+> 累计：22 篇（全部发布）· 9/2 恢复更新（#20-22 同日发布）
 > 策略：Markdown 品类优先，每周至少 2 篇
 
 ## 已发布
@@ -27,13 +27,14 @@
 | 18 | 7/22 | How to Write Better Docs with AI + Markdown | Markdown AI | ✅ |
 | 19 | 7/23 | WebP vs PNG vs JPEG: Which Format Saves Bandwidth in 2026? | Image 对比 | ✅ |
 | 20 | 9/2 | Free PDF Tools vs Adobe Acrobat: What You Actually Need | PDF 对比 | ✅ |
+| 21 | 9/2 | The Complete Image Optimization Workflow for 2026 | Image 深度 | ✅ |
+| 22 | 9/2 | JSON, Diff, Base64: The Developer's Swiss Army Knife | Dev Tools | ✅ |
 
 ## 计划中
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 21 | 9/3 | The Complete Image Optimization Workflow for 2026 | Image 深度 | ⬜ |
-| 22 | 9/4 | JSON, Diff, Base64: The Developer's Swiss Army Knife | Dev Tools | ⬜ |
+| 23 | 9/8 | （待选题） | - | ⬜ |
 
 ## 内容轮换规则
 
@@ -52,8 +53,8 @@
 | Image | 2 |
 | Image AI | 1 |
 | Image 对比 | 2 |
-| Image 深度 | 1 |
+| Image 深度 | 2 |
 | PDF How-to | 3 |
 | PDF 对比 | 1 |
-| Dev Tools | 1 |
-| **合计** | **20** |
+| Dev Tools | 2 |
+| **合计** | **22** |
