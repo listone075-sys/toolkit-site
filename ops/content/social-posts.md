@@ -25,6 +25,7 @@
 | 17 | 7/21 | CTA式 | PDF Split/Merge 工具 — "Split, merge, compress — all free, in your browser" | ✅ |
 | 18 | 7/27 | CTA式 | 48 free tools. 0 sign-ups. 0 uploads. Everything runs in your browser. | ✅ |
 | 19 | 9/1 | 隐私式 | Your files never leave your device — 100% in-browser, private | ✅ |
+| 20 | 9/2 | 问题式 | Blog #23 — research note system (capture/organize/connect/retrieve) | ✅ |
 
 ## 知乎/Zhihu 问答记录
 
@@ -50,6 +51,7 @@
 | 10 | 7/16 | PDF Hacks & Tutorials | How to Split or Merge PDF Pages — Complete Guide (Blog #15) | ✅ |
 | 11 | 9/1 | Markdown for Beginners | How to Convert Markdown to PowerPoint — Free & Fast Tutorial (Blog #13) | ✅ |
 | 12 | 9/1 | Free Online Tools | Create QR Codes for Free — No Sign-Up, Runs in Your Browser | ✅ |
+| 13 | 9/2 | Markdown for Beginners | Research Note System with AI + Markdown (Blog #23) | ✅ |
 
 ---
 
