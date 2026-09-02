@@ -20,6 +20,10 @@
 # production
 /build
 
+# deploy artifacts (server-side standalone releases + current symlink)
+/current
+/releases/
+
 # misc
 .DS_Store
 *.pem
