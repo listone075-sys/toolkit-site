@@ -46,6 +46,21 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t text-center text-sm text-zinc-500">
           <p>{t("footer.privacyBrowserTagline")}</p>
           <p className="mt-1">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
+          <a
+            href="https://fazier.com"
+            target="_blank"
+            rel="noopener"
+            className="mt-3 inline-block opacity-70 hover:opacity-100 transition-opacity"
+            aria-label="Launched on Fazier"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://fazier.com/api/v1/public/badges/launch_badges.svg?badge_type=launched&theme=light"
+              alt="Launched on Fazier"
+              width="105"
+              height="45"
+            />
+          </a>
           <div className="mt-2 flex justify-center gap-4">
             <Link href="/blog" className="text-xs text-zinc-400 hover:text-zinc-600">{t("footer.blog")}</Link>
             <Link href="/privacy" className="text-xs text-zinc-400 hover:text-zinc-600">{t("footer.privacyPolicy")}</Link>
