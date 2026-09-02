@@ -1,6 +1,6 @@
 # 博客发布进度
 
-> 累计：22 篇（全部发布）· 9/2 恢复更新（#20-22 同日发布）
+> 累计：23 篇（全部发布）· 9/2 恢复更新（#20-23 集中发布）
 > 策略：Markdown 品类优先，每周至少 2 篇
 
 ## 已发布
@@ -29,12 +29,13 @@
 | 20 | 9/2 | Free PDF Tools vs Adobe Acrobat: What You Actually Need | PDF 对比 | ✅ |
 | 21 | 9/2 | The Complete Image Optimization Workflow for 2026 | Image 深度 | ✅ |
 | 22 | 9/2 | JSON, Diff, Base64: The Developer's Swiss Army Knife | Dev Tools | ✅ |
+| 23 | 9/2 | How to Build a Research Note System with AI + Markdown | Markdown | ✅ |
 
 ## 计划中
 
 | # | 日期 | 标题 | 品类 | 状态 |
 |:--:|------|------|------|:--:|
-| 23 | 9/8 | （待选题） | - | ⬜ |
+| 24 | 9/8 | （待选题） | - | ⬜ |
 
 ## 内容轮换规则
 
@@ -47,7 +48,7 @@
 
 | 品类 | 已发布 |
 |------|:--:|
-| Markdown | 6 |
+| Markdown | 7 |
 | Markdown AI | 4 |
 | Markdown ZH | 1 |
 | Image | 2 |
@@ -57,4 +58,4 @@
 | PDF How-to | 3 |
 | PDF 对比 | 1 |
 | Dev Tools | 2 |
-| **合计** | **22** |
+| **合计** | **23** |

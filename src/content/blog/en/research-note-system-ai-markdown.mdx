@@ -1,0 +1,150 @@
+export const meta = {
+  title: "How to Build a Research Note System with AI + Markdown",
+  description: "A practical system for research notes: capture, organize, connect, and retrieve everything in plain-text Markdown — with AI doing the heavy lifting.",
+  date: "2026-09-02",
+  category: "Markdown",
+};
+
+# How to Build a Research Note System with AI + Markdown
+
+You read a great article. You save it. You *never* open it again. Sound familiar?
+
+The problem isn't that you don't collect enough — it's that scattered notes have nowhere to live and nothing to link them together. A research note system fixes that. And Markdown is the format that makes the whole thing work.
+
+Here's a four-layer system you can set up today, with AI doing the boring parts.
+
+## The Four Layers: Capture → Organize → Connect → Retrieve
+
+- **Capture** — get anything into Markdown fast
+- **Organize** — give every note the same skeleton
+- **Connect** — link notes so ideas compound
+- **Retrieve** — find what you need in seconds
+
+## Layer 1: Capture — Get Everything into Markdown
+
+Markdown is the one format that accepts everything. Web pages, AI chats, PDFs, Word docs — all of it converts in.
+
+**Your capture toolkit:**
+
+| Source | How to get it into Markdown |
+|---|---|
+| Web article | [Import from URL](https://toolcraftbox.com/tools/markdown) — paste the link, get clean Markdown |
+| AI conversation | Ask ChatGPT/Claude to "output this as Markdown with headings and bullets" |
+| PDF / DOCX | Convert to Markdown, then paste into your editor |
+| Quick thought | A note-taking app with a Markdown editor, or just a `.md` file |
+
+The [Markdown Workbench](https://toolcraftbox.com/tools/markdown) covers the top three. Import a URL, paste an AI response, and you've got a clean note in seconds — no formatting cleanup required.
+
+> **Golden rule of capture:** make it *one step* to save. If saving takes more than ten seconds, you won't do it. A paste + a filename is the whole workflow.
+
+## Layer 2: Organize — Give Every Note the Same Skeleton
+
+A note is only findable if it has a predictable shape. Use the same template every time so your future self knows exactly where to look.
+
+```markdown
+---
+title: <what this is about>
+source: <URL or book + page>
+date: 2026-09-02
+tags: [topic, subtopic]
+---
+
+## TL;DR
+Three bullets max. What would you tell someone who asked?
+
+## Key Points
+- Point one
+- Point two
+
+## Quotes
+> "The exact sentence worth keeping, with the source."
+
+## Questions
+- What's still unclear?
+- What would I verify before relying on this?
+
+## Actions
+- [ ] Follow up on X
+```
+
+Five sections, every time. That's the whole organizing system. No folders to maintain, no taxonomy to argue about — just a consistent skeleton.
+
+## Layer 3: Connect — Link Notes So Ideas Compound
+
+Individual notes are facts. *Linked* notes are arguments. This is where research notes become thinking.
+
+**Three cheap ways to connect:**
+
+1. **Bidirectional links** — write `[[other-note]]` whenever a note references another. Most Markdown apps (Obsidian, Logseq, and the rest) auto-index these into a graph.
+2. **One index per topic** — a "MOC" (Map of Content) note that lists every note on a subject. It becomes your entry point when the topic resurfaces.
+3. **Diff old vs new** — when a note evolves over weeks, run it through the [Text Diff Checker](https://toolcraftbox.com/tools/text-diff-checker) to see exactly how your thinking changed. Green is where you learned something.
+
+## Layer 4: Retrieve — Find It in Seconds
+
+A note system earns its keep when you can find *that one thing* three months later.
+
+- **Search beats folders.** A single folder of `.md` files + full-text search (every good editor has it) outperforms a hand-built folder tree.
+- **Keep a running index.** Your MOC notes double as a table of contents for each research project.
+- **Revisit on a schedule.** Spend 5 minutes a week scanning last week's "Questions" and "Actions" fields. This is the step that turns notes into knowledge.
+- **Export when you need to share.** Render a polished PDF or DOCX straight from Markdown with the [Markdown Workbench](https://toolcraftbox.com/tools/markdown) — no reformatting, no copy-paste into Word.
+
+## Where AI Earns Its Keep
+
+The system above works without AI. With AI, the boring parts disappear:
+
+- **Summarize instead of transcribe** — paste a long article and ask for a 5-bullet TL;DR in your template's format.
+- **Generate tags and links** — ask "what 3 tags would you give this, and which of my existing notes does it relate to?"
+- **Extract the quotes** — "pull the three most quotable sentences with attribution."
+- **Interview the source** — "turn this article into a Q&A I can paste into my notes."
+
+The catch: AI output still needs the same template. Paste AI summaries into your skeleton, not around it.
+
+## The 60-Second Setup
+
+1. Open the [Markdown Workbench](https://toolcraftbox.com/tools/markdown)
+2. Create a note from the template above — save it as `_template.md`
+3. Next time you read something worth keeping, Import from URL → paste → adjust → save
+4. Weekly: scan Questions/Actions, add links, done
+
+That's the entire system. Under an hour to set up, thirty seconds per note forever after.
+
+## FAQ
+
+### Isn't this just "use a note-taking app"?
+
+The app is the least important part. Markdown is the point: it's plain text, so your notes outlive any app, any OS, any company. Move between Obsidian, VS Code, or a terminal — the notes come with you untouched.
+
+### Obsidian or Notion?
+
+Both work with Markdown workflows. Obsidian leans into plain-text files and bidirectional links; Notion is more all-in-one but stores data in its own format. If long-term ownership matters, local Markdown files win.
+
+### What about images and PDFs in my notes?
+
+Store them as files next to your `.md` files and reference them by path. Markdown handles images natively (`![](image.png)`), and linked PDFs open from any Markdown app.
+
+### Won't this get messy without folders?
+
+Folders still work — use them at the *project* level (`research/2026/markdown-history/`). Inside a project, let tags and links do the organizing. Folders for projects, links for ideas.
+
+### How do I handle citations properly?
+
+Keep the `source` field in your template honest: URL + title + access date. For academic work, add a `citations` section with full references, and use a Markdown-aware citation manager if you go deep.
+
+### Can AI read my whole note collection?
+
+Not directly — your notes are local. But you can ask AI to work on individual notes (summarize, tag, link), or export a notes folder and let a tool index it. For most research, per-note AI assistance is enough.
+
+## Bottom Line
+
+A research note system is four layers, not a product:
+
+1. **Capture** — anything → Markdown in ten seconds
+2. **Organize** — one template, five sections, every note
+3. **Connect** — bidirectional links + topic indexes
+4. **Retrieve** — search, revisit, export
+
+AI removes the friction: summarizing, tagging, and linking happen in seconds instead of minutes. And because everything is plain-text Markdown, the system is free, portable, and permanent.
+
+Start today: [Markdown Workbench](https://toolcraftbox.com/tools/markdown) · [Text Diff Checker](https://toolcraftbox.com/tools/text-diff-checker) · [Word Counter](https://toolcraftbox.com/tools/word-counter)
+
+The best time to start a note system was six months ago. The second-best time is now.
