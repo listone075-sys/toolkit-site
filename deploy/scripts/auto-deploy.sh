@@ -3,6 +3,9 @@ set -euo pipefail
 
 LOG_FILE="/var/log/toolkit-deploy.log"
 REPO_DIR="/opt/toolkit_site"
+RELEASES_DIR="$REPO_DIR/releases"
+CURRENT_LINK="$REPO_DIR/current"
+KEEP_RELEASES=5
 MAX_LOG_LINES=5000
 
 log() {
@@ -55,14 +58,33 @@ if ! npm install --legacy-peer-deps 2>&1 | tee -a "$LOG_FILE"; then
     exit 1
 fi
 
-# Build
+# Build (produces .next/standalone + .next/static)
 log "Building..."
 if ! npm run build 2>&1 | tee -a "$LOG_FILE"; then
     log "ERROR: build failed. Current version unchanged."
     exit 1
 fi
 
-# Restart service
+# Stage new release in an isolated dir — old release stays untouched, so the
+# running process never sees a half-written .next (fixes the 500 build window).
+COMMIT=$(git rev-parse --short HEAD)
+RELEASE_DIR="$RELEASES_DIR/${COMMIT}-$(date +%s)"
+log "Staging release: $RELEASE_DIR"
+
+mkdir -p "$RELEASE_DIR"
+cp -r .next/standalone/. "$RELEASE_DIR/"
+cp -r .next/static "$RELEASE_DIR/.next/static"
+cp -r public "$RELEASE_DIR/public"
+
+# Atomic symlink swap: current -> new release
+ln -sfn "$RELEASE_DIR" "${CURRENT_LINK}.new"
+mv -Tf "${CURRENT_LINK}.new" "$CURRENT_LINK"
+
+# Restart service (now points at current/server.js)
 log "Restarting toolkit-site..."
 systemctl restart toolkit-site
-log "SUCCESS: Deployed ${REMOTE:0:7}, service restarted."
+
+# Prune old releases, keep the last KEEP_RELEASES
+ls -1dt "$RELEASES_DIR"/*/ 2>/dev/null | tail -n +$((KEEP_RELEASES + 1)) | xargs -r rm -rf
+
+log "SUCCESS: Deployed ${REMOTE:0:7} to $RELEASE_DIR, service restarted."

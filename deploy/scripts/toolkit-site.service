@@ -1,0 +1,26 @@
+# Toolkit Site (Next.js standalone) — 参考模板，实际部署在 /etc/systemd/system/toolkit-site.service
+# 注意：AUTH_SECRET 是敏感值，服务器上是真实值，此处用占位符，不要在 git 里提交真实 secret。
+[Unit]
+Description=Toolkit Site (Next.js standalone)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/toolkit_site
+Environment=AUTH_SECRET=REDACTED__set_on_server
+ExecStart=/usr/bin/node /opt/toolkit_site/current/server.js
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=NEXT_PUBLIC_SITE_URL=https://toolcraftbox.com
+Environment=NEXT_PUBLIC_GA_ID=G-JRNJX5CQ1F
+Environment=NEXT_PUBLIC_ADSENSE_ID=ca-pub-5142105226310650
+Environment=INDEXNOW_KEY=REDACTED__set_on_server
+Environment=PORT=8001
+Environment=HOSTNAME=0.0.0.0
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

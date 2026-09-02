@@ -8,6 +8,7 @@ const withAnalyzer = withBundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   pageExtensions: ["ts", "tsx", "mdx"],
 
   async redirects() {
