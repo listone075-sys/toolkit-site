@@ -19,7 +19,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const PROPERTY_ID = process.env.GA4_PROPERTY_ID ?? "541266486";
+const PROPERTY_ID = process.env.GA4_PROPERTY_ID ?? "543635611";
 // GA4 was fixed on 2026-07-08 — only fetch data from this date onward
 const START_DATE = process.env.GA4_START_DATE ?? "2026-07-08";
 const OPS_DIR = resolve(__dirname, "..", "ops");

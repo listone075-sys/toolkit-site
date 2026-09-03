@@ -1,0 +1,543 @@
+{
+  "date": "2026-09-03",
+  "startDate": "2026-07-08",
+  "days": 57,
+  "totalPV": 680,
+  "totalUV": 513,
+  "avgDailyPV": 12,
+  "avgDailyUV": 9,
+  "yesterdayPV": 1,
+  "dailyBreakdown": [
+    {
+      "date": "20260715",
+      "activeUsers": 41,
+      "pageViews": 44,
+      "avgSessionDuration": 1.4188157209302326,
+      "bounceRate": 0.9534883720930233,
+      "newUsers": 39
+    },
+    {
+      "date": "20260902",
+      "activeUsers": 31,
+      "pageViews": 46,
+      "avgSessionDuration": 126.01518477142857,
+      "bounceRate": 1,
+      "newUsers": 27
+    },
+    {
+      "date": "20260831",
+      "activeUsers": 30,
+      "pageViews": 36,
+      "avgSessionDuration": 10.861671419354838,
+      "bounceRate": 0.8387096774193549,
+      "newUsers": 29
+    },
+    {
+      "date": "20260901",
+      "activeUsers": 29,
+      "pageViews": 36,
+      "avgSessionDuration": 62.97492496774194,
+      "bounceRate": 0.8709677419354839,
+      "newUsers": 29
+    },
+    {
+      "date": "20260728",
+      "activeUsers": 16,
+      "pageViews": 19,
+      "avgSessionDuration": 185.69432925,
+      "bounceRate": 0.9375,
+      "newUsers": 16
+    },
+    {
+      "date": "20260729",
+      "activeUsers": 16,
+      "pageViews": 17,
+      "avgSessionDuration": 20.470260625,
+      "bounceRate": 0.8125,
+      "newUsers": 16
+    },
+    {
+      "date": "20260812",
+      "activeUsers": 14,
+      "pageViews": 33,
+      "avgSessionDuration": 195.98629829411763,
+      "bounceRate": 0.7058823529411765,
+      "newUsers": 13
+    },
+    {
+      "date": "20260814",
+      "activeUsers": 14,
+      "pageViews": 16,
+      "avgSessionDuration": 32.553763499999995,
+      "bounceRate": 0.7142857142857143,
+      "newUsers": 14
+    },
+    {
+      "date": "20260811",
+      "activeUsers": 13,
+      "pageViews": 23,
+      "avgSessionDuration": 60.57086473333333,
+      "bounceRate": 0.6666666666666666,
+      "newUsers": 13
+    },
+    {
+      "date": "20260714",
+      "activeUsers": 12,
+      "pageViews": 15,
+      "avgSessionDuration": 39.136046916666665,
+      "bounceRate": 0.8333333333333334,
+      "newUsers": 11
+    },
+    {
+      "date": "20260805",
+      "activeUsers": 12,
+      "pageViews": 12,
+      "avgSessionDuration": 2.3798245833333334,
+      "bounceRate": 0.9166666666666666,
+      "newUsers": 12
+    },
+    {
+      "date": "20260813",
+      "activeUsers": 12,
+      "pageViews": 15,
+      "avgSessionDuration": 2.760680769230769,
+      "bounceRate": 0.9230769230769231,
+      "newUsers": 12
+    },
+    {
+      "date": "20260817",
+      "activeUsers": 12,
+      "pageViews": 13,
+      "avgSessionDuration": 59.25699491666666,
+      "bounceRate": 0.9166666666666666,
+      "newUsers": 12
+    },
+    {
+      "date": "20260826",
+      "activeUsers": 12,
+      "pageViews": 21,
+      "avgSessionDuration": 140.70506192307693,
+      "bounceRate": 0.6923076923076923,
+      "newUsers": 12
+    },
+    {
+      "date": "20260710",
+      "activeUsers": 11,
+      "pageViews": 21,
+      "avgSessionDuration": 96.71562523076923,
+      "bounceRate": 0.8461538461538461,
+      "newUsers": 10
+    },
+    {
+      "date": "20260816",
+      "activeUsers": 10,
+      "pageViews": 10,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 10
+    },
+    {
+      "date": "20260820",
+      "activeUsers": 10,
+      "pageViews": 10,
+      "avgSessionDuration": 2.4650635999999997,
+      "bounceRate": 0.9,
+      "newUsers": 10
+    },
+    {
+      "date": "20260719",
+      "activeUsers": 9,
+      "pageViews": 9,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 9
+    },
+    {
+      "date": "20260821",
+      "activeUsers": 9,
+      "pageViews": 9,
+      "avgSessionDuration": 2.0129643,
+      "bounceRate": 0.9,
+      "newUsers": 9
+    },
+    {
+      "date": "20260827",
+      "activeUsers": 9,
+      "pageViews": 13,
+      "avgSessionDuration": 30.276464636363638,
+      "bounceRate": 0.5454545454545454,
+      "newUsers": 9
+    },
+    {
+      "date": "20260708",
+      "activeUsers": 8,
+      "pageViews": 8,
+      "avgSessionDuration": 3.379572375,
+      "bounceRate": 0.875,
+      "newUsers": 8
+    },
+    {
+      "date": "20260718",
+      "activeUsers": 8,
+      "pageViews": 8,
+      "avgSessionDuration": 40.8595795,
+      "bounceRate": 0.875,
+      "newUsers": 8
+    },
+    {
+      "date": "20260725",
+      "activeUsers": 8,
+      "pageViews": 8,
+      "avgSessionDuration": 1.880134625,
+      "bounceRate": 1,
+      "newUsers": 8
+    },
+    {
+      "date": "20260825",
+      "activeUsers": 8,
+      "pageViews": 9,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 8
+    },
+    {
+      "date": "20260713",
+      "activeUsers": 7,
+      "pageViews": 14,
+      "avgSessionDuration": 49.59839785714286,
+      "bounceRate": 0.5714285714285714,
+      "newUsers": 7
+    },
+    {
+      "date": "20260723",
+      "activeUsers": 7,
+      "pageViews": 7,
+      "avgSessionDuration": 6.7750141428571435,
+      "bounceRate": 0.8571428571428571,
+      "newUsers": 7
+    },
+    {
+      "date": "20260804",
+      "activeUsers": 7,
+      "pageViews": 7,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 7
+    },
+    {
+      "date": "20260824",
+      "activeUsers": 7,
+      "pageViews": 8,
+      "avgSessionDuration": 22.626488571428574,
+      "bounceRate": 0.5714285714285714,
+      "newUsers": 7
+    },
+    {
+      "date": "20260828",
+      "activeUsers": 7,
+      "pageViews": 18,
+      "avgSessionDuration": 33.980754375000004,
+      "bounceRate": 0.625,
+      "newUsers": 6
+    },
+    {
+      "date": "20260829",
+      "activeUsers": 7,
+      "pageViews": 12,
+      "avgSessionDuration": 125.40316812500001,
+      "bounceRate": 0.625,
+      "newUsers": 7
+    },
+    {
+      "date": "20260716",
+      "activeUsers": 6,
+      "pageViews": 8,
+      "avgSessionDuration": 2.7930580000000003,
+      "bounceRate": 0.8333333333333334,
+      "newUsers": 5
+    },
+    {
+      "date": "20260717",
+      "activeUsers": 6,
+      "pageViews": 17,
+      "avgSessionDuration": 306.71291183333335,
+      "bounceRate": 0.5,
+      "newUsers": 6
+    },
+    {
+      "date": "20260731",
+      "activeUsers": 6,
+      "pageViews": 7,
+      "avgSessionDuration": 3.473142333333333,
+      "bounceRate": 0.8333333333333334,
+      "newUsers": 5
+    },
+    {
+      "date": "20260803",
+      "activeUsers": 6,
+      "pageViews": 6,
+      "avgSessionDuration": 2.4237681666666666,
+      "bounceRate": 0.8333333333333334,
+      "newUsers": 6
+    },
+    {
+      "date": "20260810",
+      "activeUsers": 6,
+      "pageViews": 19,
+      "avgSessionDuration": 342.192308,
+      "bounceRate": 0.7142857142857143,
+      "newUsers": 6
+    },
+    {
+      "date": "20260819",
+      "activeUsers": 6,
+      "pageViews": 7,
+      "avgSessionDuration": 3.942078,
+      "bounceRate": 0.8333333333333334,
+      "newUsers": 6
+    },
+    {
+      "date": "20260823",
+      "activeUsers": 6,
+      "pageViews": 11,
+      "avgSessionDuration": 9.324228142857143,
+      "bounceRate": 0.8571428571428571,
+      "newUsers": 6
+    },
+    {
+      "date": "20260830",
+      "activeUsers": 6,
+      "pageViews": 9,
+      "avgSessionDuration": 7.802969666666667,
+      "bounceRate": 0.6666666666666666,
+      "newUsers": 6
+    },
+    {
+      "date": "20260709",
+      "activeUsers": 5,
+      "pageViews": 5,
+      "avgSessionDuration": 12.1280522,
+      "bounceRate": 0.8,
+      "newUsers": 4
+    },
+    {
+      "date": "20260711",
+      "activeUsers": 5,
+      "pageViews": 5,
+      "avgSessionDuration": 1.275212,
+      "bounceRate": 1,
+      "newUsers": 5
+    },
+    {
+      "date": "20260720",
+      "activeUsers": 5,
+      "pageViews": 8,
+      "avgSessionDuration": 48.748087,
+      "bounceRate": 0.6,
+      "newUsers": 5
+    },
+    {
+      "date": "20260722",
+      "activeUsers": 5,
+      "pageViews": 6,
+      "avgSessionDuration": 1.6146433333333334,
+      "bounceRate": 1,
+      "newUsers": 5
+    },
+    {
+      "date": "20260809",
+      "activeUsers": 5,
+      "pageViews": 5,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 5
+    },
+    {
+      "date": "20260712",
+      "activeUsers": 4,
+      "pageViews": 4,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260721",
+      "activeUsers": 4,
+      "pageViews": 5,
+      "avgSessionDuration": 3.5875685,
+      "bounceRate": 0.75,
+      "newUsers": 4
+    },
+    {
+      "date": "20260724",
+      "activeUsers": 4,
+      "pageViews": 5,
+      "avgSessionDuration": 21.459367,
+      "bounceRate": 0.5,
+      "newUsers": 4
+    },
+    {
+      "date": "20260726",
+      "activeUsers": 4,
+      "pageViews": 4,
+      "avgSessionDuration": 1.57531025,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260730",
+      "activeUsers": 4,
+      "pageViews": 6,
+      "avgSessionDuration": 6.833857,
+      "bounceRate": 0.5,
+      "newUsers": 3
+    },
+    {
+      "date": "20260802",
+      "activeUsers": 4,
+      "pageViews": 4,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260822",
+      "activeUsers": 4,
+      "pageViews": 4,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 4
+    },
+    {
+      "date": "20260727",
+      "activeUsers": 3,
+      "pageViews": 3,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 3
+    },
+    {
+      "date": "20260807",
+      "activeUsers": 3,
+      "pageViews": 3,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 3
+    },
+    {
+      "date": "20260818",
+      "activeUsers": 3,
+      "pageViews": 3,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 3
+    },
+    {
+      "date": "20260806",
+      "activeUsers": 2,
+      "pageViews": 4,
+      "avgSessionDuration": 2.8242066666666665,
+      "bounceRate": 0.6666666666666666,
+      "newUsers": 1
+    },
+    {
+      "date": "20260815",
+      "activeUsers": 2,
+      "pageViews": 2,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 2
+    },
+    {
+      "date": "20260903",
+      "activeUsers": 2,
+      "pageViews": 2,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 2
+    },
+    {
+      "date": "20260801",
+      "activeUsers": 1,
+      "pageViews": 1,
+      "avgSessionDuration": 0,
+      "bounceRate": 1,
+      "newUsers": 1
+    }
+  ],
+  "sources": [
+    {
+      "channel": "Direct",
+      "users": 445,
+      "pageViews": 561
+    },
+    {
+      "channel": "Organic Search",
+      "users": 38,
+      "pageViews": 56
+    },
+    {
+      "channel": "Referral",
+      "users": 15,
+      "pageViews": 47
+    },
+    {
+      "channel": "Unassigned",
+      "users": 12,
+      "pageViews": 16
+    }
+  ],
+  "topPages": [
+    {
+      "path": "/zh",
+      "pageViews": 291,
+      "users": 240
+    },
+    {
+      "path": "/en",
+      "pageViews": 111,
+      "users": 107
+    },
+    {
+      "path": "/zh/tools/image-compressor",
+      "pageViews": 27,
+      "users": 14
+    },
+    {
+      "path": "/zh/tools/markdown",
+      "pageViews": 19,
+      "users": 8
+    },
+    {
+      "path": "/zh/tools/pdf-to-jpg",
+      "pageViews": 17,
+      "users": 15
+    },
+    {
+      "path": "/en/tools/markdown",
+      "pageViews": 16,
+      "users": 11
+    },
+    {
+      "path": "/en/blog/markdown-cheat-sheet",
+      "pageViews": 15,
+      "users": 15
+    },
+    {
+      "path": "/en/blog/how-to-clean-up-chatgpt-output-formatting",
+      "pageViews": 11,
+      "users": 10
+    },
+    {
+      "path": "/zh/tools/claude-session-viewer",
+      "pageViews": 11,
+      "users": 9
+    },
+    {
+      "path": "/zh/blog/markdown-cheat-sheet",
+      "pageViews": 10,
+      "users": 4
+    }
+  ],
+  "note": "Data from 2026-07-08 onwards (GA4 fix date). Non-ToolCraft paths excluded."
+}
